@@ -17,7 +17,7 @@ sitelinks = [
     ('%(rootdir)s/download.html',         'Download'),
     ('%(rootdir)s/doc/pyqwt.html',        'Documentation'),
     ('%(rootdir)s/gui-examples.html',     'GUI-Examples'),
-    ('%(rootdir)s/index.html',            'Home'),
+    ('%(rootdir)s/home.html',             'Home'),
     ('%(rootdir)s/doc/installation.html', 'Installation'),
     ('%(rootdir)s/license.html',          'License'),
     ('%(rootdir)s/news.html',             'News'),
