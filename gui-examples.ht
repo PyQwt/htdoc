@@ -16,7 +16,7 @@ Title: Graphical User Interface Examples
 <h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
 <ul>
   <li>
-    how to use <tt class="class">QwtPlot<tt>.
+    how to use <tt class="class">QwtPlot</tt>.
   </li>
   <li>
     how to produce timer events.
