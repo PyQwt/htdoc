@@ -5,6 +5,10 @@ Title: News
   <tr>
     <td>
       <ul>
+        <li><b>2004-SEP-14</b> <a href="download.html">PyQwt-4.0rc0a.patch</a>
+          fixes a few build bugs with recent versions of Python and numarray.
+        <li><b>2004-SEP-14</b> <a href="download.html">PyQwt-3.8b.patch</a>
+          fixes a build bug with recent versions of numarray.
         <li><b>2004-JUN-06</b> Release of PyQwt-4.0rc0.
         <li><b>2003-DEC-01</b> <a href="download.html">PyQwt-3.8a.patch</a>
           fixes a build bug for some Posix platforms.
