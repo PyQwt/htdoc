@@ -1,10 +1,24 @@
-There are no patches for PyQwt-4.0rc0.
+PyQwt-4.0rc0a.patch fixes:
+
+1. Building of PyQwt-4.0rc0 against numarray-1.0 and numarray-1.1.
+2. Building of PyQwt-4.0rc0 against Python-2.4 using setup.py.
+3. A few bugs in the configure/build.py script.
+
+
+How to patch? Put PyQwt-4.0rc0.tar.gz and PyQwt-4.0rc0a.patch in the working
+directory, execute:
+
+        tar xvfz PyQwt-4.0rc0.tar.gz
+        patch -p0 -b -z .upgrade <PyQwt-4.0rc0a.patch
+
+and you are ready for the installation instructions.
+
 
 PyQwt-3.8b.patch fixes:
 
 1. Building of PyQwt-3.8 for Posix platforms without an entry for QMAKE_RPATH
    in $QTDIR/mkspecs/default/qmake.conf.
-2. Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1
+2. Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1.
 
 PyQwt-3.8a.patch fixes: 
 

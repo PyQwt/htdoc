@@ -26,9 +26,9 @@ Enthought Python</a>.
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.2.tar.bz2">qt-x11-free-3.3.2.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.0.tar.gz">sip-4.0.tar.gz</a>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.3.tar.gz?download">Numeric-23.3.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.3.tar.bz2">qt-x11-free-3.3.3.tar.bz2</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.0.1.tar.gz">sip-4.0.1.tar.gz</a>
 (requires Python-2.3) or
 <a href="http://pyqwt.sourceforge.net/support/sip-3.12.tar.gz">sip-3.12.tar.gz</a> 
 (not for MacOS/X)</li>
@@ -36,6 +36,24 @@ Enthought Python</a>.
 <a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.12.tar.gz">PyQt-x11-gpl-3.12.tar.gz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.0rc0.tar.gz?download">PyQwt-4.0rc0.tar.gz</a></li>
 </ol>
+
+<h3>Bug fixes and upgrades for PyQwt-4.0rc0</h3>
+
+<p><a href="patches/PyQwt-4.0rc0a.patch">PyQwt-4.0rc0a.patch</a> fixes:
+<ol>
+<li>Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1.</li>
+<li>Building of PyQwt-4.0rc0 against Python-2.4 using setup.py.</li>
+<li>A few bugs in the configure/build.py script.</li>
+</ol>
+How to patch? Put PyQwt-4.0rc0.tar.gz and PyQwt-4.0rc0a.patch in the working
+directory, execute:
+<pre class="cli">
+tar xvfz PyQwt-4.0rc0.tar.gz
+patch -p0 -b -z .upgrade &lt;PyQwt-4.0rc0a.patch
+</pre>
+and you are ready for the <a href="doc/installation.html">installation
+instructions</a>.
+</p>
 
 
 <h3>Binary installation of PyQwt-3.8 on Windows for non-commercial use with Python-2.3.4</h3>
@@ -57,7 +75,7 @@ Enthought Python</a>.
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.3.tar.gz?download">Numeric-23.3.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.3.tar.bz2">qt-x11-free-3.2.3.tar.bz2</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.8.1.tar.gz">PyQt-x11-gpl-3.8.1.tar.gz</a></li>

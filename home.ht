@@ -69,6 +69,25 @@ reasons:
  and with a coverage tool to test trading strategies.</li>
 </ul>
 
+<h3>Bug fixes and upgrades for PyQwt-4.0rc0</h3>
+
+<p><a href="patches/PyQwt-4.0rc0a.patch">PyQwt-4.0rc0a.patch</a> fixes:
+<ol>
+<li>Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1.</li>
+<li>Building of PyQwt-4.0rc0 against Python-2.4 using setup.py.</li>
+<li>A few bugs in the configure/build.py script.</li>
+</ol>
+How to patch? Put PyQwt-4.0rc0.tar.gz and PyQwt-4.0rc0a.patch in the working
+directory, execute:
+<pre class="cli">
+tar xvfz PyQwt-4.0rc0.tar.gz
+patch -p0 -b -z .upgrade &lt;PyQwt-4.0rc0a.patch
+</pre>
+and you are ready for the <a href="doc/installation.html">installation
+instructions</a>.
+</p>
+
+
 <h3>Bug fixes and upgrades for PyQwt-3.8</h3>
 
 <p><a href="patches/PyQwt-3.8b.patch">PyQwt-3.8b.patch</a> fixes:
