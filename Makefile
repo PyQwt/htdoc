@@ -22,12 +22,12 @@ EXCLUDES       += --exclude *.pyc
 EXCLUDES       += --exclude *~
 ARGS           := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
-.SUFFIXES: .ht .html
-
-.ht.html:
+# pattern rules
+%.html: %.ht links.h PyQwtGenerator.py
 	$(HT2HTML) $(HTFLAGS) $<
 	perl -pi -e 's|</head>|<link rel="SHORTCUT ICON" href="doc/pyfav.png">\n</head>|g' $@
 
+# targets
 all: $(TARGETS)
 	mkdir -p doc
 	(cd $(PYQWT_CVS)/Doc; make htdoc)
