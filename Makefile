@@ -24,6 +24,7 @@ ARGS           := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 # pattern rules
 %.html: %.ht links.h PyQwtGenerator.py
+	touch $<
 	$(HT2HTML) $(HTFLAGS) $<
 	perl -pi -e 's|</head>|<link rel="SHORTCUT ICON" href="doc/pyfav.png">\n</head>|g' $@
 
