@@ -2,17 +2,13 @@ Title: PyQwt plots data with Numerical Python and PyQt
 
 <h3>PyQwt plots data with Numerical Python and PyQt</h3>
 
-<p>PyQwt is a set of Python bindings for the <a href=
-"http://qwt.sourceforge.net">Qwt</a> C++ class library.
-<a href="http://qwt.sourceforge.net">Qwt</a> extends the <a href=
-"http://www.trolltech.com/">Qt</a> framework with widgets for scientific and
-engineering applications.
+<p>PyQwt is a set of Python bindings for the
+<a href="http://qwt.sourceforge.net">Qwt</a>
+C++ class library which extends the
+<a href="http://www.trolltech.com/">Qt</a> framework with widgets for
+scientific and engineering applications.
 It provides a widget to plot 2-dimensional data and various widgets to display
 and control bounded or unbounded floating point values.</p>
-
-<p>PyQwt requires and extends <a href=
-"http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>, a set of Python bindings
-for <a href="http://www.trolltech.com/">Qt</a>.</p>
 
 <p>It is highly recommended to use PyQwt with either <a href=
 "http://www.numpy.org">Numeric</a>, <a href=
@@ -25,6 +21,10 @@ language for numerical computing and experimentation.
 The beautiful general purpose programming language Python in combination
 with the Numerical extensions and <a href="http://www.scipy.org">SciPy</a>
 is as powerful as specialized tools like MatLab and IDL.</p>
+
+<p>PyQwt requires and extends <a href=
+"http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>, a set of Python bindings
+for <a href="http://www.trolltech.com/">Qt</a>.</p>
 
 <p>PyQwt addresses the problem of integrating PyQt, Qt, Qwt, the Numerical
 Python extensions and optionally <a href="http://www.scipy.org">SciPy</a> in
@@ -44,12 +44,19 @@ Mac OS X support has to wait for the release of <a href=
 "http://www.riverbankcomputing.co.uk/sip/roadmap.php">sip-4.x</a>.
 </p>
 
-<!--
-<p>If you cannot wait, mail <a href="mailto:pyqwt-users@lists.sf.net">us</a>:
-PyQt-x11-gpl-3.7/README.MacOSX explains how to install PyQt, but we need
-feedback to work out a similar solution for PyQwt. 
+<h4>Bug fixes and upgrades</h4>
+
+<p><a href="patches/PyQwt-3.7a.patch">PyQwt-3.7a.patch</a> fixes:
+<ol>
+<li>Building of PyQwt-3.7 for Qt &lt;= 3.2.1
+    and/or PyQt &lt;=3.8.1 and sip &lt;= 3.8.</li>
+<li>Building of PyQwt-3.7 for non-threaded Qt libraries on Posix.</li>
+<li>Incompatibilities with Designer/pyuic generated forms using QwtPlot.</li>
+<li>A minor bug on Windows concerning compiler flags.</li>
+<li>A minor bug on Posix concerning compiler flags.</li>
+</ol>
+If you do not know how to apply a patch, look <a href="download.html">here</a>.
 </p>
--->
 
 <!--
 Local Variables:

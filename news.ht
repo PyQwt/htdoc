@@ -5,6 +5,10 @@ Title: News
   <tr>
     <td>
       <ul>
+        <li><b>2003-SEP-07</b> <a href="download.html">PyQwt-3.7a.patch</a>
+          makes PyQwt-3.7 work with Qt &lt;= 3.2.1 and/or PyQt &lt;=3.8.1 and
+          sip &lt;= 3.8; it also fixes a few minor bugs.
+        </li>
         <li><b>2003-JUL-06</b> Release of PyQwt-3.7 (first SourceForge
           release).
         </li>
