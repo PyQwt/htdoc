@@ -1,0 +1,110 @@
+--- PyQwt-3.7b/pyqt_distutils/configure.py.upgrade	Sun Jul  6 13:19:36 2003
++++ PyQwt-3.7b/pyqt_distutils/configure.py	Sun Sep 21 15:53:50 2003
+@@ -454,10 +454,10 @@
+         libraries = []
+ 
+         if os.name == 'nt':
+-            template = "%s -vEc __import__('%s')"
++            template = "%s -vc __import__('%s')"
+             prefix = ''
+         elif os.name == 'posix':
+-            template = "%s -vEc 'import %s'"
++            template = "%s -vc 'import %s'"
+             prefix = 'lib'
+ 
+         _, _, stderr = os.popen3(template % (sys.executable, self.module))
+@@ -641,7 +641,7 @@
+                 libraries.append(make['LIBS_THREAD'])
+                 define_macros.append(('QT_THREAD_SUPPORT', None))
+             else:
+-                libraries.append(make_info['LIBS_QT'])
++                libraries.append(make['LIBS_QT'])
+             # normalize, chop of the leading '-l'
+             libraries = [ lib[2:] for lib in ' '.join(libraries).split()]
+             
+@@ -727,6 +727,8 @@
+         '3.1.0': 'Qt_3_1_0',
+         '3.1.1': 'Qt_3_1_1',
+         '3.1.2': 'Qt_3_1_2',
++        '3.2.0': 'Qt_3_2_0',
++        '3.2.1': 'Qt_3_2_0',
+         }.get(qt_version_str)
+ 
+     if not qt:
+@@ -772,7 +774,8 @@
+             key = line[:split].strip()[6:]
+             value = line[split+1:].strip()
+             if value[:2] == "$$":
+-                value = info[value[8:]]
++                macro = value.split()[0]
++                value = value.replace(macro, info[macro[8:]])
+             info[key] = value.replace('$(QTDIR)', qtdir)
+     return info
+ 
+--- PyQwt-3.7b/pyqt_distutils/sysconfig.py.upgrade	Sun Jul  6 12:55:41 2003
++++ PyQwt-3.7b/pyqt_distutils/sysconfig.py	Sat Sep  6 21:00:28 2003
+@@ -51,6 +51,7 @@
+                 preprocessor = '%s %s' % (ccache, preprocessor)
+             compiler_so = (
+                 '%(CXX)s '
++                '%(CXXFLAGS)s '
+                 '%(CXXFLAGS_THREAD)s '
+                 '%(CXXFLAGS_RELEASE)s '
+                 '%(CXXFLAGS_SHLIB)s '
+@@ -68,6 +69,7 @@
+                 ) % make_info
+             compiler_so = (
+                 '%(CXX)s '
++                '%(CXXFLAGS)s '
+                 '%(CXXFLAGS_RELEASE)s '
+                 '%(CXXFLAGS_SHLIB)s '
+                 '%(CXXFLAGS_WARN_ON)s '
+--- PyQwt-3.7b/sip/qwtplot.sip.upgrade	Sun Jun 15 11:15:58 2003
++++ PyQwt-3.7b/sip/qwtplot.sip	Sat Sep  6 21:00:28 2003
+@@ -157,7 +157,7 @@
+     int margin() const;
+ 
+     // Title
+-    void setTitle(const char *);
++    void setTitle(const QString &);
+     QString title() const;
+     void setTitleFont (const QFont &);
+     QFont titleFont() const;
+@@ -450,7 +450,7 @@
+     QFont markerFont(long) const;
+     bool setMarkerPen(long, const QPen &);
+ 
+-    bool setMarkerLabel(long, const char *);
++    bool setMarkerLabel(long, const QString &);
+     const QString& markerLabel(long) const;
+     bool setMarkerLabelAlign(long, int);
+     int markerLabelAlign(long) const;
+--- PyQwt-3.7b/setup.py.upgrade	Sun Sep 21 15:19:55 2003
++++ PyQwt-3.7b/setup.py	Sun Sep 21 15:17:29 2003
+@@ -24,7 +24,7 @@
+ name = 'PyQwt'
+ qwtdir = 'qwt-sources'
+ snapshot = '%04d%02d%02d' % (time.localtime()[:3])
+-version = '3.7'
++version = '3.7b'
+ 
+ #
+ # CHECK FOR A RECENT PYTHON
+--- PyQwt-3.7b/setup_cfg_nt.upgrade	Sun Jul  6 17:14:51 2003
++++ PyQwt-3.7b/setup_cfg_nt	Sun Sep 21 15:55:29 2003
+@@ -12,11 +12,11 @@
+ # If you cannot find those files on your system, see the
+ # documentation: 'Prerequisites for Windows'.
+ #
+-# Running PyQt-win-*-3.7.exe and selecting the SIP tools
+-# puts PyQt's sip files in *:\Python22\PyQt\sip
+-sip_file_dirs=C:\Python22\PyQt\sip
++# Running PyQt-win-*-3.8.exe and selecting the SIP tools
++# puts PyQt's sip files in *:\Python23\PyQt\sip
++sip_file_dirs=C:\Python23\PyQt\sip
+ # If you have rebuilt PyQt from source, uncomment and edit:
+-#sip_file_dirs=C:\MyStuff\PyQt-win-nc-3.7\sip
++#sip_file_dirs=C:\MyStuff\PyQt-win-nc-3.8\sip
+ #
+ # Local Variables: ***
+ # mode: sh ***

@@ -1,0 +1,25 @@
+PyQwt-3.7b.patch fixes:
+
+1. Building of PyQwt-3.7 for Qt <= 3.2.1 and PyQt <= 3.8.1 and sip <= 3.8.
+2. Building of PyQwt-3.7 for non-threaded Qt libraries on Posix.
+3. Incompatibilities with Designer/pyuic generated forms using QwtPlot.
+4. A minor bug on Windows concerning compiler flags.
+5. A minor bug on Posix concerning compiler flags.
+6. The PYTHONPATH awareness of the pyqt_distutils scripts.
+
+PyQwt-3.7a.patch fixes:
+
+1. Building of PyQwt-3.7 for Qt <= 3.2.1 and PyQt <= 3.8.1 and sip <= 3.8.
+2. Building of PyQwt-3.7 for non-threaded Qt libraries on Posix.
+3. Incompatibilities with Designer/pyuic generated forms using QwtPlot.
+4. A minor bug on Windows concerning compiler flags.
+5. A minor bug on Posix concerning compiler flags.
+
+
+How to patch? Put PyQwt-3.7.tar.gz and PyQwt-3.7b.patch in the working
+directory, execute:
+
+        tar xvfz PyQwt-3.7.tar.gz
+        patch -p0 -b -z .upgrade <PyQwt-3.7b.patch
+
+and you are ready for the installation instructions.
