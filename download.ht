@@ -41,7 +41,7 @@ Enthought Python</a>.
 
 <p><a href="patches/PyQwt-4.0rc0a.patch">PyQwt-4.0rc0a.patch</a> fixes:
 <ol>
-<li>Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1.</li>
+<li>Building of PyQwt-4.0rc0 against numarray-1.0 and numarray-1.1.</li>
 <li>Building of PyQwt-4.0rc0 against Python-2.4 using setup.py.</li>
 <li>A few bugs in the configure/build.py script.</li>
 </ol>
