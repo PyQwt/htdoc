@@ -1,9 +1,9 @@
 PYQWT_CVS      := $(HOME)/CVS/pyqwt
 PYQWT3D_CVS    := $(HOME)/CVS/pyqwt3d
 
-EXAMPLES       := BodeDemo CliDemo1 CliDemo2 DataDemo StackOrder
-EXAMPLES_PNG   := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.png) 
-EXAMPLES_HTML  := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.py.html) 
+EXAMPLES       := BodeDemo CliDemo1 CliDemo2 DataDemo ErrorBarDemo StackOrder
+EXAMPLES_PNG   := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.png) 
+EXAMPLES_HTML  := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.py.html) 
 
 SOURCES        := $(shell echo *.ht)
 TARGETS        := $(filter-out *.html,$(SOURCES:%.ht=%.html))
@@ -42,7 +42,6 @@ all: $(TARGETS)
 
 examples: $(EXAMPLES_PNG) $(EXAMPLES_HTML)
 	cp -puv $^ examples
-	cp -puv /usr/share/ghostscript/6.53/lib/Fontmap.GS examples
 
 clean:
 	rm -f *~
