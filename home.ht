@@ -71,16 +71,17 @@ reasons:
 
 <h3>Bug fixes and upgrades for PyQwt-3.8</h3>
 
-<p><a href="patches/PyQwt-3.8a.patch">PyQwt-3.8a.patch</a> fixes:
+<p><a href="patches/PyQwt-3.8b.patch">PyQwt-3.8b.patch</a> fixes:
 <ol>
 <li>Building of PyQwt-3.8 for Posix platforms without an entry for QMAKE_RPATH
     in $QTDIR/mkspecs/default/qmake.conf.</li>
+<li>Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1.</li>
 </ol>
-How to patch? Put PyQwt-3.8.tar.gz and PyQwt-3.8a.patch in the working
+How to patch? Put PyQwt-3.8.tar.gz and PyQwt-3.8b.patch in the working
 directory, execute:
 <pre class="cli">
 tar xvfz PyQwt-3.8.tar.gz
-patch -p0 -b -z .upgrade &lt;PyQwt-3.8a.patch
+patch -p0 -b -z .upgrade &lt;PyQwt-3.8b.patch
 </pre>
 and you are ready for the <a href="doc/installation.html">installation
 instructions</a>.
