@@ -1,26 +1,31 @@
-PYQWT_CVS      := $(HOME)/CVS/PyQwt-4_1-fixes
-PYQWT3D_CVS    := $(HOME)/CVS/pyqwt3d
+PYQWT_CVS        := $(HOME)/CVS/PyQwt-4_1-fixes
+PYQWT3D_CVS      := $(HOME)/CVS/pyqwt3d
 
-EXAMPLES       := BodeDemo CliDemo1 CliDemo2 DataDemo ErrorBarDemo StackOrder
-EXAMPLES_PNG   := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.png) 
-EXAMPLES_HTML  := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.py.html) 
+EXAMPLES         := BodeDemo CliDemo1 CliDemo2 DataDemo ErrorBarDemo StackOrder
+EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.png) 
+EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.py.html) 
 
-SOURCES        := $(shell echo *.ht)
-TARGETS        := $(filter-out *.html,$(SOURCES:%.ht=%.html))
-GENERATED_HTML := $(SOURCES:.ht=.html)
+EXAMPLES_3D      := ParametricSurfaceDemo SimplePlot TestNumeric
+EXAMPLES_3D_PNG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/examples/%.png) 
+EXAMPLES_3D      += Grab
+EXAMPLES_3D_HTML := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/examples/%.py.html) 
 
-HTROOT         := .
-HT2HTML        := python ht2html-2.0/ht2html.py
-HTSTYLE        := PyQwtGenerator 
-HTALLFLAGS     := -f -s $(HTSTYLE)
-HTFLAGS        := $(HTALLFLAGS) -r $(HTROOT)
+SOURCES          := $(shell echo *.ht)
+TARGETS          := $(filter-out *.html,$(SOURCES:%.ht=%.html))
+GENERATED_HTML   := $(SOURCES:.ht=.html)
 
-DEST           := pyqwt.sourceforge.net:/home/groups/p/py/pyqwt/htdocs
-EXCLUDES       := --exclude CVS
-EXCLUDES       += --exclude ht2html-2.0
-EXCLUDES       += --exclude *.pyc
-EXCLUDES       += --exclude *~
-ARGS           := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
+HTROOT           := .
+HT2HTML          := python ht2html-2.0/ht2html.py
+HTSTYLE          := PyQwtGenerator 
+HTALLFLAGS       := -f -s $(HTSTYLE)
+HTFLAGS          := $(HTALLFLAGS) -r $(HTROOT)
+
+DEST             := pyqwt.sourceforge.net:/home/groups/p/py/pyqwt/htdocs
+EXCLUDES         := --exclude CVS
+EXCLUDES         += --exclude ht2html-2.0
+EXCLUDES         += --exclude *.pyc
+EXCLUDES         += --exclude *~
+ARGS             := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 # pattern rules
 %.html: %.ht links.h PyQwtGenerator.py
@@ -39,10 +44,13 @@ all: $(TARGETS)
 	cp -vpu home.html index.html
 	cp -vpu patent-protest strike.html
 
-.PHONY: examples
+.PHONY: examples examples3d
 
 examples: $(EXAMPLES_PNG) $(EXAMPLES_HTML)
 	cp -puv $^ examples
+
+examples3d: $(EXAMPLES_3D_PNG) $(EXAMPLES_3D_HTML)
+	cp -puv $^ examples3d
 
 clean:
 	rm -f *~

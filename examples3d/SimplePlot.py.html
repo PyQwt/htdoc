@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>SimplePlot.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> math <b>import</b> log
+<b>from</b> qt <b>import</b> QApplication
+<b>from</b> Qwt3D <b>import</b> Function, SurfacePlot, BOX, X1, Y1, Z1
+
+<b>class</b><font color=red> Rosenbrock</font>(Function):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        Function.__init__(self, *args)
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> __call__</font>(self, x, y):
+        <b>return</b> log((1-x)*(1-x) + 100*(y-x*x)*(y-x*x)) / 8
+
+    <font color=blue># __call__()</font>
+
+<font color=blue># class Rosenbrock</font>
+
+
+<b>class</b><font color=red> Plot</font>(SurfacePlot):
+    
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        SurfacePlot.__init__(self, *args)
+        self.setTitle(<font color=green>'A Simple SurfacePlot Demonstration'</font>);
+
+        rosenbrock = Rosenbrock(self)
+
+        rosenbrock.setMesh(41, 31)
+        rosenbrock.setDomain(-1.73, 1.5, -1.5, 1.5)
+        rosenbrock.setMinZ(-10)
+        
+        rosenbrock.create()
+
+        self.setRotation(30, 0, 15)
+        self.setScale(1, 1, 1)
+        self.setShift(0.15, 0, 0)
+        self.setZoom(0.9)
+
+        axes = self.coordinates().axes <font color=blue># alias</font>
+        <b>for</b> axis <b>in</b> axes:
+            axis.setMajors(7)
+            axis.setMinors(4)
+            
+        axes[X1].setLabelString(<font color=green>'x-axis'</font>)
+        axes[Y1].setLabelString(<font color=green>'y-axis'</font>)
+        axes[Z1].setLabelString(u<font color=green>'\u038f'</font>)
+
+        self.setCoordinateStyle(BOX);
+
+        self.updateData();
+        self.updateGL();
+
+    <font color=blue># __init__()</font>
+
+<font color=blue># class Plot</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = Plot()
+    demo.show()
+    <font color=blue># Matrox cards on Linux work better with a resize() after show()</font>
+    demo.resize(600, 400)
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+
+</pre>
+</body>
+</html>

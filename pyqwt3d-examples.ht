@@ -1,0 +1,61 @@
+Title: PyQwt3D Examples
+
+<h3>PyQwt3D Examples</h3>
+
+<h5><a href="examples3d/Grab.py.html">Grab.py</a> demonstrates</h5>
+<ul>
+<li>
+how to save the QwtPlot3D widgets to PNG and PDF files.
+</li>
+</ul>
+
+
+<h5><a href="examples3d/SimplePlot.py.html">SimplePlot.py</a>
+demonstrates</h5>
+<ul>
+<li>
+how to subclass the Function and SurfacePlot classes
+</li>
+</ul>
+
+<p><img alt="SimplePlot Widget" src="examples3d/SimplePlot.png"
+        width=600 height=400 border=1>
+</p>
+
+
+<h5><a href="examples3d/ParametricSurfaceDemo.py.html">ParametricSurfaceDemo.py</a> 
+demonstrates</h5> 
+<ul>
+<li>
+how to subclass the ParametricSurface and SurfacePlot classes
+</li>
+</ul>
+
+<p><img alt="DataPlot Widget" src="examples3d/ParametricSurfaceDemo.png"
+        width=600 height=400 border=1>
+</p>
+
+
+<h5><a href="examples3d/TestNumeric.py.html">TestNumeric.py</a> 
+demonstrates</h5> 
+<ul>
+<li>
+how to fill a Numerical Python array for use with the SurfacePlot class.
+</li>
+<li>
+how to enable tracing of the SIP generated bindings; this is useful when
+you start to write your own SIP interface specification files.
+</li>
+</ul>
+
+<p><img alt="DataPlot Widget" src="examples3d/TestNumeric.png"
+        width=600 height=400 border=1>
+</p>
+
+
+<!--
+Local Variables:
+mode: HTML
+fill-column: 79
+End:
+-->

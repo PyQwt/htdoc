@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>ParametricSurfaceDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> math <b>import</b> cos, pi, sin
+<b>from</b> qt <b>import</b> QApplication
+<b>from</b> Qwt3D <b>import</b> ParametricSurface, SurfacePlot, Triple, NOCOORD
+
+<b>class</b><font color=red> Sphere</font>(ParametricSurface):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        ParametricSurface.__init__(self, *args)
+        self.setMesh(41, 31)
+        self.setDomain(0, 2*pi, 0, pi)
+        self.setPeriodic(False, False)
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> __call__</font>(self, u, v):
+        r = 1.0
+        <b>return</b> Triple(r*cos(u)*sin(v), r*sin(u)*sin(v), r*cos(v))
+
+    <font color=blue># __call__()</font>
+
+<font color=blue># class Sphere</font>
+
+        
+<b>class</b><font color=red> Plot</font>(SurfacePlot):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        SurfacePlot.__init__(self, *args)
+        self.setTitle(<font color=green>"A Simple SurfacePlot Demonstration"</font>)
+
+        sphere = Sphere(self)
+        sphere.create()
+
+        self.setRotation(45, 15, 0)
+        self.setCoordinateStyle(NOCOORD);
+        self.updateData()
+        self.updateGL()
+
+    <font color=blue># __init__()</font>
+
+<font color=blue># class Plot</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = Plot()
+    demo.show()
+    <font color=blue># Matrox cards on Linux work better with a resize() after show()</font>
+    demo.resize(600, 400)
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>
