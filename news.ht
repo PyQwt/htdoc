@@ -5,6 +5,7 @@ Title: News
   <tr>
     <td>
       <ul>
+        <li><b>2004-NOV-28</b> Release of PyQwt-4.1.
         <li><b>2004-SEP-14</b> <a href="download.html">PyQwt-4.0rc0a.patch</a>
           fixes a few build bugs with recent versions of Python and numarray.
         <li><b>2004-SEP-14</b> <a href="download.html">PyQwt-3.8b.patch</a>
