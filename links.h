@@ -1,5 +1,8 @@
 <!-- -*- HTML -*- -->
 
+<h3>Documentation</h3>
+<li><a href="./doc/pyqwt.html">PyQwt Manual</a>
+<li><a href="./doc3d/pyqwt3d.html">PyQwt3D Manual</a>
 <h3>Development Tools</h3>
 <li><a href="http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>
 <li><a href="http://www.python.org">Python</a>
