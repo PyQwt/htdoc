@@ -1,4 +1,17 @@
-There are no patches for PyQwt-3.8.
+PyQwt-3.8a.patch fixes: 
+
+1. Building of PyQwt-3.8 for Posix platforms without an entry for QMAKE_RPATH
+   in $QTDIR/mkspecs/default/qmake.conf.
+
+
+How to patch? Put PyQwt-3.8.tar.gz and PyQwt-3.8a.patch in the working
+directory, execute:
+
+        tar xvfz PyQwt-3.8.tar.gz
+        patch -p0 -b -z .upgrade <PyQwt-3.8a.patch
+
+and you are ready for the installation instructions.
+
 
 PyQwt-3.7b.patch fixes:
 

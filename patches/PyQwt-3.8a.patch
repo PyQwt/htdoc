@@ -1,0 +1,11 @@
+--- PyQwt-3.8/pyqt_distutils/sysconfig.py.upgrade	Sun Nov  2 10:47:27 2003
++++ PyQwt-3.8/pyqt_distutils/sysconfig.py	Mon Dec  1 07:32:16 2003
+@@ -64,7 +64,7 @@
+                 '%(CXXFLAGS_WARN_ON)s '
+                 ) % make_info
+ 
+-        if make_info['RPATH']:
++        if make_info.has_key('RPATH'):
+             linker_so = (
+                 '%(CXX)s '
+                 '%(RPATH)s%(LIBDIR_QT)s '
