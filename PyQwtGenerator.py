@@ -122,14 +122,25 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
 
     def __grokbody(self):
         if self.__body is None:
-            text = (
+            text = self.__parser.fp.read()
+            text += (
+                '<h3>Help to stop software patents</h3>'
+
+                '<p>Free software and small and/or medium sized software '
+                'companies are threatened by patents on'
+                '<a href="http://swpat.ffii.org/patents/samples/index.en.html">algorithms</a> and '
+                '<a href="http://webshop.ffii.org">business methods</a>.</p>\n'
                 '<center>'
                 '<a href="strike.html">'
                 '<img alt="patents kill free software" '
                 'src="images/no_patents.gif" border=0></a>'
-                '</center>\n'
+                '</center>'
+                '<ol>\n'
+                '<li>Sign the <a href="petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>\n'
+                '<li>Support the <a href="http://swpat.ffii.org">Foundation for a Free Information Infrastructure</a> in Europe</li>\n'
+                '<li>Support the <a href="http://www.eff.org/Patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>\n'
+                '</ol>\n'
                 )
-            text += self.__parser.fp.read()
             text = nospam.filter(text)
             i = text.find('<!--table-stop-->')
             if i >= 0:
