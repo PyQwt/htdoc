@@ -17,9 +17,11 @@ for compatible precompiled PyQt and sip packages may save you a lot of time!
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.8.win32-py2.3.exe?download">PyQwt_Qt230-3.8.win32-py2.3.exe</a></li>
 </ol>
 
-Instead of Python and Numeric, you may prefer
-<a href="http://www.enthought.com/python/enthought_python-2.3.exe">
-enthought_python-2.3</a>
+Instead of Python with Numeric, you may prefer either
+<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
+Enthought Python</a> or Python with
+<a href="http://www.scipy.org/download/scipy/win32/SciPy_complete-0.3.win32PIII-py2.3.exe">
+SciPy</a>.
 
 <h3>Source installation of PyQwt-3.8 on Posix systems</h3>
 
