@@ -106,6 +106,38 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
             <font color=green>'...########################..##.'</font>]
 
 
+
+<b>class</b><font color=red> PrintFilter</font>(QwtPlotPrintFilter):
+    <b>def</b><font color=red> __init__</font>(self):
+        QwtPlotPrintFilter.__init__(self)
+
+    <font color=blue># __init___()</font>
+    
+    <b>def</b><font color=red> color</font>(self, c, item, i):
+        <b>if</b> <b>not</b> (self.options() &amp; QwtPlotPrintFilter.PrintCanvasBackground):
+            <b>if</b> item == QwtPlotPrintFilter.MajorGrid:
+                <b>return</b> Qt.darkGray
+            <b>elif</b> item == QwtPlotPrintFilter.MinorGrid:
+                <b>return</b> Qt.gray
+        <b>if</b> item == QwtPlotPrintFilter.Title:
+            <b>return</b> Qt.red
+        <b>elif</b> item == QwtPlotPrintFilter.AxisScale:
+            <b>return</b> Qt.green
+        <b>elif</b> item == QwtPlotPrintFilter.AxisTitle:
+            <b>return</b> Qt.blue
+        <b>return</b> c
+
+    <font color=blue># color()</font>
+
+    <b>def</b><font color=red> font</font>(self, f, item, i):
+        result = QFont(f)
+        result.setPointSize(int(f.pointSize()*1.25))
+        <b>return</b> result
+
+    <font color=blue># font()</font>
+
+<font color=blue># class PrintFilter</font>
+
 <b>class</b><font color=red> BodePlot</font>(QwtPlot):
 
     <b>def</b><font color=red> __init__</font>(self, *args):
@@ -131,9 +163,12 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         self.setAxisTitle(QwtPlot.yLeft, <font color=green>'Amplitude [dB]'</font>)
         self.setAxisTitle(QwtPlot.yRight, u<font color=green>'Phase [\u00b0]'</font>)
 
-        self.setAxisOptions(QwtPlot.xBottom, QwtAutoScale.Logarithmic)
+        <b>if</b> QWT_VERSION == 0x040200:
+            self.setAxisOptions(QwtPlot.xBottom, QwtAutoScale.Logarithmic)
         self.setAxisMaxMajor(QwtPlot.xBottom, 6)
         self.setAxisMaxMinor(QwtPlot.xBottom, 10)
+        <b>if</b> QWT_VERSION &gt;= 0x040300:
+            self.setAutoScaler(QwtPlot.xBottom, QwtLog10AutoScaler())
 
         <font color=blue># curves</font>
         self.curve1 = self.insertCurve(<font color=green>'Amplitude'</font>)
@@ -234,9 +269,10 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
             QwtPlot.yLeft,
             QwtPicker.PointSelection | QwtPicker.DragSelection,
             QwtPlotPicker.CrossRubberBand,
-            QwtPicker.AlwaysOff,
+            QwtPicker.AlwaysOn,
             self.plot.canvas())
         self.picker.setRubberBandPen(QPen(Qt.green))
+        self.picker.setCursorLabelPen(QPen(Qt.cyan))
  
         self.setCentralWidget(self.plot)
 
@@ -286,7 +322,11 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         printer.setOutputToFile(True)
         printer.setOutputFileName(<font color=green>'bode-example-%s.ps'</font> % qVersion())
         <b>if</b> printer.setup():
-            self.plot.printPlot(printer)
+            filter = PrintFilter()
+            <b>if</b> (QPrinter.GrayScale == printer.colorMode()):
+                filter.setOptions(QwtPlotPrintFilter.PrintAll
+                                  &amp; ~QwtPlotPrintFilter.PrintCanvasBackground)
+            self.plot.printPlot(printer, filter)
 
     <font color=blue># printPlot()</font>
     
