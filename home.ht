@@ -38,7 +38,7 @@ to install PyQwt on MicroSoft Windows, MacOS/X and any Posix system
 supported by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
 
 <p>The <a href="download.html">download guide</a> has quick links
-to PyQwt-4.0rc0 packages and its prerequisites.</p>
+to the PyQwt releases and their prerequisites.</p>
 
 <p>PyQwt integrates nicely with the interface
 <a href="http://www.trolltech.com/products/qt/designer.html">designer</a>
