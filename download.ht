@@ -22,6 +22,24 @@ Instead of Python with Numeric, you may prefer
 Enthought Python</a>.
 
 
+<h3>Binary installation of PyQwt-4.0rc0 on Windows for educational use with Python-2.3.4</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
+<li>See the <a href="http://www.trolltech.com/products/qt/edulicense.html">
+Qt Educational License restrictions</a>
+if you qualify for Qt-3.2.2 Educational</li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-edu-msvc-3.12.exe">PyQt-win-edu-msvc-3.12.exe</a></li>
+<li>Many thanks to Margerita Buechter for building
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt322-4.0rc0.win32-py2.3.exe?download">PyQwt_Qt322-4.0rc0.win32-py2.3.exe</a></li>
+</ol>
+
+Instead of Python with Numeric, you may prefer 
+<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
+Enthought Python</a>.
+
+
 <h3>Source installation of PyQwt-4.0rc0 on MacOS/X or Posix systems</h3>
 
 <ol>
@@ -36,6 +54,7 @@ Enthought Python</a>.
 <a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.12.tar.gz">PyQt-x11-gpl-3.12.tar.gz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.0rc0.tar.gz?download">PyQwt-4.0rc0.tar.gz</a></li>
 </ol>
+
 
 <h3>Bug fixes and upgrades for PyQwt-4.0rc0</h3>
 
