@@ -1,4 +1,4 @@
-Title: Download Instructions
+Title: Download Guide
 
 <h3>Precompiled packages</h3>
 
@@ -46,12 +46,12 @@ Enthought Python</a>.
 <li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.3.tar.gz?download">Numeric-23.3.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.3.tar.bz2">qt-x11-free-3.3.3.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.0.1.tar.gz">sip-4.0.1.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.1.1.tar.gz">sip-4.1.1.tar.gz</a>
 (requires Python-2.3) or
-<a href="http://pyqwt.sourceforge.net/support/sip-3.12.tar.gz">sip-3.12.tar.gz</a> 
+<a href="http://pyqwt.sourceforge.net/support/sip-3.11.1.tar.gz">sip-3.11.1.tar.gz</a> 
 (not for MacOS/X)</li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.12.tar.gz">PyQt-mac-gpl-3.12.tar.gz</a> or
-<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.12.tar.gz">PyQt-x11-gpl-3.12.tar.gz</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.13.tar.gz">PyQt-mac-gpl-3.13.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.13.tar.gz">PyQt-x11-gpl-3.13.tar.gz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.0rc0.tar.gz?download">PyQwt-4.0rc0.tar.gz</a></li>
 </ol>
 
