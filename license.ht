@@ -6,14 +6,11 @@ Title: License
 exceptions for use with the Educational, Non-Commercial and Commercial releases
 of Qt, PyQt and sip.</p>
 
-<p>
-</p>
-
 <table bgcolor="#99CCFF" width="100%">
   <tr>
     <td><br>
     <center>PyQwt LICENSE</center>
-    <center>Version 1, April 2003</center>
+    <center>Version 2, October 2003</center>
 
     <p>PyQwt is free software; you can redistribute it and/or modify it under
     the terms of the GNU General Public License as published by the Free
@@ -30,18 +27,48 @@ of Qt, PyQt and sip.</p>
     Place, Suite 330, Boston, MA 02111-1307, USA.</p>
 
     <p>In addition, as a special exception, Gerard Vermeulen gives permission
-    to link PyQwt with commercial, non-commercial and educational versions of
-    Qt, PyQt and sip, and distribute PyQwt in this form, provided that equally
-    powerful versions of Qt, PyQt and sip have been released under the terms
-    of the GNU General Public License.</p>
+    to link PyQwt dynamically with commercial, non-commercial and educational
+    versions of Qt, PyQt and sip, and distribute PyQwt in this form, provided
+    that equally powerful versions of Qt, PyQt and sip have been released under
+    the terms of the GNU General Public License.</p>
 
-    <p>If PyQwt is linked with commercial, non-commercial and educational
-    versions of Qt, PyQt and sip, Python scripts using PyQwt do not have to be
-    released under the terms of the GNU General Public License.</p>
+    <p>If PyQwt is dynamically linked with commercial, non-commercial and
+    educational versions of Qt, PyQt and sip, PyQwt becomes a free plug-in
+    for a non-free program.</p>
 
-    <p>You must obey the GNU General Public License in all respects for all of
-    the code used other than Qt, PyQt and sip, including the Python scripts
-    that are part of PyQwt.</p>
+    </td>
+  </tr>
+</table><br>
+
+<h3>Why a special license?</h3>
+
+<p>The GPL licenses of PyQt, sip and therefore Qt do not allow to release
+PyQwt under a lesser free license, such as the LGPL.</p>
+
+<p>The exception in the license is inspired by the
+<a href="http://www.gnu.org/licenses/gpl-faq.html">GNU GPL FAQ</a>.</p>
+
+<table bgcolor="#99CCFF" width="100%">
+  <tr>
+    <td><br>
+    <a href="http://www.gnu.org/licenses/gpl-faq.html#TOCGPLPluginsInNF"
+    >Can I use the GPL for a plug-in for a non-free program?</a></p>
+
+    <p>If the program uses fork and exec to invoke plug-ins, then the plug-ins
+    are separate programs, so the license for the main program makes no
+    requirements for them.  So you can use the GPL for a plug-in, and there are
+    no special requirements.</p>
+
+    <p>If the program dynamically links plug-ins, and they make function calls
+    to each other and share data structures, we believe they form a single
+    program, so plug-ins must be treated as extensions to the main program.
+    This means that linking the GPL-covered plug-in with the main program would
+    violate the GPL.  However, you can resolve that legal problem by adding an
+    exception to your program's license which gives permission to link it with
+    the non-free main program.</p>
+
+    <p>For more details, see the question above that starts with, "I am writing
+    free software that uses a non-free library."</p> 
     </td>
   </tr>
 </table><br>
