@@ -80,15 +80,15 @@
         <font color=blue># Initialize a QwPlot central widget</font>
         self.plot = QwtPlot(<font color=green>'left-click &amp; drag to zoom'</font>
                             <font color=green>' -- '</font>
-                            <font color=green>'right-click to unzoom'</font>,
+                            <font color=green>'use the ?-pointer for help'</font>,
                             self)
         self.plot.plotLayout().setCanvasMargin(0)
         self.plot.plotLayout().setAlignCanvasToScales(True)
         self.setCentralWidget(self.plot)
 
-        self.__initToolBar()
         self.__initTracking()
         self.__initZooming()
+        self.__initToolBar()
         
         <font color=blue># Finalize</font>
         self.counter.setValue(10)
@@ -96,161 +96,201 @@
 
     <font color=blue># __init__()</font>
 
+    <b>def</b><font color=red> __initTracking</font>(self):
+        <font color=green>"""Initialize tracking
+        """</font>        
+        self.connect(self.plot,
+                     SIGNAL(<font color=green>'plotMouseMoved(const QMouseEvent&amp;)'</font>),
+                     self.onMouseMoved)
+        self.plot.canvas().setMouseTracking(True)
+        self.statusBar().message(
+            <font color=green>'Plot cursor movements are tracked in the status bar'</font>)
+
+    <font color=blue># __initTracking()</font>
+
+    <b>def</b><font color=red> onMouseMoved</font>(self, e):
+        self.statusBar().message(
+            <font color=green>'x = %+.6g, y = %.6g'</font>
+            % (self.plot.invTransform(QwtPlot.xBottom, e.pos().x()),
+               self.plot.invTransform(QwtPlot.yLeft, e.pos().y())))
+
+    <font color=blue># onMouseMoved()</font>
+    
+    <b>def</b><font color=red> __initZooming</font>(self):
+        <font color=green>"""Initialize zooming
+        """</font>
+        self.zoomer = QwtPlotZoomer(QwtPlot.xBottom,
+                                    QwtPlot.yLeft,
+                                    QwtPicker.DragSelection,
+                                    QwtPicker.AlwaysOff,
+                                    self.plot.canvas())
+        self.zoomer.setRubberBandPen(QPen(Qt.black))
+
+    <font color=blue># __initZooming()</font>
+       
+    <b>def</b><font color=red> setZoomerMousePattern</font>(self, index):
+        <font color=green>"""Set the mouse zoomer pattern.
+        """</font>
+        <b>if</b> index == 0:
+            pattern = [
+                QwtEventPattern.MousePattern(Qt.LeftButton, Qt.NoButton),
+                QwtEventPattern.MousePattern(Qt.MidButton, Qt.NoButton),
+                QwtEventPattern.MousePattern(Qt.RightButton, Qt.NoButton),
+                QwtEventPattern.MousePattern(Qt.LeftButton, Qt.ShiftButton),
+                QwtEventPattern.MousePattern(Qt.MidButton, Qt.ShiftButton),
+                QwtEventPattern.MousePattern(Qt.RightButton, Qt.ShiftButton),
+                ]
+            self.zoomer.setMousePattern(pattern)
+        <b>elif</b> index <b>in</b> (1, 2, 3):
+            self.zoomer.initMousePattern(index)
+        <b>else</b>:
+            <b>raise</b> ValueError, <font color=green>'index must be in (0, 1, 2, 3)'</font>
+
+    <font color=blue># setZoomerMousePattern()</font>
+
     <b>def</b><font color=red> __initToolBar</font>(self):
         <font color=green>"""Initialize the toolbar
         """</font>
         
         self.toolBar = QToolBar(self)
 
-        QLabel(<font color=green>"Pen:"</font>, self.toolBar)
-
+        QLabel(<font color=green>'Pen'</font>, self.toolBar)
         self.penComboBox = QComboBox(self.toolBar)
         <b>for</b> name <b>in</b> self.table.keys():
             self.penComboBox.insertItem(name)
         self.penComboBox.setCurrentItem(
             random.randint(0, self.penComboBox.count()-1))
+        self.penComboBox.setMaximumWidth(75)
+        self.toolBar.addSeparator()
 
-        QLabel(<font color=green>"Brush:"</font>, self.toolBar)
-
+        QLabel(<font color=green>'Brush'</font>, self.toolBar)
         self.brushComboBox = QComboBox(self.toolBar)
         <b>for</b> name <b>in</b> self.table.keys():
             self.brushComboBox.insertItem(name)
         self.brushComboBox.setCurrentItem(
             random.randint(0, self.brushComboBox.count()-1))
+        self.brushComboBox.setMaximumWidth(75)
+        self.toolBar.addSeparator()
 
-        self.toolBar.setStretchableWidget(QWidget(self.toolBar))
-
-        QLabel(<font color=green>"Bars:"</font>, self.toolBar)
-
+        QLabel(<font color=green>'Bars'</font>, self.toolBar)
         self.counter = QwtCounter(self.toolBar)
         self.counter.setRange(0, 10000, 1)
         self.counter.setNumButtons(3)
+        self.toolBar.addSeparator()
+
+        QLabel(<font color=green>'Mouse'</font>, self.toolBar)
+        mouseComboBox = QComboBox(self.toolBar)
+        <b>for</b> name <b>in</b> (<font color=green>'3 buttons (PyQwt)'</font>,
+                     <font color=green>'1 button'</font>,
+                     <font color=green>'2 buttons'</font>,
+                     <font color=green>'3 buttons (Qwt)'</font>):
+            mouseComboBox.insertItem(name)
+        mouseComboBox.setCurrentItem(0)
+        self.toolBar.addSeparator()
+        self.setZoomerMousePattern(0)
+
+        QWhatsThis.whatsThisButton(self.toolBar)
+
+        QWhatsThis.add(
+            self.plot.canvas(),
+            <font color=green>'A QwtPlotZoomer lets you zoom infinitely deep\n'</font>
+            <font color=green>'by saving the zoom states on a stack.\n\n'</font>
+            <font color=green>'You can:\n'</font>
+            <font color=green>'- select a zoom region\n'</font>
+            <font color=green>'- unzoom all\n'</font>
+            <font color=green>'- walk down the stack\n'</font>
+            <font color=green>'- walk up the stack.\n\n'</font>
+            <font color=green>'One of the combo boxes in the toolbar lets you attach\n'</font>
+            <font color=green>'different sets of mouse events to those actions.'</font>
+            )
+        
+        QWhatsThis.add(
+            self.penComboBox,
+            <font color=green>'Select the pen color of the bars.'</font>
+            )
+        
+        QWhatsThis.add(
+            self.brushComboBox,
+            <font color=green>'Select the brush color of the bars'</font>
+            )
+        
+        QWhatsThis.add(
+            self.counter,
+            <font color=green>'Select the number of bars'</font>
+            )
+        
+        QWhatsThis.add(
+            mouseComboBox,
+            <font color=green>'Configure the zoomer mouse buttons.\n\n'</font>
+            <font color=green>'3 buttons (PyQwt style):\n'</font>
+            <font color=green>'- left-click &amp; drag to zoom\n'</font>
+            <font color=green>'- middle-click to unzoom all\n'</font>
+            <font color=green>'- right-click to walk down the stack\n'</font>
+            <font color=green>'- shift-right-click to walk up the stack.\n'</font>
+            <font color=green>'1 button:\n'</font>
+            <font color=green>'- click &amp; drag to zoom\n'</font>
+            <font color=green>'- control-click to unzoom all\n'</font>
+            <font color=green>'- alt-click to walk down the stack\n'</font>
+            <font color=green>'- shift-alt-click to walk up the stack.\n'</font>
+            <font color=green>'2 buttons:\n'</font>
+            <font color=green>'- left-click &amp; drag to zoom\n'</font>
+            <font color=green>'- right-click to unzoom all\n'</font>
+            <font color=green>'- alt-left-click to walk down the stack\n'</font>
+            <font color=green>'- alt-shift-left-click to walk up the stack.\n'</font>
+            <font color=green>'3 buttons (Qwt style):\n'</font>
+            <font color=green>'- left-click &amp; drag to zoom\n'</font>
+            <font color=green>'- right-click to unzoom all\n'</font>
+            <font color=green>'- middle-click to walk down the stack\n'</font>
+            <font color=green>'- shift-middle-click to walk up the stack.\n\n'</font>
+            <font color=green>'If some of those key combinations interfere with\n'</font>
+            <font color=green>'your Window manager, press the:\n'</font>
+            <font color=green>'- escape-key to unzoom all\n'</font>
+            <font color=green>'- minus-key to walk down the stack\n'</font>
+            <font color=green>'- plus-key to walk up the stack.'</font>
+            )
 
         self.connect(self.counter, SIGNAL(<font color=green>'valueChanged(double)'</font>), self.go)
         self.connect(self.penComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
         self.connect(self.brushComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
+        self.connect(mouseComboBox, SIGNAL(<font color=green>'activated(int)'</font>),
+                     self.setZoomerMousePattern)
 
     <font color=blue># __initToolBar()</font>
 
-    <b>def</b><font color=red> __initTracking</font>(self):
-        <font color=green>"""Initialize tracking
-        """</font>
-        
-        self.plot.canvas().setMouseTracking(True)
-        self.statusBar().message(
-            <font color=green>"Plot cursor movements are tracked in the status bar"</font>)
-
-    <font color=blue># __initTracking()</font>
-
-    <b>def</b><font color=red> __initZooming</font>(self):
-        <font color=green>"""Initialize zooming
-        """</font>
-
-        self.zoomStack = []
-        self.connect(self.plot,
-                     SIGNAL(<font color=green>'plotMouseMoved(const QMouseEvent&amp;)'</font>),
-                     self.onMouseMoved)
-        self.connect(self.plot,
-                     SIGNAL(<font color=green>'plotMousePressed(const QMouseEvent&amp;)'</font>),
-                     self.onMousePressed)
-        self.connect(self.plot,
-                     SIGNAL(<font color=green>'plotMouseReleased(const QMouseEvent&amp;)'</font>),
-                     self.onMouseReleased)
-
-    <font color=blue># __initZooming()</font>
-       
     <b>def</b><font color=red> go</font>(self, x):
-        <font color=green>"""Create and plot a sequence bars taking into account the controls
+        <font color=green>"""Create and plot a sequence of bars taking into account the controls
         """</font>
 
-        <b>if</b> type(x) == type(0):
-            <font color=blue># activated(int)</font>
-            x = int(self.counter.value())
-        <b>else</b>:
-            <font color=blue># valueChanged(double)</font>
-            self.clearZoomStack()
-
+        n = int(self.counter.value())
         penColor = self.table[str(self.penComboBox.currentText())]
         brushColor = self.table[str(self.brushComboBox.currentText())]
             
         self.plot.removeCurves()
 
-        <b>for</b> i <b>in</b> range(x):
+        <b>for</b> i <b>in</b> range(n):
             curve = QwtBarCurve(self.plot, penColor, brushColor)
             key = self.plot.insertCurve(curve)
             self.plot.setCurveStyle(key, QwtCurve.UserCurve)
             self.plot.setCurveData(key, [i, i+1.4], [0.3*i, 5.0+0.3*i])
 
-        self.plot.replot()
+        <b>if</b> type(x) == type(0.0):
+            <font color=blue># SIGNAL("valueChanged(double)")</font>
+            self.clearZoomStack()
+        <b>else</b>:
+            self.plot.replot()
 
     <font color=blue># go()</font>
 
-    <b>def</b><font color=red> onMouseMoved</font>(self, e):
-        self.statusBar().message(
-            <font color=green>"x = %+.6g, y = %.6g"</font>
-            % (self.plot.invTransform(QwtPlot.xBottom, e.pos().x()),
-               self.plot.invTransform(QwtPlot.yLeft, e.pos().y())))
-
-    <font color=blue># onMouseMoved()</font>
-    
     <b>def</b><font color=red> clearZoomStack</font>(self):
-        <b>for</b> i <b>in</b> (QwtPlot.xBottom, QwtPlot.yLeft):
-            self.plot.setAxisAutoScale(i)
-        self.zoomStack = []
+        <font color=green>"""Auto scale and clear the zoom stack
+        """</font>
+        self.plot.setAxisAutoScale(QwtPlot.xBottom)
+        self.plot.setAxisAutoScale(QwtPlot.yLeft)
+        self.plot.replot()
+        self.zoomer.setZoomBase()
 
     <font color=blue># clearZoomStack()</font>
     
-    <b>def</b><font color=red> onMousePressed</font>(self, e):
-        <b>if</b> Qt.LeftButton == e.button():
-            <font color=blue># Python semantics: self.pos = e.pos() does not work; force a copy</font>
-            self.xpos = e.pos().x()
-            self.ypos = e.pos().y()
-            self.plot.enableOutline(1)
-            self.plot.setOutlinePen(QPen(Qt.black))
-            self.plot.setOutlineStyle(Qwt.Rect)
-            self.zooming = 1
-            <b>if</b> self.zoomStack == []:
-                self.zoomState = (
-                    self.plot.axisScale(QwtPlot.xBottom).lBound(),
-                    self.plot.axisScale(QwtPlot.xBottom).hBound(),
-                    self.plot.axisScale(QwtPlot.yLeft).lBound(),
-                    self.plot.axisScale(QwtPlot.yLeft).hBound(),
-                    )
-        <b>elif</b> Qt.RightButton == e.button():
-            self.zooming = 0
-        <font color=blue># fake a mouse move to show the cursor position</font>
-        self.onMouseMoved(e)
-
-    <font color=blue># onMousePressed()</font>
-
-    <b>def</b><font color=red> onMouseReleased</font>(self, e):
-        <b>if</b> Qt.LeftButton == e.button():
-            xmin = min(self.xpos, e.pos().x())
-            xmax = max(self.xpos, e.pos().x())
-            ymin = min(self.ypos, e.pos().y())
-            ymax = max(self.ypos, e.pos().y())
-            self.plot.setOutlineStyle(Qwt.Cross)
-            xmin = self.plot.invTransform(QwtPlot.xBottom, xmin)
-            xmax = self.plot.invTransform(QwtPlot.xBottom, xmax)
-            ymin = self.plot.invTransform(QwtPlot.yLeft, ymin)
-            ymax = self.plot.invTransform(QwtPlot.yLeft, ymax)
-            <b>if</b> xmin == xmax <b>or</b> ymin == ymax:
-                <b>return</b>
-            self.zoomStack.append(self.zoomState)
-            self.zoomState = (xmin, xmax, ymin, ymax)
-            self.plot.enableOutline(0)
-        <b>elif</b> Qt.RightButton == e.button():
-            <b>if</b> len(self.zoomStack):
-                xmin, xmax, ymin, ymax = self.zoomStack.pop()
-            <b>else</b>:
-                <b>return</b>
-
-        self.plot.setAxisScale(QwtPlot.xBottom, xmin, xmax)
-        self.plot.setAxisScale(QwtPlot.yLeft, ymin, ymax)
-        self.plot.replot()
-
-    <font color=blue># onMouseReleased()</font>
-
 <font color=blue># class StackOrderDemo</font>
 
 
@@ -264,7 +304,7 @@
 
 <b>def</b><font color=red> make</font>():
     demo = QwtBarPlotDemo()
-    demo.resize(500, 500)
+    demo.resize(600, 600)
     demo.show()
     <b>return</b> demo
 

@@ -13,6 +13,56 @@ Title: Graphical User Interface Examples
   "https://secure.linuxports.com/opendocs/">paper copy</a>.
 </p>
 
+
+<h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
+<ul>
+  <li>
+    how to use <tt class="class">QwtPlot</tt>.
+  </li>
+  <li>
+    how to produce timer events.
+  </li>
+  <li>
+    how to handle timer events by reimplementing
+    <tt class="function">QObject.timerEvent()</tt>.
+  </li>
+</ul>
+
+<p><img alt="DataPlot Widget" src="examples/DataDemo.png"
+        width=500 height=300 border=1>
+</p>
+
+
+<h5><a href="examples/StackOrder.py.html">StackOrder.py</a> demonstrates</h5>
+<ul>
+  <li>
+    how to enable plot cursor tracking.
+  </li>
+  <li>
+    how to derive <tt class="class">QwtBarCurve</tt> from <tt class="class">
+    QwtPlotCurve</tt>.
+  </li>
+  <li>
+    how to use a <tt class="class">QwtCounter</tt> instance to control the
+    number of bars to display.
+  </li>
+  <li>
+    how to use <tt class="class">QComboBox</tt> instances to control outline
+    and fill colors of the bars.
+  </li>
+  <li>
+    how to use <tt class="class">QwtPlotZoomer</tt>.
+  </li>
+  <li>
+    how to configure the <tt class="class">QwtPlotZoomer</tt> by attaching
+   different sets of mouse events to different zoomer actions.
+  </li>
+</ul>
+
+<p><img alt="StackOrder Widget" src="examples/StackOrder.png"
+        width=600 height=600 border=1></p>
+
+
 <h5><a href="examples/BodeDemo.py.html">BodeDemo.py</a> demonstrates a new
 feature in the future PyQwt-3.8</h5>
 <ul>
@@ -71,49 +121,6 @@ feature in the future PyQwt-3.8</h5>
 I am working on better instructions.
 </p>
 
-
-<h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
-<ul>
-  <li>
-    how to use <tt class="class">QwtPlot</tt>.
-  </li>
-  <li>
-    how to produce timer events.
-  </li>
-  <li>
-    how to handle timer events by reimplementing
-    <tt class="function">QObject.timerEvent()</tt>.
-  </li>
-</ul>
-
-<p><img alt="DataPlot Widget" src="examples/DataDemo.png"
-        width=500 height=300 border=1>
-</p>
-
-<h5><a href="examples/StackOrder.py.html">StackOrder.py</a> demonstrates</h5>
-<ul>
-  <li>
-    how to derive <tt class="class">QwtBarCurve</tt> from <tt class="class">
-    QwtPlotCurve</tt>.
-  </li>
-  <li>
-    how to use a <tt class="class">QwtCounter</tt> instance to control the
-    number of bars to display.
-  </li>
-  <li>
-    how to use <tt class="class">QComboBox</tt> instances to control outline
-    and fill colors of the bars.
-  </li>
-  <li>
-    how to enable plot cursor tracking.
-  </li>
-  <li>
-    how to implement an infinite deep zoom stack.
-  </li>
-</ul>
-
-<p><img alt="StackOrder Widget" src="examples/StackOrder.png"
-        width=500 height=500 border=1></p>
 
 <!--
 Local Variables:
