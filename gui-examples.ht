@@ -28,14 +28,21 @@ feature in the future PyQwt-3.8</h5>
   </li>
   <li>
     the <a href=
-    "http://msttcorefonts.sourceforge.net">MicroSoft True Type Core Fonts</a>.
+    "http://corefonts.sourceforge.net">MicroSoft True Type Core Fonts</a>.
   </li>
   <li>
-    to print you must configure ghostscript for the true type fonts. Study the
-    'MicroSoft True Type Core Fonts' part in my <a href=
+    printing requires configuration of ghostscript for the true type fonts.
+    Study the 'MicroSoft True Type Core Fonts' part in my <a href=
     "examples/Fontmap.GS">Mandrake-8.2 Fontmap.GS</a> to see how to modify your
-     Fontmap or Fontmap.GS file.
-    Be careful, ghostscript does not work, if you make a syntax error.
+    Fontmap or Fontmap.GS file.
+    Keep backups, because ghostscript chokes on syntax errors.
+    The <a href="http://tldp.org/HOWTO/TT-Debian-4.html">chapter on printing in
+    the TrueType Fonts in Debian mini-HOWTO</a> is a useful, but slightly dated
+    reference.
+    The <a href=
+    "http://loll.sourceforge.net/linux/links/X_Window_System/Fonts/index.html">
+    Loads of Linux Links</a> site points to more information on configuring
+    fonts.
   </li>
 </ol>
 </p>
