@@ -136,7 +136,7 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
                 'src="images/no_patents.gif" border=0></a>'
                 '</center>'
                 '<ol>\n'
-                '<li>Sign the <a href="petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>\n'
+                '<li>Sign the <a href="http://petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>\n'
                 '<li>Support the <a href="http://swpat.ffii.org">Foundation for a Free Information Infrastructure</a> in Europe</li>\n'
                 '<li>Support the <a href="http://www.eff.org/Patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>\n'
                 '</ol>\n'

@@ -7,26 +7,25 @@ Title: Download Instructions
 for compatible precompiled PyQt and sip packages may save you a lot of time!
 </p>
 
-<h3>Binary installation of PyQwt-3.8 on Windows for non-commercial use with Python-2.3.3</h3>
+<h3>Binary installation of PyQwt-3.8 on Windows for non-commercial use with Python-2.3.4</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3.3/Python-2.3.3.exe">Python-2.3.3.exe</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.8.win32-py2.3.exe?download">PyQwt_Qt230-3.8.win32-py2.3.exe</a></li>
 </ol>
 
-Instead of Python with Numeric, you may prefer either
+Instead of Python with Numeric, you may prefer 
 <a href="http://download.enthought.com/enthought_python-2.3.3.exe">
-Enthought Python</a> or Python with
-<a href="http://www.scipy.org/download/scipy/win32/SciPy_complete-0.3.win32PIII-py2.3.exe">
-SciPy</a>.
+Enthought Python</a>.
+
 
 <h3>Source installation of PyQwt-3.8 on Posix systems</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3.3/Python-2.3.3.tgz">Python-2.3.3.tgz</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.3.tar.bz2">qt-x11-free-3.2.3.tar.bz2</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
@@ -52,10 +51,10 @@ instructions</a>.
 </p>
 
 
-<h3>Binary installation of PyQwt-3.7 on Windows for non-commercial use and Python-2.3.3</h3>
+<h3>Binary installation of PyQwt-3.7 on Windows for non-commercial use and Python-2.3.4</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3.3/Python-2.3.3.exe">Python-2.3.3.exe</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.0.win32-py2.3.exe?download">Numeric-23.0.win32-py2.3.exe</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
@@ -76,14 +75,15 @@ enthought_python-2.3</a>.
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7.win32-py2.2.exe?download">PyQwt_Qt230-3.7.win32-py2.2.exe</a></li>
 </ol>
 
-Instead of Python and Numeric, you may prefer
-<a href="http://www.enthought.com/python/enthought_python-2.2.3.exe">
-enthought_python-2.2.3</a>.
+Instead of Python with Numeric, you may prefer 
+<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
+Enthought Python</a>.
+
 
 <h3>Source installation of PyQwt-3.7 on Posix systems</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3.3/Python-2.3.3.tgz">Python-2.3.3.tgz</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.1.tar.bz2">qt-x11-free-3.2.1.tar.bz2</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
