@@ -44,6 +44,27 @@ Mac OS X support has to wait for the release of <a href=
 "http://www.riverbankcomputing.co.uk/sip/roadmap.php">sip-4.x</a>.
 </p>
 
+<h3>Snapshot</h3>
+
+<p>PyQwt-3.10 will work with sip-3.9, -3.10, -4.0, and PyQt-3.9, -3.10.
+Source code is available from
+<a href="http://www.sourceforge.net/cvs/?group_id=82987">CVS</a> or as a
+<a href="snapshot">snapshot</a>.
+The snapshot
+<ol>
+<li>runs on Linux with sip-3.9, -3.10, -4.0rc2, and PyQt-3.9, -3.10.
+</li>
+<li>requires testing on Windows with PyQt-Commercial. Please, help me to fix
+the <a href="doc/win-source-install.html">Source Installation on Windows</a>
+documentation.
+</li>
+<li>requires minor changes to run on Mac OS X (push me).
+</li>
+</ol>
+A better decoupling between the pyqt_distutils and the Python distutils is
+planned, but it may not make it into the next release.
+</p>
+
 <h3>Bug fixes and upgrades for PyQwt-3.8</h3>
 
 <p><a href="patches/PyQwt-3.8a.patch">PyQwt-3.8a.patch</a> fixes:
