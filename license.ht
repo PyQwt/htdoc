@@ -27,12 +27,12 @@ of Qt, PyQt and sip.</p>
     Place, Suite 330, Boston, MA 02111-1307, USA.</p>
 
     <p>In addition, as a special exception, Gerard Vermeulen gives permission
-    to link PyQwt dynamically with commercial, non-commercial and educational
+    to link PyQwt dynamically with commercial, non-commercial or educational
     versions of Qt, PyQt and sip, and distribute PyQwt in this form, provided
     that equally powerful versions of Qt, PyQt and sip have been released under
     the terms of the GNU General Public License.</p>
 
-    <p>If PyQwt is dynamically linked with commercial, non-commercial and
+    <p>If PyQwt is dynamically linked with commercial, non-commercial or
     educational versions of Qt, PyQt and sip, PyQwt becomes a free plug-in
     for a non-free program.</p>
 
