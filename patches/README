@@ -1,3 +1,6 @@
+There are no patches for PyQwt-4.2.
+
+
 PyQwt-4.1a.patch:
 
 1. Adds the forgotten 'virtual QwtDoubleRect QwtCurve::boundingRect() const'.
