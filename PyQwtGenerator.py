@@ -11,7 +11,6 @@ from Banner import Banner
 from HTParser import HTParser
 from LinkFixer import LinkFixer
 
-
 
 sitelinks = [
     ('%(rootdir)s/cli-examples.html',     'CLI-Examples'),
@@ -25,12 +24,30 @@ sitelinks = [
     ]
 
 
+
+import nospam
+
+class NoSpamHTParser(HTParser):
+    def __init__(self, filename, default_author=None, default_email=None):
+        HTParser.__init__(self, filename, default_author, default_email)
+
+    def process_sidebar(self):
+        HTParser.process_sidebar(self)
+        author = self.get('author')               # guaranteed
+        email = self.get('author-email', author)
+        self.sidebar[-1] = (nospam.hide('mailto:' + email),
+                            nospam.hide(author))
+
+# class NoSpamHTParser
+
+
+
 class PyQwtGenerator(Skeleton, Sidebar, Banner):
 
     def __init__(self, file, rootdir, relthis):
         root, ext = os.path.splitext(file)
         html = root + '.html'
-        p = self.__parser = HTParser(file, 'pyqwt-users@lists.sf.net')
+        p = self.__parser = NoSpamHTParser(file, 'pyqwt-users@lists.sf.net')
         f = self.__linkfixer = LinkFixer(html, rootdir, relthis)
         self.__body = None
         self.__cont = None
@@ -66,6 +83,8 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         sitelink_fixer.massage(sitelinks, self.__d, aboves=1)
         Banner.__init__(self, sitelinks)
 
+    # __init__()
+   
     def get_stylesheet(self):
         return posixpath.join(self.__d['rootdir'], 'style.css')
 
@@ -100,6 +119,7 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
     def __grokbody(self):
         if self.__body is None:
             text = self.__parser.fp.read()
+            text = nospam.filter(text)
             i = text.find('<!--table-stop-->')
             if i >= 0:
                 self.__body = text[:i]
@@ -120,3 +140,5 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
 
     def get_charset(self):
         return 'iso-8859-1'
+
+# class PyQwtGenerator
