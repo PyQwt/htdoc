@@ -127,7 +127,7 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
                 '<h3>Help to stop software patents</h3>'
 
                 '<p>Free software and small and/or medium sized software '
-                'companies are threatened by patents on'
+                'companies are threatened by patents on '
                 '<a href="http://swpat.ffii.org/patents/samples/index.en.html">algorithms</a> and '
                 '<a href="http://webshop.ffii.org">business methods</a>.</p>\n'
                 '<center>'
