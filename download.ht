@@ -21,6 +21,29 @@ for compatible precompiled PyQt and sip packages may save you a lot of time!
 Instead of Python with Numeric, you may prefer 
 <a href="http://www.scipy.org/download/scipy/win32/SciPy_complete-0.3.2.win32-py2.3-num23.5.exe">
 SciPy</a>.
+<h3>Bug fixes and upgrades for PyQwt-4.1</h3>
+
+<p><a href="patches/PyQwt-4.1a.patch">PyQwt-4.1a.patch</a>:
+<ol>
+<li>Adds the forgotten 'virtual QwtDoubleRect QwtCurve::boundingRect() const'.
+</li>
+<li>Adds the ErrorBarDemo.py example which redefines QwtCurve::boundingRect().
+</li>
+<li>Fixes zooming in the QwtImagePlotDemo.py example.</li>
+</ol>
+How to patch? Put PyQwt-4.1.tar.gz and PyQwt-4.1a.patch in the working
+directory, and execute:
+<pre class="cli">
+tar xvfz PyQwt-4.1.tar.gz
+patch -p0 -b -z .upgrade &lt;PyQwt-4.1a.patch
+</pre>
+and to make the ErrorBarDemo.py example executable, do:
+<pre class="cli">
+chmod +x PyQwt-4.1/examples/ErrorBarDemo.py
+</pre>
+and you are ready for the <a href="doc/installation.html">installation
+instructions</a>.
+</p>
 
 
 <h3>Source installation of PyQwt-4.1 on MacOS/X or Posix systems</h3>
