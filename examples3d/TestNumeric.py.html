@@ -26,10 +26,9 @@
 
 
 <b>def</b><font color=red> matrix2d</font>(nx, ny, minx, maxx, miny, maxy, function):
-    <font color=green>"""Return a data matrix for the interface to the C++ member function 
+    <font color=green>"""Return a data matrix to test the interface to the C++ member function 
     bool SurfacePlot::loadFromData(
-        double **, unsigned int, unsigned int,
-        double , double , double, double);
+        double **, unsigned int, unsigned int, double, double, double, double);
     """</font>
     <font color=blue># columns</font>
     xs = multiply.outer(
@@ -71,6 +70,7 @@
 
     <b>def</b><font color=red> __init__</font>(self, *args):
         SurfacePlot.__init__(self, *args)
+        self.setBackgroundColor(RGBA(1.0, 1.0, 0.6))
         
         self.setRotation(30, 0, 15)
         self.setScale(1.0, 1.0, 1.0)
@@ -83,28 +83,17 @@
             self.loadFromData(zs, minx, maxx, miny, maxy)
         <b>else</b>:
             xyzs = matrix3d(nx, ny, minx, maxx, miny, maxy, saddle)
+            <b>print</b> type(zs)
             <b>print</b> xyzs
             self.loadFromData(xyzs)
         
         axes = self.coordinates().axes <font color=blue># alias</font>
 
-        <b>for</b> axis <b>in</b> axes:
-            axis.setAutoScale(False)
-            axis.setMajors(5) <font color=blue># 6 major ticks</font>
-            axis.setMinors(3) <font color=blue># 2 minor ticks</font>
-
-        axes[X1].setLabelString(<font color=green>"x"</font>)
-        axes[Y1].setLabelString(<font color=green>"y"</font>)
-        axes[Z1].setLabelString(<font color=green>"z"</font>)
-        axes[X2].setLabelString(<font color=green>"x"</font>)
-        axes[Y2].setLabelString(<font color=green>"y"</font>)
-        axes[Z2].setLabelString(<font color=green>"z"</font>)
-        axes[X3].setLabelString(<font color=green>"x"</font>)
-        axes[Y3].setLabelString(<font color=green>"y"</font>)
-        axes[Z3].setLabelString(<font color=green>"z"</font>)
-        axes[X4].setLabelString(<font color=green>"x"</font>)
-        axes[Y4].setLabelString(<font color=green>"y"</font>)
-        axes[Z4].setLabelString(<font color=green>"z"</font>)
+        <b>for</b> axis, label <b>in</b> ((X1, <font color=green>"x"</font>), (Y1, <font color=green>"y"</font>), (Z1, <font color=green>"z"</font>)):
+            axes[axis].setAutoScale(False)
+            axes[axis].setMajors(5) <font color=blue># 6 major ticks</font>
+            axes[axis].setMinors(3) <font color=blue># 2 minor ticks</font>
+            axes[axis].setLabelString(label)
 
         self.setCoordinateStyle(BOX)
         self.coordinates().setGridLines(True, True)
@@ -145,10 +134,6 @@
 <font color=blue># Local Variables: ***</font>
 <font color=blue># mode: python ***</font>
 <font color=blue># End: ***</font>
-
-
-                        
-                       
 
 </pre>
 </body>

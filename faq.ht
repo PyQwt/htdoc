@@ -1,0 +1,99 @@
+Title: Frequently Asked Questions
+
+<h3>Frequently Asked Questions</h3>
+
+<ol>
+<li>
+<a href="#Black Adder">Can I use PyQwt and PyQwt3D with the Black Adder
+integrated development environment?<a>
+</li>
+<li>
+<a href="#Integration">How do I integrate PyQwt with the Qt Designer and
+Eric?</a>
+</li>
+<li>
+<a href="#Choice">Should I choose Numerical Python or Numarray?</a>
+</li>
+</ol>
+
+<h5><a name="Black Adder">Can I use PyQwt and PyQwt3D with the <a
+href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
+integrated development environment?</a></h5>
+
+<p> No. The price of a professional or personal
+<a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
+license is much lower than the total price of a commercial license for
+<a href="http://www.trolltech.com/products/qt/pricing.html">Qt</a> and
+<a href="http://www.riverbankcomputing.co.uk/pyqt/buy.php">PyQt</a>,
+but Black Adder does not provide the tools to build extensions modules like
+PyQwt and PyQwt3D.
+</p>
+
+<p> In addition, the license of PyQwt and PyQwt3D does not allow static linking
+to proprietary software.
+</p>
+
+
+<h5><a name="Integration">How do I integrate PyQwt with the Qt Designer and
+Eric?</a></h5> 
+
+<p> You have to install the Qwt library and the Qwt designer plugin.  If you
+have built PyQwt against a shared Qwt library, the designer plugin is probably
+already installed.  If you have built PyQwt against the slightly patched
+version of Qwt included in PyQwt, you can either install the included Qwt
+library (safest) or the official Qwt library matching PyQwt
+(PyQwt-4.2 matches Qwt-4.2.0, but not the Qwt-4.2.0 release candidates).
+</p>
+
+<p> Make sure that the Qwt designer plugin is linked against the correct Qwt
+library.  Try the ldd command (should work on most POSIX systems, but probably
+not on MacOS/X):
+ 
+<pre class="cli">
+[packer@slow htdoc]$ ldd $QTDIR/plugins/designer/libqwtplugin.so \
+| head -n 5
+</pre>
+
+The output shows that my setup is correct:
+
+<pre class="cli">
+        linux-gate.so.1 =>  (0xffffe000)
+        libqwt.so.4 => /usr/lib/qt3/lib/libqwt.so.4 (0x40023000)
+        libqt-mt.so.3 => /usr/lib/qt3/lib/libqt-mt.so.3 (0x400be000)
+        libpthread.so.0 => /lib/tls/libpthread.so.0 (0x407d6000)
+        libstdc++.so.5 => /usr/lib/libstdc++.so.5 (0x407e6000)
+[packer@slow htdoc]$
+</pre>
+</p>
+
+
+<h5><a name="Choice">Should I choose Numerical Python or numarray?</a></h5>
+
+<p>The home pages of <a href="http://numeric.scipy.org/">Numerical Python</a>
+and <a href="http://www.stsci.edu/resources/software_hardware/numarray/">
+Numarray</a> and the slightly outdated discussion 
+<a href="http://www.scipy.org/documentation/numarraydiscuss.html/">
+Numarray and Numeric</a> compare the advantages of the two packages.
+The last link states that Numarray has no support for ufuncs, but this is not
+true anymore. 
+</p>
+
+<p><a href="http://numeric.scipy.org/">Numerical Python</a> is much smaller
+(fact) and has less bugs (fact) than
+<a href="http://www.stsci.edu/resources/software_hardware/numarray/">
+Numarray</a>.
+In my opinion, the source code of Numerical Python is also easier to understand
+than the source code of Numarray.
+</p>
+
+<p>
+Choose Numerical Python, unless you have huge amount of data or unless you need
+the image extensions included in Numarray.
+</p>
+
+<!--
+Local Variables:
+mode: HTML
+fill-column: 79
+End:
+-->

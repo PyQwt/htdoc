@@ -11,7 +11,7 @@
 <li><a href="http://ccache.samba.org">ccache</a>
 <li><a href="http://www.riverbankcomputing.co.uk/sip">sip</a>
 <h3>Indispensable Tools</h3>
-<li><a href="http://sourceforge.net/projects/numpy">Numeric</a>
+<li><a href="http://numeric.scipy.org">Numeric</a>
 <li><a href="http://www.stsci.edu/resources/software_hardware/numarray">numarray</a>
 <li><a href="http://www.scipy.org">SciPy</a>
 <li><a href="http://www.enthought.com">Enthought Python</a>

@@ -10,7 +10,7 @@
 <b>import</b> sys
 <b>from</b> math <b>import</b> cos, pi, sin
 <b>from</b> qt <b>import</b> QApplication
-<b>from</b> Qwt3D <b>import</b> ParametricSurface, SurfacePlot, Triple, NOCOORD
+<b>from</b> Qwt3D <b>import</b> ParametricSurface, RGBA, SurfacePlot, Triple, NOCOORD
 
 <b>class</b><font color=red> Sphere</font>(ParametricSurface):
 
@@ -35,7 +35,8 @@
 
     <b>def</b><font color=red> __init__</font>(self, *args):
         SurfacePlot.__init__(self, *args)
-        self.setTitle(<font color=green>"A Simple SurfacePlot Demonstration"</font>)
+        self.setTitle(<font color=green>"A Simple Parametric Surface Demonstration"</font>)
+        self.setBackgroundColor(RGBA(1.0, 1.0, 0.6))
 
         sphere = Sphere(self)
         sphere.create()

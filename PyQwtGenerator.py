@@ -14,12 +14,12 @@ from LinkFixer import LinkFixer
 
 sitelinks = [
     ('%(rootdir)s/home.html',             'Home'),
-    ('%(rootdir)s/cli-examples.html',     'PyQwt-CLI-Examples'),
-    ('%(rootdir)s/gui-examples.html',     'PyQwt-GUI-Examples'),
-    ('%(rootdir)s/download.html',         'Download'),
-    ('%(rootdir)s/doc/pyqwt.html',        'PyQwt Manual'),
-    ('%(rootdir)s/pyqwt3d-examples.html', 'PyQwt3D-Examples'),
+    ('%(rootdir)s/cli-examples.html',     'PyQwt CLI Examples'),
+    ('%(rootdir)s/gui-examples.html',     'PyQwt GUI Examples'),
+    ('%(rootdir)s/download.html',         'PyQwt Download'),
+    ('%(rootdir)s/faq.html',              'FAQ'),
     ('%(rootdir)s/license.html',          'License'),
+    ('%(rootdir)s/pyqwt3d-examples.html', 'PyQwt3D Examples'),
     ('%(rootdir)s/news.html',             'News'),
     ]
 

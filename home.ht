@@ -22,14 +22,28 @@ The beautiful general purpose programming language Python in combination
 with the Numerical extensions and <a href="http://www.scipy.org">SciPy</a>
 is as powerful as specialized tools like MatLab and IDL.</p>
 
-<p>PyQwt addresses the problem of integrating PyQt, Qt, Qwt, the Numerical
-Python extensions and optionally <a href="http://www.scipy.org">SciPy</a> in
+<p>PyQwt addresses the problem of integrating
+<a href="http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>,
+Qt, Qwt, the Numerical Python extensions and optionally
+<a href="http://www.scipy.org">SciPy</a> in
 a <a href="gui-examples.html">GUI Python application</a>
 or in an <a href="cli-examples.html">interactive Python session</a>.</p>
 
-<p>PyQwt requires and extends <a href=
-"http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>, a set of Python bindings
-for <a href="http://www.trolltech.com/">Qt</a>.</p>
+<p>The <a href="doc/installation.html">documentation</a> explains how
+to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
+supported by Qt (HPUX, Irix, Linux, Sun).
+The <a href="download.html">download guide</a> has quick links
+to the PyQwt releases and their prerequisites.</p>
+
+<p>PyQwt integrates nicely with the
+<a href="http://www.trolltech.com/products/qt/designer.html">Qt Designer</a>
+(version 3.0 or higher) and the 
+<a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
+integrated development environment.
+The <a href="faq.html">FAQ</a> explains why PyQt's closed source
+<a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
+interactive development environment cannot be used with PyQwt.
+</p>
 
 
 <h3>PyQwt3D plots data in 3D</h3>
@@ -38,17 +52,14 @@ for <a href="http://www.trolltech.com/">Qt</a>.</p>
 <a href="http://qwtplot3d.sourceforge.net">QwtPlot3D</a> C++ class library
 which extends the <a href="http://www.trolltech.com/">Qt</a> framework with
 widgets to visualize 3-dimensional data.
-A few very simple examples are shown
-<a href="pyqwt3d-examples.html"> here</a>.
-
+The <a href="pyqwt3d-examples.html"> examples</a> show how easy it is to
+make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 </p>
-<p>At this moment PyQwt3D is only available from CVS (when prompted for
-a password, press the Enter key):
-<pre class="cli">
-cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pyqwt login 
-cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pyqwt co pyqwt3d 
-</pre>
-or with <a href="http://cvsgrab.sourceforge.net">CVSGrab</a>.
+
+<p>The <a href="doc3d/install.html">installation instructions</a> explain how
+to install
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.tar.gz?download">
+PyQwt3D-0.1.tar.gz</a>.
 </p>
 
 <p>We like feedback on:
@@ -59,29 +70,6 @@ MacOS/X</li>
 <li>the interfacing between the QwtPlot3D API and Numerical Python
 extensions.</li>
 </ol>
-PyQwt3D-0.1 will be released shortly after the upcoming release of SIP-4.2.
-</p>
-
-
-<h3>Supported platforms</h3>
-
-<p>The <a href="doc/installation.html">documentation</a> explains how
-to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
-supported by Qt (HPUX, Irix, Linux, Sun).</p>
-
-<p>The <a href="download.html">download guide</a> has quick links
-to the PyQwt releases and their prerequisites.</p>
-
-<p>PyQwt integrates nicely with the interface
-<a href="http://www.trolltech.com/products/qt/designer.html">designer</a>
-for Qt (version 3.0 or higher) and the 
-<a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
-integrated development environment.
-</p>
-
-<p>PyQt's closed source
-<a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
-interactive development environment cannot be used with PyQwt.
 </p>
 
 
