@@ -13,25 +13,28 @@ A good start for newbies is Boudewijn Rempt's
 "https://secure.linuxports.com/opendocs/">paper copy</a>.</p>
 <br>
 
-<h4>StackOrder.py</h4>
+<h4>StackOrder.py demonstrates</h4>
 
-<p>This program demonstrates a few nice programming tricks:
+<p>
 <ul>
   <li>
-    How to derive a QwtBarCurve from a QwtPlotCurve.
+    how to derive a QwtBarCurve from a QwtPlotCurve.
   </li>
   <li>
-    How to use a QwtCounter to control the number of bars to display.
+    how to use a QwtCounter to control the number of bars to display.
   </li>
   <li>
-    How to use QComboBoxes to control the outline and fill colors of the bars.
+    how to use QComboBoxes to control outline and fill colors of the bars.
   </li>
   <li>
-    How to implement an infinite deep zoom stack.
+    how to enable plot cursor tracking.
+  </li>
+  <li>
+    how to implement an infinite deep zoom stack.
   </li>
 </ul></p>
 
-<p><img src="examples/StackOrder.png" width=512 height=512 border=1></p>
+<p><img src="examples/StackOrder.png" width=400 height=400 border=1></p>
 
 <p><a href="examples/StackOrder.py.html">StackOrder.py</a>.</p>
 

@@ -15,7 +15,7 @@ HTALLFLAGS      := -f -s $(HTSTYLE)
 HTFLAGS         := $(HTALLFLAGS) -r $(HTROOT)
 
 DEST            := pyqwt.sourceforge.net:/home/groups/p/py/pyqwt/htdocs
-EXCLUDES        := --exclude ht2html-2.0 --exclude *.pyc
+EXCLUDES        := --exclude CVS --exclude ht2html-2.0 --exclude *.pyc
 ARGS		:= --rsh=ssh -v -r -l -t --update --delete $(EXCLUDES)
 
 .SUFFIXES: .ht .html

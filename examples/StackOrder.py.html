@@ -57,6 +57,7 @@
 
 <font color=blue># class QwtBarCurve</font>
 
+
 <b>class</b><font color=red> QwtBarPlotDemo</font>(QMainWindow):
 
     table = {
@@ -75,20 +76,74 @@
     <b>def</b><font color=red> __init__</font>(self, parent=None):
         QMainWindow.__init__(self, parent)
 
-        self.plot = QwtPlot(<font color=green>"last bar on top: "</font>
-                            <font color=green>"left-click&amp;drag to zoom, "</font>
-                            <font color=green>"right-click to unzoom."</font>, self)
+        <font color=blue># Initialize a QwPlot central widget</font>
+        self.plot = QwtPlot(<font color=green>'left-click &amp; drag to zoom'</font>
+                            <font color=green>' -- '</font>
+                            <font color=green>'right-click to unzoom'</font>,
+                            self)
         self.plot.plotLayout().setCanvasMargin(0)
         self.plot.plotLayout().setAlignCanvasToTicks(True)
         self.setCentralWidget(self.plot)
 
-        <font color=blue># Initialize zooming</font>
-        self.plot.canvas().setMouseTracking(True)
-        self.statusBar().message(<font color=green>"Move the cursor with the plot"</font>
-                                 <font color=green>" to show the cursor position"</font>)
-        self.zoomStack = []
+        self.__initToolBar()
+        self.__initTracking()
+        self.__initZooming()
+        
+        <font color=blue># Finalize</font>
+        self.counter.setValue(10)
+        self.go(self.counter.value())
 
-        <font color=blue># Connect the mouse SIGNALs from self.plot to the onMouseXx SLOTs</font>
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> __initToolBar</font>(self):
+        <font color=green>"""Initialize the toolbar
+        """</font>
+        
+        self.toolBar = QToolBar(self)
+
+        QLabel(<font color=green>"Pen:"</font>, self.toolBar)
+
+        self.penComboBox = QComboBox(self.toolBar)
+        <b>for</b> name <b>in</b> self.table.keys():
+            self.penComboBox.insertItem(name)
+        self.penComboBox.setCurrentText(<font color=green>'black'</font>)
+
+        QLabel(<font color=green>"Brush:"</font>, self.toolBar)
+
+        self.brushComboBox = QComboBox(self.toolBar)
+        <b>for</b> name <b>in</b> self.table.keys():
+            self.brushComboBox.insertItem(name)
+        self.brushComboBox.setCurrentText(<font color=green>'red'</font>)
+
+        self.toolBar.setStretchableWidget(QWidget(self.toolBar))
+
+        QLabel(<font color=green>"Bars:"</font>, self.toolBar)
+
+        self.counter = QwtCounter(self.toolBar)
+        self.counter.setRange(0, 10000, 1)
+        self.counter.setNumButtons(3)
+
+        self.connect(self.counter, SIGNAL(<font color=green>'valueChanged(double)'</font>), self.go)
+        self.connect(self.penComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
+        self.connect(self.brushComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
+
+    <font color=blue># __initToolBar()</font>
+
+    <b>def</b><font color=red> __initTracking</font>(self):
+        <font color=green>"""Initialize tracking
+        """</font>
+        
+        self.plot.canvas().setMouseTracking(True)
+        self.statusBar().message(
+            <font color=green>"Plot cursor movements are tracked in the status bar"</font>)
+
+    <font color=blue># __initTracking()</font>
+
+    <b>def</b><font color=red> __initZooming</font>(self):
+        <font color=green>"""Initialize zooming
+        """</font>
+
+        self.zoomStack = []
         self.connect(self.plot,
                      SIGNAL(<font color=green>'plotMouseMoved(const QMouseEvent&amp;)'</font>),
                      self.onMouseMoved)
@@ -99,49 +154,24 @@
                      SIGNAL(<font color=green>'plotMouseReleased(const QMouseEvent&amp;)'</font>),
                      self.onMouseReleased)
 
-        <font color=blue># Initialize the toolbar</font>
-        self.toolBar = QToolBar(self)
-        QLabel(<font color=green>"Pen:"</font>, self.toolBar)
-        self.penComboBox = QComboBox(self.toolBar)
-        <b>for</b> name <b>in</b> self.table.keys():
-            self.penComboBox.insertItem(name)
-        self.penComboBox.setCurrentText(<font color=green>'black'</font>)
-        QLabel(<font color=green>"Brush:"</font>, self.toolBar)
-        self.brushComboBox = QComboBox(self.toolBar)
-        <b>for</b> name <b>in</b> self.table.keys():
-            self.brushComboBox.insertItem(name)
-        self.brushComboBox.setCurrentText(<font color=green>'red'</font>)
-        self.toolBar.setStretchableWidget(QWidget(self.toolBar))
-        QLabel(<font color=green>"Bars:"</font>, self.toolBar)
-        self.counter = QwtCounter(self.toolBar)
-        self.counter.setRange(0, 10000, 1)
-        self.counter.setNumButtons(3)
-
-        <font color=blue># Connect SIGNALs from the toolbar widgets to the self.go SLOT</font>
-        self.connect(self.counter, SIGNAL(<font color=green>'valueChanged(double)'</font>), self.go)
-        self.connect(self.penComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
-        self.connect(self.brushComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
-
-        <font color=blue># Finalize</font>
-        self.counter.setValue(10)
-        self.go(self.counter.value())
-
-    <font color=blue># __init__()</font>
-
+    <font color=blue># __initZooming()</font>
+       
     <b>def</b><font color=red> go</font>(self, x):
-        <font color=green>"""Create and plot a sequence bars taking into account the controls"""</font>
-        self.plot.removeCurves()
+        <font color=green>"""Create and plot a sequence bars taking into account the controls
+        """</font>
+
+        <b>if</b> type(x) == type(0):
+            <font color=blue># activated(int)</font>
+            x = int(self.counter.value())
+        <b>else</b>:
+            <font color=blue># valueChanged(double)</font>
+            self.clearZoomStack()
 
         penColor = self.table[str(self.penComboBox.currentText())]
         brushColor = self.table[str(self.brushComboBox.currentText())]
-
-        <font color=blue># x is a float on 'valueChanged(double)'</font>
-        <font color=blue># x is an int on 'activated(int)'</font>
-        <b>if</b> type(x) == type(0):
-            x = int(self.counter.value())
-        <b>else</b>:
-            self.clearZoomStack()
             
+        self.plot.removeCurves()
+
         <b>for</b> i <b>in</b> range(x):
             curve = QwtBarCurve(self.plot, penColor, brushColor)
             key = self.plot.insertCurve(curve)
@@ -150,7 +180,7 @@
 
         self.plot.replot()
 
-    <font color=blue># draw()</font>
+    <font color=blue># go()</font>
 
     <b>def</b><font color=red> onMouseMoved</font>(self, e):
         self.statusBar().message(
@@ -220,6 +250,7 @@
 
 <font color=blue># class StackOrderDemo</font>
 
+
 <b>def</b><font color=red> main</font>(args):
     app = QApplication(args)
     demo = make()
@@ -230,7 +261,7 @@
 
 <b>def</b><font color=red> make</font>():
     demo = QwtBarPlotDemo()
-    demo.resize(512, 512)
+    demo.resize(400, 400)
     demo.show()
     <b>return</b> demo
 
