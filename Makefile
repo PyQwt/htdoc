@@ -1,6 +1,6 @@
 PYQWT_WORK_COPY := $(HOME)/CVS/pyqwt
 
-EXAMPLES        := CliDemo1 CliDemo2 DataDemo StackOrder
+EXAMPLES        := BodeDemo CliDemo1 CliDemo2 DataDemo StackOrder
 EXAMPLES_PNG    := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.png) 
 EXAMPLES_HTML   := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.py.html) 
 
@@ -32,6 +32,7 @@ all: $(TARGETS)
 
 examples: $(EXAMPLES_PNG) $(EXAMPLES_HTML)
 	cp -puv $^ examples
+	cp -puv /usr/share/ghostscript/6.53/lib/Fontmap.GS examples
 
 clean:
 	rm -f *~

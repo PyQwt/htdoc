@@ -44,10 +44,12 @@ Mac OS X support has to wait for the release of <a href=
 "http://www.riverbankcomputing.co.uk/sip/roadmap.php">sip-4.x</a>.
 </p>
 
+<!--
 <p>If you cannot wait, mail <a href="mailto:pyqwt-users@lists.sf.net">us</a>:
 PyQt-x11-gpl-3.7/README.MacOSX explains how to install PyQt, but we need
 feedback to work out a similar solution for PyQwt. 
 </p>
+-->
 
 <!--
 Local Variables:

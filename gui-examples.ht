@@ -13,6 +13,57 @@ Title: Graphical User Interface Examples
   "https://secure.linuxports.com/opendocs/">paper copy</a>.
 </p>
 
+<h5><a href="examples/BodeDemo.py.html">BodeDemo.py</a> demonstrates a new
+feature in the future PyQwt-3.8</h5>
+<ul>
+  <li>
+    improved rendering of scientific formula's by a combination of rich text
+    and unicode.
+  </li>
+</ul>
+<p>Testing on Linux requires:
+<ol>
+  <li>
+    code from the CVS repositories of Qwt and PyQwt.
+  </li>
+  <li>
+    the <a href=
+    "http://msttcorefonts.sourceforge.net">MicroSoft True Type Core Fonts</a>.
+  </li>
+  <li>
+    to print you must configure ghostscript for the true type fonts. Study the
+    'MicroSoft True Type Core Fonts' part in my <a href=
+    "examples/Fontmap.GS">Mandrake-8.2 Fontmap.GS</a> to see how to modify your
+     Fontmap or Fontmap.GS file.
+    Be careful, ghostscript does not work, if you make a syntax error.
+  </li>
+</ol>
+</p>
+
+<p>Warnings:
+<ol>
+  <li>
+    the verdana font works best (due QPrinter limitations and bugs?).
+  </li>
+  <li>
+    use as much unicode as possible.
+  </li>
+  <li>
+    The unicode codes for supported glyphs can be found in the unicodetoglyph
+    table in qt-x11-free-x.x.x/kernel/qpsprinter.cpp.
+  </li>
+  <li>
+    fall back on rich text if a requested glyph is missing from the font
+    (sub-scripts are missing).
+  </li>
+</ol> 
+I am working on better instructions.
+</p>
+
+<p><img alt="BodeDemo Widget" src="examples/BodeDemo.png"
+        width=540 height=400 border=1>
+</p>
+
 <h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
 <ul>
   <li>

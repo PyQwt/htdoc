@@ -54,26 +54,30 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         # calculate the sidebar links, adding a few of our own
         self.__d = {'rootdir': rootdir}
         p.process_sidebar()
-        p.sidebar.append(BLANKCELL)
-        # it is important not to have newlines between the img tag and the end
-        # end center tags, otherwise layout gets messed up
-        p.sidebar.append(('http://www.python.org', '''
-<center><img alt="Python Powered Logo" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>''' % self.__d))
-        p.sidebar.append(BLANKCELL)
-        # sourceforge link.
-        p.sidebar.append(('http://sourceforge.net', '''
-<center><img src="http://sourceforge.net/sflogo.php?group_id=82987&type=2" width="125" height="37" border="0" alt="SourceForge Logo"></center>'''))
-        p.sidebar.append(BLANKCELL)
-        self.__linkfixer.massage(p.sidebar, self.__d)
 
-        copyright = self.__parser.get('copyright', '2000')
-        p.sidebar.append((None, '&copy; ' + copyright))
-        p.sidebar.append((None, 'Mark Colclough'))
+        # copyrigth
         copyright = self.__parser.get('copyright',
                                       '2001-%d' % time.localtime()[0])
         p.sidebar.append(BLANKCELL)
         p.sidebar.append((None, '&copy; ' + copyright))
         p.sidebar.append((None, 'Gerard Vermeulen'))
+
+        copyright = self.__parser.get('copyright', '2000')
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append((None, '&copy; ' + copyright))
+        p.sidebar.append((None, 'Mark Colclough'))
+
+        # it is important not to have newlines between the img tag and the end
+        # end center tags, otherwise layout gets messed up
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://www.python.org', '''
+<center><img alt="Python Powered Logo" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>''' % self.__d))
+        # sourceforge link.
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://sourceforge.net', '''
+<center><img src="http://sourceforge.net/sflogo.php?group_id=82987&type=2" width="125" height="37" border="0" alt="SourceForge Logo"></center>'''))
+        self.__linkfixer.massage(p.sidebar, self.__d)
+
         Sidebar.__init__(self, p.sidebar)
         #
         # fix up our site links, no relthis because the site links are
