@@ -4,7 +4,7 @@ Title: PyQwt plots data with Numerical Python and PyQt
 
 <p>PyQwt is a set of Python bindings for the <a href=
 "http://qwt.sourceforge.net">Qwt</a> C++ class library.
-The <a href="http://qwt.sourceforge.net">Qwt</a> library extends the <a href=
+<a href="http://qwt.sourceforge.net">Qwt</a> extends the <a href=
 "http://www.trolltech.com/">Qt</a> framework with widgets for scientific and
 engineering applications.
 It provides a widget to plot 2-dimensional data and various widgets to display
@@ -26,8 +26,8 @@ The beautiful general purpose programming language Python in combination
 with the Numerical extensions and <a href="http://www.scipy.org">SciPy</a>
 is as powerful as specialized tools like MatLab and IDL.</p>
 
-<p>PyQwt addresses the problem of integrating PyQt, Qt, the Numerical Python
-extensions and optionally <a href="http://www.scipy.org">SciPy</a> in
+<p>PyQwt addresses the problem of integrating PyQt, Qt, Qwt, the Numerical
+Python extensions and optionally <a href="http://www.scipy.org">SciPy</a> in
 a <a href="gui-examples.html">GUI Python application</a>
 or in an <a href="cli-examples.html">interactive Python session</a>.</p>
 
@@ -37,11 +37,16 @@ or in an <a href="cli-examples.html">interactive Python session</a>.</p>
 install PyQwt on MicroSoft Windows and almost any Posix system that is
 supported by Qt (Linux, Irix, HPUX).</p>
 
-<p>PyQwt on Mac OS X is not supported due to a design flaw in <a href=
+<p>PyQwt does not yet run on Mac OS X due to a design flaw in <a href=
 "http://www.riverbankcomputing.co.uk/sip">sip-3.x</a>,
 the C++-Python interface generator for PyQt and PyQwt.
 Mac OS X support has to wait for the release of <a href=
 "http://www.riverbankcomputing.co.uk/sip/roadmap.php">sip-4.x</a>.
+</p>
+
+<p>If you cannot wait, mail <a href="mailto:pyqwt-users@lists.sf.net">us</a>:
+PyQt-x11-gpl-3.7/README.MacOSX explains how to install PyQt, but we need
+feedback to work out a similar solution for PyQwt. 
 </p>
 
 <!--

@@ -14,8 +14,9 @@
 <font color=blue>#</font>
 <font color=blue># Beautified and expanded by Gerard Vermeulen.</font>
 
-<b>import</b> sys
 <b>import</b> math
+<b>import</b> random
+<b>import</b> sys
 <b>from</b> qt <b>import</b> *
 <b>from</b> qwt <b>import</b> *
 
@@ -106,14 +107,16 @@
         self.penComboBox = QComboBox(self.toolBar)
         <b>for</b> name <b>in</b> self.table.keys():
             self.penComboBox.insertItem(name)
-        self.penComboBox.setCurrentText(<font color=green>'black'</font>)
+        self.penComboBox.setCurrentItem(
+            random.randint(0, self.penComboBox.count()-1))
 
         QLabel(<font color=green>"Brush:"</font>, self.toolBar)
 
         self.brushComboBox = QComboBox(self.toolBar)
         <b>for</b> name <b>in</b> self.table.keys():
             self.brushComboBox.insertItem(name)
-        self.brushComboBox.setCurrentText(<font color=green>'red'</font>)
+        self.brushComboBox.setCurrentItem(
+            random.randint(0, self.brushComboBox.count()-1))
 
         self.toolBar.setStretchableWidget(QWidget(self.toolBar))
 
