@@ -31,7 +31,7 @@ all: $(TARGETS)
 	mkdir -p doc
 	(cd $(PYQWT_WORK_COPY)/Doc; make htdoc)
 	cp -vpur $(PYQWT_WORK_COPY)/Doc/html/htdoc/* doc
-	cp -vpu home.html index.html
+	cp -vpu patent-protest index.html
 	cp -vpu patent-protest strike.html
 
 .PHONY: examples
