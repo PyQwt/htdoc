@@ -5,7 +5,7 @@ Title: News
   <tr>
     <td>
       <ul>
-        <li><b>2003-DEC-O1</b> <a href="download.html">PyQwt-3.8a.patch</a>
+        <li><b>2003-DEC-01</b> <a href="download.html">PyQwt-3.8a.patch</a>
           fixes a build bug for some Posix platforms.
         <li><b>2003-NOV-26</b> Release of PyQwt-3.8.
         </li>
