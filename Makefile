@@ -25,7 +25,7 @@ ARGS		:= --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 .ht.html:
 	$(HT2HTML) $(HTFLAGS) $<
-	sed -i -e 's|</head>|<link rel="SHORTCUT ICON" href="doc/pyfav.png"></head>|g' *.html
+	sed -i -e 's|</head>|<link rel="SHORTCUT ICON" href="doc/pyfav.png">\n</head>|g' $@
 
 all: $(TARGETS)
 	mkdir -p doc
