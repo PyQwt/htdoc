@@ -86,7 +86,7 @@ Title: Command Line Interpreter Examples
   <li>
     There is also an <tt class="class">IPlot</tt> widget that adds a few
     interactive buttons to <tt class="class">Plot</tt> to facilitate printing
-    to a printer and or (E)PS file and to clone the plot into Grace.
+    to a printer or an (E)PS file and to clone the plot into Grace.
     Grace is an interactive plotting program producing hardcopy output that
     is better suited for LaTeX documents and scientific journals. 
     Type:
