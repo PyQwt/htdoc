@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>CliDemo1.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>from</b> qwt.qplt <b>import</b> *
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+
+<b>def</b><font color=red> make</font>():
+    x = arange(-2*pi, 2*pi, 0.01)
+    demo = Plot(Curve(x, cos(x), Pen(Magenta, 2), <font color=green>"cos(x)"</font>),
+                Curve(x, exp(x), Pen(Red), <font color=green>"exp(x)"</font>, Right),
+                Axis(Right, Logarithmic),
+                <font color=green>"PyQwt using Qwt-%s -- http://qwt.sf.net"</font> % QWT_VERSION_STR)
+    x = x[0:-1:10]
+    <b>return</b> demo
+
+<font color=blue># Admire!</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+</pre>
+</body>
+</html>
