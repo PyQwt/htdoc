@@ -60,7 +60,7 @@ which extends the <a href="http://www.trolltech.com/">Qt</a> framework with
 widgets to visualize 3-dimensional data.
 </p>
 
-<p> At this moment PyQwt3D is only available from CVS (when prompted for
+<p>At this moment PyQwt3D is only available from CVS (when prompted for
 a password, press the Enter key):
 <pre class="cli">
 cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pyqwt login 
@@ -73,11 +73,11 @@ or with <a href="http://cvsgrab.sourceforge.net">CVSGrab</a>.
 <ol>
 <li>the installation and stability on other platforms than Linux and
 MacOS/X</li>
+<li> more feedback on PyQwt3D built with MSVC.NET and MSVC-6.0 on Windows.
 <li>the interfacing between the QwtPlot3D API and Numerical Python
 extensions.</li>
 </ol>
-PyQwt3D compiled with MSVC-6.0 for Windows is working, but requires more
-testing.
+PyQwt3D-0.1 will be released shortly after the upcoming release of SIP-4.2.
 </p>
 
 
