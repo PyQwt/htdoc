@@ -46,7 +46,7 @@ Mac OS X support has to wait for the release of <a href=
 
 <h4>Bug fixes and upgrades</h4>
 
-<p><a href="patches/PyQwt-3.7a.patch">PyQwt-3.7a.patch</a> fixes:
+<p><a href="patches/PyQwt-3.7b.patch">PyQwt-3.7b.patch</a> fixes:
 <ol>
 <li>Building of PyQwt-3.7 for Qt &lt;= 3.2.1
     and/or PyQt &lt;=3.8.1 and sip &lt;= 3.8.</li>
@@ -54,6 +54,7 @@ Mac OS X support has to wait for the release of <a href=
 <li>Incompatibilities with Designer/pyuic generated forms using QwtPlot.</li>
 <li>A minor bug on Windows concerning compiler flags.</li>
 <li>A minor bug on Posix concerning compiler flags.</li>
+<li>The PYTHONPATH awareness of the pyqt_distutils scripts.</li>
 </ol>
 If you do not know how to apply a patch, look <a href="download.html">here</a>.
 </p>
