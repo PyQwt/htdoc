@@ -13,14 +13,14 @@ from LinkFixer import LinkFixer
 
 
 sitelinks = [
-    ('%(rootdir)s/cli-examples.html',     'CLI-Examples'),
-    ('%(rootdir)s/download.html',         'Download'),
-    ('%(rootdir)s/doc/pyqwt.html',        'Documentation'),
-    ('%(rootdir)s/gui-examples.html',     'GUI-Examples'),
-    ('%(rootdir)s/home.html',             'Home'),
-    ('%(rootdir)s/doc/installation.html', 'Installation'),
-    ('%(rootdir)s/license.html',          'License'),
-    ('%(rootdir)s/news.html',             'News'),
+    ('%(rootdir)s/home.html',          'Home'),
+    ('%(rootdir)s/cli-examples.html',  'CLI-Examples'),
+    ('%(rootdir)s/gui-examples.html',  'GUI-Examples'),
+    ('%(rootdir)s/download.html',      'Download'),
+    ('%(rootdir)s/doc/pyqwt.html',     'PyQwt Manual'),
+    ('%(rootdir)s/doc3d/pyqwt3d.html', 'PyQwt3D Manual'),
+    ('%(rootdir)s/license.html',       'License'),
+    ('%(rootdir)s/news.html',          'News'),
     ]
 
 
@@ -130,9 +130,10 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
                 'companies are threatened by patents on '
                 '<a href="http://swpat.ffii.org/patents/samples/index.en.html">algorithms</a> and '
                 '<a href="http://webshop.ffii.org">business methods</a>.</p>\n'
+                '<li>See <a href="http://www.nosoftwarepatents.com">No Software Patents</a> for an excellent explanation of the devastating effects of software patents on software (users!) and software development (developers!)</li>\n'
                 '<li>Sign the <a href="http://petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>\n'
                 '<li>Support the <a href="http://swpat.ffii.org">Foundation for a Free Information Infrastructure</a> in Europe</li>\n'
-                '<li>Support the <a href="http://www.eff.org/Patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>\n'
+                '<li>Support the <a href="http://www.eff.org/patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>\n'
                 '</ol>\n'
                 )
             text = nospam.filter(text)

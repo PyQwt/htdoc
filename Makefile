@@ -1,25 +1,26 @@
-PYQWT_WORK_COPY := $(HOME)/CVS/pyqwt
+PYQWT_CVS      := $(HOME)/CVS/pyqwt
+PYQWT3D_CVS    := $(HOME)/CVS/pyqwt3d
 
-EXAMPLES        := BodeDemo CliDemo1 CliDemo2 DataDemo StackOrder
-EXAMPLES_PNG    := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.png) 
-EXAMPLES_HTML   := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.py.html) 
+EXAMPLES       := BodeDemo CliDemo1 CliDemo2 DataDemo StackOrder
+EXAMPLES_PNG   := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.png) 
+EXAMPLES_HTML  := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.py.html) 
 
-SOURCES         := $(shell echo *.ht)
-TARGETS         := $(filter-out *.html,$(SOURCES:%.ht=%.html))
-GENERATED_HTML  := $(SOURCES:.ht=.html)
+SOURCES        := $(shell echo *.ht)
+TARGETS        := $(filter-out *.html,$(SOURCES:%.ht=%.html))
+GENERATED_HTML := $(SOURCES:.ht=.html)
 
-HTROOT          := .
-HT2HTML         := python ht2html-2.0/ht2html.py
-HTSTYLE         := PyQwtGenerator 
-HTALLFLAGS      := -f -s $(HTSTYLE)
-HTFLAGS         := $(HTALLFLAGS) -r $(HTROOT)
+HTROOT         := .
+HT2HTML        := python ht2html-2.0/ht2html.py
+HTSTYLE        := PyQwtGenerator 
+HTALLFLAGS     := -f -s $(HTSTYLE)
+HTFLAGS        := $(HTALLFLAGS) -r $(HTROOT)
 
-DEST            := pyqwt.sourceforge.net:/home/groups/p/py/pyqwt/htdocs
-EXCLUDES        := --exclude CVS
-EXCLUDES        += --exclude ht2html-2.0
-EXCLUDES        += --exclude *.pyc
-EXCLUDES        += --exclude *~
-ARGS		:= --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
+DEST           := pyqwt.sourceforge.net:/home/groups/p/py/pyqwt/htdocs
+EXCLUDES       := --exclude CVS
+EXCLUDES       += --exclude ht2html-2.0
+EXCLUDES       += --exclude *.pyc
+EXCLUDES       += --exclude *~
+ARGS           := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 .SUFFIXES: .ht .html
 
@@ -29,8 +30,11 @@ ARGS		:= --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 all: $(TARGETS)
 	mkdir -p doc
-	(cd $(PYQWT_WORK_COPY)/Doc; make htdoc)
-	cp -vpur $(PYQWT_WORK_COPY)/Doc/html/htdoc/* doc
+	(cd $(PYQWT_CVS)/Doc; make htdoc)
+	cp -vpur $(PYQWT_CVS)/Doc/html/htdoc/* doc
+	mkdir -p doc3d
+	(cd $(PYQWT3D_CVS)/Doc; make htdoc)
+	cp -vpur $(PYQWT3D_CVS)/Doc/html/htdoc/* doc3d
 	cp -vpu home.html index.html
 	cp -vpu patent-protest strike.html
 

@@ -31,6 +31,28 @@ or in an <a href="cli-examples.html">interactive Python session</a>.</p>
 "http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>, a set of Python bindings
 for <a href="http://www.trolltech.com/">Qt</a>.</p>
 
+<h3>Work in Progress: PyQwt3D</h3>
+
+<p>PyQwt3D is a set of Python bindings for the
+<a href="http://qwtplot3d.sourceforge.net">QwtPlot3D</a> C++ class library
+which extends the <a href="http://www.trolltech.com/">Qt</a> framework with
+widgets to visualize 3-dimensional data.
+</p>
+
+<p> At this moment PyQwt3D is only available from CVS (when prompted for
+a password, press the Enter key):
+<pre class="cli">
+cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pyqwt login 
+cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/pyqwt co pyqwt3d 
+</pre>
+or with <a href="http://cvsgrab.sourceforge.net">CVSGrab</a>.
+</p>
+
+<p>Feedback on the installation on other platforms than Linux and on the
+interfacing between the QwtPlot3D API and the Numerical Python extensions is
+highly appreciated.
+</p>
+
 <h3>Supported platforms</h3>
 
 <p>The <a href="doc/installation.html">documentation</a> explains how
