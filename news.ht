@@ -3,20 +3,23 @@ Title: News
 <h3>News</h3>
 <table bgcolor="#99CCFF" width="100%">
   <tr>
-    <td><br>
+    <td>
       <ul>
+        <li><b>2003-JUL-06</b> Release of PyQwt-3.7 (first SourceForge
+          release).
+        </li>
         <li><b>2003-JUN-09</b> Approval of the PyQwt project registration for
           SourceForge.net.
         </li>
-      </ul><br>
+      </ul>
     </td>
   </tr>
-</table><br>
+</table>
 
 <h3>History</h3>
 <table bgcolor="#99CCFF" width="100%">
   <tr>
-    <td><br>
+    <td>
       <ul>
         <li><b>2001-JUN-28</b> Gerard Vermeulen
           releases <a href="http://gerard.vermeulen.free.fr/PyQwt-0.29.90.tar.bz2">PyQwt-0.29.90</a>
