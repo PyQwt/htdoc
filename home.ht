@@ -42,13 +42,13 @@ by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
 <h3>Mac OS X requires a snapshot</h3>
 
 <p>PyQwt-4.0 will run on Mac OS X and will support sip-3.10, -3.10.1,
--3.10.2, and -4.0, and PyQt-3.10, and -3.11.
+-3.10.2, and -4.0, and PyQt-3.10, -3.11, and -3.12.
 Source code is available from
 <a href="http://www.sourceforge.net/cvs/?group_id=82987">CVS</a> or as a
 <a href="snapshot">snapshot</a>.
 The snapshot
 <ol>
-<li>runs on Linux with sip-3.10.*, -4.0rc*, and PyQt-3.9, -3.10, 3.11.
+<li>runs on Linux with sip-3.10.*, -4.0rc*, and PyQt-3.10, -3.11 and 3.12.
 </li>
 <li>runs on Mac OS X with sip-4.0rc* and PyQt-3.11.
 </li>
