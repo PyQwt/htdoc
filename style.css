@@ -1,0 +1,28 @@
+/*
+ * Steel ideas from doc/pyqwt.css 
+ */
+
+a:active                { color: #ff0000; }
+a[href]:hover           { background-color: #99ccff; }
+#a:visited               { color: #551a8b; }
+#a:link                  { color: #0000bb; }
+
+h1, h2, h3, h4, h5, h6  { font-family: avantgarde,
+                                       sans-serif;
+                          font-weight: bold; }
+
+h1                      { font-size: 180%; }
+h2                      { font-size: 150%; }
+h3, h4                  { font-size: 120%; }
+h5, h6                  { font-size: 100%; }
+
+pre.cli                 { background-color: #99ccff;
+                          color: #00008b;
+                          font-family: lucida typewriter,
+                                       lucidatypewriter,
+                                       monospace; }
+
+tt                      { color: #00008b; 
+                          font-family: lucida typewriter,
+                                       lucidatypewriter,
+                                       monospace; }

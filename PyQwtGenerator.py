@@ -41,7 +41,7 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         # it is important not to have newlines between the img tag and the end
         # end center tags, otherwise layout gets messed up
         p.sidebar.append(('http://www.python.org', '''
-<center><img alt="" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>''' % self.__d))
+<center><img alt="Python Powered Logo" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>''' % self.__d))
         p.sidebar.append(BLANKCELL)
         # sourceforge link.
         p.sidebar.append(('http://sourceforge.net', '''
@@ -66,25 +66,6 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         sitelink_fixer.massage(sitelinks, self.__d, aboves=1)
         Banner.__init__(self, sitelinks)
 
-    def get_meta(self):
-        s1 = Skeleton.get_meta(self)
-        s2 = self.__parser.get('meta', '')
-        if s1 and s2:
-            return s1 + "\n" + s2
-        else:
-            return s1 or s2
-
-    def get_style(self):
-        s1 = Skeleton.get_style(self)
-        s2 = self.__parser.get('local-css')
-        if s1:
-            if s2:
-                return s1 + "\n" + s2
-            else:
-                return s1
-        else:
-            return s2
-
     def get_stylesheet(self):
         return posixpath.join(self.__d['rootdir'], 'style.css')
 
@@ -92,8 +73,6 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         return self.__parser.get('title')
 
     def get_sidebar(self):
-        if self.__parser.get('wide-page', 'no').lower() == 'yes':
-            return None
         return Sidebar.get_sidebar(self)
 
     def get_banner(self):

@@ -1,6 +1,6 @@
 PYQWT_WORK_COPY := $(HOME)/CVS/pyqwt
 
-EXAMPLES        := CliDemo1 CliDemo2 StackOrder
+EXAMPLES        := CliDemo1 CliDemo2 DataDemo StackOrder
 EXAMPLES_PNG    := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.png) 
 EXAMPLES_HTML   := $(EXAMPLES:%=$(PYQWT_WORK_COPY)/examples/%.py.html) 
 

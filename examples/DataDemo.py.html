@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>DataDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<font color=blue># The Python version of qwt-*/examples/data_plot/data_plot.cpp</font>
+
+<b>import</b> random, sys
+<b>from</b> qt <b>import</b> *
+<b>from</b> qwt <b>import</b> *
+<b>from</b> Numeric <b>import</b> *
+
+
+<b>class</b><font color=red> DataPlot</font>(QwtPlot):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        QwtPlot.__init__(self, *args)
+
+        <font color=blue># Initialize data</font>
+        self.x = arrayrange(0.0, 100.1, 0.5)
+        self.y = zeros(len(self.x), Float)
+        self.z = zeros(len(self.x), Float)
+
+        self.setTitle(<font color=green>"A Moving QwtPlot Demonstration"</font>)
+        self.setAutoLegend(True)
+
+        self.curveR = self.insertCurve(<font color=green>"Data Moving Right"</font>)
+        self.curveL = self.insertCurve(<font color=green>"Data Moving Left"</font>)
+
+        self.setCurveSymbol(self.curveL, QwtSymbol(
+            QwtSymbol.Ellipse, QBrush(), QPen(Qt.yellow), QSize(7, 7)))
+
+        self.setCurvePen(self.curveR, QPen(Qt.red))
+        self.setCurvePen(self.curveL, QPen(Qt.blue))
+
+        mY = self.insertLineMarker(<font color=green>""</font>, QwtPlot.yLeft)      
+        self.setMarkerYPos(mY, 0.0)
+
+        self.setAxisTitle(QwtPlot.xBottom, <font color=green>"Time (seconds)"</font>)
+        self.setAxisTitle(QwtPlot.yLeft, <font color=green>"Values"</font>)
+    
+        self.startTimer(50);
+        self.phase = 0.0
+
+    <font color=blue># __init__()</font>
+    
+    <b>def</b><font color=red> timerEvent</font>(self, e):
+        <b>if</b> self.phase &gt; pi - 0.0001:
+            self.phase = 0.0
+
+        <font color=blue># y moves from left to right:</font>
+        <font color=blue># shift y array right and assign new value y[0]</font>
+        self.y = concatenate((self.y[:1], self.y[:-1]), 1)
+        self.y[0] = sin(self.phase) * (-1.0 + 2.0*random.random())
+		
+        <font color=blue># z moves from right to left:</font>
+        <font color=blue># Shift z array left and assign new value to z[n-1].</font>
+        self.z = concatenate((self.z[1:], self.z[:1]), 1)
+        self.z[-1] = 0.8 - (2.0 * self.phase/pi) + 0.4*random.random()
+
+        self.setCurveData(self.curveR, self.x, self.y)
+        self.setCurveData(self.curveL, self.x, self.z)
+
+        self.replot()
+        self.phase += pi*0.02
+
+    <font color=blue># timerEvent()</font>
+
+<font color=blue># class DataPlot</font>
+
+<b>def</b><font color=red> main</font>(args): 
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+
+<font color=blue># main()</font>
+
+<b>def</b><font color=red> make</font>():
+    demo = DataPlot()
+    demo.resize(500, 300)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+</pre>
+</body>
+</html>

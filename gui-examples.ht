@@ -3,28 +3,47 @@ Title: Graphical User Interface Examples
 <h3>Graphical User Interface Examples</h3>
 
 <p>You have to understand Qt's SIGNAL and SLOT mechanism to develop GUI
-programs with PyQt and PyQwt.
-The chapter "Signal and Slot Support" in PyQt's documentation together with
-the overview "Signals and Slots" in Qt's documentation is sufficient for 
-experienced programmers.
-A good start for newbies is Boudewijn Rempt's
-"GUI Programming with Python Using the Qt Toolkit" <a href=
-"http://www.opendocs.org/pyqt/">online book</a> or <a href=
-"https://secure.linuxports.com/opendocs/">paper copy</a>.</p>
-<br>
+  programs with PyQt and PyQwt.
+  The chapter "Signal and Slot Support" in PyQt's documentation together with
+  the overview "Signals and Slots" in Qt's documentation is sufficient for 
+  experienced programmers.
+  A good start for newbies is Boudewijn Rempt's
+  "GUI Programming with Python Using the Qt Toolkit" <a href=
+  "http://www.opendocs.org/pyqt/">online book</a> or <a href=
+  "https://secure.linuxports.com/opendocs/">paper copy</a>.
+</p>
 
-<h4>StackOrder.py demonstrates</h4>
-
-<p>
+<h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
 <ul>
   <li>
-    how to derive a QwtBarCurve from a QwtPlotCurve.
+    how to use <tt class="class">QwtPlot<tt>.
   </li>
   <li>
-    how to use a QwtCounter to control the number of bars to display.
+    how to produce timer events.
   </li>
   <li>
-    how to use QComboBoxes to control outline and fill colors of the bars.
+    how to handle timer events by reimplementing
+    <tt class="function">QObject.timerEvent()</tt>.
+  </li>
+</ul>
+
+<p><img alt="DataPlot Widget" src="examples/DataDemo.png"
+        width=500 height=300 border=1>
+</p>
+
+<h5><a href="examples/StackOrder.py.html">StackOrder.py</a> demonstrates</h5>
+<ul>
+  <li>
+    how to derive <tt class="class">QwtBarCurve</tt> from <tt class="class">
+    QwtPlotCurve</tt>.
+  </li>
+  <li>
+    how to use a <tt class="class">QwtCounter</tt> instance to control the
+    number of bars to display.
+  </li>
+  <li>
+    how to use <tt class="class">QComboBox</tt> instances to control outline
+    and fill colors of the bars.
   </li>
   <li>
     how to enable plot cursor tracking.
@@ -32,11 +51,10 @@ A good start for newbies is Boudewijn Rempt's
   <li>
     how to implement an infinite deep zoom stack.
   </li>
-</ul></p>
+</ul>
 
-<p><img src="examples/StackOrder.png" width=400 height=400 border=1></p>
-
-<p><a href="examples/StackOrder.py.html">StackOrder.py</a>.</p>
+<p><img alt="StackOrder Widget" src="examples/StackOrder.png"
+        width=500 height=500 border=1></p>
 
 <!--
 Local Variables:
