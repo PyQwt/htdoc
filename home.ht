@@ -35,27 +35,8 @@ for <a href="http://www.trolltech.com/">Qt</a>.</p>
 <h3>Supported platforms</h3>
 
 <p>The <a href="doc/installation.html">documentation</a> explains how
-to install PyQwt on MicroSoft Windows and any Posix system supported
-by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
-
-
-<h3>Mac OS X requires a snapshot</h3>
-
-<p>PyQwt-4.0 will run on Mac OS X and will support sip-3.10, -3.10.1,
--3.10.2, and -4.0, and PyQt-3.10, -3.11, and -3.12.
-Source code is available from
-<a href="http://www.sourceforge.net/cvs/?group_id=82987">CVS</a> or as a
-<a href="snapshot">snapshot</a>.
-The snapshot
-<ol>
-<li>runs on Linux with sip-3.10.*, -4.0rc*, and PyQt-3.10, -3.11 and 3.12.
-</li>
-<li>runs on Mac OS X with sip-4.0rc* and PyQt-3.11.
-</li>
-<li>runs on Windows with sip-4.0rc* and PyQt-3.11-Commercial.
-</li>
-</ol>
-</p>
+to install PyQwt on MicroSoft Windows, MacOS/X and any Posix system
+supported by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
 
 
 <h3>Bug fixes and upgrades for PyQwt-3.8</h3>

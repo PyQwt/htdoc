@@ -1,3 +1,6 @@
+There are no patches for PyQwt-4.0rc0.
+
+
 PyQwt-3.8a.patch fixes: 
 
 1. Building of PyQwt-3.8 for Posix platforms without an entry for QMAKE_RPATH

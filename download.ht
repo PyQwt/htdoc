@@ -7,6 +7,37 @@ Title: Download Instructions
 for compatible precompiled PyQt and sip packages may save you a lot of time!
 </p>
 
+<h3>Binary installation of PyQwt-4.0rc0 on Windows for non-commercial use with Python-2.3.4</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-msvc-3.12.exe">PyQt-win-nc-msvc-3.12.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-4.0rc0.win32-py2.3.exe?download">PyQwt_Qt230-4.0rc0.win32-py2.3.exe</a></li>
+</ol>
+
+Instead of Python with Numeric, you may prefer 
+<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
+Enthought Python</a>.
+
+
+<h3>Source installation of PyQwt-4.0rc0 on MacOS/X or Posix systems</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.2.tar.bz2">qt-x11-free-3.3.2.tar.bz2</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.0rc4.tar.gz">sip-4.0rc4.tar.gz</a>
+(requires Python-2.3) or
+<a href="http://pyqwt.sourceforge.net/support/sip-3.12.tar.gz">sip-3.12.tar.gz</a></li>
+(not for MacOS/X)
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.12.tar.gz">PyQt-mac-gpl-3.12.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.12.tar.gz">PyQt-x11-gpl-3.12.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.0rc0.tar.gz?download">PyQwt-4.0rc0.tar.gz</a></li>
+</ol>
+
+
 <h3>Binary installation of PyQwt-3.8 on Windows for non-commercial use with Python-2.3.4</h3>
 
 <ol>
