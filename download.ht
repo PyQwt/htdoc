@@ -1,16 +1,58 @@
 Title: Download Instructions
 
-<h3>Binary installation on Windows for non-commercial use and Python-2.3</h3>
+<h3>Precompiled packages</h3>
+
+<p>Linux users: checking <a href=
+"http://www.sourceforge.net/project/showfiles.php?group_id=61057">Qt.Py</a>
+for compatible precompiled PyQt and sip packages may save you a lot of time!
+</p>
+
+<h3>Binary installation of PyQwt-3.8 on Windows for non-commercial use with Python-2.3.2-1</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2.exe">Python-2.3.2.exe</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2-1.exe">Python-2.3.2-1.exe</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7b.win32-py2.3.exe?download">PyQwt_Qt230-3.7b.win32-py2.3.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.8.win32-py2.3.exe?download">PyQwt_Qt230-3.8.win32-py2.3.exe</a></li>
 </ol>
 
-<h3>Binary installation on Windows for non-commercial use and Python-2.2.3</h3>
+Instead of Python and Numeric, you may prefer
+<a href="http://www.enthought.com/python/enthought_python-2.3.exe">
+enthought_python-2.3</a>
+
+<h3>Source installation of PyQwt-3.8 on Posix systems</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2.tgz">Python-2.3.2.tgz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.3.tar.bz2">qt-x11-free-3.2.3.tar.bz2</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.8.1.tar.gz">PyQt-x11-gpl-3.8.1.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-3.8.tar.gz?download">PyQwt-3.8.tar.gz</a></li>
+</ol>
+
+<h3>Bug fixes and upgrades for PyQwt-3.8</h3>
+
+<p>None.
+</p>
+
+
+<h3>Binary installation of PyQwt-3.7 on Windows for non-commercial use and Python-2.3.2-1</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2-1.exe">Python-2.3.2-1.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.0.win32-py2.2.exe?download">Numeric-23.0.win32-py2.2.exe</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7b.win32-py2.2.exe?download">PyQwt_Qt230-3.7b.win32-py2.2.exe</a></li>
+</ol>
+
+Instead of Python and Numeric, you may prefer
+<a href="http://www.enthought.com/python/enthought_python-2.3.exe">
+enthought_python-2.3</a>.
+
+<h3>Binary installation of PyQwt-3.7 on Windows for non-commercial use and Python-2.2.3</h3>
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.2.3/Python-2.2.3.exe">Python-2.2.3.exe</a></li>
@@ -20,7 +62,11 @@ Title: Download Instructions
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7.win32-py2.2.exe?download">PyQwt_Qt230-3.7.win32-py2.2.exe</a></li>
 </ol>
 
-<h3>Source installation on Posix systems</h3>
+Instead of Python and Numeric, you may prefer
+<a href="http://www.enthought.com/python/enthought_python-2.2.3.exe">
+enthought_python-2.2.3</a>.
+
+<h3>Source installation of PyQwt-3.7 on Posix systems</h3>
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2.tgz">Python-2.3.2.tgz</a></li>
@@ -32,7 +78,7 @@ Title: Download Instructions
 <li><a href="patches/PyQwt-3.7b.patch">PyQwt-3.7b.patch</a></li>
 </ol>
 
-<h4>Bug fixes and upgrades</h4>
+<h3>Bug fixes and upgrades for PyQwt-3.7</h3>
 
 <p><a href="patches/PyQwt-3.7b.patch">PyQwt-3.7b.patch</a> fixes:
 <ol>
@@ -53,11 +99,6 @@ patch -p0 -b -z .upgrade &lt;PyQwt-3.7b.patch
 and you are ready for the <a href="doc/installation.html">installation
 instructions</a>.
 </p>
-
-<h4>Precompiled packages</h4>
-Checking <a href=
-"http://www.sourceforge.net/project/showfiles.php?group_id=61057">Qt.Py</a>
-for compatible precompiled packages may save you a lot of time.
 
 <!--
 Local Variables:

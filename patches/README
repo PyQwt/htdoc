@@ -1,3 +1,5 @@
+There are no patches for PyQwt-3.8.
+
 PyQwt-3.7b.patch fixes:
 
 1. Building of PyQwt-3.7 for Qt <= 3.2.1 and PyQt <= 3.8.1 and sip <= 3.8.
