@@ -1,4 +1,4 @@
-PYQWT_CVS      := $(HOME)/CVS/pyqwt
+PYQWT_CVS      := $(HOME)/CVS/PyQwt-4_1-fixes
 PYQWT3D_CVS    := $(HOME)/CVS/pyqwt3d
 
 EXAMPLES       := BodeDemo CliDemo1 CliDemo2 DataDemo ErrorBarDemo StackOrder
