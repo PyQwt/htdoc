@@ -3,22 +3,22 @@ Title: Command Line Interpreter Examples
 <h3>Command Line Interpreter Examples</h3>
 
 <p>
-To control PyQt and PyQwt widgets from the Python command line interpreter or
-for instance <a href="http://ipython.scipy.org">IPython</a>, the readline
-module is required.
-
+The readline module is required to control PyQt and PyQwt widgets from the
+Python command line interpreter or for instance <a href=
+"http://ipython.scipy.org">IPython</a>.
 </p>
+
 <p>
-If you have no readline module (Python compiled with MicroSoft Visual C),
-you can use PyCute (a Python shell for PyQt, included with PyQwt) to play
-with the examples.
+You can also use PyCute (a Python shell for PyQt and included with PyQwt) to
+play with the examples, if you have no readline module (Python compiled with
+MicroSoft Visual C).
 </p>
 
 <p>
 The programming style imposed by PyQt (and other GUI toolkit wrappers) is to
 create an application instance with some widgets and to enter into an event
 loop that locks you from the Python command line interpreter.
-PyQwt includes a tiny module to:
+PyQwt includes a tiny module that allows to:
 <ul>
   <li>create and control (Py)Qt widgets from the command line interpreter.</li>
   <li>interact with those widgets through (Py)Qt's GUI.</li>
@@ -30,9 +30,9 @@ Start the Python interpreter and type:
 <pre>
 >>> import iqt # not needed if you are running PyCute instead of Python
 </pre>
-to create an application instance (qApp) and to put qApp->processEvents() on
+to create an application instance and to put an event processing function on
 the event hook of the readline module.
-The GNU readline library closes the event loop by calling qApp->processEvent()
+The GNU readline library closes the event loop by calling this function
 at a maximum rate of 10 times per second while reading the keyboard input. 
 </p>
 <p>
@@ -41,7 +41,7 @@ class. Type:
 <pre>
 >>> from qwt.qplt import *
 </pre>
-to load the following classes Plot, IPlot, Curve, Axis, Pen and Symbol.
+to load the classes Plot, IPlot, Curve, Axis, Pen and Symbol.
 </p>
 <p>
 Type:
