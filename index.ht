@@ -54,9 +54,7 @@ The snapshot
 <ol>
 <li>runs on Linux with sip-3.9, -3.10, -4.0rc2, and PyQt-3.9, -3.10.
 </li>
-<li>requires testing on Windows with PyQt-Commercial. Please, help me to fix
-the <a href="doc/win-source-install.html">Source Installation on Windows</a>
-documentation.
+<li>runs on Windows with sip-4.0rc1 and PyQt-Commercial.
 </li>
 <li>requires minor changes to run on Mac OS X (push me).
 </li>
