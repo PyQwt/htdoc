@@ -19,7 +19,7 @@ EXCLUDES        := --exclude CVS
 EXCLUDES        += --exclude ht2html-2.0
 EXCLUDES        += --exclude *.pyc
 EXCLUDES        += --exclude *~
-ARGS		:= --rsh=ssh -v -r -l -t --update $(EXCLUDES)
+ARGS		:= --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 .SUFFIXES: .ht .html
 
@@ -42,8 +42,8 @@ clean:
 	rm -f $(GENERATED_HTML)
 
 install: clean all
-	rsync $(ARGS) --delete . $(DEST)
+	rsync $(ARGS) . $(DEST)
 
 snarf:
-	rsync $(ARGS) $(DEST)/snapshot .
-	rsync $(ARGS) $(DEST)/support .
+	rsync --rsh=ssh -v -r -l -t --update $(DEST)/snapshot .
+	rsync --rsh=ssh -v -r -l -t --update $(DEST)/support .
