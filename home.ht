@@ -34,8 +34,8 @@ for <a href="http://www.trolltech.com/">Qt</a>.</p>
 <h3>Supported platforms</h3>
 
 <p>The <a href="doc/installation.html">documentation</a> explains how
-to install PyQwt on MicroSoft Windows, MacOS/X and any Posix system
-supported by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
+to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
+supported by Qt (HPUX, Irix, Linux, Sun).</p>
 
 <p>The <a href="download.html">download guide</a> has quick links
 to the PyQwt releases and their prerequisites.</p>
@@ -76,7 +76,8 @@ MacOS/X</li>
 <li>the interfacing between the QwtPlot3D API and Numerical Python
 extensions.</li>
 </ol>
-PyQwt3D compiled with MSVC-6.0 for Windows is not stable.
+PyQwt3D compiled with MSVC-6.0 for Windows is working, but requires more
+testing.
 </p>
 
 
