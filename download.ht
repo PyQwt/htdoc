@@ -3,7 +3,7 @@ Title: Download Instructions
 <h3>Binary installation on Windows for non-commercial use and Python-2.3</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3/Python-2.3.exe">Python-2.3.exe</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2.exe">Python-2.3.2.exe</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
@@ -23,7 +23,7 @@ Title: Download Instructions
 <h3>Source installation on Posix systems</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.3/Python-2.3.tgz">Python-2.3.tgz</a></li>
+<li><a href="http://www.python.org/ftp/python/2.3.2/Python-2.3.2.tgz">Python-2.3.2.tgz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.tar.gz?download">Numeric-23.1.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.1.tar.bz2">qt-x11-free-3.2.1.tar.bz2</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
