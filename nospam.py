@@ -20,8 +20,12 @@ def filter(html):
     """Filter all dumb robot readable mail anchors from a HTML text"""
 
     def replace(m):
-        return ('<a %shref="%s">%s</a>' %
-                (m.group(1), hide(m.group(2)), hide(m.group(3))))
+        if m.group(1):
+            return ('<a %shref="%s">%s</a>' %
+                    (m.group(1), hide(m.group(2)), hide(m.group(3))))
+        else:
+            return ('<a href="%s">%s</a>' %
+                    (hide(m.group(2)), hide(m.group(3))))
 
     # compatible with latex2html mail anchors
     mailRe = re.compile(
