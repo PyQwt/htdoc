@@ -39,7 +39,17 @@ to install PyQwt on MicroSoft Windows, MacOS/X and any Posix system
 supported by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
 
 <p>Go to the <a href="download.html">download</a> page for quick links
-to PyQwt-4.0rc0 packages and its prerequisites.
+to PyQwt-4.0rc0 packages and its prerequisites.</p>
+
+<p>For two reasons, it is impossible to use PyQwt with the closed source
+   <a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
+   interactive development environment for PyQt: 
+<ol>
+<li>Black Adder does not provide the facilities to build Qt based extensions
+    like PyQwt.</li>
+<li>The <a href="license.html">license</a> forbids it.
+</ol>
+</p>
 
 <h3>Bug fixes and upgrades for PyQwt-3.8</h3>
 
