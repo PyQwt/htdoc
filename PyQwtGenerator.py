@@ -122,7 +122,14 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
 
     def __grokbody(self):
         if self.__body is None:
-            text = self.__parser.fp.read()
+            text = (
+                '<center>'
+                '<a href="strike.html">'
+                '<img alt="patents kill free software" '
+                'src="images/no_patents.gif" border=0></a>'
+                '</center>\n'
+                )
+            text += self.__parser.fp.read()
             text = nospam.filter(text)
             i = text.find('<!--table-stop-->')
             if i >= 0:
