@@ -1,4 +1,21 @@
-There are no patches for PyQwt-4.1.
+PyQwt-4.1a.patch:
+
+1. Adds the forgotten 'virtual QwtDoubleRect QwtCurve::boundingRect() const'.
+2. Adds the ErrorBarDemo.py example which redefines QwtCurve::boundingRect().
+3. Fixes zooming in the QwtImagePlotDemo.py example.
+
+
+How to patch? Put PyQwt-4.1.tar.gz and PyQwt-4.1a.patch in the working
+directory, execute:
+
+        tar xvfz PyQwt-4.0rc0.tar.gz
+        patch -p0 -b -z .upgrade <PyQwt-4.1a.patch
+
+and to make the ErrorBarDemo.py example executable, do:
+
+        chmod +x PyQwt-4.1/examples/ErrorBarDemo.py
+
+and you are ready for the installation instructions.
 
 
 PyQwt-4.0rc0a.patch fixes:
