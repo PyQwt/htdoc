@@ -1,3 +1,6 @@
+There are no patches for PyQwt-4.1.
+
+
 PyQwt-4.0rc0a.patch fixes:
 
 1. Building of PyQwt-4.0rc0 against numarray-1.0 and numarray-1.1.
