@@ -1,0 +1,53 @@
+Title: License
+
+<h3>License</h3>
+
+<p>PyQwt is released under the terms of the GNU General Public License with
+exceptions for use with the Educational, Non-Commercial and Commercial releases
+of Qt, PyQt and sip.</p>
+
+<p>
+</p>
+
+<table bgcolor="#99CCFF" width="100%">
+  <tr>
+    <td><br>
+    <center>PyQwt LICENSE</center>
+    <center>Version 1, April 2003</center>
+
+    <p>PyQwt is free software; you can redistribute it and/or modify it under
+    the terms of the GNU General Public License as published by the Free
+    Software Foundation; either version 2 of the License, or (at your option)
+    any later version.</p>
+
+    <p>PyQwt is distributed in the hope that it will be useful, but WITHOUT ANY
+    WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+    FOR A PARTICULAR PURPOSE.  See the GNU  General Public License for more
+    details.</p>
+
+    <p>You should have received a copy of the GNU General Public License along
+    with PyQwt; if not, write to the Free Software Foundation, Inc., 59 Temple
+    Place, Suite 330, Boston, MA 02111-1307, USA.</p>
+
+    <p>In addition, as a special exception, Gerard Vermeulen gives permission
+    to link PyQwt with commercial, non-commercial and educational versions of
+    Qt, PyQt and sip, and distribute PyQwt in this form, provided that equally
+    powerful versions of Qt, PyQt and sip have been released under the terms
+    of the GNU General Public License.</p>
+
+    <p>If PyQwt is linked with commercial, non-commercial and educational
+    versions of Qt, PyQt and sip, Python scripts using PyQwt do not have to be
+    released under the terms of the GNU General Public License.</p>
+
+    <p>You must obey the GNU General Public License in all respects for all of
+    the code used other than Qt, PyQt and sip, including the Python scripts
+    that are part of PyQwt.</p>
+    </td>
+  </tr>
+</table><br>
+
+<!--
+Local Variables:
+mode: HTML
+End:
+-->

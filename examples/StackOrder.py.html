@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>StackOrder.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<font color=blue># Contributed by Tomaz Curk in a bug report showing that the stack order of the</font>
+<font color=blue># curves was dependent on the number of curves. This has been fixed in Qwt.</font>
+<font color=blue>#</font>
+<font color=blue># QwtBarCurve is an idea of Tomaz Curk.</font>
+<font color=blue>#</font>
+<font color=blue># Beautified and expanded by Gerard Vermeulen.</font>
+
+<b>import</b> sys
+<b>import</b> math
+<b>from</b> qt <b>import</b> *
+<b>from</b> qwt <b>import</b> *
+
+<b>class</b><font color=red> QwtBarCurve</font>(QwtPlotCurve):
+
+    <b>def</b><font color=red> __init__</font>(self, parent, penColor=Qt.black, brushColor=Qt.white):
+        QwtPlotCurve.__init__(self, parent)
+        self.penColor = penColor
+        self.brushColor = brushColor
+        
+    <font color=blue># __init__()</font>
+    
+    <b>def</b><font color=red> draw</font>(self, painter, xMap, yMap, start, stop):
+        <font color=green>"""Draws rectangles with the corners taken from the x- and y-arrays.
+        """</font>
+        <b>if</b> type(self.penColor) == type(Qt.black):
+            painter.setPen(QPen(self.penColor, 2))
+        <b>else</b>:
+            painter.setPen(QPen(Qt.NoPen))
+        <b>if</b> type(self.brushColor) == type(Qt.white):
+            painter.setBrush(self.brushColor)
+        <b>if</b> stop == -1:
+            stop = self.dataSize()
+        <font color=blue># force 'start' and 'stop' to be even and positive</font>
+        <b>if</b> start &amp; 1:
+            start -= 1
+        <b>if</b> stop &amp; 1:
+            stop -= 1
+        start = max(start, 0)
+        stop = max(stop, 0)
+        <b>for</b> i <b>in</b> range(start, stop, 2):
+            px1 = xMap.transform(self.x(i))
+            py1 = yMap.transform(self.y(i))
+            px2 = xMap.transform(self.x(i+1))
+            py2 = yMap.transform(self.y(i+1))
+            painter.drawRect(px1, py1, (px2 - px1), (py2 - py1))
+
+    <font color=blue># draw()</font>
+
+<font color=blue># class QwtBarCurve</font>
+
+<b>class</b><font color=red> QwtBarPlotDemo</font>(QMainWindow):
+
+    table = {
+        <font color=green>'none'</font>: None,
+        <font color=green>'black'</font>: Qt.black,
+        <font color=green>'blue'</font>: Qt.blue,
+        <font color=green>'cyan'</font>: Qt.cyan,
+        <font color=green>'gray'</font>: Qt.gray,
+        <font color=green>'green'</font>: Qt.green,
+        <font color=green>'magenta'</font>: Qt.magenta,
+        <font color=green>'red'</font>: Qt.red,
+        <font color=green>'white'</font>: Qt.white,
+        <font color=green>'yellow'</font>: Qt.yellow,
+        }
+    
+    <b>def</b><font color=red> __init__</font>(self, parent=None):
+        QMainWindow.__init__(self, parent)
+
+        self.plot = QwtPlot(<font color=green>"last bar on top: "</font>
+                            <font color=green>"left-click&amp;drag to zoom, "</font>
+                            <font color=green>"right-click to unzoom."</font>, self)
+        self.plot.plotLayout().setCanvasMargin(0)
+        self.plot.plotLayout().setAlignCanvasToTicks(True)
+        self.setCentralWidget(self.plot)
+
+        <font color=blue># Initialize zooming</font>
+        self.plot.canvas().setMouseTracking(True)
+        self.statusBar().message(<font color=green>"Move the cursor with the plot"</font>
+                                 <font color=green>" to show the cursor position"</font>)
+        self.zoomStack = []
+
+        <font color=blue># Connect the mouse SIGNALs from self.plot to the onMouseXx SLOTs</font>
+        self.connect(self.plot,
+                     SIGNAL(<font color=green>'plotMouseMoved(const QMouseEvent&amp;)'</font>),
+                     self.onMouseMoved)
+        self.connect(self.plot,
+                     SIGNAL(<font color=green>'plotMousePressed(const QMouseEvent&amp;)'</font>),
+                     self.onMousePressed)
+        self.connect(self.plot,
+                     SIGNAL(<font color=green>'plotMouseReleased(const QMouseEvent&amp;)'</font>),
+                     self.onMouseReleased)
+
+        <font color=blue># Initialize the toolbar</font>
+        self.toolBar = QToolBar(self)
+        QLabel(<font color=green>"Pen:"</font>, self.toolBar)
+        self.penComboBox = QComboBox(self.toolBar)
+        <b>for</b> name <b>in</b> self.table.keys():
+            self.penComboBox.insertItem(name)
+        self.penComboBox.setCurrentText(<font color=green>'black'</font>)
+        QLabel(<font color=green>"Brush:"</font>, self.toolBar)
+        self.brushComboBox = QComboBox(self.toolBar)
+        <b>for</b> name <b>in</b> self.table.keys():
+            self.brushComboBox.insertItem(name)
+        self.brushComboBox.setCurrentText(<font color=green>'red'</font>)
+        self.toolBar.setStretchableWidget(QWidget(self.toolBar))
+        QLabel(<font color=green>"Bars:"</font>, self.toolBar)
+        self.counter = QwtCounter(self.toolBar)
+        self.counter.setRange(0, 10000, 1)
+        self.counter.setNumButtons(3)
+
+        <font color=blue># Connect SIGNALs from the toolbar widgets to the self.go SLOT</font>
+        self.connect(self.counter, SIGNAL(<font color=green>'valueChanged(double)'</font>), self.go)
+        self.connect(self.penComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
+        self.connect(self.brushComboBox, SIGNAL(<font color=green>'activated(int)'</font>), self.go)
+
+        <font color=blue># Finalize</font>
+        self.counter.setValue(10)
+        self.go(self.counter.value())
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> go</font>(self, x):
+        <font color=green>"""Create and plot a sequence bars taking into account the controls"""</font>
+        self.plot.removeCurves()
+
+        penColor = self.table[str(self.penComboBox.currentText())]
+        brushColor = self.table[str(self.brushComboBox.currentText())]
+
+        <font color=blue># x is a float on 'valueChanged(double)'</font>
+        <font color=blue># x is an int on 'activated(int)'</font>
+        <b>if</b> type(x) == type(0):
+            x = int(self.counter.value())
+        <b>else</b>:
+            self.clearZoomStack()
+            
+        <b>for</b> i <b>in</b> range(x):
+            curve = QwtBarCurve(self.plot, penColor, brushColor)
+            key = self.plot.insertCurve(curve)
+            self.plot.setCurveStyle(key, QwtCurve.UserCurve)
+            self.plot.setCurveData(key, [i, i+1.4], [0.3*i, 5.0+0.3*i])
+
+        self.plot.replot()
+
+    <font color=blue># draw()</font>
+
+    <b>def</b><font color=red> onMouseMoved</font>(self, e):
+        self.statusBar().message(
+            <font color=green>"x = %+.6g, y = %.6g"</font>
+            % (self.plot.invTransform(QwtPlot.xBottom, e.pos().x()),
+               self.plot.invTransform(QwtPlot.yLeft, e.pos().y())))
+
+    <font color=blue># onMouseMoved()</font>
+    
+    <b>def</b><font color=red> clearZoomStack</font>(self):
+        <b>for</b> i <b>in</b> (QwtPlot.xBottom, QwtPlot.yLeft):
+            self.plot.setAxisAutoScale(i)
+        self.zoomStack = []
+
+    <font color=blue># clearZoomStack()</font>
+    
+    <b>def</b><font color=red> onMousePressed</font>(self, e):
+        <b>if</b> Qt.LeftButton == e.button():
+            <font color=blue># Python semantics: self.pos = e.pos() does not work; force a copy</font>
+            self.xpos = e.pos().x()
+            self.ypos = e.pos().y()
+            self.plot.enableOutline(1)
+            self.plot.setOutlinePen(QPen(Qt.black))
+            self.plot.setOutlineStyle(Qwt.Rect)
+            self.zooming = 1
+            <b>if</b> self.zoomStack == []:
+                self.zoomState = (
+                    self.plot.axisScale(QwtPlot.xBottom).lBound(),
+                    self.plot.axisScale(QwtPlot.xBottom).hBound(),
+                    self.plot.axisScale(QwtPlot.yLeft).lBound(),
+                    self.plot.axisScale(QwtPlot.yLeft).hBound(),
+                    )
+        <b>elif</b> Qt.RightButton == e.button():
+            self.zooming = 0
+        <font color=blue># fake a mouse move to show the cursor position</font>
+        self.onMouseMoved(e)
+
+    <font color=blue># onMousePressed()</font>
+
+    <b>def</b><font color=red> onMouseReleased</font>(self, e):
+        <b>if</b> Qt.LeftButton == e.button():
+            xmin = min(self.xpos, e.pos().x())
+            xmax = max(self.xpos, e.pos().x())
+            ymin = min(self.ypos, e.pos().y())
+            ymax = max(self.ypos, e.pos().y())
+            self.plot.setOutlineStyle(Qwt.Cross)
+            xmin = self.plot.invTransform(QwtPlot.xBottom, xmin)
+            xmax = self.plot.invTransform(QwtPlot.xBottom, xmax)
+            ymin = self.plot.invTransform(QwtPlot.yLeft, ymin)
+            ymax = self.plot.invTransform(QwtPlot.yLeft, ymax)
+            <b>if</b> xmin == xmax <b>or</b> ymin == ymax:
+                <b>return</b>
+            self.zoomStack.append(self.zoomState)
+            self.zoomState = (xmin, xmax, ymin, ymax)
+            self.plot.enableOutline(0)
+        <b>elif</b> Qt.RightButton == e.button():
+            <b>if</b> len(self.zoomStack):
+                xmin, xmax, ymin, ymax = self.zoomStack.pop()
+            <b>else</b>:
+                <b>return</b>
+
+        self.plot.setAxisScale(QwtPlot.xBottom, xmin, xmax)
+        self.plot.setAxisScale(QwtPlot.yLeft, ymin, ymax)
+        self.plot.replot()
+
+    <font color=blue># onMouseReleased()</font>
+
+<font color=blue># class StackOrderDemo</font>
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+
+<font color=blue># main()</font>
+
+<b>def</b><font color=red> make</font>():
+    demo = QwtBarPlotDemo()
+    demo.resize(512, 512)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+<font color=blue># Admire!</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+
+</pre>
+</body>
+</html>

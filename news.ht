@@ -1,0 +1,40 @@
+Title: News
+
+<h3>News</h3>
+<table bgcolor="#99CCFF" width="100%">
+  <tr>
+    <td><br>
+      <ul>
+        <li><b>2003-JUN-09</b> Approval of the PyQwt project registration for
+          SourceForge.net.
+        </li>
+      </ul><br>
+    </td>
+  </tr>
+</table><br>
+
+<h3>History</h3>
+<table bgcolor="#99CCFF" width="100%">
+  <tr>
+    <td><br>
+      <ul>
+        <li><b>2001-JUN-28</b> Gerard Vermeulen
+          releases <a href="http://gerard.vermeulen.free.fr/PyQwt-0.29.90.tar.bz2">PyQwt-0.29.90</a>
+          for Python-2.1, Numeric-20.0.0, Qwt-0.3, Qt-2.2.1,
+          sip-2.5 and PyQt-2.5.
+        </li>
+
+        <li><b>2000-FEB-21</b> Mark Colclough
+          releases <a href="http://www.cm.ph.bham.ac.uk/software/pyqt">PyQwt-0.10.1</a>
+          for Qwt-0.2, Qt-1.44, sip-0.10.1 and PyQt-0.10.1.
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<!--
+Local Variables:
+mode: HTML
+End:
+-->
