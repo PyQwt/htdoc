@@ -105,46 +105,35 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
             <font color=green>'...#aaaaaaaaaaaaaaaaaaaaaa#.####'</font>,
             <font color=green>'...########################..##.'</font>]
 
+
 <b>class</b><font color=red> BodePlot</font>(QwtPlot):
 
     <b>def</b><font color=red> __init__</font>(self, *args):
         QwtPlot.__init__(self, *args)
 
-        fn = <font color=green>'luxy sans [b&amp;h]'</font> <font color=blue># ??</font>
-        fn = <font color=green>'arial'</font>           <font color=blue># ??</font>
-        fn = <font color=green>'verdana'</font>         <font color=blue># works best</font>
         self.setTitle(<font color=green>'Frequency Response of a 2&lt;sup&gt;nd&lt;/sup&gt;-order System'</font>)
-        self.setTitleFont(QFont(fn, 16, QFont.Bold))
-        
         self.setCanvasBackground(Qt.darkBlue)
 
-        <font color=blue># outline</font>
-        self.enableOutline(1)
-        self.setOutlinePen(QPen(Qt.green))
-
         <font color=blue># legend</font>
-        self.setAutoLegend(1)
-        self.enableLegend(1)
+        self.setAutoLegend(True)
+        self.enableLegend(True)
         self.setLegendPos(Qwt.Bottom)
         self.setLegendFrameStyle(QFrame.Box | QFrame.Sunken)
 
         <font color=blue># grid </font>
         self.enableGridXMin()
-        self.setGridMajPen(QPen(Qt.white, 0, Qt.DotLine));
-        self.setGridMinPen(QPen(Qt.gray, 0 , Qt.DotLine));
+        self.setGridMajPen(QPen(Qt.white, 0, Qt.DotLine))
+        self.setGridMinPen(QPen(Qt.gray, 0 , Qt.DotLine))
 
         <font color=blue># axes</font>
-        self.enableAxis(QwtPlot.yRight);
+        self.enableAxis(QwtPlot.yRight)
         self.setAxisTitle(QwtPlot.xBottom, u<font color=green>'\u03c9/\u03c9&lt;sub&gt;0&lt;/sub&gt;'</font>)
-        self.setAxisTitleFont(QwtPlot.xBottom, QFont(fn, 14, QFont.Bold))
         self.setAxisTitle(QwtPlot.yLeft, <font color=green>'Amplitude [dB]'</font>)
-        self.setAxisTitleFont(QwtPlot.yLeft, QFont(fn, 14, QFont.Bold))
         self.setAxisTitle(QwtPlot.yRight, u<font color=green>'Phase [\u00b0]'</font>)
-        self.setAxisTitleFont(QwtPlot.yRight, QFont(fn, 14, QFont.Bold))
 
-        self.setAxisOptions(QwtPlot.xBottom, QwtAutoScale.Logarithmic);
-        self.setAxisMaxMajor(QwtPlot.xBottom, 6);
-        self.setAxisMaxMinor(QwtPlot.xBottom, 10);
+        self.setAxisOptions(QwtPlot.xBottom, QwtAutoScale.Logarithmic)
+        self.setAxisMaxMajor(QwtPlot.xBottom, 6)
+        self.setAxisMaxMinor(QwtPlot.xBottom, 10)
 
         <font color=blue># curves</font>
         self.curve1 = self.insertCurve(<font color=green>'Amplitude'</font>)
@@ -154,6 +143,9 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         self.curve2 = self.insertCurve(<font color=green>'Phase'</font>)
         self.setCurvePen(self.curve2, QPen(Qt.cyan))
         self.setCurveYAxis(self.curve2, QwtPlot.yRight)
+
+        <font color=blue># alias</font>
+        fn = self.fontInfo().family()
 
         <font color=blue># marker</font>
         self.mrk1 = self.insertMarker()
@@ -184,7 +176,8 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
             QFont(fn, 12, QFont.Bold, False),
             Qt.blue, QPen(Qt.red, 2), QBrush(Qt.yellow))
         self.setDamp(0.01)
-            
+
+    <font color=blue># __init__()</font>
 
     <b>def</b><font color=red> setDamp</font>(self, d):
         self.damping = d
@@ -201,25 +194,50 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         self.setMarkerPos(self.mrk1, f3, 0.0)
         self.setMarkerLabelText(self.mrk1, <font color=green>'-3 dB at f = %4g'</font> % f3)
         imax = argmax(a)
-        self.setMarkerPos(self.mrk2, f[imax], a[imax]);
+        self.setMarkerPos(self.mrk2, f[imax], a[imax])
         self.setMarkerLabelText(self.mrk2, <font color=green>'Peak: %4g dB'</font> % a[imax])
 
         self.replot()
 
+    <font color=blue># setDamp()</font>
 
+<font color=blue># class BodePlot</font>
 
-zoomInfo = <font color=green>'Zoom: Press mouse button and drag'</font>
-cursorInfo = <font color=green>'Cursor Pos: Press mouse button in plot region'</font>
 
 <b>class</b><font color=red> BodeDemo</font>(QMainWindow):
 
     <b>def</b><font color=red> __init__</font>(self, *args):
         apply(QMainWindow.__init__, (self,) + args)
 
-        self.zoomState = 0
-        
         self.plot = BodePlot(self)
         self.plot.setMargin(5)
+
+        self.zoomers = []
+        zoomer = QwtPlotZoomer(QwtPlot.xBottom,
+                               QwtPlot.yLeft,
+                               QwtPicker.DragSelection,
+                               QwtPicker.AlwaysOff,
+                               self.plot.canvas())
+        zoomer.setRubberBandPen(QPen(Qt.green))
+        self.zoomers.append(zoomer)
+
+        zoomer = QwtPlotZoomer(QwtPlot.xTop,
+                               QwtPlot.yRight,
+                               QwtPicker.DragSelection,
+                               QwtPicker.AlwaysOff,
+                               self.plot.canvas())
+        zoomer.setRubberBand(QwtPicker.NoRubberBand)
+        self.zoomers.append(zoomer)
+
+        self.picker = QwtPlotPicker(
+            QwtPlot.xBottom,
+            QwtPlot.yLeft,
+            QwtPicker.PointSelection | QwtPicker.DragSelection,
+            QwtPlotPicker.CrossRubberBand,
+            QwtPicker.AlwaysOff,
+            self.plot.canvas())
+        self.picker.setRubberBandPen(QPen(Qt.green))
+ 
         self.setCentralWidget(self.plot)
 
         self.toolBar = QToolBar(self)
@@ -227,13 +245,13 @@ cursorInfo = <font color=green>'Cursor Pos: Press mouse button in plot region'</
         btnZoom = QToolButton(self.toolBar)
         btnZoom.setTextLabel(<font color=green>"Zoom"</font>)
         btnZoom.setPixmap(QPixmap(zoom_xpm))
-        btnZoom.setToggleButton(1)
-        btnZoom.setUsesTextLabel(1)
+        btnZoom.setToggleButton(True)
+        btnZoom.setUsesTextLabel(True)
 
         btnPrint = QToolButton(self.toolBar)
         btnPrint.setTextLabel(<font color=green>"Print"</font>)
         btnPrint.setPixmap(QPixmap(print_xpm))
-        btnPrint.setUsesTextLabel(1)
+        btnPrint.setUsesTextLabel(True)
 
         self.toolBar.setStretchableWidget(QWidget(self.toolBar))
         dampBox = QHBox(self.toolBar)
@@ -244,104 +262,84 @@ cursorInfo = <font color=green>'Cursor Pos: Press mouse button in plot region'</
         self.cntDamp.setValue(0.01)
     
         self.statusBar()
-
-        self.showInfo(cursorInfo)
+        self.zoom(False)
         
-        QObject.connect(self.cntDamp, SIGNAL(<font color=green>'valueChanged(double)'</font>),
-                        self.plot.setDamp)
-        QObject.connect(btnPrint, SIGNAL(<font color=green>'clicked()'</font>), self.printPlot)
-        QObject.connect(btnZoom, SIGNAL(<font color=green>'toggled(bool)'</font>), self.zoom)
-        QObject.connect(self.plot,
-                        SIGNAL(<font color=green>'plotMouseMoved(const QMouseEvent&amp;)'</font>),
-                        self.plotMouseMoved)
-        QObject.connect(self.plot,
-                        SIGNAL(<font color=green>'plotMousePressed(const QMouseEvent&amp;)'</font>),
-                        self.plotMousePressed)
-        QObject.connect(self.plot,
-                        SIGNAL(<font color=green>'plotMouseReleased(const QMouseEvent&amp;)'</font>),
-                        self.plotMouseReleased)
+        self.connect(self.cntDamp, SIGNAL(<font color=green>'valueChanged(double)'</font>),
+                     self.plot.setDamp)
+        self.connect(btnPrint, SIGNAL(<font color=green>'clicked()'</font>),
+                     self.printPlot)
+        self.connect(btnZoom, SIGNAL(<font color=green>'toggled(bool)'</font>),
+                     self.zoom)
+        self.connect(self.picker, SIGNAL(<font color=green>'moved(const QPoint &amp;)'</font>), self.moved)
+        self.connect(self.picker, SIGNAL(<font color=green>'selected(const QPointArray &amp;)'</font>),
+                     self.selected)
+
+    <font color=blue># __init__()</font>
 
     <b>def</b><font color=red> printPlot</font>(self):
         <b>try</b>:
-            <font color=blue>#printer = QPrinter()</font>
-            <font color=blue>#printer = QPrinter(QPrinter.ScreenResolution)</font>
-            <font color=blue>#printer = QPrinter(QPrinter.PrinterResolution)</font>
             printer = QPrinter(QPrinter.HighResolution)
-            <font color=blue>#printer = QPrinter(QPrinter.Compatible)</font>
         <b>except</b> AttributeError:
             printer = QPrinter()
         printer.setOrientation(QPrinter.Landscape)
         printer.setColorMode(QPrinter.Color)
         printer.setOutputToFile(True)
-        printer.setOutputFileName(<font color=green>'test-%s.ps'</font> % qVersion())
+        printer.setOutputFileName(<font color=green>'bode-example-%s.ps'</font> % qVersion())
         <b>if</b> printer.setup():
             self.plot.printPlot(printer)
 
+    <font color=blue># printPlot()</font>
+    
     <b>def</b><font color=red> zoom</font>(self, on):
+        self.zoomers[0].setEnabled(on)
+        self.zoomers[0].zoom(0)
+        
+        self.zoomers[1].setEnabled(on)
+        self.zoomers[1].zoom(0)
+
         <b>if</b> on:
-            self.zoomState = 1
+            self.picker.setRubberBand(QwtPicker.NoRubberBand)
         <b>else</b>:
-            self.plot.setAxisAutoScale(QwtPlot.yLeft)
-            self.plot.setAxisAutoScale(QwtPlot.yRight)
-            self.plot.setAxisAutoScale(QwtPlot.xBottom)
-            self.plot.replot()
-            self.zoomState = 0
-        <b>if</b> self.zoomState:
-            self.showInfo(zoomInfo)
+            self.picker.setRubberBand(QwtPicker.CrossRubberBand)
+
+        self.showInfo()
+
+    <font color=blue># zoom()</font>
+    
+    <b>def</b><font color=red> moved</font>(self, point):
+        info = <font color=green>"Freq=%g, Ampl=%g, Phase=%g"</font> % (
+            self.plot.invTransform(QwtPlot.xBottom, point.x()),
+            self.plot.invTransform(QwtPlot.yLeft, point.y()),
+            self.plot.invTransform(QwtPlot.yRight, point.y()))
+        self.showInfo(info)
+
+    <font color=blue># moved()</font>
+
+    <b>def</b><font color=red> selected</font>(self, points):
+        self.showInfo()
+
+    <font color=blue># selected()</font>
+
+    <b>def</b><font color=red> showInfo</font>(self, text=None):
+        <b>if</b> text:
+            self.statusBar().message(text)
+        <b>elif</b> self.picker.rubberBand():
+            self.statusBar().message(
+                <font color=green>'Cursor Pos: Press left mouse button in plot region'</font>)
         <b>else</b>:
-            self.showInfo(cursorInfo)
-
-    <b>def</b><font color=red> showInfo</font>(self, text):
-        self.statusBar().message(text)
-        
-    <b>def</b><font color=red> plotMouseMoved</font>(self, e):
-        frequency = self.plot.invTransform(QwtPlot.xBottom, e.pos().x())
-        amplitude = self.plot.invTransform(QwtPlot.yLeft, e.pos().y())
-        phase = self.plot.invTransform(QwtPlot.yRight, e.pos().y())
-        self.showInfo(<font color=green>'Freq=%g, Ampl=%g, Phase=%g'</font> %
-                      (frequency, amplitude, phase))
-        
-    <b>def</b><font color=red> plotMousePressed</font>(self, e):
-        <font color=blue># Python semantics: self.pos = e.pos() does not work; force a copy</font>
-        self.xpos = e.pos().x()
-        self.ypos = e.pos().y()
-        self.plotMouseMoved(e)  <font color=blue># fake a mouse move to show the cursor position</font>
-        <b>if</b> (self.zoomState):
-            self.plot.setOutlineStyle(Qwt.Rect) 
-        <b>else</b>:
-            self.plot.setOutlineStyle(Qwt.Cross)
-
-    <b>def</b><font color=red> plotMouseReleased</font>(self, e):
-        <b>if</b> (self.zoomState):
-            x1 = min(self.xpos, e.pos().x());
-            x2 = max(self.xpos, e.pos().x());
-            y1 = min(self.ypos, e.pos().y());
-            y2 = max(self.ypos, e.pos().y());
-            lim = 5 - (y2 - y1 + 1) / 2
-            <b>if</b> lim &gt; 0:
-                y1 -= lim
-                y2 += lim
-            lim = 5 - (x2 - x1 + 1) / 2
-            <b>if</b> lim &gt; 0:
-                x1 -= lim
-                x2 += lim
-            self.plot.setAxisScale(QwtPlot.yLeft,
-                                   self.plot.invTransform(QwtPlot.yLeft, y1),
-                                   self.plot.invTransform(QwtPlot.yLeft, y2))
-            self.plot.setAxisScale(QwtPlot.yRight,
-                                   self.plot.invTransform(QwtPlot.yRight, y1),
-                                   self.plot.invTransform(QwtPlot.yRight, y2))
-            self.plot.setAxisScale(QwtPlot.xBottom,
-                                   self.plot.invTransform(QwtPlot.xBottom, x1),
-                                   self.plot.invTransform(QwtPlot.xBottom, x2))
-            self.plot.replot()
-            self.showInfo(cursorInfo);
-            self.plot.setOutlineStyle(Qwt.Triangle);
-            self.zoomState = 0
-
+            self.statusBar().message(
+                <font color=green>'Zoom: Press mouse button and drag'</font>)
+                
+    <font color=blue># showInfo()</font>
+    
+<font color=blue># class BodeDemo</font>
+    
 
 <b>def</b><font color=red> main</font>(args):
     app = QApplication(args)
+    fonts = QFontDatabase()
+    <b>if</b> QString(<font color=green>'Verdana'</font>) <b>in</b> fonts.families():
+        app.setFont(QFont(<font color=green>'Verdana'</font>))
     demo = make()
     app.setMainWidget(demo)
     app.exec_loop()
@@ -353,7 +351,7 @@ cursorInfo = <font color=green>'Cursor Pos: Press mouse button in plot region'</
     demo.show()
     <b>return</b> demo
     
-<font color=blue># Admire! </font>
+<font color=blue># Admire!</font>
 <b>if</b> __name__ == <font color=green>'__main__'</font>:
     main(sys.argv)
 
