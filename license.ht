@@ -42,8 +42,10 @@ of Qt, PyQt and sip.</p>
 
 <h3>Why a special license?</h3>
 
-<p>The GPL licenses of PyQt, sip and therefore Qt do not allow to release
-PyQwt under a lesser free license, such as the LGPL.</p>
+<p>The GPL license covering PyQt and therefore Qt does not allow to release
+PyQwt under a lesser free license, such as the LGPL.
+The PyQwt license does not preclude the use of PyQwt in projects containing
+proprietary code.</p>
 
 <p>The exception in the license is inspired by the
 <a href="http://www.gnu.org/licenses/gpl-faq.html">GNU GPL FAQ</a>.</p>
@@ -72,6 +74,18 @@ PyQwt under a lesser free license, such as the LGPL.</p>
     </td>
   </tr>
 </table><br>
+
+<h3>Application deployment</h3>
+
+<p>Distribution of a non-GPL-ed application containing a statically linked
+PyQwt module is a violation of the GPL.
+The licensing scheme for Qt and PyQt forbids me to release PyQwt under a
+license allowing static linking to proprietary applications unless I buy
+commercial licenses for Qt and PyQt. 
+PyQwt is a hobby and those commercial licenses are only within my means, if
+there is enough interest in a commercial release of PyQwt.
+This means probably selling about 50 commercial licenses per year for $100.
+</p>
 
 <!--
 Local Variables:
