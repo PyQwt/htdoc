@@ -37,20 +37,19 @@ for <a href="http://www.trolltech.com/">Qt</a>.</p>
 to install PyQwt on MicroSoft Windows, MacOS/X and any Posix system
 supported by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
 
-<p>Go to the <a href="download.html">download</a> page for quick links
+<p>The <a href="download.html">download guide</a> has quick links
 to PyQwt-4.0rc0 packages and its prerequisites.</p>
+
+<p>PyQwt integrates nicely with the interface
+<a href="http://www.trolltech.com/products/qt/designer.html">designer</a>
+for Qt (version 3.0 or higher) and the 
+<a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
+integrated development environment.
+</p>
 
 <p>PyQt's closed source
 <a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
-interactive development environment cannot be used with PyQwt for two
-reasons: 
-<ol>
-<li>Black Adder does not provide the facilities to build and use Qt based
-    extensions like PyQwt (the
-    <a href="http://www.thekompany.com/products/blackadder/">overview</a> says
-    what you can do with it, but not what you can't).</li>
-<li>The PyQwt <a href="license.html">license</a> forbids it.</li>
-</ol>
+interactive development environment cannot be used with PyQwt.
 </p>
 
 <h3>Software using PyQwt</h3>
