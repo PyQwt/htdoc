@@ -14,6 +14,7 @@
 <li><a href="http://www.enthought.com">Enthought Python</a>
 <li><a href="http://ht2html.sourceforge.net">ht2html</a>
 <h3>Recommended Tools</h3>
+<li><a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
 <li><a href="http://plasma-gate.weizmann.ac.il/Grace/">Grace</a>
 <li><a href="http://www.lyx.org">LyX</a>
 <h3>SourceForge Host</h3>
