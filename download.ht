@@ -1,0 +1,33 @@
+Title: Download Instructions
+
+<h3>Binary installation on Windows for non-commercial use</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.2.3/Python-2.2.3.exe">Python-2.2.3.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.0.win32-py2.2.exe?download">Numeric-23.0.win32-py2.2.exe</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
+<li><a href="http://www.river-bank.demon.co.uk/download/PyQt/PyQt-win-nc-3.7.exe">PyQt-win-nc-3.7.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7.win32-py2.2.exe?download">PyQwt_Qt230-3.7.win32-py2.2.exe</a></li>
+</ol>
+
+<h3>Source installation on Posix systems</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.2.3/Python-2.2.3.tgz">Python-2.2.3.tgz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.0.tar.gz?download">Numeric-23.0.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.1.2.tar.bz2">qt-x11-free-3.1.2.tar.bz2</a><li>
+<li><a href="http://www.river-bank.demon.co.uk/download/sip/sip-x11-gpl-3.7.tar.gz">sip-x11-gpl-3.7.tar.gz</a></li>
+<li><a href="http://www.river-bank.demon.co.uk/download/PyQt/PyQt-x11-gpl-3.7.tar.gz">PyQt-x11-gpl-3.7.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-3.7.tar.gz?download">PyQwt-3.7.tar.gz</a></li>
+</ol>
+
+<p>You can save yourself a lot of time by checking <a href=
+"http://www.sourceforge.net/project/showfiles.php?group_id=61057">Qt.Py</a>
+for precompiled packages for your system.
+</p>
+
+<!--
+Local Variables:
+mode: HTML
+End:
+-->
