@@ -5,6 +5,8 @@ Title: News
   <tr>
     <td>
       <ul>
+        <li><b>2003-NOV-26</b> Release of PyQwt-3.8.
+        </li>
         <li><b>2003-SEP-21</b> <a href="download.html">PyQwt-3.7b.patch</a>
           fixes another minor bug.
           Release PyQwt_Qt230-3.7b.win32-py2.3.exe for Python-2.3,
