@@ -63,51 +63,73 @@ Title: Graphical User Interface Examples
         width=600 height=600 border=1></p>
 
 
-<h5><a href="examples/BodeDemo.py.html">BodeDemo.py</a> demonstrates a new
-feature in the future PyQwt-3.8</h5>
+<h5><a href="examples/ErrorBarDemo.py.html">ErrorBarDemo.py</a> demonstrates
+</h5>
+
+<ul>
+  <li>
+    how to implement a subclass of <tt class="class">QwtPlotCurve</tt> which
+    has error bars in either no, or the x-, or the y-, or both directions. 
+  </li>
+  <li>
+    how to make autoscaling take account of the error bars by reimplementing
+    <tt class="function">QwtCurve.boundingRect()</tt>.
+  </li>
+</ul>
+
+<p><img alt="ErrorBarDemo Widget" src="examples/ErrorBarDemo.png"
+        width=600 height=400 border=1>
+</p>
+
+<p>Notes:
+<ul>
+  <li>
+    this example requires at least PyQwt-4.1 with
+    <a href="patches/PyQwt-4.1a.patch">PyQwt-4.1a.patch.
+  </li>
+</ul>
+</p>
+
+
+<h5><a href="examples/BodeDemo.py.html">BodeDemo.py</a> demonstrates</h5>
 <ul>
   <li>
     improved rendering of scientific formula's by a combination of rich text
     and unicode.
   </li>
+  <li>
+    how to customize printing by derivation from
+    <tt class="class">QwtPlotPrintFilter</tt>.    
+  </li>
+  <li>
+    how to zoom on more than two scales. 
+  </li>
 </ul>
-<p>Testing on Linux requires:
-<ol>
-  <li>
-    code from the CVS repositories of Qwt and PyQwt.
-  </li>
-  <li>
-    the <a href=
-    "http://corefonts.sourceforge.net">MicroSoft True Type Core Fonts</a>.
-  </li>
-  <li>
-    printing requires configuration of ghostscript for the true type fonts.
-    Study the 'MicroSoft True Type Core Fonts' part in my <a href=
-    "examples/Fontmap.GS">Mandrake-8.2 Fontmap.GS</a> to see how to modify your
-    Fontmap or Fontmap.GS file.
-    Keep backups, because ghostscript chokes on syntax errors.
-    The <a href="http://tldp.org/HOWTO/TT-Debian-4.html">chapter on printing in
-    the TrueType Fonts in Debian mini-HOWTO</a> is a useful, but slightly dated
-    reference.
-    The <a href=
-    "http://loll.sourceforge.net/linux/links/X_Window_System/Fonts/index.html">
-    Loads of Linux Links</a> site points to more information on configuring
-    fonts.
-  </li>
-</ol>
-</p>
 
 <p><img alt="BodeDemo Widget" src="examples/BodeDemo.png"
         width=540 height=400 border=1>
 </p>
 
+<p>Running this example on Linux requires the <a href=
+  "http://corefonts.sourceforge.net">MicroSoft TrueType Core Fonts</a>.
+  Some Linux distributions (SuSE) let you install those fonts from their
+  GUI administration tools.
+  Other RPM based Linux distributions (Mandrake) require you to follow those
+  <a href="http://corefonts.sourceforge.net">instructions<a>.
+</p>
+<p>The <a href=
+  "http://loll.sourceforge.net/linux/links/X_Window_System/Fonts/index.html">
+  Loads of Linux Links</a> site points to more information on configuring
+  fonts.
+</p>
+
 <p>Notes:
 <ol>
   <li>
-    the Verdana font works best (due QPrinter limitations and bugs?).
+    the Verdana font is the best MicroSoft TrueType Core Font.
   </li>
   <li>
-    use as much unicode as possible.
+    use as much unicode as possible (get or buy a real unicode font).
   </li>
   <li>
     The unicode codes for supported glyphs can be found in the unicodetoglyph
@@ -115,15 +137,15 @@ feature in the future PyQwt-3.8</h5>
   </li>
   <li>
     fall back on rich text if a requested glyph is missing from the font
-    (sub-scripts are missing).
+    (sub-scripts are missing from the MicroSoft TrueType Core fonts).
   </li>
 </ol> 
-I am working on better instructions.
 </p>
 
 
 <!--
 Local Variables:
 mode: HTML
+fill-column: 79
 End:
 -->
