@@ -9,8 +9,9 @@
 <li><a href="http://www.riverbankcomputing.co.uk/sip">sip</a>
 <h3>Indispensable Tools</h3>
 <li><a href="http://www.numpy.org">Numeric</a>
-<li><a href="http://www.scipy.org">SciPy</a>
 <li><a href="http://www.stsci.edu/resources/software_hardware/numarray">numarray</a>
+<li><a href="http://www.scipy.org">SciPy</a>
+<li><a href="http://www.enthought.com">Enthought Python</a>
 <li><a href="http://ht2html.sourceforge.net">ht2html</a>
 <h3>Recommended Tools</h3>
 <li><a href="http://plasma-gate.weizmann.ac.il/Grace/">Grace</a>
