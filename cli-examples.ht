@@ -77,10 +77,26 @@ Title: Command Line Interpreter Examples
         zooming and unzooming uses an infinite deep stack:
         <ul>     
           <li>left-click&amp;drag&amp;release to zoom</li>
-          <li>right-click to unzoom</li>
+          <li>right-click to unzoom to the previous zoom selection</li>
+          <li>middle-click to unzoom to the initial state</li>
         </ul>
       </li>
     </ul>
+  </li>
+  <li>
+    There is also an <tt class="class">IPlot</tt> widget that adds a few
+    interactive buttons to <tt class="class">Plot</tt> to facilitate printing
+    to a printer and or (E)PS file and to clone the plot into Grace.
+    Grace is an interactive plotting program producing hardcopy output that
+    is better suited for LaTeX documents and scientific journals. 
+    Type:
+    <pre class="cli">
+>>> p = IPlot(Curve(x, cos(x), Pen(Magenta, 2), "cos(x)"),
+...           Curve(x, exp(x), Pen(Red), "exp(x)", Right),
+...           Axis(Right, Logarithmic),
+...           "PyQwt using Qwt-%s -- http://qwt.sf.net" % QWT_VERSION_STR)
+    </pre>
+    to show it.
   </li>
   <li>
     Type:
@@ -98,7 +114,7 @@ Title: Command Line Interpreter Examples
     </pre>
     to add two more curves to the plot.
     <p><img alt="plot with four curves" src="examples/CliDemo2.png"
-            width=600 height=400 border=1></p>
+            width=700 height=500 border=1></p>
   </li>
 </ol>
 

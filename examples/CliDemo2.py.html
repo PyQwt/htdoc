@@ -17,10 +17,10 @@
 
 <b>def</b><font color=red> make</font>():
     x = arange(-2*pi, 2*pi, 0.01)
-    demo = Plot(Curve(x, cos(x), Pen(Magenta, 2), <font color=green>"cos(x)"</font>),
-                Curve(x, exp(x), Pen(Red), <font color=green>"exp(x)"</font>, Right),
-                Axis(Right, Logarithmic),
-                <font color=green>"PyQwt using Qwt-%s -- http://qwt.sf.net"</font> % QWT_VERSION_STR)
+    demo = IPlot(Curve(x, cos(x), Pen(Magenta, 2), <font color=green>"cos(x)"</font>),
+                 Curve(x, exp(x), Pen(Red), <font color=green>"exp(x)"</font>, Right),
+                 Axis(Right, Logarithmic),
+                 <font color=green>"PyQwt using Qwt-%s -- http://qwt.sf.net"</font> % QWT_VERSION_STR)
     x = x[0:-1:10]
     demo.plot(Curve(x, cos(x-pi/4), Symbol(Circle, Yellow), <font color=green>"circle"</font>),
               Curve(x, cos(x+pi/4), Pen(Blue), Symbol(Square, Cyan), <font color=green>"square"</font>))
