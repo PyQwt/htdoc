@@ -1,5 +1,7 @@
 doc
 ht2html-2.0
+snapshot
 support
+sync-slow
 *.html
 *.pyc
