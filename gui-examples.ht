@@ -47,10 +47,14 @@ feature in the future PyQwt-3.8</h5>
 </ol>
 </p>
 
-<p>Warnings:
+<p><img alt="BodeDemo Widget" src="examples/BodeDemo.png"
+        width=540 height=400 border=1>
+</p>
+
+<p>Notes:
 <ol>
   <li>
-    the verdana font works best (due QPrinter limitations and bugs?).
+    the Verdana font works best (due QPrinter limitations and bugs?).
   </li>
   <li>
     use as much unicode as possible.
@@ -67,9 +71,6 @@ feature in the future PyQwt-3.8</h5>
 I am working on better instructions.
 </p>
 
-<p><img alt="BodeDemo Widget" src="examples/BodeDemo.png"
-        width=540 height=400 border=1>
-</p>
 
 <h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
 <ul>

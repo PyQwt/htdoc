@@ -113,7 +113,7 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         fn = <font color=green>'luxy sans [b&amp;h]'</font> <font color=blue># ??</font>
         fn = <font color=green>'arial'</font>           <font color=blue># ??</font>
         fn = <font color=green>'verdana'</font>         <font color=blue># works best</font>
-        self.setTitle(<font color=green>'Frequency Response a 2&lt;sup&gt;nd&lt;/sub&gt;-order System'</font>)
+        self.setTitle(<font color=green>'Frequency Response of a 2&lt;sup&gt;nd&lt;/sup&gt;-order System'</font>)
         self.setTitleFont(QFont(fn, 16, QFont.Bold))
         
         self.setCanvasBackground(Qt.darkBlue)
@@ -159,26 +159,30 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         self.mrk1 = self.insertMarker()
         self.setMarkerLineStyle(self.mrk1, QwtMarker.VLine)
         self.setMarkerPos(self.mrk1, 0.0, 0.0)
+        self.setMarkerLinePen(self.mrk1, QPen(Qt.green, 2, Qt.DashDotLine))
         self.setMarkerLabelAlign(self.mrk1, Qt.AlignRight | Qt.AlignBottom)
-        self.setMarkerPen(self.mrk1, QPen(Qt.green, 2, Qt.DashDotLine))
-        self.setMarkerFont(self.mrk1, QFont(fn, 12, QFont.Bold))
+        self.setMarkerLabel(self.mrk1, <font color=green>''</font>, QFont(fn, 12, QFont.Bold),
+                            Qt.green, QPen(Qt.NoPen), QBrush(Qt.red))
 
         self.mrk2 = self.insertLineMarker(<font color=green>''</font>, QwtPlot.yLeft)
+        self.setMarkerLinePen(self.mrk2, QPen(Qt.red, 2, Qt.DashDotLine))
         self.setMarkerLabelAlign(self.mrk2, Qt.AlignRight | Qt.AlignBottom)
-        self.setMarkerPen(self.mrk2, QPen(QColor(Qt.red), 2, Qt.DashDotLine))
-        self.setMarkerFont(self.mrk2, QFont(fn, 12, QFont.Bold))
+        self.setMarkerLabel(self.mrk2, <font color=green>''</font>, QFont(fn, 12, QFont.Bold),
+                            Qt.red, QPen(Qt.NoPen),
+                            QBrush(self.canvasBackground()))
         self.setMarkerSymbol(self.mrk2, QwtSymbol(
             QwtSymbol.Diamond, QBrush(Qt.yellow), QPen(Qt.green), QSize(7,7)))
 
         <font color=blue># text marker</font>
-        m = self.insertMarker(QString(
-            u<font color=green>'[1-(\u03c9/\u03c9&lt;sub&gt;0&lt;/sub&gt;)&lt;sup&gt;2&lt;/sup&gt;+2j\u03c9/Q]'</font>
-            <font color=green>'&lt;sup&gt;-1&lt;/sup&gt;'</font>))
+        m = self.insertMarker()
         self.setMarkerPos(m, 0.1, -20.0)
         self.setMarkerLabelAlign(m, Qt.AlignRight | Qt.AlignBottom)
-        self.setMarkerFont(m, QFont(fn, 12, QFont.Bold, False))
-        self.setMarkerPen(m, QPen(Qt.blue))
-        
+        self.setMarkerLabel(
+            m,
+            QString(u<font color=green>'[1-(\u03c9/\u03c9&lt;sub&gt;0&lt;/sub&gt;)&lt;sup&gt;2&lt;/sup&gt;+2j\u03c9/Q]'</font>
+                    <font color=green>'&lt;sup&gt;-1&lt;/sup&gt;'</font>),
+            QFont(fn, 12, QFont.Bold, False),
+            Qt.blue, QPen(Qt.red, 2), QBrush(Qt.yellow))
         self.setDamp(0.01)
             
 
@@ -195,10 +199,10 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         i3 = argmax(where(less(a, -3.0), a, -100.0))
         f3 = f[i3] - (a[i3]+3.0)*(f[i3]-f[i3-1])/(a[i3]-a[i3-1])
         self.setMarkerPos(self.mrk1, f3, 0.0)
-        self.setMarkerLabel(self.mrk1, <font color=green>'-3 dB at f = %4g'</font> % f3)
+        self.setMarkerLabelText(self.mrk1, <font color=green>'-3 dB at f = %4g'</font> % f3)
         imax = argmax(a)
         self.setMarkerPos(self.mrk2, f[imax], a[imax]);
-        self.setMarkerLabel(self.mrk2, <font color=green>'Peak: %4g dB'</font> % a[imax])
+        self.setMarkerLabelText(self.mrk2, <font color=green>'Peak: %4g dB'</font> % a[imax])
 
         self.replot()
 
@@ -239,7 +243,6 @@ cursorInfo = <font color=green>'Cursor Pos: Press mouse button in plot region'</
         self.cntDamp.setRange(0.01, 5.0, 0.01)
         self.cntDamp.setValue(0.01)
     
-        <font color=blue>#self.toolBar(self.toolBar)</font>
         self.statusBar()
 
         self.showInfo(cursorInfo)
@@ -260,15 +263,19 @@ cursorInfo = <font color=green>'Cursor Pos: Press mouse button in plot region'</
 
     <b>def</b><font color=red> printPlot</font>(self):
         <b>try</b>:
-            p = QPrinter(QPrinter.HighResolution)
+            <font color=blue>#printer = QPrinter()</font>
+            <font color=blue>#printer = QPrinter(QPrinter.ScreenResolution)</font>
+            <font color=blue>#printer = QPrinter(QPrinter.PrinterResolution)</font>
+            printer = QPrinter(QPrinter.HighResolution)
+            <font color=blue>#printer = QPrinter(QPrinter.Compatible)</font>
         <b>except</b> AttributeError:
-            p = QPrinter()
-        p.setColorMode(QPrinter.Color)
-        p.setOutputToFile(True)
-        p.setOutputFileName(<font color=green>'test.ps'</font>)
-        <font color=blue>#p = QPrinter()</font>
-        <b>if</b> p.setup():
-            self.plot.printPlot(p);
+            printer = QPrinter()
+        printer.setOrientation(QPrinter.Landscape)
+        printer.setColorMode(QPrinter.Color)
+        printer.setOutputToFile(True)
+        printer.setOutputFileName(<font color=green>'test-%s.ps'</font> % qVersion())
+        <b>if</b> printer.setup():
+            self.plot.printPlot(printer)
 
     <b>def</b><font color=red> zoom</font>(self, on):
         <b>if</b> on:
