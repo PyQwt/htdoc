@@ -77,7 +77,15 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         p.sidebar.append(('http://sourceforge.net', '''
 <center><img src="http://sourceforge.net/sflogo.php?group_id=82987&type=2" width="125" height="37" border="0" alt="SourceForge Logo"></center>'''))
         self.__linkfixer.massage(p.sidebar, self.__d)
-
+        # Sign the petition against European software patents
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://petition.eurolinux.org/', '''
+<center><img alt="Sign the petition against European software patents" border="0" src="%(rootdir)s/images/no_epatents.png"></center>''' % self.__d))
+        # Why are software patents bad?
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://www.nosoftwarepatents.com/', '''
+<center><img alt="Why are software patents bad?" border="0" src="%(rootdir)s/images/90x40_3.jpg"></center>''' % self.__d))
+        # 
         Sidebar.__init__(self, p.sidebar)
         #
         # fix up our site links, no relthis because the site links are
@@ -107,7 +115,7 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
     def get_corner(self):
         # it is important not to have newlines between the img tag and the end
         # anchor and end center tags, otherwise layout gets messed up
-        return '<center><b>PyQwt</b></center>'
+        return '<center><b><p>PyQwt</p><p>PyQwt3D</p></b></center>'
 
     def get_corner_bgcolor(self):
         return '#3399ff'
@@ -124,17 +132,25 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         if self.__body is None:
             text = self.__parser.fp.read()
             text += (
-                '<h3>Help to stop software patents</h3>'
-
-                '<p>Free software and small and/or medium sized software '
+                '\n<p>'
+                '\n<table bgcolor="#99CCFF" width="100%">'
+                '\n<tr>'
+                '\n<td>'
+                '\n<h3>Help to stop software patents</h3>'
+                '\n<p>Free software and small and/or medium sized software '
                 'companies are threatened by patents on '
                 '<a href="http://swpat.ffii.org/patents/samples/index.en.html">algorithms</a> and '
-                '<a href="http://webshop.ffii.org">business methods</a>.</p>\n'
-                '<li>See <a href="http://www.nosoftwarepatents.com">No Software Patents</a> for an excellent explanation of the devastating effects of software patents on software (users!) and software development (developers!)</li>\n'
-                '<li>Sign the <a href="http://petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>\n'
-                '<li>Support the <a href="http://swpat.ffii.org">Foundation for a Free Information Infrastructure</a> in Europe</li>\n'
-                '<li>Support the <a href="http://www.eff.org/patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>\n'
-                '</ol>\n'
+                '<a href="http://webshop.ffii.org">business methods</a>.</p>'
+                '\n<ol>'
+                '\n<li>Read this <a href="http://www.nosoftwarepatents.com">excellent explanation</a> of the devastating effects of software patents on software (users!) and software development (developers!)</li>'
+                '\n<li>Sign the <a href="http://petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>'
+                '\n<li>Support the <a href="http://swpat.ffii.org">Foundation for a Free Information Infrastructure</a> in Europe</li>'
+                '\n<li>Support the <a href="http://www.eff.org/patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>'
+                '\n</ol>'
+                '\n</td>'
+                '\n</tr>'
+                '\n</table>'
+                '\n</p>'
                 )
             text = nospam.filter(text)
             i = text.find('<!--table-stop-->')
