@@ -1,0 +1,324 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>ErrorBarDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> qt <b>import</b> *
+<b>from</b> qwt <b>import</b> *
+
+<font color=blue># try to import scipy, Numeric, or numarray</font>
+<b>try</b>:
+    <b>from</b> scipy <b>import</b> *
+<b>except</b> ImportError:
+    <b>try</b>:
+        <b>from</b> Numeric <b>import</b> *
+    <b>except</b> ImportError:
+        <b>try</b>:
+            <b>from</b> numarray <b>import</b> *
+        <b>except</b> ImportError:
+            <b>raise</b> ImportError, <font color=green>'Failed to import scipy, Numeric, or numarray'</font>
+
+
+<b>class</b><font color=red> ErrorBarPlotCurve</font>(QwtPlotCurve):
+
+    <b>def</b><font color=red> __init__</font>(self, parent,
+                 x = [], y = [], dx = None, dy = None,
+                 curvePen = QPen(Qt.NoPen),
+                 curveStyle = QwtCurve.Lines,
+                 curveSymbol = QwtSymbol(),
+                 errorPen = QPen(Qt.NoPen),
+                 errorCap = 0,
+                 errorOnTop = False,
+                 ):
+        <font color=green>"""A curve of x versus y data with error bars in dx and dy.
+
+        Horizontal error bars are plotted if dx is not None.
+        Vertical error bars are plotted if dy is not None.
+
+        x and y must be sequences with a shape (N,) and dx and dy must be
+        sequences (if not None) with a shape (), (N,), or (2, N):
+        - if dx or dy has a shape () or (N,), the error bars are given by
+          (x-dx, x+dx) or (y-dy, y+dy),
+        - if dx or dy has a shape (2, N), the error bars are given by
+          (x-dx[0], x+dx[1]) or (y-dy[0], y+dy[1]).
+
+        curvePen is the pen used to plot the curve
+        
+        curveStyle is the style used to plot the curve
+        
+        curveSymbol is the symbol used to plot the symbols
+        
+        errorPen is the pen used to plot the error bars
+        
+        errorCap is the size of the error bar caps
+        
+        errorOnTop is a boolean:
+        - if True, plot the error bars on top of the curve,
+        - if False, plot the curve on top of the error bars.
+        """</font>
+
+        QwtPlotCurve.__init__(self, parent)
+        self.setData(x, y, dx, dy)
+        self.setPen(curvePen)
+        self.setStyle(curveStyle)
+        self.setSymbol(curveSymbol)
+        self.errorPen = errorPen
+        self.errorCap = errorCap
+        self.errorOnTop = errorOnTop
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> setData</font>(self, x, y, dx = None, dy = None):
+        <font color=green>"""Set x versus y data with error bars in dx and dy.
+
+        Horizontal error bars are plotted if dx is not None.
+        Vertical error bars are plotted if dy is not None.
+
+        x and y must be sequences with a shape (N,) and dx and dy must be
+        sequences (if not None) with a shape (), (N,), or (2, N):
+        - if dx or dy has a shape () or (N,), the error bars are given by
+          (x-dx, x+dx) or (y-dy, y+dy),
+        - if dx or dy has a shape (2, N), the error bars are given by
+          (x-dx[0], x+dx[1]) or (y-dy[0], y+dy[1]).
+        """</font>
+        
+        self.__x = asarray(x, Float)
+        <b>if</b> len(self.__x.shape) != 1:
+            <b>raise</b> RuntimeError, <font color=green>'len(asarray(x).shape) != 1'</font>
+
+        self.__y = asarray(y, Float)
+        <b>if</b> len(self.__y.shape) != 1:
+            <b>raise</b> RuntimeError, <font color=green>'len(asarray(y).shape) != 1'</font>
+        <b>if</b> len(self.__x) != len(self.__y):
+            <b>raise</b> RuntimeError, <font color=green>'len(asarray(x)) != len(asarray(y))'</font> 
+
+        <b>if</b> dx <b>is</b> None:
+            self.__dx = None
+        <b>else</b>:
+            self.__dx = asarray(dx, Float)
+        <b>if</b> len(self.__dx.shape) <b>not</b> <b>in</b> [0, 1, 2]:
+            <b>raise</b> RuntimeError, <font color=green>'len(asarray(dx).shape) not in [0, 1, 2]'</font>
+            
+        <b>if</b> dy <b>is</b> None:
+            self.__dy = dy
+        <b>else</b>:
+            self.__dy = asarray(dy, Float)
+        <b>if</b> len(self.__dy.shape) <b>not</b> <b>in</b> [0, 1, 2]:
+            <b>raise</b> RuntimeError, <font color=green>'len(asarray(dy).shape) not in [1, 2]'</font>
+        
+        QwtPlotCurve.setData(self, self.__x, self.__y)
+
+    <font color=blue># setData()</font>
+        
+    <b>def</b><font color=red> boundingRect</font>(self):
+        <font color=green>"""Return the bounding rectangle of the data, error bars included.
+        """</font>
+        <b>if</b> self.__dx <b>is</b> None:
+            xmin = min(self.__x)
+            xmax = max(self.__x)
+        <b>elif</b> len(self.__dx.shape) <b>in</b> [0, 1]:
+            xmin = min(self.__x - self.__dx)
+            xmax = max(self.__x + self.__dx)
+        <b>else</b>:
+            xmin = min(self.__x - self.__dx[0])
+            xmax = max(self.__x + self.__dx[1])
+
+        <b>if</b> self.__dy <b>is</b> None:
+            ymin = min(self.__y)
+            ymax = max(self.__y)
+        <b>elif</b> len(self.__dy.shape) <b>in</b> [0, 1]:
+            ymin = min(self.__y - self.__dy)
+            ymax = max(self.__y + self.__dy)
+        <b>else</b>:
+            ymin = min(self.__y - self.__dy[0])
+            ymax = max(self.__y + self.__dy[1])
+
+        <b>return</b> QwtDoubleRect(xmin, xmax, ymin, ymax)
+        
+    <font color=blue># boundingRect()</font>
+
+    <b>def</b><font color=red> draw</font>(self, painter, xMap, yMap, first, last = -1):
+        <font color=green>"""Draw an interval of the curve, including the error bars
+
+        painter is the QPainter used to draw the curve
+
+        xMap is the QwtDiMap used to map x-values to pixels
+
+        yMap is the QwtDiMap used to map y-values to pixels
+        
+        first is the index of the first data point to draw
+
+        last is the index of the last data point to draw. If last &lt; 0, last
+        is transformed to index the last data point
+        """</font>
+        
+        <b>if</b> last &lt; 0:
+            last = self.dataSize() - 1
+        <b>if</b> <b>not</b> self.verifyRange(first, last):
+            <b>return</b>
+
+        <b>if</b> self.errorOnTop:
+            QwtPlotCurve.draw(self, painter, xMap, yMap, first, last)
+
+        <font color=blue># draw the error bars</font>
+        painter.save()
+        painter.setPen(self.errorPen)
+
+        <font color=blue># draw the error bars with caps in the x direction</font>
+        <b>if</b> self.__dx <b>is</b> <b>not</b> None:
+            <font color=blue># draw the bars</font>
+            <b>if</b> len(self.__dx.shape) <b>in</b> [0, 1]:
+                xmin = (self.__x - self.__dx)[first:last+1]
+                xmax = (self.__x + self.__dx)[first:last+1]
+            <b>else</b>:
+                xmin = (self.__x - self.__dx[0])[first:last+1]
+                xmax = (self.__x + self.__dx[1])[first:last+1]
+            y = self.__y[first:last+1]
+            n, i, j = len(y), 0, 0
+            lines = QPointArray(2*n)
+            <b>while</b> i &lt; n:
+                yi = yMap.transform(y[i])
+                lines.setPoint(j, xMap.transform(xmin[i]), yi)
+                j += 1
+                lines.setPoint(j, xMap.transform(xmax[i]), yi)
+                j += 1; i += 1
+            painter.drawLineSegments(lines)
+            <b>if</b> self.errorCap &gt; 0:
+                <font color=blue># draw the caps</font>
+                cap = self.errorCap/2
+                n, i, j = len(y), 0, 0
+                lines = QPointArray(4*n)
+                <b>while</b> i &lt; n:
+                    yi = yMap.transform(y[i])
+                    lines.setPoint(j, xMap.transform(xmin[i]), yi - cap)
+                    j += 1
+                    lines.setPoint(j, xMap.transform(xmin[i]), yi + cap)
+                    j += 1
+                    lines.setPoint(j, xMap.transform(xmax[i]), yi - cap)
+                    j += 1
+                    lines.setPoint(j, xMap.transform(xmax[i]), yi + cap)
+                    j += 1; i += 1
+            painter.drawLineSegments(lines)
+
+        <font color=blue># draw the error bars with caps in the y direction</font>
+        <b>if</b> self.__dy <b>is</b> <b>not</b> None:
+            <font color=blue># draw the bars</font>
+            <b>if</b> len(self.__dy.shape) <b>in</b> [0, 1]:
+                ymin = (self.__y - self.__dy)[first:last+1]
+                ymax = (self.__y + self.__dy)[first:last+1]
+            <b>else</b>:
+                ymin = (self.__y - self.__dy[0])[first:last+1]
+                ymax = (self.__y + self.__dy[1])[first:last+1]
+            x = self.__x[first:last+1]
+            n, i, j = len(x), 0, 0
+            lines = QPointArray(2*n)
+            <b>while</b> i &lt; n:
+                xi = xMap.transform(x[i])
+                lines.setPoint(j, xi, yMap.transform(ymin[i]))
+                j += 1
+                lines.setPoint(j, xi, yMap.transform(ymax[i]))
+                j += 1; i += 1
+            painter.drawLineSegments(lines)
+            <font color=blue># draw the caps</font>
+            <b>if</b> self.errorCap &gt; 0:
+                cap = self.errorCap/2
+                n, i, j = len(x), 0, 0
+                lines = QPointArray(4*n)
+                <b>while</b> i &lt; n:
+                    xi = xMap.transform(x[i])
+                    lines.setPoint(j, xi - cap, yMap.transform(ymin[i]))
+                    j += 1
+                    lines.setPoint(j, xi + cap, yMap.transform(ymin[i]))
+                    j += 1
+                    lines.setPoint(j, xi - cap, yMap.transform(ymax[i]))
+                    j += 1
+                    lines.setPoint(j, xi + cap, yMap.transform(ymax[i]))
+                    j += 1; i += 1
+            painter.drawLineSegments(lines)
+
+        painter.restore()
+
+        <b>if</b> <b>not</b> self.errorOnTop:
+            QwtPlotCurve.draw(self, painter, xMap, yMap, first, last)
+
+    <font color=blue># draw()</font>
+
+<font color=blue># class ErrorBarPlotCurve</font>
+
+
+<b>def</b><font color=red> make</font>():
+    <font color=blue># create a plot with a white canvas</font>
+    demo = QwtPlot(<font color=green>"Errorbar Demonstation"</font>)
+    demo.setCanvasBackground(Qt.white)
+    <font color=blue># calculate data and errors for a curve with error bars</font>
+    x = arange(0, 10.1, 0.5, Float)
+    y = sin(x)
+    dy = 0.2 * abs(y)
+    <font color=blue># dy = (0.15 * abs(y), 0.25 * abs(y)) # uncomment for asymmetric error bars</font>
+    dx = 0.2 <font color=blue># all error bars the same size</font>
+    errorOnTop = False <font color=blue># uncomment to draw the curve on top of the error bars</font>
+    <font color=blue># errorOnTop = True # uncomment to draw the error bars on top of the curve</font>
+    curve = ErrorBarPlotCurve(
+        demo,
+        x = x,
+        y = y,
+        dx = dx,
+        dy = dy,
+        curvePen = QPen(Qt.black, 2),
+        curveStyle = QwtCurve.Spline,
+        curveSymbol = QwtSymbol(QwtSymbol.Ellipse,
+                                QBrush(Qt.red),
+                                QPen(Qt.black, 2),
+                                QSize(9, 9)),
+        errorPen = QPen(Qt.blue, 2),
+        errorCap = 10,
+        errorOnTop = errorOnTop,
+        )
+    demo.insertCurve(curve)
+    demo.resize(600, 400)
+    demo.replot()
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    zoomer = QwtPlotZoomer(QwtPlot.xBottom,
+                           QwtPlot.yLeft,
+                           QwtPicker.DragSelection,
+                           QwtPicker.AlwaysOff,
+                           demo.canvas())
+    zoomer.setRubberBandPen(QPen(Qt.green))
+    picker = QwtPlotPicker(QwtPlot.xBottom,
+                           QwtPlot.yLeft,
+                           QwtPicker.NoSelection,
+                           QwtPlotPicker.CrossRubberBand,
+                           QwtPicker.AlwaysOn,
+                           demo.canvas())
+    picker.setRubberBandPen(QPen(Qt.green))
+    picker.setCursorLabelPen(QPen(Qt.black))
+    app.exec_loop()
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire!</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>
