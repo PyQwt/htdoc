@@ -41,13 +41,16 @@ supported by Qt (HPUX, Irix, Linux, Irix, Sun).</p>
 <p>Go to the <a href="download.html">download</a> page for quick links
 to PyQwt-4.0rc0 packages and its prerequisites.</p>
 
-<p>For two reasons, it is impossible to use PyQwt with the closed source
-   <a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
-   interactive development environment for PyQt: 
+<p>PyQt's closed source
+<a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
+interactive development environment cannot be used with PyQwt for two
+reasons: 
 <ol>
-<li>Black Adder does not provide the facilities to build Qt based extensions
-    like PyQwt.</li>
-<li>The <a href="license.html">license</a> forbids it.
+<li>Black Adder does not provide the facilities to build and use Qt based
+    extensions like PyQwt (the
+    <a href="http://www.thekompany.com/products/blackadder/">overview</a> says
+    what you can do with it, but not what you can't).</li>
+<li>The PyQwt <a href="license.html">license</a> forbids it.</li>
 </ol>
 </p>
 
