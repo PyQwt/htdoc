@@ -37,11 +37,12 @@ or in an <a href="cli-examples.html">interactive Python session</a>.</p>
 install PyQwt on MicroSoft Windows and almost any Posix system that is
 supported by Qt (Linux, Irix, HPUX).</p>
 
-<p>Installation of PyQwt on Mac OS X is not supported due to a design
-flaw in the C++-Python interface generator for PyQt and PyQwt, <a href=
-"http://www.riverbankcomputing.co.uk/sip">sip-3.x</a>.
+<p>PyQwt on Mac OS X is not supported due to a design flaw in <a href=
+"http://www.riverbankcomputing.co.uk/sip">sip-3.x</a>,
+the C++-Python interface generator for PyQt and PyQwt.
 Mac OS X support has to wait for the release of <a href=
-"http://www.riverbankcomputing.co.uk/sip/roadmap.php">sip-4.x</a>.</p>
+"http://www.riverbankcomputing.co.uk/sip/roadmap.php">sip-4.x</a>.
+</p>
 
 <!--
 Local Variables:
