@@ -12,7 +12,7 @@ integrated development environment?<a>
 Eric?</a>
 </li>
 <li>
-<a href="#Choice">Should I choose Numerical Python or Numarray?</a>
+<a href="#Choice">Should I choose Numeric, numarray or NumPy?</a>
 </li>
 </ol>
 
@@ -27,10 +27,6 @@ license is much lower than the total price of a commercial license for
 <a href="http://www.riverbankcomputing.co.uk/pyqt/buy.php">PyQt</a>,
 but Black Adder does not provide the tools to build extensions modules like
 PyQwt and PyQwt3D.
-</p>
-
-<p> In addition, the license of PyQwt and PyQwt3D does not allow static linking
-to proprietary software.
 </p>
 
 
@@ -67,28 +63,25 @@ The output shows that my setup is correct:
 </p>
 
 
-<h5><a name="Choice">Should I choose Numerical Python or numarray?</a></h5>
+<h5><a name="Choice">Should I choose Numeric, numarray, or NumPy?</a></h5>
 
-<p>The home pages of <a href="http://numeric.scipy.org/">Numerical Python</a>
-and <a href="http://www.stsci.edu/resources/software_hardware/numarray/">
-Numarray</a> and the slightly outdated discussion 
-<a href="http://www.scipy.org/documentation/numarraydiscuss.html/">
-Numarray and Numeric</a> compare the advantages of the two packages.
-The last link states that Numarray has no support for ufuncs, but this is not
-true anymore. 
-</p>
-
-<p><a href="http://numeric.scipy.org/">Numerical Python</a> is much smaller
-(fact) and has less bugs (fact) than
+<p>The development of <a href="http://numeric.scipy.org/">Numeric</a>
+has stopped and it will be eventually replaced by 
+<a href="http://numeric.scipy.org/">NumPy</a>.
 <a href="http://www.stsci.edu/resources/software_hardware/numarray/">
-Numarray</a>.
-In my opinion, the source code of Numerical Python is also easier to understand
-than the source code of Numarray.
+numarray</a> is still being maintained, until the authors of the numarray
+make the switch to NumPy.
 </p>
 
-<p>
-Choose Numerical Python, unless you have huge amount of data or unless you need
-the image extensions included in Numarray.
+<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.1.tar.gz?download">PyQwt3D-0.1.1.tar.gz</a>
+supports NumPy, but
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.tar.gz?download">PyQwt-4.2.tar.gz</a>
+ not yet.
+</p>
+
+<p>I recommend
+<a href="http://www.stsci.edu/resources/software_hardware/numarray/">numarray</a> 
+eventually in combination with NumPy.
 </p>
 
 <!--

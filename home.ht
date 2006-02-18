@@ -58,20 +58,23 @@ make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 
 <p>The <a href="doc3d/install.html">installation instructions</a> explain how
 to install
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.tar.gz?download">
-PyQwt3D-0.1.tar.gz</a>.
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.1.tar.gz?download">
+PyQwt3D-0.1.1.tar.gz</a>.
 </p>
 
 <p>We like feedback on:
 <ol>
 <li>the installation and stability on other platforms than Linux and
-MacOS/X</li>
-<li> more feedback on PyQwt3D built with MSVC.NET and MSVC-6.0 on Windows.
+Windows</li>
 <li>the interfacing between the QwtPlot3D API and Numerical Python
 extensions.</li>
 </ol>
 </p>
 
+<p>You should look into
+<a href="http://ivupy.sourceforge.net">IVuPy (I-View-Py)</a>,
+if you want more flexibility and speed in 3D data visualization.
+</p>
 
 <h3>Software using PyQwt</h3>
 

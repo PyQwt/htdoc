@@ -19,6 +19,7 @@
 <h3>Recommended Tools</h3>
 <li><a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
 <li><a href="http://plasma-gate.weizmann.ac.il/Grace/">Grace</a>
+<li><a href="http://ivupy.sourceforge.net">IVuPy</a>
 <li><a href="http://www.lyx.org">LyX</a>
 <h3>SourceForge Host</h3>
 <li><a href="http://www.sourceforge.net/projects/pyqwt">Project page</a>
