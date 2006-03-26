@@ -1,9 +1,10 @@
-PYQWT_CVS        := $(HOME)/CVS/PyQwt/pyqwt4
+PYQWT5_CVS       := $(HOME)/CVS/PyQwt/pyqwt5
+PYQWT4_CVS       := $(HOME)/CVS/PyQwt/pyqwt4
 PYQWT3D_CVS      := $(HOME)/CVS/pyqwt3d
 
-EXAMPLES         := BodeDemo CliDemo1 CliDemo2 DataDemo ErrorBarDemo StackOrder
-EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.png) 
-EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT_CVS)/examples/%.py.html) 
+EXAMPLES         := BodeDemo CliDemo DataDemo ErrorBarDemo StackOrder
+EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%*.png) 
+EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%.py.html) 
 
 EXAMPLES_3D      := ParametricSurfaceDemo SimplePlot TestNumeric
 EXAMPLES_3D_PNG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/examples/%.png) 
@@ -35,10 +36,12 @@ ARGS             := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 
 # targets
 all: $(TARGETS)
-	mkdir -p doc
-	(cd $(PYQWT_CVS)/Doc; make htdoc)
-	cp -vpur $(PYQWT_CVS)/Doc/html/htdoc/* doc
-	mkdir -p doc3d
+	mkdir -p doc5
+	(cd $(PYQWT5_CVS)/Doc; make htdoc)
+	cp -vpur $(PYQWT5_CVS)/Doc/html/htdoc/* doc5
+	mkdir -p doc4
+	(cd $(PYQWT4_CVS)/Doc; make htdoc)
+	cp -vpur $(PYQWT4_CVS)/Doc/html/htdoc/* doc4
 	(cd $(PYQWT3D_CVS)/Doc; make htdoc)
 	cp -vpur $(PYQWT3D_CVS)/Doc/html/htdoc/* doc3d
 	cp -vpu home.html index.html

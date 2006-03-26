@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>CliDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>from</b> Qwt4.qplt <b>import</b> *
+
+
+<b>def</b><font color=red> make</font>():
+    <b>return</b> testPlot(), testIPlot()
+
+<font color=blue># make()</font>
+
+<b>def</b><font color=red> main</font>(args):
+    app = qt.QApplication(args)
+    demo = make()
+    app.setMainWidget(demo[-1])
+    sys.exit(app.exec_loop())
+
+<font color=blue># main()</font>
+
+<font color=blue># Admire!</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>

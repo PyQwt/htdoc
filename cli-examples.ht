@@ -17,20 +17,16 @@ Title: Command Line Interpreter Examples
 
 <p>The <tt class="module">iqt</tt> module requires the <tt class="module">
   readline</tt> module.
-  <b class="program">PyCute</b>, a Python shell for PyQt and included with
-  PyQwt, is an alternative for Python systems without a <tt class="module">
-  readline</tt> module (MicroSoft Visual C).
 </p>
 
 <p>A step by step example follows:</p>
 
 <ol>
   <li>
-    Start <b class="program">PyCute</b> and go to the next step
-    or start <b class="program">python</b> (or <b class="program">ipython</b>)
+    Start <b class="program">python</b> (or <b class="program">ipython</b>)
     and type:
     <pre class="cli">
->>> import iqt
+>>> import Qwt4.iqt
     </pre>
     to create an application instance and to put an event processing function
     on the event hook of the readline module.
@@ -41,7 +37,7 @@ Title: Command Line Interpreter Examples
     The module <tt class="module">qwt.qplt</tt> provides an interpreter
     friendly interface to the QwtPlot class. Type:
     <pre class="cli">
->>> from qwt.qplt import *
+>>> from Qwt4.qplt import *
     </pre>
     to load the classes <tt class="class">Plot</tt>,
     <tt class="class">IPlot</tt>, <tt class="class"> Curve</tt>,
@@ -66,7 +62,7 @@ Title: Command Line Interpreter Examples
     </pre>
     to show a plot with two curves, a linear x-axis, a linear y-axis, a
     logarithmic y-axis and a title.
-    <p><img alt="plot with two curves" src="examples/CliDemo1.png"
+    <p><img alt="plot with two curves" src="examples/CliDemo0.png"
             width=600 height=400 border=1></p>
     A <tt class="class">Plot</tt> widget has hidden features:
     <ul>
@@ -113,7 +109,7 @@ Title: Command Line Interpreter Examples
 ...        Curve(x, cos(x+pi/4), Pen(Blue), Symbol(Square, Cyan), "square"))
     </pre>
     to add two more curves to the plot.
-    <p><img alt="plot with four curves" src="examples/CliDemo2.png"
+    <p><img alt="plot with four curves" src="examples/CliDemo1.png"
             width=700 height=500 border=1></p>
   </li>
 </ol>

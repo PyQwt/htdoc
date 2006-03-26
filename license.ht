@@ -10,7 +10,7 @@ of Qt, PyQt and sip.</p>
   <tr>
     <td><br>
     <center>PyQwt LICENSE</center>
-    <center>Version 2, October 2003</center>
+    <center>Version 3, Marchr 2006</center>
 
     <p>PyQwt is free software; you can redistribute it and/or modify it under
     the terms of the GNU General Public License as published by the Free
@@ -23,18 +23,17 @@ of Qt, PyQt and sip.</p>
     details.</p>
 
     <p>You should have received a copy of the GNU General Public License along
-    with PyQwt; if not, write to the Free Software Foundation, Inc., 59 Temple
-    Place, Suite 330, Boston, MA 02111-1307, USA.</p>
+    with PyQwt; if not, write to the Free Software Foundation, Inc.,
+    51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.</p>
 
     <p>In addition, as a special exception, Gerard Vermeulen gives permission
-    to link PyQwt dynamically with commercial, non-commercial or educational
-    versions of Qt, PyQt and sip, and distribute PyQwt in this form, provided
-    that equally powerful versions of Qt, PyQt and sip have been released under
-    the terms of the GNU General Public License.</p>
+    to link PyQwt dynamically with non-free versions of Qt and PyQt,
+    and to distribute PyQwt in this form, provided that equally powerful
+    versions of Qt and PyQt have been released under the terms of the GNU
+    General Public License.</p>
 
-    <p>If PyQwt is dynamically linked with commercial, non-commercial or
-    educational versions of Qt, PyQt and sip, PyQwt becomes a free plug-in
-    for a non-free program.</p>
+    <p>If PyQwt is dynamically linked with non-free versions of Qt and PyQt,
+    PyQwt becomes a free plug-in for a non-free program.<p>
 
     </td>
   </tr>
@@ -48,13 +47,14 @@ The PyQwt license does not preclude the use of PyQwt in projects containing
 proprietary code.</p>
 
 <p>The exception in the license is inspired by the
-<a href="http://www.gnu.org/licenses/gpl-faq.html">GNU GPL FAQ</a>.</p>
+<a href="http://www.fsf.org/licensing/licenses/gpl-faq.html">GNU GPL FAQ</a>.
+</p>
 
 <table bgcolor="#99CCFF" width="100%">
   <tr>
     <td><br>
-    <a href="http://www.gnu.org/licenses/gpl-faq.html#TOCGPLPluginsInNF"
-    >Can I use the GPL for a plug-in for a non-free program?</a></p>
+    <a href="http://www.fsf.org/licensing/licenses/gpl-faq.html#GPLAndPlugins">
+    Can I use the GPL for a plug-in for a non-free program?</a></p>
 
     <p>If the program uses fork and exec to invoke plug-ins, then the plug-ins
     are separate programs, so the license for the main program makes no
@@ -90,5 +90,6 @@ This means probably selling about 50 commercial licenses per year for $100.
 <!--
 Local Variables:
 mode: HTML
+fill-column: 79
 End:
 -->

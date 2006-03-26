@@ -14,8 +14,8 @@
 
 <b>import</b> sys
 <b>from</b> qt <b>import</b> *
-<b>from</b> qwt <b>import</b> *
-<b>from</b> Numeric <b>import</b> *
+<b>from</b> Qwt4.Qwt <b>import</b> *
+<b>from</b> Qwt4.anynumpy <b>import</b> *
 
 print_xpm = [<font color=green>'32 32 12 1'</font>,
              <font color=green>'a c #ffffff'</font>,
@@ -163,12 +163,9 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         self.setAxisTitle(QwtPlot.yLeft, <font color=green>'Amplitude [dB]'</font>)
         self.setAxisTitle(QwtPlot.yRight, u<font color=green>'Phase [\u00b0]'</font>)
 
-        <b>if</b> QWT_VERSION == 0x040200:
-            self.setAxisOptions(QwtPlot.xBottom, QwtAutoScale.Logarithmic)
+        self.setAxisOptions(QwtPlot.xBottom, QwtAutoScale.Logarithmic)
         self.setAxisMaxMajor(QwtPlot.xBottom, 6)
         self.setAxisMaxMinor(QwtPlot.xBottom, 10)
-        <b>if</b> QWT_VERSION &gt;= 0x040300:
-            self.setAutoScaler(QwtPlot.xBottom, QwtLog10AutoScaler())
 
         <font color=blue># curves</font>
         self.curve1 = self.insertCurve(<font color=green>'Amplitude'</font>)
@@ -303,7 +300,7 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
         self.connect(self.cntDamp, SIGNAL(<font color=green>'valueChanged(double)'</font>),
                      self.plot.setDamp)
         self.connect(btnPrint, SIGNAL(<font color=green>'clicked()'</font>),
-                     self.printPlot)
+                     self.print_)
         self.connect(btnZoom, SIGNAL(<font color=green>'toggled(bool)'</font>),
                      self.zoom)
         self.connect(self.picker, SIGNAL(<font color=green>'moved(const QPoint &amp;)'</font>), self.moved)
@@ -312,7 +309,7 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
 
     <font color=blue># __init__()</font>
 
-    <b>def</b><font color=red> printPlot</font>(self):
+    <b>def</b><font color=red> print_</font>(self):
         <b>try</b>:
             printer = QPrinter(QPrinter.HighResolution)
         <b>except</b> AttributeError:
@@ -326,9 +323,9 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
             <b>if</b> (QPrinter.GrayScale == printer.colorMode()):
                 filter.setOptions(QwtPlotPrintFilter.PrintAll
                                   &amp; ~QwtPlotPrintFilter.PrintCanvasBackground)
-            self.plot.printPlot(printer, filter)
+            self.plot.print_(printer, filter)
 
-    <font color=blue># printPlot()</font>
+    <font color=blue># print_()</font>
     
     <b>def</b><font color=red> zoom</font>(self, on):
         self.zoomers[0].setEnabled(on)
@@ -394,6 +391,10 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
 <font color=blue># Admire!</font>
 <b>if</b> __name__ == <font color=green>'__main__'</font>:
     main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
 
 </pre>
 </body>

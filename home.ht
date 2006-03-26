@@ -119,7 +119,7 @@ and to make the ErrorBarDemo.py example executable, do:
 <pre class="cli">
 chmod +x PyQwt-4.1/examples/ErrorBarDemo.py
 </pre>
-and you are ready for the <a href="doc/installation.html">installation
+and you are ready for the <a href="doc4/installation.html">installation
 instructions</a>.
 </p>
 
@@ -138,7 +138,7 @@ directory, execute:
 tar xvfz PyQwt-4.0rc0.tar.gz
 patch -p0 -b -z .upgrade &lt;PyQwt-4.0rc0a.patch
 </pre>
-and you are ready for the <a href="doc/installation.html">installation
+and you are ready for the <a href="doc4/installation.html">installation
 instructions</a>.
 </p>
 
@@ -157,7 +157,7 @@ directory, execute:
 tar xvfz PyQwt-3.8.tar.gz
 patch -p0 -b -z .upgrade &lt;PyQwt-3.8b.patch
 </pre>
-and you are ready for the <a href="doc/installation.html">installation
+and you are ready for the <a href="doc4/installation.html">installation
 instructions</a>.
 </p>
 
@@ -180,7 +180,7 @@ directory, execute:
 tar xvfz PyQwt-3.7.tar.gz
 patch -p0 -b -z .upgrade &lt;PyQwt-3.7b.patch
 </pre>
-and you are ready for the <a href="doc/installation.html">installation
+and you are ready for the <a href="doc4/installation.html">installation
 instructions</a>.
 </p>
 
