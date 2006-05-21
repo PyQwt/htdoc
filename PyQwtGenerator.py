@@ -79,11 +79,11 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         self.__linkfixer.massage(p.sidebar, self.__d)
         # Sign the petition against European software patents
         p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://petition.eurolinux.org/', '''
-<center><img alt="Sign the petition against European software patents" border="0" src="%(rootdir)s/images/no_epatents.png"></center>''' % self.__d))
+        p.sidebar.append(('http://swpat.ffii.org/', '''
+<center><img alt="The fight against software patents in Europe in not over" border="0" src="%(rootdir)s/images/no_epatents.png"></center>''' % self.__d))
         # Why are software patents bad?
         p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://www.nosoftwarepatents.com/', '''
+        p.sidebar.append(('http://www.nosoftwarepatents.com//en/m/basics/index.html', '''
 <center><img alt="Why are software patents bad?" border="0" src="%(rootdir)s/images/90x40_3.jpg"></center>''' % self.__d))
         # 
         Sidebar.__init__(self, p.sidebar)
@@ -142,9 +142,8 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
                 '<a href="http://swpat.ffii.org/patents/samples/index.en.html">algorithms</a> and '
                 '<a href="http://webshop.ffii.org">business methods</a>.</p>'
                 '\n<ol>'
-                '\n<li>Read this <a href="http://www.nosoftwarepatents.com">excellent explanation</a> of the devastating effects of software patents on software (users!) and software development (developers!)</li>'
-                '\n<li>Sign the <a href="http://petition.eurolinux.org">Petition for a Software Patent Free Europe</a></li>'
-                '\n<li>Support the <a href="http://swpat.ffii.org">Foundation for a Free Information Infrastructure</a> in Europe</li>'
+                '\n<li>Read this <a href="http://www.nosoftwarepatents.com/en/m/basics/index.html">excellent explanation</a> of the devastating effects of software patents on software (users!) and software development (developers!)</li>'
+                '\n<li>Read <a href="http://swpat.ffii.org"> how the European Commission and the patent lobby</a> are still trying to introduce software patents</li>'
                 '\n<li>Support the <a href="http://www.eff.org/patent/">Patent Busting Project</a> of the Electronic Frontier Foundation in the USA</li>'
                 '\n</ol>'
                 '\n</td>'
