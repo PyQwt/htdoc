@@ -74,14 +74,9 @@ make the switch to NumPy.
 </p>
 
 <p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.1.tar.gz?download">PyQwt3D-0.1.1.tar.gz</a>
-supports NumPy, but
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.tar.gz?download">PyQwt-4.2.tar.gz</a>
- not yet.
-</p>
-
-<p>I recommend
-<a href="http://www.stsci.edu/resources/software_hardware/numarray/">numarray</a> 
-eventually in combination with NumPy.
+and
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.1.tar.gz?download">PyQwt-4.2.1.tar.gz</a>
+support <a href="http://numeric.scipy.org/">NumPy</a>.
 </p>
 
 <!--

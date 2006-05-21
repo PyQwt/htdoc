@@ -1,11 +1,16 @@
 Title: Download Guide
 
-<h3>Precompiled packages</h3>
+<h3>Source installation of PyQwt-4.2.1 on MacOS/X or Posix systems</h3>
 
-<p>Linux users: checking <a href=
-"http://www.sourceforge.net/project/showfiles.php?group_id=61057">Qt.Py</a>
-for compatible precompiled PyQt and sip packages may save you a lot of time!
-</p>
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tar.bz2">Python-2.4.3.tar.bz2</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.8.tar.gz?download">Numeric-23.8.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.6.tar.bz2">qt-x11-free-3.3.6.tar.bz2</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.4.3.tar.gz">sip-4.4.3.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.16.tar.gz">PyQt-mac-gpl-3.16.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.16.tar.gz">PyQt-x11-gpl-3.16.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.1.tar.gz?download">PyQwt-4.2.1.tar.gz</a></li>
+</ol>
 
 <h3>Binary installation of PyQwt-4.2 on Windows for non-commercial use with Python-2.3.5</h3>
 
@@ -24,15 +29,15 @@ SciPy</a> instead of Python with Numeric.
 <h3>Source installation of PyQwt-4.2 on MacOS/X or Posix systems</h3>
 
 <ol>
-<li><a href="http://www.python.org/ftp/python/2.4/Python-2.4.tgz">Python-2.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.7.tar.gz?download">Numeric-23.7.tar.gz</a></li>
+<li><a href="http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tar.bz2">Python-2.4.3.tar.bz2</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.8.tar.gz?download">Numeric-23.8.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.4.tar.bz2">qt-x11-free-3.3.4.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.2.tar.gz">sip-4.2.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.3.2.tar.gz">sip-4.3.2.tar.gz</a>
 (requires at least Python-2.3) or
 <a href="http://pyqwt.sourceforge.net/support/sip-3.11.1.tar.gz">sip-3.11.1.tar.gz</a> 
 (not for MacOS/X)</li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.14.tar.gz">PyQt-mac-gpl-3.13.tar.gz</a> or
-<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.14.tar.gz">PyQt-x11-gpl-3.13.tar.gz</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.15.1.tar.gz">PyQt-mac-gpl-3.15.1.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.15.1.tar.gz">PyQt-x11-gpl-3.15.1.tar.gz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.tar.gz?download">PyQwt-4.2.tar.gz</a></li>
 </ol>
 
