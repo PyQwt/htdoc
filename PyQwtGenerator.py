@@ -69,20 +69,24 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
 
         # it is important not to have newlines between the img tag and the end
         # end center tags, otherwise layout gets messed up
+
+        # donation
         p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '''<center><http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project></center>'''))
-        p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://www.python.org', '''
-<center><img alt="Python Powered Logo" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>''' % self.__d))
+        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '<center><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project></center>'))
+
         # sourceforge link.
         p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://sourceforge.net', '''
-<center><img src="http://sourceforge.net/sflogo.php?group_id=82987&type=2" width="125" height="37" border="0" alt="SourceForge Logo"></center>'''))
-        self.__linkfixer.massage(p.sidebar, self.__d)
+        p.sidebar.append(('http://sourceforge.net', '<center><img src="http://sourceforge.net/sflogo.php?group_id=82987&type=2" width="125" height="37" border="0" alt="SourceForge Logo"></center>'))
+
+        # Python
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://www.python.org', '<center><img alt="Python Powered Logo" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>' % self.__d))
+
         # Sign the petition against European software patents
         p.sidebar.append(BLANKCELL)
         p.sidebar.append(('http://swpat.ffii.org/', '''
 <center><img alt="The fight against software patents in Europe in not over" border="0" src="%(rootdir)s/images/no_epatents.png"></center>''' % self.__d))
+
         # Why are software patents bad?
         p.sidebar.append(BLANKCELL)
         p.sidebar.append(('http://www.nosoftwarepatents.com//en/m/basics/index.html', '''
