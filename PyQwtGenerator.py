@@ -72,7 +72,7 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
 
         # donation
         p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '<center><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project></center>'))
+        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '<center><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project"></center>'))
 
         # sourceforge link.
         p.sidebar.append(BLANKCELL)
