@@ -70,6 +70,8 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         # it is important not to have newlines between the img tag and the end
         # end center tags, otherwise layout gets messed up
         p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '''<center><http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project></center>'''))
+        p.sidebar.append(BLANKCELL)
         p.sidebar.append(('http://www.python.org', '''
 <center><img alt="Python Powered Logo" border="0" src="%(rootdir)s/images/PythonPowered.png"></center>''' % self.__d))
         # sourceforge link.
