@@ -43,6 +43,7 @@ all: $(TARGETS)
 	(cd $(PYQWT4_CVS)/Doc; make htdoc)
 	cp -vpur $(PYQWT4_CVS)/Doc/html/htdoc/* doc4
 	(cd $(PYQWT3D_CVS)/Doc; make htdoc)
+	mkdir -p doc3d
 	cp -vpur $(PYQWT3D_CVS)/Doc/html/htdoc/* doc3d
 	cp -vpu home.html index.html
 	cp -vpu patent-protest strike.html
