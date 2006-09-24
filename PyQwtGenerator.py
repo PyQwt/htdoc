@@ -70,10 +70,6 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         # it is important not to have newlines between the img tag and the end
         # end center tags, otherwise layout gets messed up
 
-        # donation
-        p.sidebar.append(BLANKCELL)
-        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '<center><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project"></center>'))
-
         # sourceforge link.
         p.sidebar.append(BLANKCELL)
         p.sidebar.append(('http://sourceforge.net', '<center><img src="http://sourceforge.net/sflogo.php?group_id=82987&type=2" width="125" height="37" border="0" alt="SourceForge Logo"></center>'))
@@ -91,7 +87,11 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
         p.sidebar.append(BLANKCELL)
         p.sidebar.append(('http://www.nosoftwarepatents.com//en/m/basics/index.html', '''
 <center><img alt="Why are software patents bad?" border="0" src="%(rootdir)s/images/90x40_3.jpg"></center>''' % self.__d))
-        # 
+
+        # donation
+        p.sidebar.append(BLANKCELL)
+        p.sidebar.append(('http://sourceforge.net/donate/index.php?group_id=82987', '<center><img src="http://images.sourceforge.net/images/project-support.jpg" width="88" height="32" border="0" alt="Support This Project"></center>'))
+
         Sidebar.__init__(self, p.sidebar)
         #
         # fix up our site links, no relthis because the site links are
@@ -121,8 +121,13 @@ class PyQwtGenerator(Skeleton, Sidebar, Banner):
     def get_corner(self):
         # it is important not to have newlines between the img tag and the end
         # anchor and end center tags, otherwise layout gets messed up
-        return '<center><b><p>PyQwt</p><p>PyQwt3D</p></b></center>'
-
+        #return '<center><b><p>PyQwt</p><p>PyQwt3D</p></b></center>'
+        return (
+            '<center>'
+            '<a href="http://sourceforge.net/donate/index.php?group_id=82987">'
+            '<img src="http://images.sourceforge.net/images/project-support.jpg"'
+            ' width="88" height="32" border="0" alt="Support This Project">'
+            '</center>')
     def get_corner_bgcolor(self):
         return '#3399ff'
 

@@ -1,6 +1,6 @@
 Title: PyQwt plots data with Numerical Python and PyQt
 
-<h3>PyQwt plots data with Numerical Python and PyQt</h3>
+<h1>PyQwt plots data with Numerical Python and PyQt</h1>
 
 <p>PyQwt is a set of Python bindings for the
 <a href="http://qwt.sourceforge.net">Qwt</a>
@@ -46,7 +46,7 @@ interactive development environment cannot be used with PyQwt.
 </p>
 
 
-<h3>PyQwt3D plots data in 3D</h3>
+<h1>PyQwt3D plots data in 3D</h1>
 
 <p>PyQwt3D is a set of Python bindings for the
 <a href="http://qwtplot3d.sourceforge.net">QwtPlot3D</a> C++ class library
@@ -94,9 +94,7 @@ and with a coverage tool to test trading strategies.</p>
 data analysis software with an easy-to-use graphical user interface and a
 focus on data analysis methods from bioinformatics, statistics,  chemometrics
 and artificial intelligence.
-Scicraft provides
-<a href="http://www.scicraft.org/?cat=3&page=9">python-qwt</a>
- packages for Debian (SID/Unstable).</p>
+</p>
 
 
 <h3>Bug fixes and upgrades for PyQwt-4.1</h3>

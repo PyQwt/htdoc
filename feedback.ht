@@ -1,0 +1,20 @@
+Title: Feedback
+
+<h1>Feedback From Happy PyQwt Users</h1>
+
+<h3>Whirlpool Galaxy</h3>
+
+The code to produce following plot of the
+<a href="http://en.wikipedia.org/wiki/Whirlpool_Galaxy">Whirlpool Galaxy</a>
+is based on the QwtImagePlotDemo.py example:
+<p><img alt="Whirlpool Galaxy" src="images/m51.png"
+        width=720 height=538 border=1>
+</p>
+
+
+<!--
+Local Variables:
+mode: HTML
+fill-column: 79
+End:
+-->

@@ -1,6 +1,6 @@
 Title: Graphical User Interface Examples
 
-<h3>Graphical User Interface Examples</h3>
+<h1>PyQwt Graphical User Interface Examples</h1>
 
 <p>You have to understand Qt's SIGNAL and SLOT mechanism to develop GUI
   programs with PyQt and PyQwt.

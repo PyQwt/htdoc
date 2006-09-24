@@ -1,6 +1,6 @@
 Title: Command Line Interpreter Examples
 
-<h3>Command Line Interpreter Examples</h3>
+<h1>PyQwt Command Line Interpreter Examples</h1>
 
 <p>The programming style imposed by PyQt (and other GUI toolkit wrappers) is to
   create an application instance with some widgets and to enter into an event
