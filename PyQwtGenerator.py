@@ -20,7 +20,7 @@ sitelinks = [
     ('%(rootdir)s/faq.html',              'FAQ'),
     ('%(rootdir)s/license.html',          'License'),
     ('%(rootdir)s/pyqwt3d-examples.html', 'PyQwt3D Examples'),
-    ('%(rootdir)s/news.html',             'News'),
+    ('%(rootdir)s/feedback.html',         'Happy Users'),
     ]
 
 
