@@ -90,10 +90,14 @@ is a stock trading toolkit with a collector tool to gather data from the
 <a href="http://www.interactivebrokers.com/php/tws/demo.php">Trader Workstation</a>
 and with a coverage tool to test trading strategies.</p>
 
-<p><a href="http://www.scicraft.org">SciCraft</a> is a powerful open source
-data analysis software with an easy-to-use graphical user interface and a
-focus on data analysis methods from bioinformatics, statistics,  chemometrics
-and artificial intelligence.
+<p><a href="http://www.esrf.fr/computing/bliss/downloads/index.html">PyMCA</a> is an
+interactive multi-channel analyzer for X-ray fluorescence spectra developed at
+the
+<a href="http://www.esrf.fr">European Synchrotron Facility</a>.
+This
+<a href="http://dale.chess.cornell.edu/chess-wiki/PyMca">PyMCA tutorial</a>
+is a nice introduction of
+<a href="http://sourceforge.net/projects/pymca/">PyMCA</a>.
 </p>
 
 
