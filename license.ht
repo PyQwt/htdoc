@@ -3,8 +3,7 @@ Title: License
 <h1>PyQwt License</h1>
 
 <p>PyQwt is released under the terms of the GNU General Public License with
-exceptions for use with the Educational, Non-Commercial and Commercial releases
-of Qt, PyQt and sip.</p>
+exceptions for use with the non-free versions Qt and PyQt.</p>
 
 <table bgcolor="#99CCFF" width="100%">
   <tr>
