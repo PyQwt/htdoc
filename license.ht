@@ -10,7 +10,7 @@ of Qt, PyQt and sip.</p>
   <tr>
     <td><br>
     <center>PyQwt LICENSE</center>
-    <center>Version 3, Marchr 2006</center>
+    <center>Version 3, March 2006</center>
 
     <p>PyQwt is free software; you can redistribute it and/or modify it under
     the terms of the GNU General Public License as published by the Free
@@ -80,11 +80,7 @@ proprietary code.</p>
 <p>Distribution of a non-GPL-ed application containing a statically linked
 PyQwt module is a violation of the GPL.
 The licensing scheme for Qt and PyQt forbids me to release PyQwt under a
-license allowing static linking to proprietary applications unless I buy
-commercial licenses for Qt and PyQt. 
-PyQwt is a hobby and those commercial licenses are only within my means, if
-there is enough interest in a commercial release of PyQwt.
-This means probably selling about 50 commercial licenses per year for $100.
+license allowing static linking to proprietary applications.
 </p>
 
 <!--
