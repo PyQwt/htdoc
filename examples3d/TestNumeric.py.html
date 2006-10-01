@@ -7,22 +7,16 @@
 <pre>
 <font color=blue>#!/usr/bin/env python</font>
 
-<b>if</b> True:
-    <b>from</b> Numeric <b>import</b> *
-<b>else</b>:
-    <b>from</b> numarray <b>import</b> *
+<b>from</b> Numeric <b>import</b> *
 
 <b>import</b> sys
 <b>from</b> Qwt3D <b>import</b> *
 <b>from</b> qt <b>import</b> *
 
 <font color=blue># enable all tracing options of the SIP generated bindings (requires -r option)</font>
-<b>try</b>:
+<b>if</b> False:
     <b>import</b> sip
     sip.settracemask(0x3f)
-<b>except</b> ImportError:
-    <b>import</b> libsip
-    libsip.settracemask(0x3f)
 
 
 <b>def</b><font color=red> matrix2d</font>(nx, ny, minx, maxx, miny, maxy, function):

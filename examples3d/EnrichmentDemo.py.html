@@ -1,0 +1,323 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>EnrichmentDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<font color=blue># A Python translation of the "enrichments" example of QwtPlot3D</font>
+
+<b>import</b> sys
+<b>import</b> qt
+<b>from</b> Qwt3D <b>import</b> *
+<b>from</b> Qwt3D.OpenGL <b>import</b> *
+
+
+<font color=blue># translated from enrichments.cpp</font>
+
+<b>class</b><font color=red> Bar</font>(VertexEnrichment):
+
+    <b>def</b><font color=red> __init__</font>(self, radius = 0.0, level = 1.0):
+        VertexEnrichment.__init__(self)
+        self.configure(radius, level)
+
+    <font color=blue># init()</font>
+    
+    <b>def</b><font color=red> clone</font>(self):
+        <b>return</b> self
+
+    <font color=blue># clone()</font>
+     
+    <b>def</b><font color=red> configure</font>(self, radius, level):
+        self.radius = radius
+        self.level = level
+
+    <font color=blue># configure()</font>
+        
+    <b>def</b><font color=red> drawBegin</font>(self):
+        self.diag = self.radius*(self.plot.hull().maxVertex
+                                 - self.plot.hull().minVertex).length()
+        glLineWidth(0)
+        glEnable(GL_POLYGON_OFFSET_FILL)
+        glPolygonOffset(1, 1)
+
+    <font color=blue># drawBegin()</font>
+     
+    <b>def</b><font color=red> drawEnd</font>(self):
+        <b>pass</b>
+
+    <font color=blue># drawEnd()</font>
+
+    <b>def</b><font color=red> draw</font>(self, pos):
+        interval = self.plot.hull().maxVertex.z - self.plot.hull().minVertex.z
+        numlevel = self.plot.hull().minVertex.z + self.level * interval
+        interval /= 100
+        <b>if</b> pos.z &gt; numlevel - interval <b>and</b> pos.z &lt; numlevel + interval:
+            Label3D().draw(pos, self.diag, 2*self.diag)
+         
+        minz = self.plot.hull().minVertex.z
+
+        <font color=blue># FIXME: rgbat = self.plot.dataColor()(pos)</font>
+        rgbat = self.plot.dataColor()(pos.x, pos.y, pos.z)
+        rgbab = self.plot.dataColor()(pos.x, pos.y, minz)
+ 
+        glBegin(GL_QUADS)
+        glColor4d(rgbab.r, rgbab.g, rgbab.b, rgbab.a)
+        glVertex3d(pos.x - self.diag, pos.y - self.diag, minz)
+        glVertex3d(pos.x + self.diag, pos.y - self.diag, minz)
+        glVertex3d(pos.x + self.diag, pos.y + self.diag, minz)
+        glVertex3d(pos.x - self.diag, pos.y + self.diag, minz)
+        
+         
+        <b>if</b> pos.z &gt; numlevel - interval <b>and</b> pos.z &lt; numlevel + interval:
+            glColor3d(0.7, 0.0, 0.0)
+        <b>else</b>:
+            glColor4d(rgbat.r, rgbat.g, rgbat.b, rgbat.a)
+             
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, pos.z)
+        
+        glColor4d(rgbab.r, rgbab.g,rgbat.b, rgbab.a)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, minz)
+        glColor4d(rgbat.r,rgbat.g, rgbat.b, rgbat.a)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, pos.z)
+        
+        glColor4d(rgbab.r, rgbab.g, rgbat.b, rgbab.a)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, minz)
+        glColor4d(rgbat.r, rgbat.g, rgbat.b, rgbat.a)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, pos.z)
+        
+        glColor4d(rgbab.r, rgbab.g, rgbat.b, rgbab.a)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, minz)
+        glColor4d(rgbat.r, rgbat.g, rgbat.b, rgbat.a)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, pos.z)
+        
+        glColor4d(rgbab.r, rgbab.g, rgbat.b, rgbab.a)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, minz)
+        glColor4d(rgbat.r, rgbat.g, rgbat.b, rgbat.a)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, pos.z)
+        glEnd()
+         
+        glColor3d(0, 0, 0)
+        glBegin(GL_LINES)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, minz)
+ 
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, pos.z)
+        
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x-self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y-self.diag, pos.z)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, minz)
+        glVertex3d(pos.x+self.diag, pos.y+self.diag, pos.z)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, minz)
+        glVertex3d(pos.x-self.diag, pos.y+self.diag, pos.z)
+        glEnd()
+
+    <font color=blue># draw()</font>
+
+<font color=blue># class Bar</font>
+
+
+<b>class</b><font color=red> Label3D</font>:
+ 
+    <b>def</b><font color=red> __init__</font>(self):
+        <b>pass</b>
+
+    <font color=blue># __init__()</font>
+     
+    <b>def</b><font color=red> draw</font>(self, pos, w, h):
+        gap = 0.3
+        glColor3d(1,1,1)
+        glBegin(GL_QUADS)
+        glVertex3d(pos.x - w, pos.y, pos.z + gap);
+        glVertex3d(pos.x + w, pos.y, pos.z + gap);
+        glVertex3d(pos.x + w, pos.y, pos.z + gap + h)
+        glVertex3d(pos.x - w, pos.y, pos.z + gap + h)
+        glEnd()
+        glColor3d(0.4,0,0)
+        glBegin(GL_LINE_LOOP)
+        glVertex3d(pos.x - w, pos.y,pos.z + gap)
+        glVertex3d(pos.x + w, pos.y,pos.z + gap)
+        glVertex3d(pos.x + w, pos.y,pos.z + gap + h)
+        glVertex3d(pos.x - w, pos.y, pos.z + gap + h)
+        glEnd()
+        glBegin(GL_LINES)
+        glVertex3d(pos.x, pos.y, pos.z)
+        glVertex3d(pos.x, pos.y, pos.z + gap)
+        glEnd()
+
+    <font color=blue># draw()</font>
+
+<font color=blue># class Label3D</font>
+
+
+<b>class</b><font color=red> Hat</font>(Function):
+ 
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        Function.__init__(self, *args)
+
+    <font color=blue># __init__()</font>
+    
+    <b>def</b><font color=red> __call__</font>(self, x, y):
+        <b>return</b> 1.0/(x*x + y*y + 0.5)
+
+    <font color=blue># __call__()</font>
+
+    <b>def</b><font color=red> name</font>(self):
+        <b>return</b> QString(<font color=green>'$\\frac{1}{x^2+y^2+\\frac{1}{2}}$'</font>)
+
+    <font color=blue># name()</font>
+
+<font color=blue># class Hat</font>
+
+
+<font color=blue># translated from enrichmentmainwindow.cpp</font>
+ 
+<b>class</b><font color=red> EnrichmentDemo</font>(qt.QWidget):
+     
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        qt.QWidget.__init__(self, *args)
+
+        plot = self.plot = SurfacePlot(self)
+        plot.setTitle(<font color=green>'Bar Style (Vertex Enrichment)'</font>)
+        plot.setTitleFont(<font color=green>'Arial'</font>, 12)
+        plot.setZoom(0.8);
+        plot.setRotation(30.0, 0.0, 15.0)
+
+        plot.setCoordinateStyle(BOX)
+        self.width = 0.007
+        self.level = .5
+        self.bar = plot.setPlotStyle(Bar(self.width, self.level))
+   
+        hat = Hat(plot)
+        hat.setMesh(23, 21)
+        hat.setDomain(-1.8, 1.7, -1.6, 1.7)
+        hat.create()
+        
+        plot.setFloorStyle(FLOORDATA)
+        
+        axes = plot.coordinates().axes <font color=blue># alias</font>
+        <b>for</b> axis <b>in</b> axes:
+            axis.setMajors(5)
+            axis.setMinors(4)
+             
+        plot.coordinates().setGridLinesColor(RGBA(0.0, 0.0, 0.5))
+        plot.coordinates().setLineWidth(1)
+        plot.coordinates().setNumberFont(<font color=green>"Courier"</font>, 8)
+        plot.coordinates().adjustNumbers(5)
+
+        self.setColor()
+        
+        plot.updateData();
+        plot.updateGL();
+
+        <font color=blue># Level</font>
+        levelLabel = qt.QLabel(<font color=green>'Level'</font>, self)
+        levelSlider = qt.QSlider(self)
+        levelSlider.setValue(50);
+        levelSlider.setTickmarks(qt.QSlider.Right)
+        levelSlider.setTickInterval(10)
+        levelSlider.setMaxValue(100)
+        levelLayout = qt.QVBoxLayout()
+        levelLayout.addWidget(levelLabel)
+        levelLayout.addWidget(levelSlider)
+
+        self.connect(
+            levelSlider, qt.SIGNAL(<font color=green>'valueChanged(int)'</font>), self.setLevel)
+
+        <font color=blue># Layout</font>
+        mainLayout = qt.QHBoxLayout(self)
+        <font color=blue>#self.setLayout(mainLayout)</font>
+        mainLayout.addWidget(plot)
+        mainLayout.addLayout(levelLayout)
+       
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> setColor</font>(self):
+        i, step = 252, 4
+        colorVector = ColorVector()
+        <b>while</b> (i&gt;=0):
+            colorVector.push_back(RGBA(i/255.0, max((i-60)/255.0, 0.0), 0.0))
+            step -= 1
+            <b>if</b> step == 0:
+                i -= 4
+                step = 4
+        color = StandardColor(self.plot)
+        color.setColorVector(colorVector)
+        self.plot.setDataColor(color)
+
+    <font color=blue># setColor()</font>
+
+    <b>def</b><font color=red> setLevel</font>(self, level):
+        self.level = 1.0 - 0.01*level;
+        self.bar.configure(self.width, self.level)
+        self.plot.updateData()
+        self.plot.updateGL()
+
+    <font color=blue># setLevel()</font>
+
+    <b>def</b><font color=red> save</font>(self, filename, filetype):
+        self.plot.save(filename, filetype)
+
+    <font color=blue># save()</font>
+    
+<font color=blue># class EnrichmentDemo</font>
+
+ 
+<b>def</b><font color=red> make</font>(): 
+    demo = EnrichmentDemo()
+    demo.show()
+    <font color=blue># Matrox cards on Linux work better with a resize() after show()</font>
+    demo.resize(600, 400)
+    <b>return</b> demo
+ 
+<font color=blue># make()</font>
+ 
+ 
+<b>def</b><font color=red> main</font>(args):
+    app = qt.QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+ 
+<font color=blue># main()</font>
+ 
+ 
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+    
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>

@@ -53,6 +53,21 @@ you start to write your own SIP interface specification files.
 </p>
 
 
+<h5><a href="examples3d/EnrichmentDemo.py.html">EnrichmentDemo.py</a>
+demonstrates</h5>
+<ul>
+<li>
+how to subclass the VertexEnrichment class
+</li>
+<li>
+how to use the Qwt3D.OpenGL module
+</li>
+</ul>
+
+<p><img alt="Enrichment Demo Widget" src="examples3d/EnrichmentDemo.png"
+        width=562 height=400 border=1>
+</p>
+
 <!--
 Local Variables:
 mode: HTML

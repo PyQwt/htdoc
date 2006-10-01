@@ -6,7 +6,7 @@ EXAMPLES         := BodeDemo CliDemo DataDemo ErrorBarDemo StackOrder
 EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%*.png) 
 EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%.py.html) 
 
-EXAMPLES_3D      := ParametricSurfaceDemo SimplePlot TestNumeric
+EXAMPLES_3D      := ParametricSurfaceDemo SimplePlot TestNumeric EnrichmentDemo
 EXAMPLES_3D_PNG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/examples/%.png) 
 EXAMPLES_3D      += Grab
 EXAMPLES_3D_HTML := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/examples/%.py.html) 
