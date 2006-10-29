@@ -73,7 +73,7 @@ numarray</a> is still being maintained, until the authors of the numarray
 make the switch to NumPy.
 </p>
 
-<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.1.tar.gz?download">PyQwt3D-0.1.1.tar.gz</a>
+<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.2.tar.gz?download">PyQwt3D-0.1.2.tar.gz</a>
 and
 <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.1.tar.gz?download">PyQwt-4.2.1.tar.gz</a>
 support <a href="http://numeric.scipy.org/">NumPy</a>.

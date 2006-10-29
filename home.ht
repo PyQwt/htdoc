@@ -10,14 +10,15 @@ scientific and engineering applications.
 It provides a widget to plot 2-dimensional data and various widgets to display
 and control bounded or unbounded floating point values.</p>
 
-<p>It is highly recommended to use PyQwt with either <a href=
-"http://www.numpy.org">Numeric</a>, <a href=
-"http://www.stsci.edu/resources/software_hardware/numarray">numarray</a> or
-both.
-<a href="http://www.numpy.org">Numeric</a> and  <a href=
-"http://www.stsci.edu/resources/software_hardware/numarray">numarray</a>
-extend the Python language with new data types to turn Python into an ideal
-language for numerical computing and experimentation.
+<p>It is highly recommended to use PyQwt with either
+<a href="http://numpy.scipy.org/">NumPy</a>,
+<a href=
+"http://www.stsci.edu/resources/software_hardware/numarray">numarray</a>,
+<a href="http://www.numpy.org">Numeric</a>, or any combination of those
+packages.
+The Numerical Python packages extend the Python language with new data types
+to turn Python into an ideal language for numerical computing and
+experimentation.
 The beautiful general purpose programming language Python in combination
 with the Numerical extensions and <a href="http://www.scipy.org">SciPy</a>
 is as powerful as specialized tools like MatLab and IDL.</p>
@@ -45,6 +46,10 @@ The <a href="faq.html">FAQ</a> explains why PyQt's closed source
 interactive development environment cannot be used with PyQwt.
 </p>
 
+<h3>Support for Qt-4</h3>
+
+The snapshot <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt5-20061017.tar.gz?download">PyQwt5-20061017</a> has support for Qt-4.
+</p>
 
 <h1>PyQwt3D plots data in 3D</h1>
 
@@ -58,17 +63,12 @@ make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 
 <p>The <a href="doc3d/install.html">installation instructions</a> explain how
 to install
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.1.tar.gz?download">
-PyQwt3D-0.1.1.tar.gz</a>.
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.2.tar.gz?download">
+PyQwt3D-0.1.2.tar.gz</a>.
 </p>
 
-<p>We like feedback on:
-<ol>
-<li>the installation and stability on other platforms than Linux and
-Windows</li>
-<li>the interfacing between the QwtPlot3D API and Numerical Python
-extensions.</li>
-</ol>
+<p>We like feedback on the interfacing between the QwtPlot3D API and Numerical
+Python extensions.
 </p>
 
 <p>You should look into
