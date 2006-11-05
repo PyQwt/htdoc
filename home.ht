@@ -61,10 +61,13 @@ The <a href="pyqwt3d-examples.html"> examples</a> show how easy it is to
 make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 </p>
 
+<p>PyQwt3D supports Qt-4 and/or Qt-3.
+</p>
+
 <p>The <a href="doc3d/install.html">installation instructions</a> explain how
 to install
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.2.tar.gz?download">
-PyQwt3D-0.1.2.tar.gz</a>.
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.3.tar.gz?download">
+PyQwt3D-0.1.3.tar.gz</a>.
 </p>
 
 <p>We like feedback on the interfacing between the QwtPlot3D API and Numerical
