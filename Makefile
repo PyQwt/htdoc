@@ -38,23 +38,23 @@ ARGS             := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 all: $(TARGETS)
 	mkdir -p doc5
 	(cd $(PYQWT5_CVS)/Doc; make htdoc)
-	cp -vpur $(PYQWT5_CVS)/Doc/html/htdoc/* doc5
+	cp -vpr $(PYQWT5_CVS)/Doc/html/htdoc/* doc5
 	mkdir -p doc4
 	(cd $(PYQWT4_CVS)/Doc; make htdoc)
-	cp -vpur $(PYQWT4_CVS)/Doc/html/htdoc/* doc4
+	cp -vpr $(PYQWT4_CVS)/Doc/html/htdoc/* doc4
 	(cd $(PYQWT3D_CVS)/Doc; make htdoc)
 	mkdir -p doc3d
-	cp -vpur $(PYQWT3D_CVS)/Doc/html/htdoc/* doc3d
-	cp -vpu home.html index.html
-	cp -vpu patent-protest strike.html
+	cp -vpr $(PYQWT3D_CVS)/Doc/html/htdoc/* doc3d
+	cp -vp home.html index.html
+	cp -vp patent-protest strike.html
 
 .PHONY: examples examples3d
 
 examples: $(EXAMPLES_PNG) $(EXAMPLES_HTML)
-	cp -puv $^ examples
+	cp -pv $^ examples
 
 examples3d: $(EXAMPLES_3D_PNG) $(EXAMPLES_3D_HTML)
-	cp -puv $^ examples3d
+	cp -pv $^ examples3d
 
 clean:
 	rm -f *~
