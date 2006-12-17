@@ -2,7 +2,21 @@ Title: Download Guide
 
 <h1>PyQwt Download Links</h1>
 
-<h3>Source installation of PyQwt-4.2.1 on MacOS/X or Posix systems</h3>
+<h3>Source installation of PyQwt-4.2.2 on Mac OS X or Posix systems</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.5/python-2.5-macosx.dmg">Python 2.5 for Macintosh OS X</a> or
+<a href="http://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2">Python 2.5 bzipped source tarball</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.tar.gz?download">numpy-1.0.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-mac-free-3.3.7.tar.gz">qt-mac-free-3.3.7.tar.gz<a> or
+<a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.7.tar.bz2">qt-x11-free-3.3.7.tar.bz2</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.5.tar.gz">sip-4.5.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.tar.gz">PyQt-mac-gpl-3.17.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.tar.gz">PyQt-x11-gpl-3.17.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.2.tar.gz?download">PyQwt-4.2.2.tar.gz</a></li>
+</ol>
+
+<h3>Source installation of PyQwt-4.2.1 on Mac OS X or Posix systems</h3>
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.4.3/Python-2.4.3.tar.bz2">Python-2.4.3.tar.bz2</a></li>
