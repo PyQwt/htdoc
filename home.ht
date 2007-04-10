@@ -38,7 +38,7 @@ to the PyQwt releases and their prerequisites.</p>
 
 <p>PyQwt integrates nicely with the
 <a href="http://www.trolltech.com/products/qt/designer.html">Qt Designer</a>
-(version 3.0 or higher) and the 
+and the 
 <a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
 integrated development environment.
 The <a href="faq.html">FAQ</a> explains why PyQt's closed source
@@ -46,9 +46,12 @@ The <a href="faq.html">FAQ</a> explains why PyQt's closed source
 interactive development environment cannot be used with PyQwt.
 </p>
 
-<h3>Support for Qt-4</h3>
+<h3>Support for Qt-4 and Qt-3</h3>
 
-The snapshot <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt5-20061017.tar.gz?download">PyQwt5-20061017</a> has support for Qt-4.
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0.tar.gz?download">PyQwt-5.0.0</a> supports Qt-4 and Qt-3, but
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.2.tar.gz?download">PyQwt-4.2.2</a> supports only Qt-3.
+The application programmer interfaces of PyQwt-5.0.0 and PyQwt-4.2.2 are
+incompatible. 
 </p>
 
 <h1>PyQwt3D plots data in 3D</h1>
@@ -61,7 +64,7 @@ The <a href="pyqwt3d-examples.html"> examples</a> show how easy it is to
 make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 </p>
 
-<p>PyQwt3D supports Qt-4 and/or Qt-3.
+x<p>PyQwt3D supports Qt-4 and/or Qt-3.
 </p>
 
 <p>The <a href="doc3d/install.html">installation instructions</a> explain how
