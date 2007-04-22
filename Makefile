@@ -64,5 +64,5 @@ install: clean all
 	rsync $(ARGS) . $(DEST)
 
 snarf:
-	rsync --rsh=ssh -v -r -l -t --update $(DEST)/snapshot .
-	rsync --rsh=ssh -v -r -l -t --update $(DEST)/support .
+	rsync --rsh=ssh -avut $(DEST)/snapshot .
+	rsync --rsh=ssh -avut $(DEST)/support .
