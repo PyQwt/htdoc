@@ -32,7 +32,7 @@ The beautiful general purpose programming language Python in combination
 with the Numerical extensions and <a href="http://www.scipy.org">SciPy</a>
 is as powerful as specialized tools like MatLab and IDL.</p>
 
-<p>The <a href="doc/installation.html">documentation</a> explains how
+<p>The <a href="doc5/installation.html">documentation</a> explains how
 to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
 supported by Qt (HPUX, Irix, Linux, Sun).
 The <a href="download.html">download guide</a> has quick links
@@ -104,10 +104,6 @@ and with a coverage tool to test trading strategies.</p>
 interactive multi-channel analyzer for X-ray fluorescence spectra developed at
 the
 <a href="http://www.esrf.fr">European Synchrotron Facility</a>.
-This
-<a href="http://dale.chess.cornell.edu/chess-wiki/PyMca">PyMCA tutorial</a>
-is a nice introduction of
-<a href="http://sourceforge.net/projects/pymca/">PyMCA</a>.
 </p>
 
 
