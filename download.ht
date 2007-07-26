@@ -2,18 +2,52 @@ Title: Download Guide
 
 <h1>PyQwt Download Links</h1>
 
+<h3>Source installation of PyQwt-5.0.1 on Mac OS X or Posix systems</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.5.1/python-2.5.1-macosx.dmg">Python 2.5.1 for Macintosh OS X</a> or
+<a href="http://www.python.org/ftp/python/2.5.1/Python-2.5.1.tar.bz2">Python 2.5.1 bzipped source tarball</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.3.tar.gz?download">numpy-1.0.3.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-mac-opensource-4.3.0.dmg">qt-mac-opensource-4.3.0.dmg<a> or
+<a href="ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-src-4.3.0.tar.gz">qt-x11-opensource-src-4.3.0.tar.gz</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.7.tar.gz">sip-4.7.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-4.3.tar.gz">PyQt-mac-gpl-4.3.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-4.3.tar.gz">PyQt-x11-gpl-4.3.tar.gz</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.1.tar.gz?download">PyQwt-5.0.1.tar.gz</a></li>
+</ol>
+
+<h3>Binary installation of PyQwt-5.0.1 on Windows for Python-2.5.x, Qt-4.2.3, PyQt-4.2, and NumPy-1.0.3</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.5.1/python-2.5.1.msi">python-2.5.1.msi</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.3.win32-py2.5.exe">numpy-1.0.3.win32-py2.5.exe</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-win-opensource-4.2.3-mingw.exe">qt-win-opensource-4.2.3-mingw.exe</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-gpl-4.2-Py2.5-Qt4.2.3.exe">PyQt-gpl-4.2-Py2.5-Qt4.2.3.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.1-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe">PyQwt-5.0.1-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe</a></li>
+</ol>
+
 <h3>Source installation of PyQwt-5.0.0 on Mac OS X or Posix systems</h3>
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.5/python-2.5-macosx.dmg">Python 2.5 for Macintosh OS X</a> or
 <a href="http://www.python.org/ftp/python/2.5/Python-2.5.tar.bz2">Python 2.5 bzipped source tarball</a></li>
 <li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.2.tar.gz?download">numpy-1.0.2.tar.gz</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/source/qt-mac-opensource-4.2.3.tar.gz">qt-mac-opensource-4.2.3.tar.gz<a> or
-<a href="ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-4.2.3.tar.bz2">qt-x11-opensource-4.2.3.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.5.2.tar.gz">sip-4.5.2.tar.gz</a>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.tar.gz">PyQt-mac-gpl-4.1.1.tar.gz</a> or
-<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.tar.gz">PyQt-x11-gpl-4.1.1.tar.gz</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-mac-opensource-4.2.3.dmg">qt-mac-opensource-4.2.3.dmg<a> or
+<a href="ftp://ftp.trolltech.com/qt/source/qt-x11-opensource-src-4.2.3.tar.gz">qt-x11-opensource-src-4.2.3.tar.gz</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.6.tar.gz">sip-4.6.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-4.2.tar.gz">PyQt-mac-gpl-4.2.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-4.2.tar.gz">PyQt-x11-gpl-4.2.tar.gz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0.tar.gz?download">PyQwt-5.0.0.tar.gz</a></li>
+</ol>
+
+<h3>Binary installation of PyQwt-5.0.0 on Windows for Python-2.5.x, Qt-4.2.3, PyQt-4.2, and NumPy-1.0.3</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.5/python-2.5.msi">python-2.5.msi</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.3.win32-py2.5.exe">numpy-1.0.3.win32-py2.5.exe</a></li>
+<li><a href="ftp://ftp.trolltech.com/qt/source/qt-win-opensource-4.2.3-mingw.exe">qt-win-opensource-4.2.3-mingw.exe</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-gpl-4.2-Py2.5-Qt4.2.3.exe">PyQt-gpl-4.2-Py2.5-Qt4.2.3.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe">PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe</a></li>
 </ol>
 
 <h3>Binary installation of PyQwt-5.0.0 on Windows for Python-2.5.x, Qt-4.2.3, PyQt-4.2, and NumPy-1.0.2</h3>
@@ -23,7 +57,7 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.2.win32-py2.5.exe">numpy-1.0.2.win32-py2.5.exe</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-win-opensource-4.2.3-mingw.exe">qt-win-opensource-4.2.3-mingw.exe</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-gpl-4.2-Py2.5-Qt4.2.3.exe">PyQt-gpl-4.2-Py2.5-Qt4.2.3.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt4.1.1-NumPy1.0.2.exe">PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt-4.2.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe">PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe</a></li>
 </ol>
 
 <h3>Binary installation of PyQwt-5.0.0 on Windows for Python-2.5.x, Qt-4.2.2, PyQt-4.1.1, and NumPy-1.0.2</h3>
@@ -33,7 +67,7 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.2.win32-py2.5.exe">numpy-1.0.2.win32-py2.5.exe</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-win-opensource-4.2.2-mingw.exe">qt-win-opensource-4.2.2-mingw.exe</a></li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-gpl-4.1.1-Py2.5-Qt4.2.2.exe">PyQt-gpl-4.1.1-Py2.5-Qt4.2.2.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt4.1.1-NumPy1.0.2.exe">PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt-4.1.1.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt4.1.1-NumPy1.0.2.exe">PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt4.1.1-NumPy1.0.2.exe</a></li>
 </ol>
 
 <h3>Source installation of PyQwt-4.2.2 on Mac OS X or Posix systems</h3>
