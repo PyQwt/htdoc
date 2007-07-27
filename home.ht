@@ -51,8 +51,8 @@ interactive development environment cannot be used with PyQwt.
 <h3>Support for Qt-4 and Qt-3</h3>
 
 <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.1.tar.gz?download">PyQwt-5.0.1</a> supports Qt-4 and Qt-3, but
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.2.tar.gz?download">PyQwt-4.2.2</a> supports only Qt-3.
-The application programmer interfaces of PyQwt-5.0.0 and PyQwt-4.2.2 are
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.3.tar.gz?download">PyQwt-4.2.3</a> supports only Qt-3.
+The application programmer interfaces of PyQwt-5.0.x and PyQwt-4.2.x are
 incompatible. 
 </p>
 
