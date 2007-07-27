@@ -15,10 +15,6 @@ Title: Command Line Interpreter Examples
   <li>interact with those widgets through (Py)Qt's GUI.</li>
 </ul>
 
-<p>The <tt class="module">iqt</tt> module requires the <tt class="module">
-  readline</tt> module.
-</p>
-
 <p>A step by step example follows:</p>
 
 <ol>
@@ -28,10 +24,8 @@ Title: Command Line Interpreter Examples
     <pre class="cli">
 >>> import Qwt4.iqt
     </pre>
-    to create an application instance and to put an event processing function
-    on the event hook of the readline module.
-    The GNU readline library closes the event loop by calling this function at
-    a maximum rate of 10 times per second while reading the keyboard input. 
+    to create an application instance and to simulate entering an event loop
+    which does not inhibit the Python interpreter to read its input.
   </li>
   <li>
     The module <tt class="module">qwt.qplt</tt> provides an interpreter
