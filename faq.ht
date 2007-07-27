@@ -38,7 +38,7 @@ have built PyQwt against a shared Qwt library, the designer plugin is probably
 already installed.  If you have built PyQwt against the slightly patched
 version of Qwt included in PyQwt, you can either install the included Qwt
 library (safest) or the official Qwt library matching PyQwt
-(PyQwt-4.2 matches Qwt-4.2.0, but not the Qwt-4.2.0 release candidates).
+(PyQwt-4.2.x matches with Qwt-4.2.0 and PyQwt-5.0.x with Qwt-5.0.y).
 </p>
 
 <p> Make sure that the Qwt designer plugin is linked against the correct Qwt
@@ -65,19 +65,14 @@ The output shows that my setup is correct:
 
 <h5><a name="Choice">Should I choose Numeric, numarray, or NumPy?</a></h5>
 
-<p>The development of <a href="http://numeric.scipy.org/">Numeric</a>
-has stopped and it will be eventually replaced by 
-<a href="http://numeric.scipy.org/">NumPy</a>.
+<p><a href="http://numeric.scipy.org/">NumPy</a> is recommended for new code,
+because
+numarray</a> are unmaintained.
+Recent versions of PyQwt and PyQwt3D
+support <a href="http://numeric.scipy.org/">NumPy</a>
+(as well as <a href="http://numeric.scipy.org/">Numeric</a> and
 <a href="http://www.stsci.edu/resources/software_hardware/numarray/">
-numarray</a> is still being maintained, until the authors of the numarray
-make the switch to NumPy.
-</p>
-
-<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.3.tar.gz?download">PyQwt3D-0.1.3.tar.gz</a>,
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.2.tar.gz?download">PyQwt-4.2.2.tar.gz</a>,
-and
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt5-20061017.tar.gz?download">PyQwt5-20061017.tar.gz</a>
-support <a href="http://numeric.scipy.org/">NumPy</a>.
+numarray</a>).
 </p>
 
 <!--

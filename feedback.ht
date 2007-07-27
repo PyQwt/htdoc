@@ -11,6 +11,11 @@ is based on the QwtImagePlotDemo.py example:
         width=720 height=538 border=1>
 </p>
 
+<h3>PyQwt for Astrophysics</h3>
+
+This <a href="./images/meq.pdf">poster (1.5 Mb)</a> shows what you could do
+with PyQwt.
+
 
 <!--
 Local Variables:
