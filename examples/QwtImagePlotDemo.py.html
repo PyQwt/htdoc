@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>QwtImagePlotDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> qt <b>import</b> *
+<b>from</b> Qwt4.Qwt <b>import</b> *
+<b>from</b> Qwt4.anynumpy <b>import</b> *
+
+<font color=blue># from scipy.pilutil</font>
+<b>def</b><font color=red> bytescale</font>(data, cmin=None, cmax=None, high=255, low=0):
+    <b>if</b> ((hasattr(data, <font color=green>'dtype'</font>) <b>and</b> data.dtype.char == UInt8)
+        <b>or</b> (hasattr(data, <font color=green>'typecode'</font>) <b>and</b> data.typecode == UInt8)
+        ):
+        <b>return</b> data
+    high = high - low
+    <b>if</b> cmin <b>is</b> None:
+        cmin = min(ravel(data))
+    <b>if</b> cmax <b>is</b> None:
+        cmax = max(ravel(data))
+    scale = high * 1.0 / (cmax-cmin <b>or</b> 1)
+    bytedata = ((data*1.0-cmin)*scale + 0.4999).astype(UInt8)
+    <b>return</b> bytedata + asarray(low).astype(UInt8)
+
+<font color=blue># bytescale()</font>
+
+<b>def</b><font color=red> linearX</font>(nx, ny):
+    <b>return</b> repeat(arange(nx, typecode = Float32)[:, NewAxis], ny, -1)
+
+<font color=blue># linearX()</font>
+
+<b>def</b><font color=red> linearY</font>(nx, ny):
+    <b>return</b> repeat(arange(ny, typecode = Float32)[NewAxis, :], nx, 0)
+
+<font color=blue># linearY()</font>
+
+<b>def</b><font color=red> square</font>(n, min, max):
+    t = arange(min, max, float(max-min)/(n-1))
+    <font color=blue>#return outer(cos(t), sin(t))</font>
+    <b>return</b> cos(t)*sin(t)[:,NewAxis]
+
+<font color=blue># square()</font>
+
+
+<b>class</b><font color=red> QwtPlotImage</font>(QwtPlotMappedItem):
+
+    <b>def</b><font color=red> __init__</font>(self, parent):
+        QwtPlotItem.__init__(self, parent)
+        self.xyzs = None
+        self.plot = parent
+
+    <font color=blue># __init__()</font>
+    
+    <b>def</b><font color=red> setData</font>(self, xyzs, xScale = None, yScale = None):
+        self.xyzs = xyzs
+        shape = xyzs.shape
+        <b>if</b> xScale:
+            self.xMap = QwtDiMap(0, shape[0], xScale[0], xScale[1])
+            self.plot.setAxisScale(QwtPlot.xBottom, *xScale)
+        <b>else</b>:
+            self.xMap = QwtDiMap(0, shape[0], 0, shape[0])
+            self.plot.setAxisScale(QwtPlot.xBottom, 0, shape[0])
+        <b>if</b> yScale:
+            self.yMap = QwtDiMap(0, shape[1], yScale[0], yScale[1])
+            self.plot.setAxisScale(QwtPlot.yLeft, *yScale)
+        <b>else</b>:
+            self.yMap = QwtDiMap(0, shape[1], 0, shape[1])
+            self.plot.setAxisScale(QwtPlot.yLeft, 0, shape[1])
+        self.image = toQImage(bytescale(self.xyzs)).mirror(0, 1)
+        <b>for</b> i <b>in</b> range(0, 256):
+            self.image.setColor(i, qRgb(i, 0, 255-i))
+
+    <font color=blue># setData()    </font>
+
+    <b>def</b><font color=red> drawImage</font>(self, painter, xMap, yMap):
+        <font color=green>"""Paint image to zooming to xMap, yMap
+
+        Calculate (x1, y1, x2, y2) so that it contains at least 1 pixel,
+        and copy the visible region to scale it to the canvas.
+        """</font>
+        <font color=blue># calculate y1, y2</font>
+        <font color=blue># the scanline order (index y) is inverted with respect to the y-axis</font>
+        y1 = y2 = self.image.height()
+        y1 *= (self.yMap.d2() - yMap.d2())
+        y1 /= (self.yMap.d2() - self.yMap.d1())
+        y1 = max(0, int(y1-0.5))
+        y2 *= (self.yMap.d2() - yMap.d1())
+        y2 /= (self.yMap.d2() - self.yMap.d1())
+        y2 = min(self.image.height(), int(y2+0.5))
+        <font color=blue># calculate x1, x2 -- the pixel order (index x) is normal</font>
+        x1 = x2 = self.image.width()
+        x1 *= (xMap.d1() - self.xMap.d1())
+        x1 /= (self.xMap.d2() - self.xMap.d1())
+        x1 = max(0, int(x1-0.5))
+        x2 *= (xMap.d2() - self.xMap.d1())
+        x2 /= (self.xMap.d2() - self.xMap.d1())
+        x2 = min(self.image.width(), int(x2+0.5))
+        <font color=blue># copy</font>
+        image = self.image.copy(x1, y1, x2-x1, y2-y1)
+        <font color=blue># zoom</font>
+        image = image.smoothScale(xMap.i2()-xMap.i1()+1, yMap.i1()-yMap.i2()+1)
+        <font color=blue># draw</font>
+        painter.drawImage(xMap.i1(), yMap.i2(), image)
+
+    <font color=blue># drawImage()</font>
+
+<font color=blue># class QwtPlotImage</font>
+    
+
+<b>class</b><font color=red> QwtImagePlot</font>(QwtPlot):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        QwtPlot.__init__(self, *args)
+	<font color=blue># make a QwtPlot widget</font>
+        self.plotLayout().setMargin(0)
+        self.plotLayout().setCanvasMargin(0)
+        self.plotLayout().setAlignCanvasToScales(1)
+	self.setTitle(<font color=green>'QwtImagePlot: (un)zoom &amp; (un)hide'</font>)
+        self.setAutoLegend(1)
+        self.setLegendPos(Qwt.Right)
+	<font color=blue># set axis titles</font>
+	self.setAxisTitle(QwtPlot.xBottom, <font color=green>'time (s)'</font>)
+	self.setAxisTitle(QwtPlot.yLeft, <font color=green>'frequency (Hz)'</font>)
+	<font color=blue># insert a few curves</font>
+	cSin = self.insertCurve(<font color=green>'y = pi*sin(x)'</font>)
+	cCos = self.insertCurve(<font color=green>'y = 4*pi*sin(x)*cos(x)**2'</font>)
+	<font color=blue># set curve styles</font>
+	self.setCurvePen(cSin, QPen(Qt.green, 2))
+	self.setCurvePen(cCos, QPen(Qt.black, 2))
+	<font color=blue># calculate 3 NumPy arrays</font>
+        x = arange(-2*pi, 2*pi, 0.01)
+        y = pi*sin(x)
+        z = 4*pi*cos(x)*cos(x)*sin(x)
+	<font color=blue># copy the data</font>
+	self.setCurveData(cSin, x, y)
+	self.setCurveData(cCos, x, z)
+	<font color=blue># insert a horizontal marker at y = 0</font>
+	mY = self.insertLineMarker(<font color=green>'y = 0'</font>, QwtPlot.yLeft)
+	self.setMarkerYPos(mY, 0.0)
+	<font color=blue># insert a vertical marker at x = pi</font>
+	mX = self.insertLineMarker(<font color=green>'x = pi'</font>, QwtPlot.xBottom)
+	self.setMarkerXPos(mX, pi)
+        <font color=blue># image</font>
+        self.plotImage = QwtPlotImage(self)
+        <font color=blue>#self.plotImage.setData(bytescale(linearX(512, 512)+linearY(512, 512)))</font>
+        self.plotImage.setData(
+            square(512,-2*pi, 2*pi), (-2*pi, 2*pi), (-2*pi, 2*pi))
+
+        self.zoomStack = []
+        self.connect(self,
+                     SIGNAL(<font color=green>'plotMouseMoved(const QMouseEvent&amp;)'</font>),
+                     self.onMouseMoved)
+        self.connect(self,
+                     SIGNAL(<font color=green>'plotMousePressed(const QMouseEvent&amp;)'</font>),
+                     self.onMousePressed)
+        self.connect(self,
+                     SIGNAL(<font color=green>'plotMouseReleased(const QMouseEvent&amp;)'</font>),
+                     self.onMouseReleased)
+        self.connect(self, SIGNAL(<font color=green>"legendClicked(long)"</font>), self.toggleCurve)
+        
+        <font color=blue># replot</font>
+        self.replot()
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> drawCanvasItems</font>(self, painter, rectangle, maps, filter):
+        self.plotImage.drawImage(
+            painter, maps[QwtPlot.xBottom], maps[QwtPlot.yLeft])
+        QwtPlot.drawCanvasItems(self, painter, rectangle, maps, filter)
+
+    <font color=blue># drawCanvasItems()</font>
+
+    <b>def</b><font color=red> onMouseMoved</font>(self, e):
+        <b>pass</b>
+
+    <font color=blue># onMouseMoved()</font>
+
+    <b>def</b><font color=red> onMousePressed</font>(self, e):
+        <b>if</b> Qt.LeftButton == e.button():
+            <font color=blue># Python semantics: self.pos = e.pos() does not work; force a copy</font>
+            self.xpos = e.pos().x()
+            self.ypos = e.pos().y()
+            self.enableOutline(1)
+            self.setOutlinePen(QPen(Qt.black))
+            self.setOutlineStyle(Qwt.Rect)
+            self.zooming = 1
+            <b>if</b> self.zoomStack == []:
+                self.zoomState = (
+                    self.axisScale(QwtPlot.xBottom).lBound(),
+                    self.axisScale(QwtPlot.xBottom).hBound(),
+                    self.axisScale(QwtPlot.yLeft).lBound(),
+                    self.axisScale(QwtPlot.yLeft).hBound(),
+                    )
+        <b>elif</b> Qt.RightButton == e.button():
+            self.zooming = 0
+        <font color=blue># fake a mouse move to show the cursor position</font>
+        self.onMouseMoved(e)
+
+    <font color=blue># onMousePressed()</font>
+
+    <b>def</b><font color=red> onMouseReleased</font>(self, e):
+        <b>if</b> Qt.LeftButton == e.button():
+            xmin = min(self.xpos, e.pos().x())
+            xmax = max(self.xpos, e.pos().x())
+            ymin = min(self.ypos, e.pos().y())
+            ymax = max(self.ypos, e.pos().y())
+            self.setOutlineStyle(Qwt.Cross)
+            xmin = self.invTransform(QwtPlot.xBottom, xmin)
+            xmax = self.invTransform(QwtPlot.xBottom, xmax)
+            ymin = self.invTransform(QwtPlot.yLeft, ymin)
+            ymax = self.invTransform(QwtPlot.yLeft, ymax)
+            <b>if</b> xmin == xmax <b>or</b> ymin == ymax:
+                <b>return</b>
+            self.zoomStack.append(self.zoomState)
+            self.zoomState = (xmin, xmax, ymin, ymax)
+            self.enableOutline(0)
+        <b>elif</b> Qt.RightButton == e.button():
+            <b>if</b> len(self.zoomStack):
+                xmin, xmax, ymin, ymax = self.zoomStack.pop()
+            <b>else</b>:
+                <b>return</b>
+
+        self.setAxisScale(QwtPlot.xBottom, xmin, xmax)
+        self.setAxisScale(QwtPlot.yLeft, ymin, ymax)
+        self.replot()
+
+    <font color=blue># onMouseReleased()</font>
+
+    <b>def</b><font color=red> toggleCurve</font>(self, key):
+        curve = self.curve(key)
+        <b>if</b> curve:
+            curve.setEnabled(<b>not</b> curve.enabled())
+            self.replot()
+
+    <font color=blue># toggleCurve()</font>
+
+<font color=blue># class QwtImagePlot</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = QwtImagePlot()
+    demo.resize(500, 300)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.setMainWidget(demo)
+    app.exec_loop()
+
+<font color=blue># main()</font>
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+
+
+
+
+</pre>
+</body>
+</html>

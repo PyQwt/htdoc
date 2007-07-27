@@ -9,8 +9,8 @@
 
 <font color=blue># The Python version of qwt-*/examples/bode</font>
 
-<font color=blue># To get an impression of the expressive power of Numeric,</font>
-<font color=blue># compare the Python and C++ versions of recalc()</font>
+<font color=blue># Compare the Python and C++ versions of recalc() to get an impression of the</font>
+<font color=blue># expressive power of the Numerical Python extensions.</font>
 
 <b>import</b> sys
 <b>from</b> qt <b>import</b> *
@@ -214,7 +214,7 @@ zoom_xpm = [<font color=green>'32 32 8 1'</font>,
     <b>def</b><font color=red> setDamp</font>(self, d):
         self.damping = d
         <font color=blue># Numerical Python: f, g, a and p are arrays!</font>
-        f = exp(log(10.0)*arrayrange(-2, 2.02, 0.04))
+        f = exp(log(10.0)*arange(-2, 2.02, 0.04))
         g = 1.0/(1.0-f*f+2j*self.damping*f)
         a = 20.0*log10(abs(g))
         p = 180*arctan2(g.imag, g.real)/pi

@@ -10,18 +10,7 @@
 <b>import</b> sys
 <b>from</b> qt <b>import</b> *
 <b>from</b> Qwt4.Qwt <b>import</b> *
-
-<font color=blue># try to import scipy, Numeric, or numarray</font>
-<b>try</b>:
-    <b>from</b> scipy <b>import</b> *
-<b>except</b> ImportError:
-    <b>try</b>:
-        <b>from</b> Numeric <b>import</b> *
-    <b>except</b> ImportError:
-        <b>try</b>:
-            <b>from</b> numarray <b>import</b> *
-        <b>except</b> ImportError:
-            <b>raise</b> ImportError, <font color=green>'Failed to import scipy, Numeric, or numarray'</font>
+<b>from</b> Qwt4.anynumpy <b>import</b> *
 
 
 <b>class</b><font color=red> ErrorBarPlotCurve</font>(QwtPlotCurve):
@@ -256,7 +245,7 @@
     demo = QwtPlot(<font color=green>"Errorbar Demonstation"</font>)
     demo.setCanvasBackground(Qt.white)
     <font color=blue># calculate data and errors for a curve with error bars</font>
-    x = arange(0, 10.1, 0.5, Float)
+    x = arange(0, 10.1, 0.5)
     y = sin(x)
     dy = 0.2 * abs(y)
     <font color=blue># dy = (0.15 * abs(y), 0.25 * abs(y)) # uncomment for asymmetric error bars</font>

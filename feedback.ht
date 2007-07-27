@@ -6,14 +6,16 @@ Title: Feedback
 
 The code to produce following plot of the
 <a href="http://en.wikipedia.org/wiki/Whirlpool_Galaxy">Whirlpool Galaxy</a>
-is based on the QwtImagePlotDemo.py example:
+is based on the
+<a href="examples/QwtImagePlotDemo.py.html">QwtImagePlotDemo.py</a> example
+in PyQwt-4.2.x (or ImagePlotDemo.py in PyQwt-5.0.x):
 <p><img alt="Whirlpool Galaxy" src="images/m51.png"
         width=720 height=538 border=1>
 </p>
 
 <h3>PyQwt for Astrophysics</h3>
 
-This <a href="./images/meq.pdf">poster (1.5 Mb)</a> shows what you could do
+This <a href="images/meq.pdf">poster (1.5 Mb)</a> shows what you could do
 with PyQwt.
 
 
