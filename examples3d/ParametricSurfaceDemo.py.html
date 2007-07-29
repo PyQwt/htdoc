@@ -9,8 +9,8 @@
 
 <b>import</b> sys
 <b>from</b> math <b>import</b> cos, pi, sin
-<b>from</b> qt <b>import</b> QApplication
-<b>from</b> Qwt3D <b>import</b> ParametricSurface, RGBA, SurfacePlot, Triple, NOCOORD
+<b>from</b> PyQt4.Qt <b>import</b> QApplication
+<b>from</b> PyQt4.Qwt3D <b>import</b> ParametricSurface, RGBA, SurfacePlot, Triple, NOCOORD
 
 <b>class</b><font color=red> Sphere</font>(ParametricSurface):
 
@@ -64,8 +64,7 @@
 <b>def</b><font color=red> main</font>(args):
     app = QApplication(args)
     demo = make()
-    app.setMainWidget(demo)
-    app.exec_loop()
+    app.exec_()
 
 <font color=blue># main()</font>
 

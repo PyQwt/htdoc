@@ -8,18 +8,24 @@
 <font color=blue>#!/usr/bin/env python</font>
 
 <font color=blue># iqt is part of PyQwt</font>
-<b>import</b> Qwt5.iqt
+<b>import</b> PyQt4.Qwt5.iqt
+<b>from</b> PyQt4.Qwt3D <b>import</b> save
+
 
 <b>def</b><font color=red> main</font>():
     <b>for</b> demo <b>in</b> [<font color=green>'EnrichmentDemo'</font>,
                  <font color=green>'ParametricSurfaceDemo'</font>,
                  <font color=green>'SimplePlot'</font>,
-                 <font color=green>'TestNumeric'</font>,
+                 <font color=green>'TestNumPy'</font>,
                  ]:
         result = __import__(demo).make()
         raw_input(<font color=green>"Is the demo looking HAPPY? "</font>)
-        result.save(demo + <font color=green>'.png'</font>, <font color=green>'PNG'</font>)
-        result.save(demo + <font color=green>'.pdf'</font>, <font color=green>'PDF'</font>)
+
+        <b>print</b> save(result, demo + <font color=green>'.png'</font>, <font color=green>'png'</font>)
+        <b>print</b> save(result, demo + <font color=green>'.pdf'</font>, <font color=green>'pdf'</font>)
+	<b>print</b> save(result, demo + <font color=green>'.ps'</font>, <font color=green>'pdf'</font>)
+	<b>print</b> save(result, demo + <font color=green>'.eps'</font>, <font color=green>'eps'</font>)
+        <b>print</b> save(result, demo + <font color=green>'.svg'</font>, <font color=green>'svg'</font>)
 
 <font color=blue># main()</font>
 

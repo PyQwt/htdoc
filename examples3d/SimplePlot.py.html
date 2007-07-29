@@ -9,8 +9,8 @@
 
 <b>import</b> sys
 <b>from</b> math <b>import</b> log
-<b>from</b> qt <b>import</b> QApplication
-<b>from</b> Qwt3D <b>import</b> Function, RGBA, SurfacePlot, BOX, X1, Y1, Z1
+<b>from</b> PyQt4.Qt <b>import</b> QApplication
+<b>from</b> PyQt4.Qwt3D <b>import</b> Function, RGBA, SurfacePlot, BOX, X1, Y1, Z1
 
 <b>class</b><font color=red> Rosenbrock</font>(Function):
 
@@ -54,7 +54,7 @@
             
         axes[X1].setLabelString(<font color=green>'x-axis'</font>)
         axes[Y1].setLabelString(<font color=green>'y-axis'</font>)
-        axes[Z1].setLabelString(u<font color=green>'\u038f'</font>)
+        axes[Z1].setLabelString(<font color=green>'z-axis'</font>)
 
         self.setCoordinateStyle(BOX);
 
@@ -79,8 +79,7 @@
 <b>def</b><font color=red> main</font>(args):
     app = QApplication(args)
     demo = make()
-    app.setMainWidget(demo)
-    app.exec_loop()
+    app.exec_()
 
 <font color=blue># main()</font>
 

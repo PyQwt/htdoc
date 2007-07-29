@@ -10,9 +10,9 @@
 <font color=blue># A Python translation of the "enrichments" example of QwtPlot3D</font>
 
 <b>import</b> sys
-<b>import</b> qt
-<b>from</b> Qwt3D <b>import</b> *
-<b>from</b> Qwt3D.OpenGL <b>import</b> *
+<b>import</b> PyQt4.Qt <b>as</b> Qt
+<b>from</b> PyQt4.Qwt3D <b>import</b> *
+<b>from</b> PyQt4.Qwt3D.OpenGL <b>import</b> *
 
 
 <font color=blue># translated from enrichments.cpp</font>
@@ -200,10 +200,10 @@
 
 <font color=blue># translated from enrichmentmainwindow.cpp</font>
  
-<b>class</b><font color=red> EnrichmentDemo</font>(qt.QWidget):
+<b>class</b><font color=red> EnrichmentDemo</font>(Qt.QWidget):
      
     <b>def</b><font color=red> __init__</font>(self, *args):
-        qt.QWidget.__init__(self, *args)
+        Qt.QWidget.__init__(self, *args)
 
         plot = self.plot = SurfacePlot(self)
         plot.setTitle(<font color=green>'Bar Style (Vertex Enrichment)'</font>)
@@ -239,22 +239,20 @@
         plot.updateGL();
 
         <font color=blue># Level</font>
-        levelLabel = qt.QLabel(<font color=green>'Level'</font>, self)
-        levelSlider = qt.QSlider(self)
+        levelLabel = Qt.QLabel(<font color=green>'Level'</font>)
+        levelSlider = Qt.QSlider(self)
         levelSlider.setValue(50);
-        levelSlider.setTickmarks(qt.QSlider.Right)
-        levelSlider.setTickInterval(10)
-        levelSlider.setMaxValue(100)
-        levelLayout = qt.QVBoxLayout()
+        levelSlider.setTickPosition(Qt.QSlider.TicksRight)
+        levelLayout = Qt.QVBoxLayout()
         levelLayout.addWidget(levelLabel)
         levelLayout.addWidget(levelSlider)
 
         self.connect(
-            levelSlider, qt.SIGNAL(<font color=green>'valueChanged(int)'</font>), self.setLevel)
+            levelSlider, Qt.SIGNAL(<font color=green>'valueChanged(int)'</font>), self.setLevel)
 
         <font color=blue># Layout</font>
-        mainLayout = qt.QHBoxLayout(self)
-        <font color=blue>#self.setLayout(mainLayout)</font>
+        mainLayout = Qt.QHBoxLayout()
+        self.setLayout(mainLayout)
         mainLayout.addWidget(plot)
         mainLayout.addLayout(levelLayout)
        
@@ -282,15 +280,10 @@
         self.plot.updateGL()
 
     <font color=blue># setLevel()</font>
-
-    <b>def</b><font color=red> save</font>(self, filename, filetype):
-        self.plot.save(filename, filetype)
-
-    <font color=blue># save()</font>
-    
+ 
 <font color=blue># class EnrichmentDemo</font>
 
- 
+
 <b>def</b><font color=red> make</font>(): 
     demo = EnrichmentDemo()
     demo.show()
@@ -302,10 +295,9 @@
  
  
 <b>def</b><font color=red> main</font>(args):
-    app = qt.QApplication(args)
+    app = Qt.QApplication(args)
     demo = make()
-    app.setMainWidget(demo)
-    app.exec_loop()
+    app.exec_()
  
 <font color=blue># main()</font>
  
