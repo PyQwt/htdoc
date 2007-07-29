@@ -5,7 +5,8 @@ Title: PyQwt3D Examples
 <h5><a href="examples3d/Grab.py.html">Grab.py</a> demonstrates</h5>
 <ul>
 <li>
-how to save the QwtPlot3D widgets to PNG and PDF files.
+how to save the QwtPlot3D widgets to EPS, PDF, PNG, PS, and
+<a href="examples3d/TestNumPy.svg">SVG</a> files.
 </li>
 </ul>
 
@@ -23,6 +24,23 @@ how to subclass the Function and SurfacePlot classes
 </p>
 
 
+<h5><a href="examples3d/TestNumPy.py.html">TestNumPy.py</a> 
+demonstrates</h5> 
+<ul>
+<li>
+how to fill a NumPy array for use with the SurfacePlot class.
+</li>
+<li>
+how to enable tracing of the SIP generated bindings; this is useful when
+you start to write your own SIP interface specification files.
+</li>
+</ul>
+
+<p><img alt="DataPlot Widget" src="examples3d/TestNumPy.png"
+        width=600 height=400 border=1>
+</p>
+
+
 <h5><a href="examples3d/ParametricSurfaceDemo.py.html">ParametricSurfaceDemo.py</a> 
 demonstrates</h5> 
 <ul>
@@ -32,23 +50,6 @@ how to subclass the ParametricSurface and SurfacePlot classes
 </ul>
 
 <p><img alt="DataPlot Widget" src="examples3d/ParametricSurfaceDemo.png"
-        width=600 height=400 border=1>
-</p>
-
-
-<h5><a href="examples3d/TestNumeric.py.html">TestNumeric.py</a> 
-demonstrates</h5> 
-<ul>
-<li>
-how to fill a Numerical Python array for use with the SurfacePlot class.
-</li>
-<li>
-how to enable tracing of the SIP generated bindings; this is useful when
-you start to write your own SIP interface specification files.
-</li>
-</ul>
-
-<p><img alt="DataPlot Widget" src="examples3d/TestNumeric.png"
         width=600 height=400 border=1>
 </p>
 
