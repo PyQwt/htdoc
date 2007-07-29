@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>TestNumPy.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>from</b> numpy <b>import</b> *
+
+<b>import</b> sys
+<b>from</b> PyQt4.Qwt3D <b>import</b> *
+<b>from</b> PyQt4.Qt <b>import</b> *
+
+<font color=blue># enable all tracing options of the SIP generated bindings (requires -r option)</font>
+<b>if</b> False:
+    <b>import</b> sip
+    sip.settracemask(0x3f)
+
+
+<b>def</b><font color=red> matrix2d</font>(nx, ny, minx, maxx, miny, maxy, function):
+    <font color=green>"""Return a data matrix to test the interface to the C++ member function 
+    bool SurfacePlot::loadFromData(
+        double **, unsigned int, unsigned int, double, double, double, double);
+    """</font>
+    <font color=blue># columns</font>
+    xs = multiply.outer(
+        minx + ((maxx-minx)/(nx-1))*arange(nx), ones(ny, float))
+    <font color=blue># rows</font>
+    ys = multiply.outer(
+        ones((nx,), float), miny+((maxy-miny)/(ny-1))*arange(ny))
+    <b>return</b> function(xs, ys)
+
+<font color=blue># matrix2d()</font>
+
+
+<b>def</b><font color=red> matrix3d</font>(nx, ny, minx, maxx, miny, maxy, function):
+    <font color=green>"""Return a data matrix to test the interface to the C++ member function
+    bool SurfacePlot::loadFromData(
+        Triple **, unsigned int, unsigned int, bool = false, bool = false);
+    """</font>
+    xyzs = zeros((nx, ny, 3), float)
+    <font color=blue># columns</font>
+    xyzs[:,:,0] = multiply.outer(
+        minx + ((maxx-minx)/(nx-1))*arange(nx), ones(ny, float))
+    <font color=blue># rows</font>
+    xyzs[:,:,1] = multiply.outer(
+        ones((nx,), float), miny+((maxy-miny)/(ny-1))*arange(ny))
+    <font color=blue># result</font>
+    xyzs[:,:,2] = function(xyzs[:,:,0], xyzs[:,:,1])
+    <b>return</b> xyzs
+
+<font color=blue># matrix3d()</font>
+
+
+<b>def</b><font color=red> saddle</font>(x, y):
+    <b>return</b> x*y
+
+<font color=blue># saddle()</font>
+
+
+<b>class</b><font color=red> Plot</font>(SurfacePlot):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        SurfacePlot.__init__(self, *args)
+        self.setBackgroundColor(RGBA(1.0, 1.0, 0.6))
+        
+        self.setRotation(30, 0, 15)
+        self.setScale(1.0, 1.0, 1.0)
+
+        nx, ny, minx, maxx, miny, maxy = 3, 5, -1.0, 1.0, -1.0, 1.0
+        <b>if</b> True:
+            zs = matrix2d(nx, ny, minx, maxx, miny, maxy, saddle)
+            <b>print</b> type(zs)
+            <b>print</b> zs
+            self.loadFromData(zs, minx, maxx, miny, maxy)
+        <b>else</b>:
+            xyzs = matrix3d(nx, ny, minx, maxx, miny, maxy, saddle)
+            <b>print</b> type(zs)
+            <b>print</b> xyzs
+            self.loadFromData(xyzs)
+        
+        axes = self.coordinates().axes <font color=blue># alias</font>
+
+        <b>for</b> axis, label <b>in</b> ((X1, <font color=green>"x"</font>), (Y1, <font color=green>"y"</font>), (Z1, <font color=green>"z"</font>)):
+            axes[axis].setAutoScale(False)
+            axes[axis].setMajors(5) <font color=blue># 6 major ticks</font>
+            axes[axis].setMinors(3) <font color=blue># 2 minor ticks</font>
+            axes[axis].setLabelString(label)
+
+        self.setCoordinateStyle(BOX)
+        self.coordinates().setGridLines(True, True)
+        self.coordinates().setLineSmooth(True)
+
+        self.updateData()
+        self.updateGL()
+
+    <font color=blue># __init__()</font>
+
+<font color=blue># class Plot</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = Plot()
+    demo.show()
+    <font color=blue># Matrox cards on Linux work better with a resize() after show()</font>
+    demo.resize(600, 400)
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = QApplication(args)
+    demo = make()
+    app.exec_()
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>
