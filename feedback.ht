@@ -4,7 +4,7 @@ Title: Feedback
 
 <h3>Whirlpool Galaxy</h3>
 
-The code to produce following plot of the
+The code to produce the plot below of the
 <a href="http://en.wikipedia.org/wiki/Whirlpool_Galaxy">Whirlpool Galaxy</a>
 is based on the
 <a href="examples/QwtImagePlotDemo.py.html">QwtImagePlotDemo.py</a> example
