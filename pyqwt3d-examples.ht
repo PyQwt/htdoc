@@ -9,7 +9,8 @@ how to save the QwtPlot3D widgets to EPS, PDF, PNG, PS, and
 <a href="examples3d/TestNumPy.svg">SVG</a> files.
 </li>
 </ul>
-
+<p>Note: saving to a SVG file requires at least PyQwt3D-0.1.5.
+</p>
 
 <h5><a href="examples3d/SimplePlot.py.html">SimplePlot.py</a>
 demonstrates</h5>

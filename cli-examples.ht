@@ -8,14 +8,19 @@ Title: Command Line Interpreter Examples
   interpreter like <a href="http://ipython.scipy.org">IPython</a>.
 </p>
 
-<p>PyQwt includes the <tt class="module">iqt</tt> module that allows to:</p>
+<p>PyQwt includes the <tt class="module">iqt</tt> module that allows to:
+</p>
 
 <ul>
   <li>create and control (Py)Qt widgets from the command line interpreter.</li>
   <li>interact with those widgets through (Py)Qt's GUI.</li>
 </ul>
 
-<p>A step by step example follows:</p>
+<p>Note: on Windows the iqt module requires at least PyQwt-5.0.1 or PyQwt-4.2.3.
+</p>
+
+<p>A step by step example follows:
+</p>
 
 <ol>
   <li>

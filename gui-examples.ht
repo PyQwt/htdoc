@@ -109,30 +109,17 @@ Title: Graphical User Interface Examples
         width=540 height=400 border=1>
 </p>
 
-<p>Running this example on Linux requires the <a href=
-  "http://corefonts.sourceforge.net">MicroSoft TrueType Core Fonts</a>.
-  Some Linux distributions (SuSE) let you install those fonts from their
-  GUI administration tools.
-  Other RPM based Linux distributions (Mandrake) require you to follow those
-  <a href="http://corefonts.sourceforge.net">instructions<a>.
-</p>
-<p>The <a href=
-  "http://loll.sourceforge.net/linux/links/X_Window_System/Fonts/index.html">
-  Loads of Linux Links</a> site points to more information on configuring
-  fonts.
-</p>
-
-<p>Notes:
+<p>Note:
 <ol>
+  <li>
+    this example requires a font with some unicode support such as the
+    <a href="http://corefonts.sourceforge.net">MicroSoft TrueType Core Fonts</a>
+  </li>
   <li>
     the Verdana font is the best MicroSoft TrueType Core Font.
   </li>
   <li>
     use as much unicode as possible (get or buy a real unicode font).
-  </li>
-  <li>
-    The unicode codes for supported glyphs can be found in the unicodetoglyph
-    table in qt-x11-free-x.x.x/kernel/qpsprinter.cpp.
   </li>
   <li>
     fall back on rich text if a requested glyph is missing from the font
