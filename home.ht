@@ -48,6 +48,12 @@ The <a href="faq.html">FAQ</a> explains why PyQt's closed source
 interactive development environment cannot be used with PyQwt.
 </p>
 
+<p>PyQwt-5.0.1 (as well as Eric and all Qt and PyQt development tools) is now
+included in the
+<a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
+PyQt-Py2.5-gpl-4.3.0.exe</a> binary installer for Windows.
+</p>
+
 <h3>Support for Qt-4 and Qt-3</h3>
 
 <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.1.tar.gz?download">PyQwt-5.0.1</a> supports Qt-4 and Qt-3, but
