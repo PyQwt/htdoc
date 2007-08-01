@@ -10,11 +10,12 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.0.3.tar.gz?download">numpy-1.0.3.tar.gz</a></li>
 <li><a href="ftp://ftp.trolltech.com/qt/source/qt-mac-free-3.3.8.tar.gz">qt-mac-free-3.3.8.tar.gz<a> or
 <a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.8.tar.bz2">qt-x11-free-3.3.8.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.6.tar.gz">sip-4.6.tar.gz</a>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.2.tar.gz">PyQt-mac-gpl-3.17.2.tar.gz</a> or
-<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.2.tar.gz">PyQt-x11-gpl-3.17.2.tar.gz</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/sip-4.7.tar.gz">sip-4.6.tar.gz</a>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.17.3.tar.gz">PyQt-mac-gpl-3.17.3.tar.gz</a> or
+<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.17.3.tar.gz">PyQt-x11-gpl-3.17.3.tar.gz</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.3.tar.gz?download">PyQwt-4.2.3.tar.gz</a></li>
 </ol>
+
 
 <h3>Source installation of PyQwt-5.0.1 on Mac OS X or Posix systems</h3>
 
@@ -41,6 +42,7 @@ Title: Download Guide
   also work</li>
 </ol>
 
+
 <h3>Binary installation of PyQwt-5.0.1 on Windows for Python-2.5.x, Qt-4.2.3, PyQt-4.2, and NumPy-1.0.3</h3>
 
 <ol>
@@ -65,6 +67,7 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0.tar.gz?download">PyQwt-5.0.0.tar.gz</a></li>
 </ol>
 
+
 <h3>Binary installation of PyQwt-5.0.0 on Windows for Python-2.5.x, Qt-4.2.3, PyQt-4.2, and NumPy-1.0.2</h3>
 
 <ol>
@@ -75,6 +78,7 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe">PyQwt-5.0.0-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe</a></li>
 </ol>
 
+
 <h3>Binary installation of PyQwt-5.0.0 on Windows for Python-2.5.x, Qt-4.2.2, PyQt-4.1.1, and NumPy-1.0.2</h3>
 
 <ol>
@@ -84,6 +88,7 @@ Title: Download Guide
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-gpl-4.1.1-Py2.5-Qt4.2.2.exe">PyQt-gpl-4.1.1-Py2.5-Qt4.2.2.exe</a></li>
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt4.1.1-NumPy1.0.2.exe">PyQwt-5.0.0-Python2.5-Qt4.2.2-PyQt4.1.1-NumPy1.0.2.exe</a></li>
 </ol>
+
 
 <h3>Source installation of PyQwt-4.2.2 on Mac OS X or Posix systems</h3>
 
@@ -99,6 +104,7 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.2.tar.gz?download">PyQwt-4.2.2.tar.gz</a></li>
 </ol>
 
+
 <h3>Source installation of PyQwt-4.2.1 on Mac OS X or Posix systems</h3>
 
 <ol>
@@ -111,6 +117,7 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.1.tar.gz?download">PyQwt-4.2.1.tar.gz</a></li>
 </ol>
 
+
 <h3>Binary installation of PyQwt-4.2 on Windows for non-commercial use with Python-2.3.5</h3>
 
 <ol>
@@ -121,9 +128,6 @@ Title: Download Guide
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-4.2.win32-py2.3.exe?download">PyQwt_Qt230-4.2.win32-py2.3.exe</a></li>
 </ol>
 
-You may try 
-<a href="http://www.scipy.org/download/scipy/win32/SciPy_complete-0.3.2.win32-py2.3-num23.5.exe">
-SciPy</a> instead of Python with Numeric.
 
 <h3>Source installation of PyQwt-4.2 on MacOS/X or Posix systems</h3>
 
@@ -140,254 +144,6 @@ SciPy</a> instead of Python with Numeric.
 <li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.tar.gz?download">PyQwt-4.2.tar.gz</a></li>
 </ol>
 
-
-<h3>Binary installation of PyQwt-4.1 on Windows for non-commercial use with Python-2.3.4</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.6.win32-py2.3.exe?download">Numeric-23.6.win32-py2.3.exe</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-msvc-3.13.exe">PyQt-win-nc-msvc-3.13.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-4.1.win32-py2.3.exe?download">PyQwt_Qt230-4.1.win32-py2.3.exe</a></li>
-</ol>
-
-You may try 
-<a href="http://www.scipy.org/download/scipy/win32/SciPy_complete-0.3.2.win32-py2.3-num23.5.exe">
-SciPy</a> instead of Python with Numeric.
-
-
-<h3>Binary installation of PyQwt-4.1 on Windows for educational use with Python-2.3.4</h3>
-
-<ol>
-<li><a
-href="http://downloads.activestate.com/ActivePython/windows/2.3/ActivePython-2.3.4-233-win32-ix86.msi">ActivePython-2.3.4-233-win32-ix86.msi</a>
-or any Python-2.3 compiled with MicroSoft Visual C.</li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.6.win32-py2.3.exe?download">Numeric-23.6.win32-py2.3.exe</a></li>
-<li>See the <a href="http://www.trolltech.com/products/qt/edulicense.html">
-Qt Educational License restrictions</a>
-if you qualify for Qt-3.3.3 Educational</li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-edu-msvc-3.13.exe">PyQt-win-edu-msvc-3.13.exe</a></li>
-<li>Many thanks to Margerita Buechter for building
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt333-4.1.win32-py2.3.exe?download">PyQwt_Qt333-4.1.win32-py2.3.exe</a></li>
-</ol>
-
-You may try 
-<a href="http://www.scipy.org/download/scipy/win32/SciPy_complete-0.3.2.win32-py2.3-num23.5.exe">
-SciPy</a> instead of Python with Numeric.
-
-
-<h3>Source installation of PyQwt-4.1 on MacOS/X or Posix systems</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.6.tar.gz?download">Numeric-23.6.tar.gz</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.3.tar.bz2">qt-x11-free-3.3.3.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.1.1.tar.gz">sip-4.1.1.tar.gz</a>
-(requires Python-2.3) or
-<a href="http://pyqwt.sourceforge.net/support/sip-3.11.1.tar.gz">sip-3.11.1.tar.gz</a> 
-(not for MacOS/X)</li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.13.tar.gz">PyQt-mac-gpl-3.13.tar.gz</a> or
-<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.13.tar.gz">PyQt-x11-gpl-3.13.tar.gz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.1.tar.gz?download">PyQwt-4.1.tar.gz</a></li>
-</ol>
-
-
-<h3>Bug fixes and upgrades for PyQwt-4.1</h3>
-
-<p><a href="patches/PyQwt-4.1a.patch">PyQwt-4.1a.patch</a>:
-<ol>
-<li>Adds the forgotten 'virtual QwtDoubleRect QwtCurve::boundingRect() const'.
-</li>
-<li>Adds the ErrorBarDemo.py example which redefines QwtCurve::boundingRect().
-</li>
-<li>Fixes zooming in the QwtImagePlotDemo.py example.</li>
-</ol>
-How to patch? Put PyQwt-4.1.tar.gz and PyQwt-4.1a.patch in the working
-directory, and execute:
-<pre class="cli">
-tar xvfz PyQwt-4.1.tar.gz
-patch -p0 -b -z .upgrade &lt;PyQwt-4.1a.patch
-</pre>
-and to make the ErrorBarDemo.py example executable, do:
-<pre class="cli">
-chmod +x PyQwt-4.1/examples/ErrorBarDemo.py
-</pre>
-and you are ready for the <a href="doc4/installation.html">installation
-instructions</a>.
-</p>
-
-
-<h3>Binary installation of PyQwt-4.0rc0 on Windows for non-commercial use with Python-2.3.4</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-msvc-3.12.exe">PyQt-win-nc-msvc-3.12.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-4.0rc0.win32-py2.3.exe?download">PyQwt_Qt230-4.0rc0.win32-py2.3.exe</a></li>
-</ol>
-
-Instead of Python with Numeric, you may prefer 
-<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
-Enthought Python</a>.
-
-
-<h3>Binary installation of PyQwt-4.0rc0 on Windows for educational use with Python-2.3.4</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
-<li>See the <a href="http://www.trolltech.com/products/qt/edulicense.html">
-Qt Educational License restrictions</a>
-if you qualify for Qt-3.2.2 Educational</li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-edu-msvc-3.12.exe">PyQt-win-edu-msvc-3.12.exe</a></li>
-<li>Many thanks to Margerita Buechter for building
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt322-4.0rc0.win32-py2.3.exe?download">PyQwt_Qt322-4.0rc0.win32-py2.3.exe</a></li>
-</ol>
-
-Instead of Python with Numeric, you may prefer 
-<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
-Enthought Python</a>.
-
-
-<h3>Source installation of PyQwt-4.0rc0 on MacOS/X or Posix systems</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.6.tar.gz?download">Numeric-23.6.tar.gz</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.3.3.tar.bz2">qt-x11-free-3.3.3.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-4.1.1.tar.gz">sip-4.1.1.tar.gz</a>
-(requires Python-2.3) or
-<a href="http://pyqwt.sourceforge.net/support/sip-3.11.1.tar.gz">sip-3.11.1.tar.gz</a> 
-(not for MacOS/X)</li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-mac-gpl-3.13.tar.gz">PyQt-mac-gpl-3.13.tar.gz</a> or
-<a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.13.tar.gz">PyQt-x11-gpl-3.13.tar.gz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.0rc0.tar.gz?download">PyQwt-4.0rc0.tar.gz</a></li>
-</ol>
-
-
-<h3>Bug fixes and upgrades for PyQwt-4.0rc0</h3>
-
-<p><a href="patches/PyQwt-4.0rc0a.patch">PyQwt-4.0rc0a.patch</a> fixes:
-<ol>
-<li>Building of PyQwt-4.0rc0 against numarray-1.0 and numarray-1.1.</li>
-<li>Building of PyQwt-4.0rc0 against Python-2.4 using setup.py.</li>
-<li>A few bugs in the configure/build.py script.</li>
-</ol>
-How to patch? Put PyQwt-4.0rc0.tar.gz and PyQwt-4.0rc0a.patch in the working
-directory, execute:
-<pre class="cli">
-tar xvfz PyQwt-4.0rc0.tar.gz
-patch -p0 -b -z .upgrade &lt;PyQwt-4.0rc0a.patch
-</pre>
-and you are ready for the <a href="doc4/installation.html">installation
-instructions</a>.
-</p>
-
-
-<h3>Binary installation of PyQwt-3.8 on Windows for non-commercial use with Python-2.3.4</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.1.win32-py2.3.exe?download">Numeric-23.1.win32-py2.3.exe</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.8.win32-py2.3.exe?download">PyQwt_Qt230-3.8.win32-py2.3.exe</a></li>
-</ol>
-
-Instead of Python with Numeric, you may prefer 
-<a href="http://download.enthought.com/enthought_python-2.3.3.exe">
-Enthought Python</a>.
-
-
-<h3>Source installation of PyQwt-3.8 on Posix systems</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.5.tar.gz?download">Numeric-23.5.tar.gz</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.3.tar.bz2">qt-x11-free-3.2.3.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.8.1.tar.gz">PyQt-x11-gpl-3.8.1.tar.gz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-3.8.tar.gz?download">PyQwt-3.8.tar.gz</a></li>
-</ol>
-
-<h3>Bug fixes and upgrades for PyQwt-3.8</h3>
-
-<p><a href="patches/PyQwt-3.8b.patch">PyQwt-3.8b.patch</a> fixes:
-<ol>
-<li>Building of PyQwt-3.8 for Posix platforms without an entry for QMAKE_RPATH
-    in $QTDIR/mkspecs/default/qmake.conf.</li>
-<li>Building of PyQwt-3.8 against numarray-1.0 and numarray-1.1.</li>
-</ol>
-How to patch? Put PyQwt-3.8.tar.gz and PyQwt-3.8b.patch in the working
-directory, execute:
-<pre class="cli">
-tar xvfz PyQwt-3.8.tar.gz
-patch -p0 -b -z .upgrade &lt;PyQwt-3.8b.patch
-</pre>
-and you are ready for the <a href="doc4/installation.html">installation
-instructions</a>.
-</p>
-
-
-<h3>Binary installation of PyQwt-3.7 on Windows for non-commercial use and Python-2.3.4</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.exe">Python-2.3.4.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.0.win32-py2.3.exe?download">Numeric-23.0.win32-py2.3.exe</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.8.exe">PyQt-win-nc-3.8.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7b.win32-py2.2.exe?download">PyQwt_Qt230-3.7b.win32-py2.2.exe</a></li>
-</ol>
-
-Instead of Python and Numeric, you may prefer
-<a href="http://www.enthought.com/python/enthought_python-2.3.exe">
-enthought_python-2.3</a>.
-
-<h3>Binary installation of PyQwt-3.7 on Windows for non-commercial use and Python-2.2.3</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.2.3/Python-2.2.3.exe">Python-2.2.3.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.0.win32-py2.2.exe?download">Numeric-23.0.win32-py2.2.exe</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/non-commercial/QtWin230-NonCommercial.exe">QtWin230-NonCommercial.exe</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-win-nc-3.7.exe">PyQt-win-nc-3.7.exe</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt_Qt230-3.7.win32-py2.2.exe?download">PyQwt_Qt230-3.7.win32-py2.2.exe</a></li>
-</ol>
-
-
-<h3>Source installation of PyQwt-3.7 on Posix systems</h3>
-
-<ol>
-<li><a href="http://www.python.org/ftp/python/2.3.4/Python-2.3.4.tgz">Python-2.3.4.tgz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/Numeric-23.5.tar.gz?download">Numeric-23.5.tar.gz</a></li>
-<li><a href="ftp://ftp.trolltech.com/qt/source/qt-x11-free-3.2.1.tar.bz2">qt-x11-free-3.2.1.tar.bz2</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/sip-x11-gpl-3.8.tar.gz">sip-x11-gpl-3.8.tar.gz</a></li>
-<li><a href="http://pyqwt.sourceforge.net/support/PyQt-x11-gpl-3.8.1.tar.gz">PyQt-x11-gpl-3.8.1.tar.gz</a></li>
-<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-3.7.tar.gz?download">PyQwt-3.7.tar.gz</a></li>
-<li><a href="patches/PyQwt-3.7b.patch">PyQwt-3.7b.patch</a></li>
-</ol>
-
-<h3>Bug fixes and upgrades for PyQwt-3.7</h3>
-
-<p><a href="patches/PyQwt-3.7b.patch">PyQwt-3.7b.patch</a> fixes:
-<ol>
-<li>Building of PyQwt-3.7 for Qt &lt;= 3.2.1
-    and/or PyQt &lt;=3.8.1 and sip &lt;= 3.8.</li>
-<li>Building of PyQwt-3.7 for non-threaded Qt libraries on Posix.</li>
-<li>Incompatibilities with Designer/pyuic generated forms using QwtPlot.</li>
-<li>A minor bug on Windows concerning compiler flags.</li>
-<li>A minor bug on Posix concerning compiler flags.</li>
-<li>The PYTHONPATH awareness of the pyqt_distutils scripts.</li>
-</ol>
-How to patch? Put PyQwt-3.7.tar.gz and PyQwt-3.7b.patch in the working
-directory, execute:
-<pre class="cli">
-tar xvfz PyQwt-3.7.tar.gz
-patch -p0 -b -z .upgrade &lt;PyQwt-3.7b.patch
-</pre>
-and you are ready for the <a href="doc4/installation.html">installation
-instructions</a>.
-</p>
 
 <!--
 Local Variables:
