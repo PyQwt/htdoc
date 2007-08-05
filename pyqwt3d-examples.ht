@@ -5,11 +5,20 @@ Title: PyQwt3D Examples
 <h5><a href="examples3d/Grab.py.html">Grab.py</a> demonstrates</h5>
 <ul>
 <li>
-how to save the QwtPlot3D widgets to EPS, PDF, PNG, PS, and
-<a href="examples3d/TestNumPy.svg">SVG</a> files.
+how to save the QwtPlot3D widgets to EPS, PDF, PNG, 
+<a href="examples3d/TestNumPy.ps">PS (example)</a>, and
+<a href="examples3d/TestNumPy.svg">SVG (example)</a> files.
 </li>
 </ul>
-<p>Note: saving to a SVG file requires at least PyQwt3D-0.1.5.
+<p> 
+  <a href="http://qwtplot3d.sourceforge.net/web/navigation/pdf.html">
+    Micha Bieber's comparison of gl2ps vector output formats</a>
+  helps you to make your choice.  The SVG format handles text approximately
+  as well as the PDF format. 
+</p>
+
+<p>
+  Note: saving to a SVG file requires at least PyQwt3D-0.1.5.
 </p>
 
 <h5><a href="examples3d/SimplePlot.py.html">SimplePlot.py</a>
