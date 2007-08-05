@@ -16,7 +16,8 @@ Title: Command Line Interpreter Examples
   <li>interact with those widgets through (Py)Qt's GUI.</li>
 </ul>
 
-<p>Note: on Windows the iqt module requires at least PyQwt-5.0.1 or PyQwt-4.2.3.
+<p>Note: on Windows, the iqt module requires at least PyQwt-5.0.1 or
+PyQwt-4.2.3.
 </p>
 
 <p>A step by step example follows:
