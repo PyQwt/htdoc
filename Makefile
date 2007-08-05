@@ -10,7 +10,7 @@ EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%.py.html)
 EXAMPLES_3D      := TestNumPy
 EXAMPLES_3D_SVG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.svg)
 EXAMPLES_3D      += ParametricSurfaceDemo SimplePlot EnrichmentDemo
-EXAMPLES_3D_PNG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.png) 
+EXAMPLES_3D_PNG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%*.png) 
 EXAMPLES_3D      += Grab
 EXAMPLES_3D_HTML := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.py.html) 
 

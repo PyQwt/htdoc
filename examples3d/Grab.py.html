@@ -7,26 +7,54 @@
 <pre>
 <font color=blue>#!/usr/bin/env python</font>
 
+<b>import</b> inspect
 <font color=blue># iqt is part of PyQwt</font>
 <b>import</b> PyQt4.Qwt5.iqt
-<b>from</b> PyQt4.Qwt3D <b>import</b> save
+<b>from</b> PyQt4.Qwt3D <b>import</b> Plot3D, save
+
+
+<b>def</b><font color=red> walk</font>(p):
+    <b>if</b> isinstance(p, Plot3D):
+        <b>yield</b> p
+    <b>else</b>:
+        <b>for</b> c <b>in</b> p.children():
+            <b>for</b> cc <b>in</b> walk(c):
+               <b>yield</b> cc
+        
+<font color=blue># def walk()</font>
 
 
 <b>def</b><font color=red> main</font>():
-    <b>for</b> demo <b>in</b> [<font color=green>'EnrichmentDemo'</font>,
-                 <font color=green>'ParametricSurfaceDemo'</font>,
+    <b>print</b> inspect.getsource(save)
+
+    <b>for</b> demo <b>in</b> [<font color=green>'ParametricSurfaceDemo'</font>,
                  <font color=green>'SimplePlot'</font>,
                  <font color=green>'TestNumPy'</font>,
                  ]:
         result = __import__(demo).make()
         raw_input(<font color=green>"Is the demo looking HAPPY? "</font>)
 
-        <b>print</b> save(result, demo + <font color=green>'.png'</font>, <font color=green>'png'</font>)
-        <b>print</b> save(result, demo + <font color=green>'.pdf'</font>, <font color=green>'pdf'</font>)
-	<b>print</b> save(result, demo + <font color=green>'.ps'</font>, <font color=green>'pdf'</font>)
-	<b>print</b> save(result, demo + <font color=green>'.eps'</font>, <font color=green>'eps'</font>)
-        <b>print</b> save(result, demo + <font color=green>'.svg'</font>, <font color=green>'svg'</font>)
+        <b>for</b> format <b>in</b> (<font color=green>'png'</font>, <font color=green>'pdf'</font>, <font color=green>'ps'</font>, <font color=green>'eps'</font>, <font color=green>'svg'</font>):
+            <b>print</b> <font color=green>'Saving %s.%s...'</font> % (demo, format),
+            <b>if</b> save(result, <font color=green>'%s.%s'</font> % (demo, format), format):
+                <b>print</b> <font color=green>'success'</font>
+            <b>else</b>:
+                <b>print</b> <font color=green>'failure'</font>
+                
+    <b>for</b> demo <b>in</b> [<font color=green>'AutoSwitch'</font>,
+                 <font color=green>'EnrichmentDemo'</font>,
+                 ]:
+        result = __import__(demo).make()
+        raw_input(<font color=green>"Is the demo looking HAPPY? "</font>)
 
+        <b>for</b> i, w <b>in</b> enumerate(walk(result)):
+            <b>for</b> format <b>in</b> (<font color=green>'png'</font>, <font color=green>'pdf'</font>, <font color=green>'ps'</font>, <font color=green>'eps'</font>, <font color=green>'svg'</font>):
+                <b>print</b> <font color=green>'Saving %s%s.%s...'</font> % (demo, i, format),
+                <b>if</b> save(w, <font color=green>'%s%s.%s'</font> % (demo, i, format), format):
+                    <b>print</b> <font color=green>'success'</font>
+                <b>else</b>:
+                    <b>print</b> <font color=green>'failure'</font>
+            
 <font color=blue># main()</font>
 
 <b>if</b> __name__ == <font color=green>'__main__'</font>:
