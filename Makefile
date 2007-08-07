@@ -11,7 +11,7 @@ EXAMPLES_3D      := TestNumPy
 EXAMPLES_3D_IMG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.svg)
 EXAMPLES_3D_IMG  += $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.ps)
 EXAMPLES_3D      += ParametricSurfaceDemo SimplePlot EnrichmentDemo
-EXAMPLES_3D_IMG  +:= $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%*.png) 
+EXAMPLES_3D_IMG  += $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%*.png) 
 EXAMPLES_3D      += Grab
 EXAMPLES_3D_HTML := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.py.html) 
 
