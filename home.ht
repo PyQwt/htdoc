@@ -77,10 +77,21 @@ make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 
 <p>The <a href="doc3d/install.html">installation instructions</a> explain how
 to install
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.4.tar.gz?download">
-PyQwt3D-0.1.4.tar.gz</a> or
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.4-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe?download">
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.5.tar.gz?download">
+PyQwt3D-0.1.5.tar.gz</a> or
+<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.5-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe?download">
 PyQwt3D-0.1.4-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.2.exe</a>.
+</p>
+
+<p>PyQwt3D-0.1.5 is <b>not</b> included in the
+<a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
+PyQt-Py2.5-gpl-4.3.0.exe</a> binary installer for Windows.
+A PyQwt3D Windows installer cannot be build for
+<a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
+PyQt-Py2.5-gpl-4.3.0.exe</a>, since the latter is not extensible with other
+packages with Python extension modules based on SIP and PyQt.
+You <b>have</b> to rebuild SIP-3.17 and PyQt-4.3, if you want to use
+PyQwt3D-0.1.5 in combination with PyQt-4.3 on Windows.
 </p>
 
 <p>We like feedback on the interfacing between the QwtPlot3D API and Numerical
