@@ -9,7 +9,7 @@
 
 <b>import</b> sys
 <b>from</b> math <b>import</b> cos, pi, sin
-<b>from</b> PyQt4.Qt <b>import</b> QApplication, QCoreApplication, QFont, QFontDatabase
+<b>from</b> PyQt4.Qt <b>import</b> QApplication, QCoreApplication, QFont, QFontDatabase, Qt
 <b>from</b> PyQt4.Qwt3D <b>import</b> ParametricSurface, RGBA, SurfacePlot, Triple, NOCOORD
 
 <b>class</b><font color=red> Sphere</font>(ParametricSurface):
@@ -40,8 +40,9 @@
         <b>if</b> <font color=green>'Verdana'</font> <b>in</b> QFontDatabase().families():
             family = <font color=green>'Verdana'</font>
 
-        family = <font color=green>'Courrier'</font>
+        family = <font color=green>'Courier'</font>
         self.setTitleFont(family, 16, QFont.Bold)
+<font color=blue>##         self.setTitleColor(RGBA(1.0, 0.0, 0.0))</font>
         
         self.setTitle(<font color=green>"A Simple Parametric Surface Demonstration"</font>)
 

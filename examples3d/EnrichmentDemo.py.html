@@ -210,7 +210,7 @@
         plot.setTitle(<font color=green>'Bar Style (Vertex Enrichment)'</font>)
         <b>if</b> <font color=green>'Verdana'</font> <b>in</b> Qt.QFontDatabase().families():
             family = <font color=green>'Verdana'</font>
-        family = <font color=green>'Courrier'</font>
+        family = <font color=green>'Courier'</font>
             
         plot.setTitleFont(family, 16, Qt.QFont.Bold)
         plot.coordinates().setLabelFont(family, 14)
@@ -238,7 +238,7 @@
              
         plot.coordinates().setGridLinesColor(RGBA(0.0, 0.0, 0.5))
         plot.coordinates().setLineWidth(1)
-        plot.coordinates().setNumberFont(<font color=green>"Courier"</font>, 8)
+        plot.coordinates().setNumberFont(family, 8)
         plot.coordinates().adjustNumbers(5)
 
         self.setColor()
