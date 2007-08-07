@@ -64,6 +64,15 @@
 
     <b>def</b><font color=red> __init__</font>(self, *args):
         SurfacePlot.__init__(self, *args)
+        <font color=blue># fonts</font>
+        family = QCoreApplication.instance().font().family()
+        <b>if</b> <font color=green>'Verdana'</font> <b>in</b> QFontDatabase().families():
+            family = <font color=green>'Verdana'</font>
+        family = <font color=green>'Courrier'</font>
+            
+        self.coordinates().setLabelFont(family, 14)
+        self.coordinates().setNumberFont(family, 12)
+
         self.setBackgroundColor(RGBA(1.0, 1.0, 0.6))
         
         self.setRotation(30, 0, 15)

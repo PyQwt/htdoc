@@ -6,7 +6,7 @@
 <desc>
 Creator: GL2PS 1.3.2, (C) 1999-2006 Christophe Geuzaine (geuz@geuz.org)
 For: QwtPlot3D 0.2.7, (C) 2002-2007 Micha Bieber, mailto: krischnamurti at users.sourceforge.net
-CreationDate: Sun Aug  5 12:17:07 2007
+CreationDate: Tue Aug  7 19:14:36 2007
 </desc>
 <defs>
 </defs>
@@ -185,7 +185,7 @@ CreationDate: Sun Aug  5 12:17:07 2007
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="87.8682,179.175 84.3906,179.486"/>
 <text fill="#000000" x="80.9131" y="179.796" font-size="12" font-family="Courier">-0.2</text>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="87.8682,165.842 84.3906,166.152"/>
-<text fill="#000000" x="46.0723" y="159.693" font-size="14" font-family="Courier">z</text>
+<text fill="#000000" x="55.0723" y="159.693" font-size="14" font-family="Courier">z</text>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="87.8682,152.508 84.3906,152.819"/>
 <polyline fill="none" stroke="#000000" stroke-width="1" points="147.869,133.817 176.645,169.615"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.9" points="87.8682,139.175 82.0723,139.693"/>
@@ -1035,7 +1035,7 @@ CreationDate: Sun Aug  5 12:17:07 2007
 <polyline fill="none" stroke="#000000" stroke-width="0.9" points="311.368,358.756 312.921,360.688"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="311.368,358.756 312.3,359.916"/>
 <text fill="#000000" x="313.231" y="361.075" font-size="12" font-family="Courier">-0.2</text>
-<text fill="#000000" x="346.382" y="372.7" font-size="14" font-family="Courier">x</text>
+<text fill="#000000" x="346.382" y="375.7" font-size="14" font-family="Courier">x</text>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="333.675,356.764 334.607,357.923"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="355.982,354.771 356.914,355.931"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.9" points="378.29,352.779 379.842,354.711"/>
@@ -1065,7 +1065,7 @@ CreationDate: Sun Aug  5 12:17:07 2007
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="141.663,326.097 138.185,326.407"/>
 <text fill="#000000" x="134.708" y="326.718" font-size="12" font-family="Courier">-0.2</text>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="135.686,318.661 132.208,318.971"/>
-<text fill="#000000" x="90.9014" y="315.46" font-size="14" font-family="Courier">y</text>
+<text fill="#000000" x="99.9014" y="315.46" font-size="14" font-family="Courier">y</text>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="129.708,311.225 126.231,311.536"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.9" points="123.731,303.79 117.936,304.307"/>
 <polyline fill="none" stroke="#000000" stroke-width="0.5" points="123.731,303.79 120.254,304.1"/>
