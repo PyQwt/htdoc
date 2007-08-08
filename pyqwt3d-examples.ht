@@ -18,7 +18,16 @@ how to save the QwtPlot3D widgets to EPS, PDF, PNG,
 </p>
 
 <p>
-  Note: saving to a SVG file requires at least PyQwt3D-0.1.5.
+  Note:
+  <ul>
+    <li>
+      saving to a SVG file requires at least PyQwt3D-0.1.5.
+    </li>
+    <li>
+      the pixmap images look even better with a truetype font than with the
+      default Courier font. 
+    </li>
+  </ul>
 </p>
 
 <h5><a href="examples3d/SimplePlot.py.html">SimplePlot.py</a>

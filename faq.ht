@@ -66,8 +66,7 @@ The output shows that my setup is correct:
 <h5><a name="Choice">Should I choose Numeric, numarray, or NumPy?</a></h5>
 
 <p><a href="http://numeric.scipy.org/">NumPy</a> is recommended for new code,
-because
-numarray</a> are unmaintained.
+because Numeric and numarray are unmaintained.
 Recent versions of PyQwt and PyQwt3D
 support <a href="http://numeric.scipy.org/">NumPy</a>
 (as well as <a href="http://numeric.scipy.org/">Numeric</a> and
