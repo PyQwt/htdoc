@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>CartesianDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> PyQt4 <b>import</b> Qt
+<b>import</b> PyQt4.Qwt5 <b>as</b> Qwt
+<b>from</b> PyQt4.Qwt5.anynumpy <b>import</b> *
+
+
+<b>class</b><font color=red> CartesianAxis</font>(Qwt.QwtPlotItem):
+    <font color=green>"""Supports a coordinate system similar to 
+    http://en.wikipedia.org/wiki/Image:Cartesian-coordinate-system.svg
+    """</font>
+
+    <b>def</b><font color=red> __init__</font>(self, masterAxis, slaveAxis):
+        <font color=green>"""Valid input values for masterAxis and slaveAxis are QwtPlot.yLeft,
+        QwtPlot.yRight, QwtPlot.xBottom, and QwtPlot.xTop. When masterAxis is
+        an x-axis, slaveAxis must be an y-axis; and vice versa.
+        """</font>
+        Qwt.QwtPlotItem.__init__(self)
+        self.__axis = masterAxis
+        <b>if</b> masterAxis <b>in</b> (Qwt.QwtPlot.yLeft, Qwt.QwtPlot.yRight):
+            self.setAxis(slaveAxis, masterAxis)
+        <b>else</b>:
+            self.setAxis(masterAxis, slaveAxis)
+        self.scaleDraw = Qwt.QwtScaleDraw()
+        self.scaleDraw.setAlignment((Qwt.QwtScaleDraw.LeftScale,
+                                     Qwt.QwtScaleDraw.RightScale,
+                                     Qwt.QwtScaleDraw.BottomScale,
+                                     Qwt.QwtScaleDraw.TopScale)[masterAxis])
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> draw</font>(self, painter, xMap, yMap, rect):
+        <font color=green>"""Draw an axis on the plot canvas
+        """</font>
+        <b>if</b> self.__axis <b>in</b> (Qwt.QwtPlot.yLeft, Qwt.QwtPlot.yRight):
+            self.scaleDraw.move(round(xMap.xTransform(0.0)), yMap.p2())
+            self.scaleDraw.setLength(yMap.p1()-yMap.p2())
+        <b>elif</b> self.__axis <b>in</b> (Qwt.QwtPlot.xBottom, Qwt.QwtPlot.xTop):
+            self.scaleDraw.move(xMap.p1(), round(yMap.xTransform(0.0)))
+            self.scaleDraw.setLength(xMap.p2()-xMap.p1())
+        self.scaleDraw.setScaleDiv(self.plot().axisScaleDiv(self.__axis))
+        self.scaleDraw.draw(painter, self.plot().palette())
+
+    <font color=blue># draw()</font>
+
+<font color=blue># class CartesianAxis</font>
+
+
+<b>class</b><font color=red> CartesianPlot</font>(Qwt.QwtPlot):
+    <font color=green>"""Creates a coordinate system similar system 
+    http://en.wikipedia.org/wiki/Image:Cartesian-coordinate-system.svg
+    """</font>
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        Qwt.QwtPlot.__init__(self, *args)
+        self.setTitle(<font color=green>'Cartesian Coordinate System Demo'</font>)
+        <font color=blue># create a plot with a white canvas</font>
+        self.setCanvasBackground(Qt.Qt.white)
+        <font color=blue># set plot layout</font>
+        self.plotLayout().setMargin(0)
+        self.plotLayout().setCanvasMargin(0)
+        self.plotLayout().setAlignCanvasToScales(True)
+        <font color=blue># attach a grid</font>
+        grid = Qwt.QwtPlotGrid()
+        grid.attach(self)
+        grid.setPen(Qt.QPen(Qt.Qt.black, 0, Qt.Qt.DotLine))
+        <font color=blue># attach a x-axis</font>
+        xaxis = CartesianAxis(Qwt.QwtPlot.xBottom, Qwt.QwtPlot.yLeft)
+        xaxis.attach(self)
+        self.enableAxis(Qwt.QwtPlot.xBottom, False)
+        <font color=blue># attach a y-axis</font>
+        yaxis = CartesianAxis(Qwt.QwtPlot.yLeft, Qwt.QwtPlot.xBottom)
+        yaxis.attach(self)
+        self.enableAxis(Qwt.QwtPlot.yLeft, False)
+        <font color=blue># calculate 3 NumPy arrays</font>
+        x = arange(-2*pi, 2*pi, 0.01)
+        y = pi*sin(x)
+        z = 4*pi*cos(x)*cos(x)*sin(x)
+        <font color=blue># attach a curve</font>
+        curve = Qwt.QwtPlotCurve(<font color=green>'y = pi*sin(x)'</font>)
+        curve.attach(self)
+        curve.setPen(Qt.QPen(Qt.Qt.green, 2))
+        curve.setData(x, y)
+        <font color=blue># attach another curve</font>
+        curve = Qwt.QwtPlotCurve(<font color=green>'y = 4*pi*sin(x)*cos(x)**2'</font>)
+        curve.attach(self)
+        curve.setPen(Qt.QPen(Qt.Qt.black, 2))
+        curve.setData(x, z)
+        self.replot()
+
+    <font color=blue># __init__()</font>
+
+<font color=blue># class CartesianPlot</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = CartesianPlot()
+    demo.resize(400, 300)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = Qt.QApplication(args)
+    demo = make()
+    sys.exit(app.exec_())
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>

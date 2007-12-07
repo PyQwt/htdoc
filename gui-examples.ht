@@ -16,25 +16,6 @@ Title: Graphical User Interface Examples
 </p>
 
 
-<h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
-<ul>
-  <li>
-    how to use <tt class="class">QwtPlot</tt>.
-  </li>
-  <li>
-    how to produce timer events.
-  </li>
-  <li>
-    how to handle timer events by reimplementing
-    <tt class="function">QObject.timerEvent()</tt>.
-  </li>
-</ul>
-
-<p><img alt="DataPlot Widget" src="examples/DataDemo.png"
-        width=500 height=300 border=1>
-</p>
-
-
 <h5><a href="examples/BarPlotDemo.py.html">BarPlotDemo.py</a> demonstrates</h5>
 <ul>
   <li>
@@ -61,28 +42,8 @@ Title: Graphical User Interface Examples
   </li>
 </ul>
 
-<p><img alt="StackOrder Widget" src="examples/BarPlotDemo.png"
+<p><img alt="BarPlotDemo Widget" src="examples/BarPlotDemo.png"
         width=500 height=500 border=1></p>
-
-
-<h5><a href="examples/ErrorBarDemo.py.html">ErrorBarDemo.py</a> demonstrates
-</h5>
-
-<ul>
-  <li>
-    how to implement a subclass of <tt class="class">QwtPlotCurve</tt> which
-    has error bars in either no, or the x-, or the y-, or both directions. 
-  </li>
-  <li>
-    how to make autoscaling take account of the error bars by reimplementing
-    <tt class="function">QwtCurve.boundingRect()</tt>.
-  </li>
-</ul>
-
-<p><img alt="ErrorBarDemo Widget" src="examples/ErrorBarDemo.png"
-        width=400 height=300 border=1>
-</p>
-
 
 
 <h5><a href="examples/BodeDemo.py.html">BodeDemo.py</a> demonstrates</h5>
@@ -121,6 +82,71 @@ Title: Graphical User Interface Examples
     (sub-scripts are missing from the MicroSoft TrueType Core fonts).
   </li>
 </ol> 
+</p>
+
+
+<h5><a href="examples/CartesionDemo">CartesianDemo.py</a> demonstates</h5>
+<ul>
+  <li>
+    how to place the axes as in this
+    <a href="http://en.wikipedia.org/wiki/Image:Cartesian-coordinate-system.svg"> example</a>
+  </li>
+</ul>
+
+<p><img alt="CartesianDemo Widget" src="examples/CartesianDemo.png"
+        width=400 height=300 border=1>
+</p>
+
+
+<h5><a href="examples/DataDemo.py.html">DataDemo.py</a> demonstrates</h5>
+<ul>
+  <li>
+    how to use <tt class="class">QwtPlot</tt>.
+  </li>
+  <li>
+    how to produce timer events.
+  </li>
+  <li>
+    how to handle timer events by reimplementing
+    <tt class="function">QObject.timerEvent()</tt>.
+  </li>
+</ul>
+
+<p><img alt="DataPlotDemo Widget" src="examples/DataDemo.png"
+        width=500 height=300 border=1>
+</p>
+
+
+<h5><a href="examples/ErrorBarDemo.py.html">ErrorBarDemo.py</a> demonstrates
+</h5>
+
+<ul>
+  <li>
+    how to implement a subclass of <tt class="class">QwtPlotCurve</tt> which
+    has error bars in either no, or the x-, or the y-, or both directions. 
+  </li>
+  <li>
+    how to make autoscaling take account of the error bars by reimplementing
+    <tt class="function">QwtCurve.boundingRect()</tt>.
+  </li>
+</ul>
+
+<p><img alt="ErrorBarDemo Widget" src="examples/ErrorBarDemo.png"
+        width=400 height=300 border=1>
+</p>
+
+
+<h5><a href="examples/MaskedDataDemo.py.html">MaskedDataDemo.py</a> demonstrates
+</h5>
+
+<ul>
+  <li>
+    how to mask invalid data or data outside certain bounds when plottinh it.
+  </li>
+</ul>
+
+<p><img alt="MaskedDataDemo Widget" src="examples/MaskedDataDemo.png"
+        width=500 height=300 border=1>
 </p>
 
 

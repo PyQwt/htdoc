@@ -2,8 +2,10 @@ PYQWT5_CVS       := $(HOME)/CVS/PyQwt/pyqwt5
 PYQWT4_CVS       := $(HOME)/CVS/PyQwt/pyqwt4
 PYQWT3D_CVS      := $(HOME)/CVS/pyqwt3d
 
-EXAMPLES         := BarPlotDemo BodeDemo CliDemo DataDemo ErrorBarDemo
+EXAMPLES         := BarPlotDemo BodeDemo
+EXAMPLES         += CartesianDemo CliDemo DataDemo ErrorBarDemo
 EXAMPLES         += ImagePlotDemo
+EXAMPLES         += MaskedDataDemo
 EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT5_CVS)/qt4examples/%*.png) 
 EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT5_CVS)/qt4examples/%.py.html) 
 
