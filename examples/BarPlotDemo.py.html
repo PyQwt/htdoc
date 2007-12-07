@@ -1,0 +1,331 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>BarPlotDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<font color=blue># Contributed by Tomaz Curk in a bug report showing that the stack order of the</font>
+<font color=blue># curves was dependent on the number of curves. This has been fixed in Qwt.</font>
+<font color=blue>#</font>
+<font color=blue># BarCurve is an idea of Tomaz Curk.</font>
+<font color=blue>#</font>
+<font color=blue># Beautified and expanded by Gerard Vermeulen.</font>
+
+<font color=blue># for debugging, requires: python configure.py  --trace ...</font>
+<b>if</b> False:
+    <b>import</b> sip
+    sip.settracemask(0x3f)
+
+
+<b>import</b> random
+<b>import</b> sys
+<b>import</b> PyQt4.Qt <b>as</b> Qt
+<b>import</b> PyQt4.Qwt5 <b>as</b> Qwt
+
+
+<b>class</b><font color=red> Spy</font>(Qt.QObject):
+    
+    <b>def</b><font color=red> __init__</font>(self, parent):
+        Qt.QObject.__init__(self, parent)
+        parent.setMouseTracking(True)
+        parent.installEventFilter(self)
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> eventFilter</font>(self, _, event):
+        <b>if</b> event.type() == Qt.QEvent.MouseMove:
+            self.emit(Qt.SIGNAL(<font color=green>"MouseMove"</font>), event.pos())
+        <b>return</b> False
+
+    <font color=blue># eventFilter()</font>
+
+<font color=blue># class Spy</font>
+
+
+<b>class</b><font color=red> BarCurve</font>(Qwt.QwtPlotCurve):
+
+    <b>def</b><font color=red> __init__</font>(self, penColor=Qt.Qt.black, brushColor=Qt.Qt.white):
+        Qwt.QwtPlotCurve.__init__(self)
+        self.penColor = penColor
+        self.brushColor = brushColor
+        
+    <font color=blue># __init__()</font>
+    
+    <b>def</b><font color=red> drawFromTo</font>(self, painter, xMap, yMap, start, stop):
+        <font color=green>"""Draws rectangles with the corners taken from the x- and y-arrays.
+        """</font>
+
+        painter.setPen(Qt.QPen(self.penColor, 2))
+        painter.setBrush(self.brushColor)
+        <b>if</b> stop == -1:
+            stop = self.dataSize()
+        <font color=blue># force 'start' and 'stop' to be even and positive</font>
+        <b>if</b> start &amp; 1:
+            start -= 1
+        <b>if</b> stop &amp; 1:
+            stop -= 1
+        start = max(start, 0)
+        stop = max(stop, 0)
+        <b>for</b> i <b>in</b> range(start, stop, 2):
+            px1 = xMap.transform(self.x(i))
+            py1 = yMap.transform(self.y(i))
+            px2 = xMap.transform(self.x(i+1))
+            py2 = yMap.transform(self.y(i+1))
+            painter.drawRect(px1, py1, (px2 - px1), (py2 - py1))
+
+    <font color=blue># drawFromTo()</font>
+
+<font color=blue># class BarCurve</font>
+
+
+<b>class</b><font color=red> BarPlotMainWindow</font>(Qt.QMainWindow):
+
+    colors = (Qt.Qt.red,
+              Qt.Qt.green,
+              Qt.Qt.blue,
+              Qt.Qt.cyan,
+              Qt.Qt.magenta,
+              Qt.Qt.yellow,
+              )
+
+    <b>def</b><font color=red> __init__</font>(self, parent=None):
+        Qt.QMainWindow.__init__(self, parent)
+
+        <font color=blue># Initialize a QwPlot central widget</font>
+        self.plot = Qwt.QwtPlot(self)
+        self.plot.setTitle(<font color=green>'left-click &amp; drag to zoom'</font>)
+
+        self.plot.setCanvasBackground(Qt.Qt.white)
+
+        self.plot.plotLayout().setCanvasMargin(0)
+        self.plot.plotLayout().setAlignCanvasToScales(True)
+        self.setCentralWidget(self.plot)
+
+        grid = Qwt.QwtPlotGrid()
+        pen = Qt.QPen(Qt.Qt.DotLine)
+        pen.setColor(Qt.Qt.black)
+        pen.setWidth(0)
+        grid.setPen(pen)
+        grid.attach(self.plot)
+
+        self.__initTracking()
+        self.__initZooming()
+        self.__initToolBar()
+        
+        <font color=blue># Finalize</font>
+        self.counter.setValue(10)
+        self.go(self.counter.value())
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> __initTracking</font>(self):
+        <font color=green>"""Initialize tracking
+        """</font>        
+
+        self.connect(Spy(self.plot.canvas()),
+                     Qt.SIGNAL(<font color=green>"MouseMove"</font>),
+                     self.showCoordinates) 
+
+        self.statusBar().showMessage(
+            <font color=green>'Mouse movements in the plot canvas are shown in the status bar'</font>)
+
+    <font color=blue># __initTracking()</font>
+
+    <b>def</b><font color=red> showCoordinates</font>(self, position):
+        self.statusBar().showMessage(
+            <font color=green>'x = %+.6g, y = %.6g'</font>
+            % (self.plot.invTransform(Qwt.QwtPlot.xBottom, position.x()),
+               self.plot.invTransform(Qwt.QwtPlot.yLeft, position.y())))
+
+    <font color=blue># showCoordinates()</font>
+    
+    <b>def</b><font color=red> __initZooming</font>(self):
+        <font color=green>"""Initialize zooming
+        """</font>
+
+        self.zoomer = Qwt.QwtPlotZoomer(Qwt.QwtPlot.xBottom,
+                                        Qwt.QwtPlot.yLeft,
+                                        Qwt.QwtPicker.DragSelection,
+                                        Qwt.QwtPicker.AlwaysOff,
+                                        self.plot.canvas())
+        self.zoomer.setRubberBandPen(Qt.QPen(Qt.Qt.black))
+
+    <font color=blue># __initZooming()</font>
+       
+    <b>def</b><font color=red> setZoomerMousePattern</font>(self, index):
+        <font color=green>"""Set the mouse zoomer pattern.
+        """</font>
+
+        <b>if</b> index == 0:
+            pattern = [
+                Qwt.QwtEventPattern.MousePattern(Qt.Qt.LeftButton,
+                                                 Qt.Qt.NoModifier),
+                Qwt.QwtEventPattern.MousePattern(Qt.Qt.MidButton,
+                                                 Qt.Qt.NoModifier),
+                Qwt.QwtEventPattern.MousePattern(Qt.Qt.RightButton,
+                                                 Qt.Qt.NoModifier),
+                Qwt.QwtEventPattern.MousePattern(Qt.Qt.LeftButton,
+                                                 Qt.Qt.ShiftModifier),
+                Qwt.QwtEventPattern.MousePattern(Qt.Qt.MidButton,
+                                                 Qt.Qt.ShiftModifier),
+                Qwt.QwtEventPattern.MousePattern(Qt.Qt.RightButton,
+                                                 Qt.Qt.ShiftModifier),
+                ]
+            self.zoomer.setMousePattern(pattern)
+        <b>elif</b> index <b>in</b> (1, 2, 3):
+            self.zoomer.initMousePattern(index)
+        <b>else</b>:
+            <b>raise</b> ValueError, <font color=green>'index must be in (0, 1, 2, 3)'</font>
+
+    <font color=blue># setZoomerMousePattern()</font>
+
+    <b>def</b><font color=red> __initToolBar</font>(self):
+        <font color=green>"""Initialize the toolbar
+        """</font>
+        
+        toolBar = Qt.QToolBar(self)
+        self.addToolBar(toolBar)
+
+        toolBar.addWidget(Qt.QLabel(<font color=green>'Bars'</font>, toolBar))
+        self.counter = Qwt.QwtCounter(toolBar)
+        self.counter.setRange(0, 10000, 1)
+        self.counter.setNumButtons(3)
+        toolBar.addWidget(self.counter)
+        toolBar.addSeparator()
+
+        toolBar.addWidget(Qt.QLabel(<font color=green>'Mouse'</font>, toolBar))
+        mouseComboBox = Qt.QComboBox(toolBar)
+        <b>for</b> name <b>in</b> (<font color=green>'3 buttons (PyQwt)'</font>,
+                     <font color=green>'1 button'</font>,
+                     <font color=green>'2 buttons'</font>,
+                     <font color=green>'3 buttons (Qwt)'</font>):
+            mouseComboBox.addItem(name)
+        mouseComboBox.setCurrentIndex(0)
+        toolBar.addWidget(mouseComboBox)
+        toolBar.addSeparator()
+        self.setZoomerMousePattern(0)
+
+        toolBar.addAction(Qt.QWhatsThis.createAction(toolBar))
+
+        self.plot.canvas().setWhatsThis(
+            <font color=green>'A QwtPlotZoomer lets you zoom infinitely deep '</font>
+            <font color=green>'by saving the zoom states on a stack.\n\n'</font>
+            <font color=green>'You can:\n'</font>
+            <font color=green>'- select a zoom region\n'</font>
+            <font color=green>'- unzoom all\n'</font>
+            <font color=green>'- walk down the stack\n'</font>
+            <font color=green>'- walk up the stack.\n\n'</font>
+            <font color=green>'The combo box in the toolbar lets you attach '</font>
+            <font color=green>'different sets of mouse events to those actions.'</font>
+            )
+        
+        self.counter.setWhatsThis(
+            <font color=green>'Select the number of bars'</font>
+            )
+        
+        mouseComboBox.setWhatsThis(
+            <font color=green>'Configure the zoomer mouse buttons.\n\n'</font>
+            <font color=green>'3 buttons (PyQwt style):\n'</font>
+            <font color=green>'- left-click &amp; drag to zoom\n'</font>
+            <font color=green>'- middle-click to unzoom all\n'</font>
+            <font color=green>'- right-click to walk down the stack\n'</font>
+            <font color=green>'- shift-right-click to walk up the stack.\n'</font>
+            <font color=green>'1 button:\n'</font>
+            <font color=green>'- click &amp; drag to zoom\n'</font>
+            <font color=green>'- control-click to unzoom all\n'</font>
+            <font color=green>'- alt-click to walk down the stack\n'</font>
+            <font color=green>'- shift-alt-click to walk up the stack.\n'</font>
+            <font color=green>'2 buttons:\n'</font>
+            <font color=green>'- left-click &amp; drag to zoom\n'</font>
+            <font color=green>'- right-click to unzoom all\n'</font>
+            <font color=green>'- alt-left-click to walk down the stack\n'</font>
+            <font color=green>'- alt-shift-left-click to walk up the stack.\n'</font>
+            <font color=green>'3 buttons (Qwt style):\n'</font>
+            <font color=green>'- left-click &amp; drag to zoom\n'</font>
+            <font color=green>'- right-click to unzoom all\n'</font>
+            <font color=green>'- middle-click to walk down the stack\n'</font>
+            <font color=green>'- shift-middle-click to walk up the stack.\n\n'</font>
+            <font color=green>'If some of those key combinations interfere with '</font>
+            <font color=green>'your Window manager, press the:\n'</font>
+            <font color=green>'- escape-key to unzoom all\n'</font>
+            <font color=green>'- minus-key to walk down the stack\n'</font>
+            <font color=green>'- plus-key to walk up the stack.'</font>
+            )
+
+        self.connect(self.counter,
+                     Qt.SIGNAL(<font color=green>'valueChanged(double)'</font>),
+                     self.go)
+        self.connect(mouseComboBox,
+                     Qt.SIGNAL(<font color=green>'activated(int)'</font>),
+                     self.setZoomerMousePattern)
+
+    <font color=blue># __initToolBar()</font>
+
+    <b>def</b><font color=red> go</font>(self, value):
+        <font color=green>"""Create and plot a sequence of bars taking into account the controls
+        """</font>
+
+        n = int(value)
+
+        <b>for</b> bar <b>in</b> self.plot.itemList():
+            <b>if</b> isinstance(bar, BarCurve):
+                bar.detach()
+
+        <b>for</b> i <b>in</b> range(n):
+            bar = BarCurve(
+                self.colors[random.randint(0, len(self.colors)-1)],
+                self.colors[random.randint(0, len(self.colors)-1)],
+                )
+            bar.attach(self.plot)
+            bar.setData([i, i+1.4], [0.3*i, 5.0+0.3*i])
+
+        self.clearZoomStack()
+
+    <font color=blue># go()</font>
+
+    <b>def</b><font color=red> clearZoomStack</font>(self):
+        <font color=green>"""Auto scale and clear the zoom stack
+        """</font>
+
+        self.plot.setAxisAutoScale(Qwt.QwtPlot.xBottom)
+        self.plot.setAxisAutoScale(Qwt.QwtPlot.yLeft)
+        self.plot.replot()
+        self.zoomer.setZoomBase()
+
+    <font color=blue># clearZoomStack()</font>
+    
+<font color=blue># class BarPlotMainWindow</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = BarPlotMainWindow()
+    demo.resize(500, 500)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = Qt.QApplication(args)
+    demo = make()
+    sys.exit(app.exec_())
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire!</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+
+</pre>
+</body>
+</html>

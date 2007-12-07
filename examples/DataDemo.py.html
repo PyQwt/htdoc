@@ -7,18 +7,28 @@
 <pre>
 <font color=blue>#!/usr/bin/env python</font>
 
-<font color=blue># The Python version of qwt-*/examples/data_plot/data_plot.cpp</font>
+<font color=blue># The Python version of Qwt-5.0.0/examples/data_plot</font>
 
-<b>import</b> random, sys
-<b>from</b> qt <b>import</b> *
-<b>from</b> Qwt4.Qwt <b>import</b> *
-<b>from</b> Qwt4.anynumpy <b>import</b> *
+<font color=blue># for debugging, requires: python configure.py  --trace ...</font>
+<b>if</b> False:
+    <b>import</b> sip
+    sip.settracemask(0x3f)
+
+<b>import</b> random
+<b>import</b> sys
+
+<b>from</b> PyQt4 <b>import</b> Qt
+<b>import</b> PyQt4.Qwt5 <b>as</b> Qwt
+<b>from</b> PyQt4.Qwt5.anynumpy <b>import</b> *
 
 
-<b>class</b><font color=red> DataPlot</font>(QwtPlot):
+<b>class</b><font color=red> DataPlot</font>(Qwt.QwtPlot):
 
     <b>def</b><font color=red> __init__</font>(self, *args):
-        QwtPlot.__init__(self, *args)
+        Qwt.QwtPlot.__init__(self, *args)
+
+        self.setCanvasBackground(Qt.Qt.white)
+        self.alignScales()
 
         <font color=blue># Initialize data</font>
         self.x = arange(0.0, 100.1, 0.5)
@@ -26,27 +36,48 @@
         self.z = zeros(len(self.x), Float)
 
         self.setTitle(<font color=green>"A Moving QwtPlot Demonstration"</font>)
-        self.setAutoLegend(True)
+        self.insertLegend(Qwt.QwtLegend(), Qwt.QwtPlot.BottomLegend);
 
-        self.curveR = self.insertCurve(<font color=green>"Data Moving Right"</font>)
-        self.curveL = self.insertCurve(<font color=green>"Data Moving Left"</font>)
+        self.curveR = Qwt.QwtPlotCurve(<font color=green>"Data Moving Right"</font>)
+        self.curveR.attach(self)
+        self.curveL = Qwt.QwtPlotCurve(<font color=green>"Data Moving Left"</font>)
+        self.curveL.attach(self)
 
-        self.setCurveSymbol(self.curveL, QwtSymbol(
-            QwtSymbol.Ellipse, QBrush(), QPen(Qt.yellow), QSize(7, 7)))
+        self.curveL.setSymbol(Qwt.QwtSymbol(Qwt.QwtSymbol.Ellipse,
+                                        Qt.QBrush(),
+                                        Qt.QPen(Qt.Qt.yellow),
+                                        Qt.QSize(7, 7)))
 
-        self.setCurvePen(self.curveR, QPen(Qt.red))
-        self.setCurvePen(self.curveL, QPen(Qt.blue))
+        self.curveR.setPen(Qt.QPen(Qt.Qt.red))
+        self.curveL.setPen(Qt.QPen(Qt.Qt.blue))
 
-        mY = self.insertLineMarker(<font color=green>""</font>, QwtPlot.yLeft)      
-        self.setMarkerYPos(mY, 0.0)
+        mY = Qwt.QwtPlotMarker()
+        mY.setLabelAlignment(Qt.Qt.AlignRight | Qt.Qt.AlignTop)
+        mY.setLineStyle(Qwt.QwtPlotMarker.HLine)
+        mY.setYValue(0.0)
+        mY.attach(self)
 
-        self.setAxisTitle(QwtPlot.xBottom, <font color=green>"Time (seconds)"</font>)
-        self.setAxisTitle(QwtPlot.yLeft, <font color=green>"Values"</font>)
+        self.setAxisTitle(Qwt.QwtPlot.xBottom, <font color=green>"Time (seconds)"</font>)
+        self.setAxisTitle(Qwt.QwtPlot.yLeft, <font color=green>"Values"</font>)
     
         self.startTimer(50)
         self.phase = 0.0
 
     <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> alignScales</font>(self):
+        self.canvas().setFrameStyle(Qt.QFrame.Box | Qt.QFrame.Plain)
+        self.canvas().setLineWidth(1)
+        <b>for</b> i <b>in</b> range(Qwt.QwtPlot.axisCnt):
+            scaleWidget = self.axisWidget(i)
+            <b>if</b> scaleWidget:
+                scaleWidget.setMargin(0)
+            scaleDraw = self.axisScaleDraw(i)
+            <b>if</b> scaleDraw:
+                scaleDraw.enableComponent(
+                    Qwt.QwtAbstractScaleDraw.Backbone, False)
+
+    <font color=blue># alignScales()</font>
     
     <b>def</b><font color=red> timerEvent</font>(self, e):
         <b>if</b> self.phase &gt; pi - 0.0001:
@@ -62,8 +93,8 @@
         self.z = concatenate((self.z[1:], self.z[:1]), 1)
         self.z[-1] = 0.8 - (2.0 * self.phase/pi) + 0.4*random.random()
 
-        self.setCurveData(self.curveR, self.x, self.y)
-        self.setCurveData(self.curveL, self.x, self.z)
+        self.curveR.setData(self.x, self.y)
+        self.curveL.setData(self.x, self.z)
 
         self.replot()
         self.phase += pi*0.02
@@ -71,14 +102,6 @@
     <font color=blue># timerEvent()</font>
 
 <font color=blue># class DataPlot</font>
-
-<b>def</b><font color=red> main</font>(args): 
-    app = QApplication(args)
-    demo = make()
-    app.setMainWidget(demo)
-    app.exec_loop()
-
-<font color=blue># main()</font>
 
 <b>def</b><font color=red> make</font>():
     demo = DataPlot()
@@ -88,9 +111,20 @@
 
 <font color=blue># make()</font>
 
+<b>def</b><font color=red> main</font>(args): 
+    app = Qt.QApplication(args)
+    demo = make()
+    sys.exit(app.exec_())
+
+<font color=blue># main()</font>
+
 <font color=blue># Admire</font>
 <b>if</b> __name__ == <font color=green>'__main__'</font>:
     main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
 
 </pre>
 </body>

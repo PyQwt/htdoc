@@ -7,7 +7,7 @@
 <pre>
 <font color=blue>#!/usr/bin/env python</font>
 
-<b>from</b> Qwt4.qplt <b>import</b> *
+<b>from</b> PyQt4.Qwt5.qplt <b>import</b> *
 
 
 <b>def</b><font color=red> make</font>():
@@ -16,10 +16,9 @@
 <font color=blue># make()</font>
 
 <b>def</b><font color=red> main</font>(args):
-    app = qt.QApplication(args)
+    app = Qt.QApplication(args)
     demo = make()
-    app.setMainWidget(demo[-1])
-    sys.exit(app.exec_loop())
+    sys.exit(app.exec_())
 
 <font color=blue># main()</font>
 

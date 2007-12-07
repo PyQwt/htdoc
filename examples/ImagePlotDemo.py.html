@@ -1,0 +1,238 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>ImagePlotDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> PyQt4 <b>import</b> Qt
+<b>import</b> PyQt4.Qwt5 <b>as</b> Qwt
+<b>from</b> PyQt4.Qwt5.anynumpy <b>import</b> *
+
+
+<font color=blue># from scipy.pilutil</font>
+<b>def</b><font color=red> bytescale</font>(data, cmin=None, cmax=None, high=255, low=0):
+    <b>if</b> ((hasattr(data, <font color=green>'dtype'</font>) <b>and</b> data.dtype.char == UInt8)
+        <b>or</b> (hasattr(data, <font color=green>'typecode'</font>) <b>and</b> data.typecode == UInt8)
+        ):
+        <b>return</b> data
+    high = high - low
+    <b>if</b> cmin <b>is</b> None:
+        cmin = min(ravel(data))
+    <b>if</b> cmax <b>is</b> None:
+        cmax = max(ravel(data))
+    scale = high * 1.0 / (cmax-cmin <b>or</b> 1)
+    bytedata = ((data*1.0-cmin)*scale + 0.4999).astype(UInt8)
+    <b>return</b> bytedata + asarray(low).astype(UInt8)
+
+<font color=blue># bytescale()</font>
+
+
+<b>def</b><font color=red> linearX</font>(nx, ny):
+    <b>return</b> repeat(arange(nx, typecode = Float32)[:, NewAxis], ny, -1)
+
+<font color=blue># linearX()</font>
+
+
+<b>def</b><font color=red> linearY</font>(nx, ny):
+    <b>return</b> repeat(arange(ny, typecode = Float32)[NewAxis, :], nx, 0)
+
+<font color=blue># linearY()</font>
+
+
+<b>def</b><font color=red> square</font>(n, min, max):
+    t = arange(min, max, float(max-min)/(n-1))
+    <font color=blue>#return outer(cos(t), sin(t))</font>
+    <b>return</b> cos(t)*sin(t)[:,NewAxis]
+
+<font color=blue># square()</font>
+    
+
+<b>class</b><font color=red> PlotImage</font>(Qwt.QwtPlotItem):
+
+    <b>def</b><font color=red> __init__</font>(self, title = Qwt.QwtText()):
+        Qwt.QwtPlotItem.__init__(self)
+        <b>if</b> <b>not</b> isinstance(title, Qwt.QwtText):
+            self.title = Qwt.QwtText(str(title))
+        <b>else</b>:
+            self.title = title
+        self.setItemAttribute(Qwt.QwtPlotItem.Legend);
+        self.xyzs = None
+
+    <font color=blue># __init__()</font>
+    
+    <b>def</b><font color=red> setData</font>(self, xyzs, xRange = None, yRange = None):
+        self.xyzs = xyzs
+        shape = xyzs.shape
+        <b>if</b> <b>not</b> xRange:
+            xRange = (0, shape[0])
+        <b>if</b> <b>not</b> yRange:
+            yRange = (0, shape[1])
+
+        self.xMap = Qwt.QwtScaleMap(0, xyzs.shape[0], *xRange)
+        self.plot().setAxisScale(Qwt.QwtPlot.xBottom, *xRange)
+        self.yMap = Qwt.QwtScaleMap(0, xyzs.shape[1], *yRange)
+        self.plot().setAxisScale(Qwt.QwtPlot.yLeft, *yRange)
+
+        self.image = Qwt.toQImage(bytescale(self.xyzs)).mirrored(False, True)
+        <b>for</b> i <b>in</b> range(0, 256):
+            self.image.setColor(i, Qt.qRgb(i, 0, 255-i))
+
+    <font color=blue># setData()    </font>
+
+    <b>def</b><font color=red> updateLegend</font>(self, legend):
+        Qwt.QwtPlotItem.updateLegend(self, legend)
+        legend.find(self).setText(self.title)
+
+    <font color=blue># updateLegend()</font>
+
+    <b>def</b><font color=red> draw</font>(self, painter, xMap, yMap, rect):
+        <font color=green>"""Paint image zoomed to xMap, yMap
+
+        Calculate (x1, y1, x2, y2) so that it contains at least 1 pixel,
+        and copy the visible region to scale it to the canvas.
+        """</font>
+        <b>assert</b>(isinstance(self.plot(), Qwt.QwtPlot))
+        
+        <font color=blue># calculate y1, y2</font>
+        <font color=blue># the scanline order (index y) is inverted with respect to the y-axis</font>
+        y1 = y2 = self.image.height()
+        y1 *= (self.yMap.s2() - yMap.s2())
+        y1 /= (self.yMap.s2() - self.yMap.s1())
+        y1 = max(0, int(y1-0.5))
+        y2 *= (self.yMap.s2() - yMap.s1())
+        y2 /= (self.yMap.s2() - self.yMap.s1())
+        y2 = min(self.image.height(), int(y2+0.5))
+        <font color=blue># calculate x1, x2 -- the pixel order (index x) is normal</font>
+        x1 = x2 = self.image.width()
+        x1 *= (xMap.s1() - self.xMap.s1())
+        x1 /= (self.xMap.s2() - self.xMap.s1())
+        x1 = max(0, int(x1-0.5))
+        x2 *= (xMap.s2() - self.xMap.s1())
+        x2 /= (self.xMap.s2() - self.xMap.s1())
+        x2 = min(self.image.width(), int(x2+0.5))
+        <font color=blue># copy</font>
+        image = self.image.copy(x1, y1, x2-x1, y2-y1)
+        <font color=blue># zoom</font>
+        image = image.scaled(xMap.p2()-xMap.p1()+1, yMap.p1()-yMap.p2()+1)
+        <font color=blue># draw</font>
+        painter.drawImage(xMap.p1(), yMap.p2(), image)
+
+    <font color=blue># drawImage()</font>
+
+<font color=blue># class PlotImage</font>
+    
+
+<b>class</b><font color=red> ImagePlot</font>(Qwt.QwtPlot):
+
+    <b>def</b><font color=red> __init__</font>(self, *args):
+        Qwt.QwtPlot.__init__(self, *args)
+        <font color=blue># set plot title</font>
+	self.setTitle(<font color=green>'ImagePlot: (un)zoom &amp; (un)hide'</font>)
+        <font color=blue># set plot layout</font>
+        self.plotLayout().setMargin(0)
+        self.plotLayout().setCanvasMargin(0)
+        self.plotLayout().setAlignCanvasToScales(True)
+        <font color=blue># set legend</font>
+        legend = Qwt.QwtLegend()
+        legend.setItemMode(Qwt.QwtLegend.ClickableItem)
+        self.insertLegend(legend, Qwt.QwtPlot.RightLegend)
+	<font color=blue># set axis titles</font>
+	self.setAxisTitle(Qwt.QwtPlot.xBottom, <font color=green>'time (s)'</font>)
+	self.setAxisTitle(Qwt.QwtPlot.yLeft, <font color=green>'frequency (Hz)'</font>)
+	<font color=blue># calculate 3 NumPy arrays</font>
+        x = arange(-2*pi, 2*pi, 0.01)
+        y = pi*sin(x)
+        z = 4*pi*cos(x)*cos(x)*sin(x)
+	<font color=blue># attach a curve</font>
+	curve = Qwt.QwtPlotCurve(<font color=green>'y = pi*sin(x)'</font>)
+        curve.attach(self)
+	curve.setPen(Qt.QPen(Qt.Qt.green, 2))
+	curve.setData(x, y)
+        <font color=blue># attach another curve</font>
+	curve = Qwt.QwtPlotCurve(<font color=green>'y = 4*pi*sin(x)*cos(x)**2'</font>)
+        curve.attach(self)
+	curve.setPen(Qt.QPen(Qt.Qt.black, 2))
+	curve.setData(x, z)
+        <font color=blue># attach a grid</font>
+        grid = Qwt.QwtPlotGrid()
+        grid.attach(self)
+        grid.setPen(Qt.QPen(Qt.Qt.black, 0, Qt.Qt.DotLine))
+	<font color=blue># attach a horizontal marker at y = 0</font>
+        marker = Qwt.QwtPlotMarker()
+        marker.attach(self)
+        marker.setValue(0.0, 0.0)
+        marker.setLineStyle(Qwt.QwtPlotMarker.HLine)
+        marker.setLabelAlignment(Qt.Qt.AlignRight | Qt.Qt.AlignTop)
+        marker.setLabel(Qwt.QwtText(<font color=green>'y = 0'</font>))
+        <font color=blue># attach a vertical marker at x = pi</font>
+        marker = Qwt.QwtPlotMarker()
+        marker.attach(self)
+        marker.setValue(pi, 0.0)
+        marker.setLineStyle(Qwt.QwtPlotMarker.VLine)
+        marker.setLabelAlignment(Qt.Qt.AlignRight | Qt.Qt.AlignBottom)
+        marker.setLabel(Qwt.QwtText(<font color=green>'x = pi'</font>))
+        <font color=blue># attach a plot image</font>
+        plotImage = PlotImage(<font color=green>'Image'</font>)
+        plotImage.attach(self)
+        plotImage.setData(
+            square(512, -2*pi, 2*pi), (-2*pi, 2*pi), (-2*pi, 2*pi))
+
+        self.connect(self,
+                     Qt.SIGNAL(<font color=green>"legendClicked(QwtPlotItem*)"</font>),
+                     self.toggleVisibility)
+        
+        <font color=blue># replot</font>
+        self.replot()
+        self.zoomer = Qwt.QwtPlotZoomer(Qwt.QwtPlot.xBottom,
+                                        Qwt.QwtPlot.yLeft,
+                                        Qwt.QwtPicker.DragSelection,
+                                        Qwt.QwtPicker.AlwaysOff,
+                                        self.canvas())
+        self.zoomer.setRubberBandPen(Qt.QPen(Qt.Qt.green))
+
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> toggleVisibility</font>(self, plotItem):
+        <font color=green>"""Toggle the visibility of a plot item
+        """</font>
+        plotItem.setVisible(<b>not</b> plotItem.isVisible())
+        self.replot()
+
+    <font color=blue># toggleVisibility()</font>
+
+<font color=blue># class Qwt.QwtImagePlot</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = ImagePlot()
+    demo.resize(600, 400)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = Qt.QApplication(args)
+    demo = make()
+    sys.exit(app.exec_())
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+</pre>
+</body>
+</html>
