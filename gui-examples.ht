@@ -85,11 +85,13 @@ Title: Graphical User Interface Examples
 </p>
 
 
-<h5><a href="examples/CartesionDemo">CartesianDemo.py</a> demonstates</h5>
+<h5><a href="examples/CartesianDemo.py.html">CartesianDemo.py</a>
+  demonstates</h5>
 <ul>
   <li>
     how to place the axes as in this
-    <a href="http://en.wikipedia.org/wiki/Image:Cartesian-coordinate-system.svg"> example</a>
+    <a href="http://en.wikipedia.org/wiki/Image:Cartesian-coordinate-system.svg">
+      example</a>
   </li>
 </ul>
 
@@ -141,7 +143,7 @@ Title: Graphical User Interface Examples
 
 <ul>
   <li>
-    how to mask invalid data or data outside certain bounds when plottinh it.
+    how to mask invalid data or data outside certain bounds when plotting it.
   </li>
 </ul>
 
