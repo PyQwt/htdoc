@@ -2,17 +2,25 @@ Title: Graphical User Interface Examples
 
 <h1>PyQwt Graphical User Interface Examples</h1>
 
-<p>You have to understand Qt's SIGNAL and SLOT mechanism to develop GUI
+<p>(Py)Qt is a huge library offering many programming idioms to the user.
+  For instance, Qt's SIGNAL and SLOT mechanism is essential to develop GUI
   programs with PyQt and PyQwt.
   The chapter "Signal and Slot Support" in PyQt's documentation together with
   the overview "Signals and Slots" in Qt's documentation is sufficient for 
   experienced programmers.
-  A cheap start for newbies is Boudewijn Rempt's
-  "GUI Programming with Python Using the Qt Toolkit" <a href=
-  "http://www.commandprompt.com/community/pyqt/">online book</a>.
-  Serious programmers should check out Mark Summerfeld's
+  A cheap and nowadays outdated start for newbies is Boudewijn Rempt's
+  "GUI Programming with Python Using the Qt Toolkit"
+  <a href="http://www.commandprompt.com/community/pyqt/">online book</a>.
+  You should check out Mark Summerfeld's
   "Rapid GUI Programming with Python and Qt" <a href=
-  "http://www.qtrac.eu/pyqtbook.html">paper book</a>.
+  "http://www.qtrac.eu/pyqtbook.html">paper book</a> when you intend to do
+  serious PyQt and PyQwt programming.
+</p>
+
+<p> Some of the examples below show intermediate design patterns specific to
+  (Py)Qwt.  The most advanced examples are based on subclassing of the
+  <tt class="class">QwtPlotItem</tt>, <tt class="class">QwtPlotCurve</tt>, and
+  <tt class="class">QwtData</tt> classes.
 </p>
 
 
@@ -89,6 +97,14 @@ Title: Graphical User Interface Examples
   demonstates</h5>
 <ul>
   <li>
+    how to subclass <tt class="class">QwtPlotItem</tt> so that it uses a
+    <tt class="class">QwtScaleDraw</tt> to draw itself
+  </li>
+  <li>
+    how to piggy-back on the <tt class="class">QwtScaleDiv</tt> of a hidden
+    axis 
+  </li>
+  <li>
     how to place the axes as in this
     <a href="http://en.wikipedia.org/wiki/Image:Cartesian-coordinate-system.svg">
       example</a>
@@ -143,7 +159,21 @@ Title: Graphical User Interface Examples
 
 <ul>
   <li>
-    how to mask invalid data or data outside certain bounds when plotting it.
+    how to plot masked data by subclassing <tt class="class">QwtData</tt> and
+    <tt class="class">QwtPlotCurve</tt>.
+  </li>
+  <li>
+    how to plot several valid chunks of masked data by subclassing
+    <tt class="class">QwtPlotCurve</tt> and reimplementing
+    <tt class="function">QwtPlotCurve.draw()</tt>.
+  </li>
+  <li>
+    how to make autoscaling take account of the mask by subclassing
+    <tt class="class">QwtData</tt> and reimplementing
+    <tt class="function">QwtData.boundingRect()</tt>.
+  </li>
+  <li>
+    how to plot y = 1/sin(x) for -3 < y < 3 and -6 < x < 6.
   </li>
 </ul>
 
