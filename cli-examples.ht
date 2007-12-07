@@ -28,7 +28,7 @@ PyQwt-4.2.3.
     Start <b class="program">python</b> (or <b class="program">ipython</b>)
     and type:
     <pre class="cli">
->>> import Qwt4.iqt
+>>> import PyQt4.Qwt5.iqt
     </pre>
     to create an application instance and to simulate entering an event loop
     which does not inhibit the Python interpreter to read its input.
@@ -37,7 +37,7 @@ PyQwt-4.2.3.
     The module <tt class="module">qwt.qplt</tt> provides an interpreter
     friendly interface to the QwtPlot class. Type:
     <pre class="cli">
->>> from Qwt4.qplt import *
+>>> from PyQt4.Qwt5.qplt import *
     </pre>
     to load the classes <tt class="class">Plot</tt>,
     <tt class="class">IPlot</tt>, <tt class="class"> Curve</tt>,
@@ -115,8 +115,8 @@ PyQwt-4.2.3.
 </ol>
 
 <p>
-See the <a href="doc4/qwt-qplt.html">Qwt4.qplt documentation</a> for detailed
-information.
+See the <a href="doc5/qwt-qplt.html">PyQt4.Qwt5.qplt documentation</a>
+for detailed information.
 </p>
 
 <!--
