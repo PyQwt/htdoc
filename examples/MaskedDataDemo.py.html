@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+<title>MaskedDataDemo.py</title>
+</head>
+<body bgcolor=white>
+<pre>
+<font color=blue>#!/usr/bin/env python</font>
+
+<b>import</b> sys
+<b>from</b> PyQt4 <b>import</b> Qt
+<b>import</b> PyQt4.Qwt5 as Qwt
+
+<b>try</b>:
+    <b>import</b> numpy as np
+<b>except</b> ImportError:
+    <b>if</b> <b>not</b> Qt.QCoreApplication.instance():
+        a = Qt.QApplication([])
+    Qt.QMessageBox.critical(
+        None,
+        <font color=green>'NumPy required'</font>,
+        <font color=green>'This example requires NumPy, but failed to import NumPy.\n'</font>
+        <font color=green>'NumPy is available at http://sourceforge.net/projects/numpy'</font>
+        )
+    <b>raise</b> SystemExit, (
+        <font color=green>'Failed to import NumPy.\n'</font>
+        <font color=green>'NumPy is available at http://sourceforge.net/projects/numpy'</font>
+        )
+
+
+<b>class</b><font color=red> MaskedData</font>(Qwt.QwtArrayData):
+
+    <b>def</b><font color=red> __init__</font>(self, x, y, mask):
+        Qwt.QwtArrayData.__init__(self, x, y)
+        self.__mask = np.asarray(mask, bool)
+        <font color=blue># keep a copy of x and y for boundingRect()</font>
+        self.__x = np.asarray(x)
+        self.__y = np.asarray(y)
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> copy</font>(self):
+        <b>return</b> self
+
+    <font color=blue># copy()</font>
+
+    <b>def</b><font color=red> mask</font>(self):
+        <b>return</b> self.__mask
+
+    <font color=blue># mask()</font>
+
+    <b>def</b><font color=red> boundingRect</font>(self):
+        <font color=green>"""Return the bounding rectangle of the data, accounting for the mask.
+        """</font>
+        xmax = self.__x[self.__mask].max()
+        xmin = self.__x[self.__mask].min()
+        ymax = self.__y[self.__mask].max()
+        ymin = self.__y[self.__mask].min()
+
+        <b>return</b> Qt.QRectF(xmin, ymin, xmax-xmin, ymax-ymin)
+
+    <font color=blue># boundingRect()</font>
+
+<font color=blue># class MaskedData</font>
+
+
+<b>class</b><font color=red> MaskedCurve</font>(Qwt.QwtPlotCurve):
+
+    <b>def</b><font color=red> __init__</font>(self, x, y, mask):
+        Qwt.QwtPlotCurve.__init__(self)
+        self.setData(MaskedData(x, y, mask))
+
+    <font color=blue># __init__()</font>
+
+    <b>def</b><font color=red> draw</font>(self, painter, xMap, yMap, rect):
+        <font color=blue># When the array indices contains the indices of all valid data points,</font>
+        <font color=blue># a chunks of valid data is indexed by</font>
+        <font color=blue># indices[first], indices[first+1], .., indices[last].</font>
+        <font color=blue># The first index of a chunk of valid data is calculated by:</font>
+        <font color=blue># 1. indices[i] - indices[i-1] &gt; 1</font>
+        <font color=blue># 2. indices[0] is always OK</font>
+        <font color=blue># The last index of a chunk of valid data is calculated by:</font>
+        <font color=blue># 1. index[i] - index[i+1] &lt; -1</font>
+        <font color=blue># 2. index[-1] is always OK</font>
+        indices = np.arange(self.data().size())[self.data().mask()]
+        fs = np.array(indices)
+        fs[1:] -= indices[:-1]
+        fs[0] = 2
+        fs = indices[fs &gt; 1]
+        ls = np.array(indices)
+        ls[:-1] -= indices[1:]
+        ls[-1] = -2
+        ls = indices[ls &lt; -1]
+        <b>for</b> first, last <b>in</b> zip(fs, ls):
+            Qwt.QwtPlotCurve.drawFromTo(self, painter, xMap, yMap, first, last)
+
+<font color=blue># class MaskedCurve</font>
+
+
+<b>def</b><font color=red> make</font>():
+    demo = Qwt.QwtPlot()
+    demo.setTitle(<font color=green>'Masked Data Demo'</font>)
+    demo.setCanvasBackground(Qt.Qt.white)
+    <font color=blue># num = 501 causes a divide by zero warning 64-bit Gentoo</font>
+    x = np.linspace(-2*np.pi, 2*np.pi, num=501)
+    y = 1/np.sin(x)
+    mask = np.logical_and(y&gt;-3.0, y&lt;3.0)
+    curve = MaskedCurve(x, y, mask)
+    curve.attach(demo)
+    demo.resize(500, 300)
+    demo.show()
+    <b>return</b> demo
+
+<font color=blue># make()</font>
+
+
+<b>def</b><font color=red> main</font>(args):
+    app = Qt.QApplication(args)
+    demo = make()
+    sys.exit(app.exec_())
+
+<font color=blue># main()</font>
+
+
+<font color=blue># Admire</font>
+<b>if</b> __name__ == <font color=green>'__main__'</font>:
+    main(sys.argv)
+
+<font color=blue># Local Variables: ***</font>
+<font color=blue># mode: python ***</font>
+<font color=blue># End: ***</font>
+
+
+</pre>
+</body>
+</html>
