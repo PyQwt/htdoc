@@ -2,10 +2,10 @@ PYQWT5_CVS       := $(HOME)/CVS/PyQwt/pyqwt5
 PYQWT4_CVS       := $(HOME)/CVS/PyQwt/pyqwt4
 PYQWT3D_CVS      := $(HOME)/CVS/pyqwt3d
 
-EXAMPLES         := BodeDemo CliDemo DataDemo ErrorBarDemo QwtImagePlotDemo
-EXAMPLES         += StackOrder
-EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%*.png) 
-EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT4_CVS)/qt3examples/%.py.html) 
+EXAMPLES         := BarPlotDemo BodeDemo CliDemo DataDemo ErrorBarDemo
+EXAMPLES         += ImagePlotDemo
+EXAMPLES_PNG     := $(EXAMPLES:%=$(PYQWT5_CVS)/qt4examples/%*.png) 
+EXAMPLES_HTML    := $(EXAMPLES:%=$(PYQWT5_CVS)/qt4examples/%.py.html) 
 
 EXAMPLES_3D      := TestNumPy
 EXAMPLES_3D_IMG  := $(EXAMPLES_3D:%=$(PYQWT3D_CVS)/qt4examples/%.svg)
