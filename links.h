@@ -19,7 +19,7 @@
 <li><a href="http://www.scipy.org">SciPy</a>
 <li><a href="http://ht2html.sourceforge.net">ht2html</a>
 <h3>Recommended Tools</h3>
-<li><a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
+<li><a href="http://www.die-offenbachs.de/eric/index.html">Eric</a>
 <li><a href="http://plasma-gate.weizmann.ac.il/Grace/">Grace</a>
 <li><a href="http://ivupy.sourceforge.net">IVuPy</a>
 <li><a href="http://www.lyx.org">LyX</a>
