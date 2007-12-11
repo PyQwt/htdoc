@@ -12,46 +12,47 @@ and control bounded or unbounded floating point values.</p>
 
 <p>PyQwt addresses the problem of integrating
 <a href="http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>,
-Qt, Qwt, the 
-<a href="http://numpy.scipy.org/">Numerical Python extensions</a>
-or
-<a href="http://www.scipy.org">SciPy</a> in
-a <a href="gui-examples.html">GUI Python application</a>
-or in an <a href="cli-examples.html">interactive Python session</a>.</p>
+Qt, Qwt,  
+<a href="http://numpy.scipy.org/">NumPy</a>
+and optionally
+<a href="http://www.scipy.org">SciPy</a>.
+Look at the
+<a href="cli-examples.html">Command Line Interface (CLI) examples</a>
+and the
+<a href="gui-examples.html">Graphical User Interface (GUI) examples</a>
+to get an idea of what you can do with PyQwt.</p>
 
-<p>It is highly recommended to use PyQwt with either
-<a href="http://numpy.scipy.org/">NumPy</a>,
-<a href=
-"http://www.stsci.edu/resources/software_hardware/numarray">numarray</a>,
-<a href="http://www.numpy.org">Numeric</a>, or any combination of those
-packages.
-The Numerical Python packages extend the Python language with new data types
-to turn Python into an ideal language for numerical computing and
-experimentation.
+<p>It is highly recommended to use PyQwt with NumPy.
+NumPy extends the Python language with new data types to turn Python into an
+ideal language for numerical computing and experimentation.
 The beautiful general purpose programming language Python in combination
-with the Numerical extensions and <a href="http://www.scipy.org">SciPy</a>
-is as powerful as specialized tools like MatLab and IDL.</p>
-
-<p>The <a href="doc5/installation.html">documentation</a> explains how
-to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
-supported by Qt (HPUX, Irix, Linux, Sun).
-The <a href="download.html">download guide</a> has quick links
-to the PyQwt releases and their prerequisites.</p>
+with the NumPy and SciPy is more powerful than specialized tools like MatLab
+and IDL.
+The older unmaintained numerical Python extensions,  
+<a href=
+"http://www.stsci.edu/resources/software_hardware/numarray">numarray</a> and
+<a href="http://www.numpy.org">Numeric</a>, are still supported but not
+recommended.</p>
 
 <p>PyQwt integrates nicely with the
 <a href="http://www.trolltech.com/products/qt/designer.html">Qt Designer</a>
 and the 
-<a href="http://www.die-offenbachs.de/detlev/eric3.html">Eric</a>
+<a href="http://www.die-offenbachs.de/eric/index.html">Eric</a>
 integrated development environment.
 The <a href="faq.html">FAQ</a> explains why PyQt's closed source
 <a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
 interactive development environment cannot be used with PyQwt.
 </p>
 
-<p>PyQwt-5.0.1 (as well as Eric and all Qt and PyQt development tools) is now
+<p>The <a href="doc5/installation.html">documentation</a> explains how
+to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
+supported by Qt (HPUX, Irix, Linux, Sun).
+The <a href="download.html">download guide</a> has quick links
+to the PyQwt releases and their prerequisites.
+PyQwt-5.0.1 as well as Eric and all Qt and PyQt development tools are now
 included in the
 <a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
-PyQt-Py2.5-gpl-4.3.0.exe</a> binary installer for Windows.
+PyQt-Py2.5-gpl-4.3.3-1.exe</a> binary installer for Windows.
 </p>
 
 <h3>Support for Qt-4 and Qt-3</h3>
