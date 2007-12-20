@@ -3,22 +3,22 @@ Title: Graphical User Interface Examples
 <h1>PyQwt Graphical User Interface Examples</h1>
 
 <p>(Py)Qt is a huge library offering many programming idioms to the user.
-  For instance, Qt's SIGNAL and SLOT mechanism is essential to develop GUI
-  programs with PyQt and PyQwt.
-  The chapter "Signal and Slot Support" in PyQt's documentation together with
-  the overview "Signals and Slots" in Qt's documentation is sufficient for 
-  experienced programmers.
-  A cheap and nowadays outdated start for newbies is Boudewijn Rempt's
-  "GUI Programming with Python Using the Qt Toolkit"
-  <a href="http://www.commandprompt.com/community/pyqt/">online book</a>.
   You should check out Mark Summerfeld's
   "Rapid GUI Programming with Python and Qt" <a href=
   "http://www.qtrac.eu/pyqtbook.html">paper book</a> when you intend to do
   serious PyQt and PyQwt programming.
+  The
+  <a href="http://www.riverbankcomputing.com/Docs/PyQt4/pyqt4ref.html">
+    PyQt v4 documentation</a>
+  may be sufficient for experienced Qt programmers with some Python knowledge.
+  A cheap and nowadays outdated start for newbies is Boudewijn Rempt's
+  "GUI Programming with Python Using the Qt Toolkit"
+  <a href="http://www.commandprompt.com/community/pyqt/">online book</a>.
 </p>
 
-<p> Some of the examples below show intermediate design patterns specific to
-  (Py)Qwt.  The most advanced examples are based on subclassing of the
+<p> The examples below demonstrate some intermediate programming techniques
+  specific to (Py)Qwt.
+  The most advanced examples are based on subclassing of the
   <tt class="class">QwtPlotItem</tt>, <tt class="class">QwtPlotCurve</tt>, and
   <tt class="class">QwtData</tt> classes.
 </p>
@@ -27,11 +27,14 @@ Title: Graphical User Interface Examples
 <h5><a href="examples/BarPlotDemo.py.html">BarPlotDemo.py</a> demonstrates</h5>
 <ul>
   <li>
-    how to enable plot cursor tracking.
+    how to enable plot cursor tracking by the <tt class="class">Spy</tt> class,
+    a subclass of <tt class="class">QObject</tt> that implements event
+    filtering.
   </li>
   <li>
-    how to derive <tt class="class">QwtBarCurve</tt> from <tt class="class">
-    QwtPlotCurve</tt>.
+    how to program <tt class="class">QwtBarCurve</tt> to plot bars.
+    <tt class="class">QwtBarCurve</tt> is a subclass of
+    <tt class="class">QwtPlotCurve</tt>.
   </li>
   <li>
     how to use a <tt class="class">QwtCounter</tt> instance to control the
