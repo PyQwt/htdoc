@@ -5,13 +5,13 @@
 <li><a href="./doc4/pyqwt.html">PyQwt4 Manual</a>
 <li><a href="./doc3d/pyqwt3d.html">PyQwt3D Manual</a>
 <h3>Development Tools</h3>
-<li><a href="http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>
+<li><a href="http://www.riverbankcomputing.com/software/pyqt/intro">PyQt</a>
 <li><a href="http://www.python.org">Python</a>
 <li><a href="http://www.trolltech.com">Qt</a>
 <li><a href="http://qwt.sourceforge.net">Qwt</a>
 <li><a href="http://qwtplot3d.sourceforge.net">QwtPlot3D</a>
 <li><a href="http://ccache.samba.org">ccache</a>
-<li><a href="http://www.riverbankcomputing.co.uk/sip">sip</a>
+<li><a href="http://www.riverbankcomputing.com/software/sip/intro">SIP</a>
 <h3>Indispensable Tools</h3>
 <li><a href="http://numpy.scipy.org">NumPy</a>
 <li><a href="http://www.stsci.edu/resources/software_hardware/numarray">numarray</a>

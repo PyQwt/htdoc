@@ -3,125 +3,142 @@ Title: PyQwt plots data with Numerical Python and PyQt
 <h1>PyQwt plots data with Numerical Python and PyQt</h1>
 
 <p>PyQwt is a set of Python bindings for the
-<a href="http://qwt.sourceforge.net">Qwt</a>
-C++ class library which extends the
-<a href="http://www.trolltech.com/">Qt</a> framework with widgets for
-scientific and engineering applications.
-It provides a widget to plot 2-dimensional data and various widgets to display
-and control bounded or unbounded floating point values.</p>
+  <a href="http://qwt.sourceforge.net">Qwt</a>
+  C++ class library which extends the
+  <a href="http://www.trolltech.com/">Qt</a> framework with widgets for
+  scientific and engineering applications.
+  It provides a widget to plot 2-dimensional data and various widgets to
+  display and control bounded or unbounded floating point values.
+</p>
 
 <p>PyQwt addresses the problem of integrating
-<a href="http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>,
-Qt, Qwt,  
-<a href="http://numpy.scipy.org/">NumPy</a>
-and optionally
-<a href="http://www.scipy.org">SciPy</a>.
-Look at the
-<a href="cli-examples.html">Command Line Interface (CLI) examples</a>
-and the
-<a href="gui-examples.html">Graphical User Interface (GUI) examples</a>
-to get an idea of what you can do with PyQwt.</p>
+  <a href="http://www.riverbankcomputing.co.uk/pyqt">PyQt</a>,
+  Qt, Qwt,  
+  <a href="http://numpy.scipy.org/">NumPy</a>
+  and optionally
+  <a href="http://www.scipy.org">SciPy</a>.
+  Look at the
+  <a href="cli-examples.html">Command Line Interface (CLI) examples</a>
+  and the
+  <a href="gui-examples.html">Graphical User Interface (GUI) examples</a>
+  to get an idea of what you can do with PyQwt.
+</p>
 
 <p>It is highly recommended to use PyQwt with NumPy.
-NumPy extends the Python language with new data types to turn Python into an
-ideal language for numerical computing and experimentation.
-The beautiful general purpose programming language Python in combination
-with the NumPy and SciPy is more powerful than specialized tools like MatLab
-and IDL.
-The older unmaintained numerical Python extensions,  
-<a href=
-"http://www.stsci.edu/resources/software_hardware/numarray">numarray</a> and
-<a href="http://www.numpy.org">Numeric</a>, are still supported but not
-recommended.</p>
+  NumPy extends the Python language with new data types to turn Python into an
+  ideal language for numerical computing and experimentation.
+  The beautiful general purpose programming language Python in combination
+  with the NumPy and SciPy is more powerful than specialized tools like MatLab
+  and IDL.
+  The older unmaintained numerical Python extensions,  
+  <a href="http://www.stsci.edu/resources/software_hardware/numarray">
+    numarray</a>
+  and <a href="http://www.numpy.org">Numeric</a>, are still supported but not
+  recommended.
+</p>
 
 <p>PyQwt integrates nicely with the
-<a href="http://www.trolltech.com/products/qt/designer.html">Qt Designer</a>
-and the 
-<a href="http://www.die-offenbachs.de/eric/index.html">Eric</a>
-integrated development environment.
-The <a href="faq.html">FAQ</a> explains why PyQt's closed source
-<a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
-interactive development environment cannot be used with PyQwt.
+  <a href="http://www.trolltech.com/products/qt/designer.html">Qt Designer</a>
+  and the 
+  <a href="http://www.die-offenbachs.de/eric/index.html">Eric</a>
+  integrated development environment.
+  The <a href="faq.html">FAQ</a> explains why PyQt's closed source
+  <a href="http://www.thekompany.com/products/blackadder/">Black Adder</a>
+  interactive development environment cannot be used with PyQwt.
 </p>
 
-<p>The <a href="doc5/installation.html">documentation</a> explains how
-to install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system
-supported by Qt (HPUX, Irix, Linux, Sun).
-The <a href="download.html">download guide</a> has quick links
-to the PyQwt releases and their prerequisites.
-PyQwt-5.0.1 as well as Eric and all Qt and PyQt development tools are now
-included in the
-<a href="http://www.riverbankcomputing.com/static/Downloads/PyQt4">
-PyQt-Py2.5-gpl-4.3.3-2.exe</a> binary installer for Windows.
+<p>The <a href="doc5/installation.html">documentation</a> explains how to
+  install PyQwt on MicroSoft Windows, MacOS/X and any POSIX system supported
+  by Qt (HPUX, Irix, Linux, Sun).
+  The <a href="download.html">download guide</a> has quick links
+  to the PyQwt releases and their prerequisites.
+  PyQwt-5.0.1 as well as Eric and all Qt and PyQt development tools are now
+  included in the
+  <a href="support/PyQt-Py2.5-gpl-4.3.3-2.exe">PyQt-Py2.5-gpl-4.3.3-2.exe</a>
+  binary installer for Windows.
 </p>
+
 
 <h3>Support for Qt-4 and Qt-3</h3>
 
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.1.tar.gz?download">PyQwt-5.0.1</a> supports Qt-4 and Qt-3, but
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.3.tar.gz?download">PyQwt-4.2.3</a> supports only Qt-3.
-The application programmer interfaces of PyQwt-5.0.x and PyQwt-4.2.x are
-incompatible. 
+<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.0.1.tar.gz?download">
+    PyQwt-5.0.1</a>
+  supports Qt-4 and Qt-3, but
+  <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.3.tar.gz?download">
+    PyQwt-4.2.3</a>
+  supports only Qt-3.
+  The application programmer interfaces of PyQwt-5.0.x and PyQwt-4.2.x are
+  incompatible. 
 </p>
 
 <h1>PyQwt3D plots data in 3D</h1>
 
 <p>PyQwt3D is a set of Python bindings for the
-<a href="http://qwtplot3d.sourceforge.net">QwtPlot3D</a> C++ class library
-which extends the <a href="http://www.trolltech.com/">Qt</a> framework with
-widgets to visualize 3-dimensional data.
-The <a href="pyqwt3d-examples.html"> examples</a> show how easy it is to
-make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
+  <a href="http://qwtplot3d.sourceforge.net">QwtPlot3D</a> C++ class library
+  which extends the <a href="http://www.trolltech.com/">Qt</a> framework with
+  widgets to visualize 3-dimensional data.
+  The <a href="pyqwt3d-examples.html"> examples</a> show how easy it is to
+  make a 3D plot and how to save a 3D plot to an image or an (E)PS/PDF file.
 </p>
 
 <p>PyQwt3D supports Qt-4 and/or Qt-3.
 </p>
 
 <p>The <a href="doc3d/install.html">installation instructions</a> explain how
-to install
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6.tar.gz?download">
-PyQwt3D-0.1.6.tar.gz</a> or
-<a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe?download">
-PyQwt3D-0.1.6-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe</a>.
+  to install
+  <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6.tar.gz?download">
+    PyQwt3D-0.1.6.tar.gz</a> or
+  <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe?download">
+    PyQwt3D-0.1.6-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe</a>.
 </p>
 
 <p>PyQwt3D-0.1.6 is <b>not</b> included in the
-<a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
-PyQt-Py2.5-gpl-4.3.0.exe</a> binary installer for Windows.
-A PyQwt3D Windows installer cannot be build for
-<a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
-PyQt-Py2.5-gpl-4.3.0.exe</a>, since the latter is not extensible with other
-packages with Python extension modules based on SIP and PyQt.
-You <b>have</b> to rebuild SIP-3.17 and PyQt-4.3, if you want to use
-PyQwt3D-0.1.6 in combination with PyQt-4.3 on Windows.
+  <a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
+    PyQt-Py2.5-gpl-4.3.0.exe</a> binary installer for Windows.
+  A PyQwt3D Windows installer cannot be build for
+  <a href="http://www.riverbankcomputing.com/Downloads/PyQt4/GPL/">
+    PyQt-Py2.5-gpl-4.3.0.exe</a>, since the latter is not extensible with other
+  packages with Python extension modules based on SIP and PyQt.
+  You <b>have</b> to rebuild SIP-3.17 and PyQt-4.3, if you want to use
+  PyQwt3D-0.1.6 in combination with PyQt-4.3 on Windows.
 </p>
 
 <p>We like feedback on the interfacing between the QwtPlot3D API and Numerical
-Python extensions.
+  Python extensions.
 </p>
 
 <p>You should look into
-<a href="http://ivupy.sourceforge.net">IVuPy (I-View-Py)</a>,
-if you want more flexibility and speed in 3D data visualization.
+  <a href="http://ivupy.sourceforge.net">IVuPy (I-View-Py)</a>,
+  if you want more flexibility and speed in 3D data visualization.
 </p>
 
 <h1>Software using PyQwt</h1>
 
 <p><a href="http://magix.fri.uni-lj.si/orange/">Orange</a>
-is a component-based data mining software including a range of preprocessing,
-modelling and data exploration techniques. It is based on C++ components, that
-are accessed either directly (not very common), through Python scripts (easier
-and better), or through GUI objects called Orange Widgets.</p>
+  is a component-based data mining software including a range of preprocessing,
+  modelling and data exploration techniques. It is based on C++ components,
+  that are accessed either directly (not very common), through Python scripts
+  (easier and better), or through GUI objects called Orange Widgets.</p>
+
+<p><a href="http://pascual.sourceforge.net/">PAScual</a> is an open source
+  program for analysing data from Positron Annihilation Lifetime Spectroscopy
+  (PALS).
+</p>
 
 <p><a href="http://profitpy.sourceforge.net">ProfitPy</a>
-is a stock trading toolkit with a collector tool to gather data from the
-<a href="http://www.interactivebrokers.com/php/main.php">Interactive Brokers</a>
-<a href="http://www.interactivebrokers.com/php/tws/demo.php">Trader Workstation</a>
-and with a coverage tool to test trading strategies.</p>
+  is a stock trading toolkit with a collector tool to gather data from the
+  <a href="http://www.interactivebrokers.com/php/main.php">Interactive Brokers</a>
+  <a href="http://www.interactivebrokers.com/php/tws/demo.php">Trader Workstation</a>
+  and with a coverage tool to test trading strategies.</p>
 
-<p><a href="http://www.esrf.fr/computing/bliss/downloads/index.html">PyMCA</a> is an
-interactive multi-channel analyzer for X-ray fluorescence spectra developed at
-the
-<a href="http://www.esrf.fr">European Synchrotron Facility</a>.
+<p><a href="http://www.esrf.fr/computing/bliss/downloads/index.html">PyMCA</a>
+  is an interactive multi-channel analyzer for X-ray fluorescence spectra
+  developed at the
+  <a href="http://www.esrf.fr">European Synchrotron Facility</a>.
+  Look at the
+  <a href="http://www.esrf.eu/computing/bliss/downloads/pymca/roitooltutorial.htm">
+    PyMCA turial</a>
+  to see what you can do with PyQt and PyQwt.
 </p>
 
 <!--
