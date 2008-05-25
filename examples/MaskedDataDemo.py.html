@@ -9,10 +9,10 @@
 
 <b>import</b> sys
 <b>from</b> PyQt4 <b>import</b> Qt
-<b>import</b> PyQt4.Qwt5 as Qwt
+<b>import</b> PyQt4.Qwt5 <b>as</b> Qwt
 
 <b>try</b>:
-    <b>import</b> numpy as np
+    <b>import</b> numpy <b>as</b> np
 <b>except</b> ImportError:
     <b>if</b> <b>not</b> Qt.QCoreApplication.instance():
         a = Qt.QApplication([])
