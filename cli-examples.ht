@@ -47,7 +47,7 @@ PyQwt-4.2.3.
   <li>
     Type:
     <pre class="cli">
->>> x = arange(-2*pi, 2*pi, 0.01)
+>>> x = np.arange(-2*np.pi, 2*np.pi, 0.01)
     </pre>
     to create an array of x-values, ranging from -2*pi to 2*pi with a step size
     of 0.01.
@@ -55,9 +55,9 @@ PyQwt-4.2.3.
   <li>
     Type:
     <pre class="cli">
->>> p = Plot(Curve(x, cos(x), Pen(Magenta, 2), "cos(x)"),
-...          Curve(x, exp(x), Pen(Red), "exp(x)", Right),
-...          Axis(Right, Logarithmic),
+>>> p = Plot(Curve(x, np.cos(x), Pen(Magenta, 2), "cos(x)"),
+...          Curve(x, np.exp(x), Pen(Red), "exp(x)", Y2),
+...          Axis(Right, Log),
 ...          "PyQwt using Qwt-%s -- http://qwt.sf.net" % QWT_VERSION_STR)
     </pre>
     to show a plot with two curves, a linear x-axis, a linear y-axis, a
@@ -87,9 +87,9 @@ PyQwt-4.2.3.
     is better suited for LaTeX documents and scientific journals. 
     Type:
     <pre class="cli">
->>> p = IPlot(Curve(x, cos(x), Pen(Magenta, 2), "cos(x)"),
-...           Curve(x, exp(x), Pen(Red), "exp(x)", Right),
-...           Axis(Right, Logarithmic),
+>>> p = IPlot(Curve(x, np.cos(x), Pen(Magenta, 2), "cos(x)"),
+...           Curve(x, np.exp(x), Pen(Red), "exp(x)", Y2),
+...           Axis(Right, Log),
 ...           "PyQwt using Qwt-%s -- http://qwt.sf.net" % QWT_VERSION_STR)
     </pre>
     to show it.
@@ -105,8 +105,8 @@ PyQwt-4.2.3.
   <li>
     Type:
     <pre class="cli">
->>> p.plot(Curve(x, cos(x-pi/4), Symbol(Circle, Yellow), "circle"),
-...        Curve(x, cos(x+pi/4), Pen(Blue), Symbol(Square, Cyan), "square"))
+>>> p.plot(Curve(x, np.cos(x-np.pi/4), Symbol(Circle, Yellow), "circle"),
+...        Curve(x, np.cos(x+np.pi/4), Pen(Blue), Symbol(Square, Cyan), "square"))
     </pre>
     to add two more curves to the plot.
     <p><img alt="plot with four curves" src="examples/CliDemo1.png"
