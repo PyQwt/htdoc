@@ -22,9 +22,10 @@ Title: Download Guide
 
 <ol>
 <li><a href="http://www.python.org/ftp/python/2.5.2/python-2.5.2.msi">python-2.5.2.msi</a></li>
-<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.1.0-win32-superpack-python2.5.exe">numpy-1.1.0-win32-superpack-python2.5</a>
+<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.1.0-win32-superpack-python2.5.exe">numpy-1.1.0-win32-superpack-python2.5.exe</a>
   is recommended but earlier versions may also work</li>
 <li><a href="http://pyqwt.sourceforge.net/support/PyQt-Py2.5-gpl-4.4.2-1.exe">PyQt-Py2.5-gpl-4.4.2-1.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt5.1.0-Python2.5-PyQt4.4.2-NumPy1.1.0-1.exe">PyQwt5.1.0-Python2.5-PyQt4.4.2-NumPy1.1.0-1.exe</a></li>
 </ol>
 
 
