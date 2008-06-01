@@ -52,10 +52,6 @@ Title: PyQwt plots data with Numerical Python and PyQt
   by Qt (HPUX, Irix, Linux, Sun).
   The <a href="download.html">download guide</a> has quick links
   to the PyQwt releases and their prerequisites.
-  PyQwt-5.0.1 as well as Eric and all Qt and PyQt development tools are now
-  included in the
-  <a href="support/PyQt-Py2.5-gpl-4.3.3-2.exe">PyQt-Py2.5-gpl-4.3.3-2.exe</a>
-  binary installer for Windows.
 </p>
 
 
