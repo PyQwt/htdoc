@@ -27,7 +27,7 @@ HTSTYLE          := PyQwtGenerator
 HTALLFLAGS       := -f -s $(HTSTYLE)
 HTFLAGS          := $(HTALLFLAGS) -r $(HTROOT)
 
-DEST             := pyqwt.sourceforge.net:/home/groups/p/py/pyqwt/htdocs
+DEST             := gvermeul,pyqwt@web.sourceforge.net
 EXCLUDES         := --exclude CVS
 EXCLUDES         += --exclude ht2html-2.0
 EXCLUDES         += --exclude *.pyc
