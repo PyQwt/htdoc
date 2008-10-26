@@ -84,8 +84,8 @@ Title: PyQwt plots data with Numerical Python and PyQt
   to install
   <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6.tar.gz?download">
     PyQwt3D-0.1.6.tar.gz</a> or
-  <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe?download">
-    PyQwt3D-0.1.6-Python2.5-Qt4.2.3-PyQt4.2-NumPy1.0.3.exe</a>.
+  <a href="http://downloads.sourceforge.net/pyqwt/PyQwt3D-0.1.6-Python2.5-Qt4.4.1-PyQt4.4.3-NumPy1.2.0.exe?download">
+    PyQwt3D-0.1.6-Python2.5-Qt4.4.1-PyQt4.4.3-NumPy1.2.0.exe</a>.
 </p>
 
 <p>We like feedback on the interfacing between the QwtPlot3D API and Numerical

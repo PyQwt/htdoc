@@ -18,6 +18,16 @@ Title: Download Guide
 </ol>
 
 
+<h3>Binary installation of PyQwt-5.1.0 on Windows for Python-2.5.x, PyQt-4.4.3, and NumPy-1.2.0</h3>
+
+<ol>
+<li><a href="http://www.python.org/ftp/python/2.5.2/python-2.5.2.msi">python-2.5.2.msi</a></li>
+<li><a href="http://prdownloads.sourceforge.net/numpy/numpy-1.1.0-win32-superpack-python2.5.exe">numpy-1.2.0-win32-superpack-python2.5.exe</a></li>
+<li><a href="http://pyqwt.sourceforge.net/support/PyQt-Py2.5-gpl-4.4.3-1.exe">PyQt-Py2.5-gpl-4.4.3-1.exe</a></li>
+<li><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt5.1.0-Python2.5-PyQt4.4.3-NumPy1.2.0-1.exe">PyQwt5.1.0-Python2.5-PyQt4.4.3-NumPy1.2.0-1.exe</a></li>
+</ol>
+
+
 <h3>Binary installation of PyQwt-5.1.0 on Windows for Python-2.5.x, PyQt-4.4.2, and NumPy-1.1.0</h3>
 
 <ol>
