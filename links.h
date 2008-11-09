@@ -1,7 +1,7 @@
 <!-- -*- HTML -*- -->
 
 <h3>Documentation</h3>
-<li><a href="./doc5/pyqwt.html">PyQwt5 Manual</a>
+<li><a href="./doc5/index.html">PyQwt5 Manual</a>
 <li><a href="./doc4/pyqwt.html">PyQwt4 Manual</a>
 <li><a href="./doc3d/pyqwt3d.html">PyQwt3D Manual</a>
 <h3>Development Tools</h3>
