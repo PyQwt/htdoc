@@ -57,13 +57,13 @@ Title: PyQwt plots data with Numerical Python and PyQt
 
 <h3>Support for Qt-4 and Qt-3</h3>
 
-<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.1.0.tar.gz?download">
-    PyQwt-5.1.0</a>
+<p><a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-5.2.0.tar.gz?download">
+    PyQwt-5.2.0</a>
   supports Qt-4 and Qt-3, but
   <a href="http://prdownloads.sourceforge.net/pyqwt/PyQwt-4.2.3.tar.gz?download">
     PyQwt-4.2.3</a>
   supports only Qt-3.
-  The application programmer interfaces of PyQwt-5.1.x and PyQwt-4.2.x are
+  The application programmer interfaces of PyQwt-5.2.x and PyQwt-4.2.x are
   incompatible. 
 </p>
 

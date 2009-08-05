@@ -43,8 +43,10 @@ ARGS             := --rsh=ssh -v -r -l -t --update  --delete $(EXCLUDES)
 # targets
 all: $(TARGETS)
 	mkdir -p doc5
-	(cd $(PYQWT5_CVS)/sphinx; make clean; make)
+	(cd $(PYQWT5_CVS)/sphinx; make clean; make; make latex)
+	(cd $(PYQWT5_CVS)/sphinx/build/latex; make all-pdf)
 	cp -vpr $(PYQWT5_CVS)/sphinx/build/html/* doc5
+	cp -vpr $(PYQWT5_CVS)/sphinx/build/latex/PyQwt.pdf doc5
 	mkdir -p doc4
 	(cd $(PYQWT4_CVS)/Doc; make htdoc)
 	cp -vpr $(PYQWT4_CVS)/Doc/html/htdoc/* doc4
